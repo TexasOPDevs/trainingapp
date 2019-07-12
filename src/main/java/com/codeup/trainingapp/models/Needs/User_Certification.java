@@ -1,5 +1,8 @@
 package com.codeup.trainingapp.models.Needs;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,11 +14,13 @@ public class User_Certification {
     private Long id;
 
     @OneToOne
+    @JsonBackReference
     private Curriculum curriculum;
 
     @Column
     private Boolean credit;
 
     @ManyToOne
+    @JsonManagedReference
     private User user;
 }
