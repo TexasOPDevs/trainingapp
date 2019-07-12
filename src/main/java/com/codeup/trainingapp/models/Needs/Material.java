@@ -18,7 +18,7 @@ public class Material {
 
     @ManyToMany(mappedBy = "materials")
     @JsonBackReference
-    private List<Curriculum> cours;
+    private List<Curriculum> curricula;
 
     public Material() {
     }

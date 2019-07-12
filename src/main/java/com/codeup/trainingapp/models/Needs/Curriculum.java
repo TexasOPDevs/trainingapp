@@ -20,13 +20,13 @@ public class Curriculum {
     @Column
     private Long capacity;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String learning_objectives;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String course_outline;
 
     @Column
