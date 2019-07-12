@@ -17,7 +17,7 @@ public class Student {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "a_class_id")
+    @JoinColumn(name = "students")
     @JsonBackReference
     private Course course;
 
