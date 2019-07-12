@@ -24,7 +24,7 @@ public class Attendance {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "a_class_id")
+    @JoinColumn(name = "course_id")
     @JsonManagedReference
     private Course course;
 
