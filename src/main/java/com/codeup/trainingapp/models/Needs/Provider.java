@@ -1,5 +1,7 @@
 package com.codeup.trainingapp.models.Needs;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class Provider {
     private User coordinator;
 
     @ManyToMany(mappedBy = "providers")
+    @JsonBackReference
     private List<User> users;
 
     public Provider() {
