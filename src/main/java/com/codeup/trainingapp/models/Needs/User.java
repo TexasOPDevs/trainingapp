@@ -3,6 +3,7 @@ package com.codeup.trainingapp.models.Needs;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class User {
     private String phone;
 
     @Column
+    @JsonIgnore
     private String password;
 
 
