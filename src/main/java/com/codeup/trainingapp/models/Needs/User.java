@@ -2,6 +2,9 @@ package com.codeup.trainingapp.models.Needs;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -38,12 +41,15 @@ public class User {
             joinColumns ={@JoinColumn(name = "user_id")},
             inverseJoinColumns ={@JoinColumn(name = "provider_id")}
     )
+    @JsonManagedReference
     private List<Provider> providers;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private List<User_Certification> certifications;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonBackReference
     private List<Attendance> attendances;
 
 
