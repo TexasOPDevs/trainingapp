@@ -1,5 +1,8 @@
 package com.codeup.trainingapp.models.Needs;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -45,10 +48,12 @@ public class Curriculum {
             joinColumns ={@JoinColumn(name = "curriculum_id")},
             inverseJoinColumns = {@JoinColumn(name = "material_id")}
     )
+    @JsonManagedReference
     private List<Material> materials;
 
     @OneToMany(mappedBy = "curriculum")
-    private List<Course> AClasses;
+    @JsonBackReference
+    private List<Course> Courses;
 
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")

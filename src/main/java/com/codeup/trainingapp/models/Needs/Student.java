@@ -1,5 +1,7 @@
 package com.codeup.trainingapp.models.Needs;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,10 +13,12 @@ public class Student {
     private Long id;
 
     @OneToOne
+    @JsonBackReference
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "a_class_id")
+    @JsonBackReference
     private Course course;
 
     @OneToOne
