@@ -39,7 +39,8 @@ public class Curriculum {
     @Column
     private Date update_date;
 
-    @OneToOne
+    @ManyToOne
+    @JsonManagedReference
     private Provider provider;
 
 
