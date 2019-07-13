@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link type="text/css" rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.min.css"
+          media="screen,projection"/>
+    <link rel="stylesheet" href="/padding.css"/>
+</head>
+<body>
+
+<nav>
+    <h3 class="center">insert nav here</h3>
+</nav>
+
+<h4 class="center">A place for users to register or log in</h4>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="tabs">
+                                <li class="tab col s6">
+                                    <a class="active" href="#login">Login</a>
+                                </li>
+                                <li class="tab col s6">
+                                    <a href="#register">Register</a>
+                                </li>
+                            </ul>
+                        </div>
+                            <div id="login" class="col s12">
+                                <div class="row">
+                                    <div class="container">
+                                    <form th:action="@{/login}" th:method="post" class="col s12" style="padding-top:
+                                    10%;">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="username" type="text" class="validate"/>
+                                                <label for="username">Username</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="userPassword" type="password" class="validate"/>
+                                                <label for="userPassword">Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s6 offset-s9">
+                                                <button class="btn waves-effect waves-light" type="submit"
+                                                        name="action">Login
+                                                    <i class="material-icons right">input</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                            <div id="register" class="col s12">
+                                <div class="row">
+                                    <form th:action="@{/login}" th:method="post" th:object="${user}"
+                                          class="col s12 pt-2">
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input th:field="*{first_name}" type="text" class="validate"/>
+                                                <label th:for="*{first_name}">First Name</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input th:field="*{last_name}" type="text" class="validate"/>
+                                                <label th:for="*{last_name}">Last Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input th:field="*{username}" type="text" class="validate"/>
+                                                <label th:for="*{username}">Username</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input th:field="*{id}" type="number" class="validate"/>
+                                                <label th:for="*{id}">PID</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input th:field="*{phone}" type="tel" class="validate"/>
+                                                <label th:for="*{phone}">Phone</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input th:field="*{password}" type="password" class="validate"/>
+                                                <label th:for="*{password}">Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="passwordConfirm" type="password" class="validate"/>
+                                                <label for="passwordConfirm">Re-enter Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input th:field="*{email}" type="email" class="validate"/>
+                                                <label th:for="*{email}">Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s6 offset-s9">
+                                                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                                    <i class="material-icons right">person</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script>
+    M.AutoInit();
+</script>
+</body>
+</html>

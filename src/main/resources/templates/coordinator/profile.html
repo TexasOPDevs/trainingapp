@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+</head>
+<body>
+
+
+<h1>Here's a page</h1>
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3"><a href="#test1">Provider</a></li>
+            <li class="tab col s3"><a class="active" href="#test2">Courses</a></li>
+            <li class="tab col s3"><a href="#courselist">Classes</a></li>
+        </ul>
+    </div>
+    <div id="provider" class="col s12">Test 1</div>
+    <div id="test2" class="col s12">Test 2</div>
+    <div id="courselist" class="col s12"></div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"
+>
+</script>
+<script src="/js/coord-profile.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+</body>
+</html>

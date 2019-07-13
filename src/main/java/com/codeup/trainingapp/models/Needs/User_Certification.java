@@ -23,4 +23,36 @@ public class User_Certification {
     @ManyToOne
     @JsonManagedReference
     private User user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Curriculum getCurriculum() {
+        return curriculum;
+    }
+
+    public void setCurriculum(Curriculum curriculum) {
+        this.curriculum = curriculum;
+    }
+
+    public Boolean getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Boolean credit) {
+        this.credit = credit;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

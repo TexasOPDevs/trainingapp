@@ -18,8 +18,32 @@ public class Material {
 
     @ManyToMany(mappedBy = "materials")
     @JsonBackReference
-    private List<Curriculum> cours;
+    private List<Curriculum> curricula;
 
     public Material() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Curriculum> getCurricula() {
+        return curricula;
+    }
+
+    public void setCurricula(List<Curriculum> curricula) {
+        this.curricula = curricula;
     }
 }
