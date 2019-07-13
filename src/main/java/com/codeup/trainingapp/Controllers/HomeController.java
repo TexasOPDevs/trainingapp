@@ -23,7 +23,7 @@ public class HomeController {
     }
 
     @GetMapping("/courses")
-    public String coordinatorPortal(){
+    public String coordinatorPortal() {
 
         return "home/courses";
     }

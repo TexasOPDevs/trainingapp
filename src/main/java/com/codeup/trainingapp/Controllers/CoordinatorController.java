@@ -21,6 +21,7 @@ public class CoordinatorController {
     private final ProviderRepository providerDao;
 
     public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao) {
+
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
