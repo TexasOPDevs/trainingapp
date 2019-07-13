@@ -10,7 +10,7 @@
         courses.forEach(function(course) {
            html += `<tr><td>${course.curriculum.name}</td><td>${course.location}</td><td>${course.start_date}</td><td>${course.end_date}</td><td>`;
            course.curriculum.materials.forEach(function(element){
-               html += ` ${element.name}`
+               html += `${element.name}`
            });
             html += `</td><td>${course.curriculum.capacity}</td>`;
         });
