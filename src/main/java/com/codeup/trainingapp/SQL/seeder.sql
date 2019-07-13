@@ -48,4 +48,12 @@ VALUES (4, 2, 1),
        (4, 2, 7),
        (4, 2, 8),
        (4, 2, 9),
-       (4, 2, 10)
+       (4, 2, 10);
+
+insert into user_provider (user_id, provider_id)
+VALUES (1, 2),
+       (3, 2);
+
+
+insert into role (name, user_id)
+VALUES ('instructor', 1);

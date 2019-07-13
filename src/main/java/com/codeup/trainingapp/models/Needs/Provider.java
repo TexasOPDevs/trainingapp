@@ -1,6 +1,7 @@
 package com.codeup.trainingapp.models.Needs;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,11 +20,17 @@ public class Provider {
     @Column
     private String image;
 
-    @OneToOne()
+    @OneToOne
     private User coordinator;
 
-    @ManyToMany(mappedBy = "providers")
+    @OneToMany(mappedBy = "provider")
     @JsonBackReference
+    private List<Curriculum> curricula;
+
+
+
+    @ManyToMany(mappedBy = "providers")
+    @JsonManagedReference
     private List<User> users;
 
     public Provider() {
@@ -43,6 +50,14 @@ public class Provider {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Curriculum> getCurricula() {
+        return curricula;
+    }
+
+    public void setCurricula(List<Curriculum> curricula) {
+        this.curricula = curricula;
     }
 
     public String getImage() {

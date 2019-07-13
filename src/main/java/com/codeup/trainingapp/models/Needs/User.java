@@ -43,7 +43,7 @@ public class User {
             joinColumns ={@JoinColumn(name = "user_id")},
             inverseJoinColumns ={@JoinColumn(name = "provider_id")}
     )
-    @JsonManagedReference
+    @JsonBackReference
     private List<Provider> providers;
 
     @OneToMany(mappedBy = "user")
@@ -119,13 +119,13 @@ public class User {
         this.password = password;
     }
 
-    public List<Provider> getProviders() {
-        return providers;
-    }
-
-    public void setProviders(List<Provider> providers) {
-        this.providers = providers;
-    }
+//    public List<Provider> getProviders() {
+//        return providers;
+//    }
+//
+//    public void setProviders(List<Provider> providers) {
+//        this.providers = providers;
+//    }
 
     public List<User_Certification> getCertifications() {
         return certifications;
