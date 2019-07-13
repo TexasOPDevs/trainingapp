@@ -41,7 +41,7 @@ public class Course {
     @JsonManagedReference
     private List<Student> students;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
     @JsonManagedReference
     private List<Attendance> attendances;
 
@@ -55,5 +55,93 @@ public class Course {
     private List<User> instructors;
 
     public Course() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getEvaluation_file() {
+        return evaluation_file;
+    }
+
+    public void setEvaluation_file(String evaluation_file) {
+        this.evaluation_file = evaluation_file;
+    }
+
+    public Time getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(Time start_time) {
+        this.start_time = start_time;
+    }
+
+    public Date getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
+    }
+
+    public Date getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
+    }
+
+    public Curriculum getCurriculum() {
+        return curriculum;
+    }
+
+    public void setCurriculum(Curriculum curriculum) {
+        this.curriculum = curriculum;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
+    }
+
+    public void setAttendances(List<Attendance> attendances) {
+        this.attendances = attendances;
+    }
+
+    public List<User> getInstructors() {
+        return instructors;
+    }
+
+    public void setInstructors(List<User> instructors) {
+        this.instructors = instructors;
     }
 }
