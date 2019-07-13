@@ -35,7 +35,7 @@
                             <div id="login" class="col s12">
                                 <div class="row">
                                     <div class="container">
-                                    <form class="col s12">
+                                    <form th:action="@{/login}" th:method="post" class="col s12">
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <input id="username" type="text" class="validate"/>
@@ -62,33 +62,39 @@
                             </div>
                             <div id="register" class="col s12">
                                 <div class="row">
-                                    <form class="col s12">
+                                    <form th:action="@{/login}" th:method="post" th:object="${user}" class="col s12">
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <input id="first_name" type="text" class="validate"/>
-                                                <label for="first_name">First Name</label>
+                                                <input th:field="*{first_name}" type="text" class="validate"/>
+                                                <label th:for="*{first_name}">First Name</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <input id="last_name" type="text" class="validate"/>
-                                                <label for="last_name">Last Name</label>
+                                                <input th:field="*{last_name}" type="text" class="validate"/>
+                                                <label th:for="*{last_name}">Last Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input th:field="*{username}" type="text" class="validate"/>
+                                                <label th:for="*{username}">Username</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <input id="pid" type="number" class="validate"/>
-                                                <label for="pid">PID</label>
+                                                <input th:field="*{id}" type="number" class="validate"/>
+                                                <label th:for="*{id}">PID</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <input id="phone" type="tel" class="validate"/>
-                                                <label for="phone">Phone</label>
+                                                <input th:field="*{phone}" type="tel" class="validate"/>
+                                                <label th:for="*{phone}">Phone</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <input id="password" type="password" class="validate"/>
-                                                <label for="password">Password</label>
+                                                <input th:field="*{password}" type="password" class="validate"/>
+                                                <label th:for="*{password}">Password</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -99,8 +105,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <input id="email" type="email" class="validate"/>
-                                                <label for="email">Email</label>
+                                                <input th:field="*{email}" type="email" class="validate"/>
+                                                <label th:for="*{email}">Email</label>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -119,13 +125,6 @@
             </div>
         </div>
     </div>
-<script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"
->
-</script>
-<script src="/js/allCourses.js"></script>
 
 <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
 <script>
