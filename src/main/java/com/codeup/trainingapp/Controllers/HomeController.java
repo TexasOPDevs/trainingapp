@@ -23,9 +23,15 @@ public class HomeController {
     }
 
     @GetMapping("/courses")
-    public String coordinatorPortal() {
+    public String courseView() {
 
         return "home/courses";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+
+        return "home/login-register";
     }
 
 }
