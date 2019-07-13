@@ -1,0 +1,23 @@
+{
+  "name": "trainingapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trainingorganizer/trainingapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trainingorganizer/trainingapp/issues"
+  },
+  "homepage": "https://github.com/trainingorganizer/trainingapp#readme",
+  "dependencies": {
+    "materialize-css": "^1.0.0"
+  }
+}
