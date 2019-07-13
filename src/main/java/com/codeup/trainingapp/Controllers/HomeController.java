@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class StudentController {
+public class HomeController {
 
     private final CourseRepository courseDao;
 
-    public StudentController(CourseRepository courseDao) {
+    public HomeController(CourseRepository courseDao) {
         this.courseDao = courseDao;
     }
 
-    @GetMapping("/course.json")
+    @GetMapping("/courses.json")
     public @ResponseBody
     Iterable<Course> viewCoursesInJSON() {
         return courseDao.findAll();
     }
 
-    @GetMapping("/coordinator/profile")
+    @GetMapping("/courses")
     public String coordinatorPortal(){
 
-        return "coordinator/profile";
+        return "home/courses";
     }
 
 }
