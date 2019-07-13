@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link type="text/css" rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.min.css"
+          media="screen,projection"/>
+</head>
+<body>
+
+<nav>
+    <h3>insert nav here</h3>
+</nav>
+
+<h4>A list of all the courses for anyone to view</h4>
+
+<div class="container">
+
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card-content">
+            <h3 class="card-title">Courses</h3>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Sort by</a>
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="#!">Upcoming</a></li>
+                <li><a href="#!">Future</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li><a href="#!">Name</a></li>
+                <li><a href="#!">Organization</a></li>
+            </ul>
+            <form>
+                <div class="input-field">
+                    <input name="search" id="search" type="search" th:required="required"/>
+                    <label class="label-icon" for="search">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+            <div th:id="coursesTable">
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"
+>
+</script>
+<script src="/js/allCourses.js"></script>
+
+<script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+<script>
+    M.AutoInit();
+</script>
+</body>
+</html>
