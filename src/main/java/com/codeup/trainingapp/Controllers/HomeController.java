@@ -23,16 +23,21 @@ public class HomeController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/courses.json")
-    public @ResponseBody
-    Iterable<Course> viewCoursesInJSON() {
-        return courseDao.findAll();
+    @GetMapping("/")
+    public String landing(){
+        return "home/landing-page";
     }
 
     @GetMapping("/courses")
     public String courseView() {
 
         return "home/courses";
+    }
+
+    @GetMapping("/courses.json")
+    public @ResponseBody
+    Iterable<Course> viewCoursesInJSON() {
+        return courseDao.findAll();
     }
 
     @GetMapping("/login")
