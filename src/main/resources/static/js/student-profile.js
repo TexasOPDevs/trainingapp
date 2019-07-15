@@ -27,7 +27,7 @@
             `<tr>`+
             `<th>Course</th>` +
             `<th>Organization</th>` +
-            `<th>Start Date</th>` +
+            `<th>End Date</th>` +
             `</tr>`+
             `</thead><tbody>`;
         curricula.forEach(function(cur) {
@@ -49,15 +49,13 @@
                         <div class="modal-footer">
                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
                         </div>` +
-              `</div>`
+                        `</div>`
                 }
             });
-    });
+        });
         html += '</tbody></table>';
-        $('#coursesTable').html(html);
+        $('#studentTable').html(html);
         M.AutoInit();
     });
 
 })(jQuery);
-
-
