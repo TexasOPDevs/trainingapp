@@ -73,14 +73,14 @@ public class CoordinatorController {
         return "coordinator/profile";
     }
 
-//
-//    @PostMapping
-//    @ResponseBody
-//    public void createACourse(@ModelAttribute Course course)
-//    {
-//        System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " "+ course.getInstructors());
-//        courseDao.save(course);
-//    }
+
+    @PostMapping("/coordinator")
+    @ResponseBody
+    public void createACourse(@ModelAttribute Course course)
+    {
+        System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " "+ course.getInstructors());
+        courseDao.save(course);
+    }
 
 }
 
