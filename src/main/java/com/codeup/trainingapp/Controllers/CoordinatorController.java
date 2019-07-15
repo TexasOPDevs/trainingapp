@@ -58,8 +58,7 @@ public class CoordinatorController {
                 return courseDao.findAll();
             }
 
-            @GetMapping("/coordinator/profile")
-            public String coordinatorPortal(){
+
 
 
 
@@ -84,3 +83,4 @@ public class CoordinatorController {
     }
 
 }
+

@@ -4,8 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Courses</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <link type="text/css" rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.min.css" media="screen,projection"/>
+    <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
 
@@ -73,10 +72,6 @@
 
 </div>
 
-
-<script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
-<script>
-    M.AutoInit();
-</script>
+<th:block th:replace="partials/master :: materializejs"></th:block>
 </body>
 </html>

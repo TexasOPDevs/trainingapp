@@ -4,11 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Courses</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <link type="text/css" rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.min.css"
-          media="screen,projection"/>
-    <link rel="stylesheet" href="/padding.css"/>
-
+    <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
 
@@ -79,16 +75,10 @@
     </div>
 </div>
 
-<script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
-<script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"
->
-</script>
+
+<th:block th:replace="partials/master :: jquery"></th:block>
 <script src="/js/coord-profile.js"></script>
-<script>
-    M.AutoInit();
-</script>
+<th:block th:replace="partials/master :: materializejs"></th:block>
+
 </body>
 </html>
