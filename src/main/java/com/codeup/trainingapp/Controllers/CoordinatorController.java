@@ -28,18 +28,22 @@ public class CoordinatorController {
 
     private final StatusRepository StatusDao;
 
-    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StatusRepository statusDao) {
+    private final InstructorRepository instructorDao;
+
+    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StatusRepository statusDao, InstructorRepository instructorDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
         this.userDao = userDao;
         StatusDao = statusDao;
+        this.instructorDao = instructorDao;
     }
 
     @GetMapping("/user.json")
     public @ResponseBody Iterable<User> viewUsersInJSON(){
         return userDao.findAll();
     }
+
 
     @GetMapping("/curricula.json")
     public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
