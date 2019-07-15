@@ -38,6 +38,9 @@ public class User {
     @Column
     private String role;
 
+    @Column(columnDefinition = "TEXT")
+    private String bio;
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -172,5 +175,13 @@ public class User {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }
