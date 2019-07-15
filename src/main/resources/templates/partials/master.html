@@ -6,6 +6,8 @@
 </head>
 <body>
 
+
+
 <th:block th:fragment="materialize">
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" />
     <link type="text/css" rel="stylesheet" th:href="@{/node_modules/materialize-css/dist/css/materialize.min.css}"
@@ -13,9 +15,14 @@
     <link rel="stylesheet" th:href="@{/padding.css}"/>
 </th:block>
 
+
+
 <th:block th:fragment="materializejs">
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js}" ></script>
+    <th:block th:replace="partials/master :: minit"></th:block>
 </th:block>
+
+
 
 <th:block th:fragment="jquery">
     <script
@@ -26,11 +33,15 @@
     </script>
 </th:block>
 
+
+
 <th:block th:fragment="minit">
     <script>
         M.AutoInit();
     </script>
 </th:block>
+
+
 
 </body>
 </html>
