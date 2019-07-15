@@ -44,6 +44,7 @@ public class Curriculum {
     private Provider provider;
 
 
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "curriculum_material",
@@ -54,7 +55,7 @@ public class Curriculum {
     private List<Material> materials;
 
     @OneToMany(mappedBy = "curriculum")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Course> Courses;
 
 
@@ -152,11 +153,11 @@ public class Curriculum {
         this.materials = materials;
     }
 
-//    public List<Course> getCourses() {
-//        return Courses;
-//    }
-//
-//    public void setCourses(List<Course> courses) {
-//        Courses = courses;
-//    }
+    public List<Course> getCourses() {
+        return Courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        Courses = courses;
+    }
 }

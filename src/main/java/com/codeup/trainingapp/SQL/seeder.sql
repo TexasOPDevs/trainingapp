@@ -57,3 +57,7 @@ VALUES (1, 2),
 
 insert into role (name, user_id)
 VALUES ('instructor', 1);
+
+
+insert into instructors (course_id, user_id)
+values (4, 1);
