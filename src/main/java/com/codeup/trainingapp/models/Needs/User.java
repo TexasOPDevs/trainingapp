@@ -53,6 +53,9 @@ public class User {
     @JsonBackReference
     private List<Attendance> attendances;
 
+    @ManyToMany(mappedBy = "instructors")
+    @JsonBackReference
+    private List<Course> courses;
 
 
 
@@ -128,13 +131,13 @@ public class User {
         this.password = password;
     }
 
-//    public List<Provider> getProviders() {
-//        return providers;
-//    }
-//
-//    public void setProviders(List<Provider> providers) {
-//        this.providers = providers;
-//    }
+    public List<Provider> getProviders() {
+        return providers;
+    }
+
+    public void setProviders(List<Provider> providers) {
+        this.providers = providers;
+    }
 
     public List<User_Certification> getCertifications() {
         return certifications;
