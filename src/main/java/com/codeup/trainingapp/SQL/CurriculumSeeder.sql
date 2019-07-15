@@ -7,12 +7,12 @@ INSERT INTO training_db.curriculum (id, capacity, certification, course_outline,
 INSERT INTO training_db.curriculum (id, capacity, certification, course_outline, creation_date, description, learning_objectives, name, update_date, provider_id) VALUES (5, 45, 'AEMT Certification', 'This course is to prepare you for the live of a AEMT.', '2019-07-03', 'The primary focus of the Advanced Emergency Medical Technician is to provide basic and limited advanced emergency medical care and transportation for critical and emergent patients who access the emergency medical system. This individual possesses the basic knowledge and skills necessary to provide patient care and transportation. Advanced Emergency Medical Technicians function as part of a comprehensive EMS response, under medical oversight. Advanced Emergency Medical Technicians perform interventions with the basic and advanced equipment typically found on an ambulance. The Advanced Emergency Medical Technician is a link from the scene to the emergency health care system. ', 'You will learn to be a AEMT', 'AEMT CLass', '2019-07-12', 1);
 
 
-insert into curriculum_material
-VALUES (2,1),
-       (2,2),
-       (2,3),
-       (3,2),
-       (3,5),
-       (4,3),
-       (5,1),
-       (5,2)
+# insert into curriculum_material
+# VALUES (2,1),
+#        (2,2),
+#        (2,3),
+#        (3,2),
+#        (3,5),
+#        (4,3),
+#        (5,1),
+#        (5,2)
