@@ -8,12 +8,12 @@
         console.log(curricula);
         var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Certification</th><th>Learning Objectives</th><th>Creation Date</th><th>Capacity</th><th>Materials</th></tr></thead><tbody>';
         curricula.forEach(function(cur) {
-           html += `<tr><td>${cur.name}</td><td>${cur.certification}</td><td>${cur.learning_objectives}</td><td>${cur.creation_date}</td><td>${cur.end_date}</td><td>`;
-           cur.materials.forEach(function(element){
-               html += ` ${element.name} `
-           });
-           html += `</td><td> <a class="waves-effect waves-light btn modal-trigger" href="#modal${cur.id}">More Info</a>
-            <div id="modal${cur.id}" class="modal">
+            html += `<tr><td>${cur.name}</td><td>${cur.certification}</td><td>${cur.learning_objectives}</td><td>${cur.creation_date}</td><td>${cur.end_date}</td><td>`;
+            cur.materials.forEach(function(element){
+                html += ` ${element.name} `
+            });
+            html += `</td><td> <a class="waves-effect waves-light btn modal-trigger" href="#modal-cur-${cur.id}">More Info</a>
+            <div id="modal-cur-${cur.id}" class="modal">
                 <div class="modal-content">
                   <h4>${cur.name}</h4>
                   <p>${cur.course_outline}</p>
@@ -28,6 +28,7 @@
         });
         html += '</tbody></table>';
         $('#courselist').html(html);
+        M.AutoInit();
     });
 })(jQuery);
 
@@ -49,9 +50,4 @@
         $('#provider').html(html);
     });
 })(jQuery);
-
-
-$(document).ready(function(){
-    $('.modal').modal();
-});
 
