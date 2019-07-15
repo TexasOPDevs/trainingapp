@@ -36,7 +36,6 @@ public class User {
     private String password;
 
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_provider",

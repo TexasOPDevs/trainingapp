@@ -33,6 +33,7 @@ public class CoordinatorController {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
+
         this.userDao = userDao;
     }
 
@@ -46,15 +47,18 @@ public class CoordinatorController {
         return curriculumDao.findAll();
     }
 
-    @GetMapping("/provider.json")
-    public @ResponseBody Provider viewProviderInJSON(){
-        return providerDao.findOne(2L);
-    }
 
-    @GetMapping("/course.json")
-    public @ResponseBody Iterable<Course> viewCoursesInJSON() {
-        return courseDao.findAll();
-    }
+            @GetMapping("/provider.json")
+            public @ResponseBody Provider viewProviderInJSON(){
+                return providerDao.findOne(2L);
+            }
+
+            @GetMapping("/course.json")
+            public @ResponseBody Iterable<Course> viewCoursesInJSON() {
+                return courseDao.findAll();
+            }
+
+
 
 
 
@@ -69,10 +73,14 @@ public class CoordinatorController {
         return "coordinator/profile";
     }
 
-//    public void createACourse(@ModelAttribute Course course)
-//    {
-//        System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " "+ course.getInstructors());
-//        courseDao.save(course);
-//    }
+
+    @PostMapping
+    @ResponseBody
+    public void createACourse(@ModelAttribute Course course)
+    {
+        System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " "+ course.getInstructors());
+        courseDao.save(course);
+    }
 
 }
+
