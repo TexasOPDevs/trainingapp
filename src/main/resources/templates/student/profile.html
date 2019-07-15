@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
 
+
+<h1 class="center">Student Portal</h1>
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#Profile">Profile</a></li>
+            <li class="tab col s3"><a href="#Classes">Classes</a></li>
+            <li class="tab col s3"><a href="#Certs">Certs</a></li>
+        </ul>
+    </div>
+    <div id="Profile" class="col s12">
+
+    </div>
+    <div id="Classes" class="col s12">
+
+    </div>
+    <div id="Certs" class="col s12">
+
+    </div>
+</div>
+
+<th:block th:replace="partials/master :: materializejs"></th:block>
+
+<th:block th:replace="partials/master :: jquery"></th:block>
+<script src="/js/student-profile.js"></script>
+
+
 </body>
 </html>
+
+
+
+
