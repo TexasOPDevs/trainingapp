@@ -25,29 +25,27 @@ public class CoordinatorController {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
-    }
+        }
 
-        @GetMapping("/curricula.json")
-    public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
-        return curriculumDao.findAll();
-    }
+            @GetMapping("/curricula.json")
+            public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
+            return curriculumDao.findAll();
+        }
 
-    @GetMapping("/provider.json")
-    public @ResponseBody Provider viewProviderInJSON(){
-        return providerDao.findOne(2L);
-    }
+            @GetMapping("/provider.json")
+            public @ResponseBody Provider viewProviderInJSON(){
+                return providerDao.findOne(2L);
+            }
 
-    @GetMapping("/course.json")
-    public @ResponseBody Iterable<Course> viewCoursesInJSON() {
-        return courseDao.findAll();
-    }
+            @GetMapping("/course.json")
+            public @ResponseBody Iterable<Course> viewCoursesInJSON() {
+                return courseDao.findAll();
+            }
 
+            @GetMapping("/coordinator/profile")
+            public String coordinatorPortal(){
 
-
-    @GetMapping("/coordinator/profile")
-    public String coordinatorPortal(){
-
-        return "coordinator/profile";
-    }
+            return "coordinator/profile";
+        }
 
 }
