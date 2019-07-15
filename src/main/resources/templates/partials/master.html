@@ -15,9 +15,6 @@
 
 <th:block th:fragment="materializejs">
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js}" ></script>
-    <script>
-        M.AutoInit();
-    </script>
 </th:block>
 
 <th:block th:fragment="jquery">
@@ -26,6 +23,12 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"
     >
+    </script>
+</th:block>
+
+<th:block th:fragment="minit">
+    <script>
+        M.AutoInit();
     </script>
 </th:block>
 
