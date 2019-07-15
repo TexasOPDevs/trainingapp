@@ -1,10 +1,7 @@
 package com.codeup.trainingapp.Controllers;
 
 
-import com.codeup.trainingapp.Repositories.CourseRepository;
-import com.codeup.trainingapp.Repositories.CurriculumRepository;
-import com.codeup.trainingapp.Repositories.ProviderRepository;
-import com.codeup.trainingapp.Repositories.UserRepository;
+import com.codeup.trainingapp.Repositories.*;
 import com.codeup.trainingapp.models.Needs.Course;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Provider;
@@ -29,12 +26,14 @@ public class CoordinatorController {
 
     private final UserRepository userDao;
 
-    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao) {
+    private final StatusRepository StatusDao;
+
+    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StatusRepository statusDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
-
         this.userDao = userDao;
+        StatusDao = statusDao;
     }
 
     @GetMapping("/user.json")
@@ -46,6 +45,8 @@ public class CoordinatorController {
     public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
         return curriculumDao.findAll();
     }
+
+
 
 
             @GetMapping("/provider.json")
@@ -79,6 +80,7 @@ public class CoordinatorController {
     public void createACourse(@ModelAttribute Course course)
     {
         System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " "+ course.getInstructors());
+        course.setStatus(StatusDao.findOne(4L));
         courseDao.save(course);
     }
 
