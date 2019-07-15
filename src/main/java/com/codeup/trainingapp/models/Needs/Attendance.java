@@ -1,5 +1,6 @@
 package com.codeup.trainingapp.models.Needs;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class Attendance {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
-    @JsonManagedReference
+    @JsonBackReference
     private Course course;
 
 

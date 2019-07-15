@@ -35,6 +35,12 @@ public class User {
     @JsonIgnore
     private String password;
 
+    @Column
+    private String role;
+
+    @Column(columnDefinition = "TEXT")
+    private String bio;
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -153,5 +159,29 @@ public class User {
 
     public void setAttendances(List<Attendance> attendances) {
         this.attendances = attendances;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

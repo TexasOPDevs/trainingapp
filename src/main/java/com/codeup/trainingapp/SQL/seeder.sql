@@ -4,7 +4,7 @@ INSERT into status(name)
 VALUES ('pending'),
        ('approved'),
        ('rejected'),
-       ('open'),
+       ('active'),
        ('closed');
 
 INSERT into role (name, user_id)
@@ -34,9 +34,9 @@ VALUES ('book'),
        ('cold one');
 
 INSERT INTO course (end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id)
-VALUES ('2017-06-15', 'placeholder', '5008 stowers blvd', '2017-06-02', '08:00:00', 2, 2),
-       ('2019-03-18', 'placeholder', '5008 stowers blvd', '2019-07-30', '09:00:00', 2, 2),
-       ('2019-04-15', 'placeholder', '5008 stowers blvd', '2019-05-02', '14:00:00', 2, 2);
+VALUES ('2017-06-15', 'placeholder', '5008 stowers blvd', '2017-06-02', '08:00:00', 2, 4),
+       ('2019-03-18', 'placeholder', '5008 stowers blvd', '2019-07-30', '09:00:00', 2, 4),
+       ('2019-04-15', 'placeholder', '5008 stowers blvd', '2019-05-02', '14:00:00', 2, 4);
 
 INSERT INTO student (course, status_id, user_id)
 VALUES (4, 2, 1),
@@ -61,3 +61,9 @@ VALUES ('instructor', 1);
 
 insert into instructors (course_id, user_id)
 values (4, 1);
+
+insert into attendances (id, date, present, course_id, user_id)
+values (1, '2017-06-02', 1, 4, 2),
+       (2, '2017-06-02', 1, 4, 3),
+       (3, '2017-06-02', 1, 4, 2),
+       (4, '2017-06-02', 1, 4, 3)
