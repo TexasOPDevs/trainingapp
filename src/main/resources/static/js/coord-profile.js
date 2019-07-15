@@ -1,18 +1,30 @@
 (function($) {
 
     var request = $.ajax({
-        'url': '/course.json'
+        'url': '/curricula.json'
     });
-    request.done(function (courses) {
+    request.done(function (curricula) {
 
-        console.log(courses);
-        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Location</th><th>Start Date</th><th>End Date</th><th>Materials</th><th>Capacity</th></tr></thead><tbody>';
-        courses.forEach(function(course) {
-           html += `<tr><td>${course.curriculum.name}</td><td>${course.location}</td><td>${course.start_date}</td><td>${course.end_date}</td><td>`;
-           course.curriculum.materials.forEach(function(element){
-               html += `${element.name}`
+        console.log(curricula);
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Certification</th><th>Learning Objectives</th><th>Creation Date</th><th>Capacity</th><th>Materials</th></tr></thead><tbody>';
+        curricula.forEach(function(cur) {
+           html += `<tr><td>${cur.name}</td><td>${cur.certification}</td><td>${cur.learning_objectives}</td><td>${cur.creation_date}</td><td>${cur.end_date}</td><td>`;
+           cur.materials.forEach(function(element){
+               html += ` ${element.name} `
            });
-            html += `</td><td>${course.curriculum.capacity}</td>`;
+           html += `</td><td> <a class="waves-effect waves-light btn modal-trigger" href="#modal${cur.id}">More Info</a>
+            <div id="modal${cur.id}" class="modal">
+                <div class="modal-content">
+                  <h4>${cur.name}</h4>
+                  <p>${cur.course_outline}</p>
+                  <p>${cur.description}</p>
+                  <a href="">View all active classes</a>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat"></a>
+                </div>
+              </div>
+</td>`
         });
         html += '</tbody></table>';
         $('#courselist').html(html);
@@ -37,3 +49,9 @@
         $('#provider').html(html);
     });
 })(jQuery);
+
+
+$(document).ready(function(){
+    $('.modal').modal();
+});
+

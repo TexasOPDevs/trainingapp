@@ -31,7 +31,7 @@ public class Course {
     private Date end_date;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Curriculum curriculum;
 
     @OneToOne
@@ -51,7 +51,7 @@ public class Course {
             joinColumns ={@JoinColumn(name = "course_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
-    @JsonBackReference
+    @JsonManagedReference
     private List<User> instructors;
 
     public Course() {
