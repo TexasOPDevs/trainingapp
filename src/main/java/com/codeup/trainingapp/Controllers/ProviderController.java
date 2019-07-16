@@ -18,6 +18,7 @@ public class ProviderController {
 
     @GetMapping(path= "/provider/{name}")
     public String provider(@PathVariable String name, Model model){
+
 //        model.addAttribute("provider", providerDao.findByName(name))
         return "provider/view";
     }
