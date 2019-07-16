@@ -4,6 +4,7 @@ package com.codeup.trainingapp.Controllers;
 import com.codeup.trainingapp.Repositories.CourseRepository;
 import com.codeup.trainingapp.Repositories.UserRepository;
 import com.codeup.trainingapp.models.Needs.Course;
+import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,7 @@ public class HomeController {
     Iterable<Course> viewCoursesInJSON() {
         return courseDao.findAll();
     }
+
 
     @GetMapping("/login")
     public String login(Model model) {
