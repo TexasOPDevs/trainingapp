@@ -37,7 +37,7 @@
                     html +=
                         `<tr>` +
                         `<td><a class="modal-trigger" href="#modal-cur-id-${cur.id}">${cur.name}</a></td>` +
-                        `<td><a href="#">${cur.provider.name}</a></td>` +
+                        `<td><a href="/provider/${cur.provider.name}">${cur.provider.name}</a></td>` +
                         `<td>${course.start_date}</td>` +
                         `<td>`+
                             `<form method="post" name="apply" action="/courses">
