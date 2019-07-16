@@ -7,4 +7,5 @@ public interface ProviderRepository extends CrudRepository<Provider, Long> {
 
 
     Provider findByName(String name);
+
 }

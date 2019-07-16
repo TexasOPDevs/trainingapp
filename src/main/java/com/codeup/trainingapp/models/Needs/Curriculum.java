@@ -62,6 +62,19 @@ public class Curriculum {
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
 //    private List<Gradable> gradables;
 
+
+    public Curriculum(String name, Long capacity, String description, String learning_objectives, String course_outline, String certification, Date creation_date, Date update_date, Provider provider) {
+        this.name = name;
+        this.capacity = capacity;
+        this.description = description;
+        this.learning_objectives = learning_objectives;
+        this.course_outline = course_outline;
+        this.certification = certification;
+        this.creation_date = creation_date;
+        this.update_date = update_date;
+        this.provider = provider;
+    }
+
     public Curriculum() {
     }
 
