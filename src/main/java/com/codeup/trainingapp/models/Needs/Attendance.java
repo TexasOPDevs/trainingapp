@@ -11,6 +11,7 @@ import java.sql.Date;
 public class Attendance {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column
