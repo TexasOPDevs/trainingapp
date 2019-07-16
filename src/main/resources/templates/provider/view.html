@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize">
+
+    </th:block>
+
 </head>
 <body>
+
+<th:block th:replace="partials/master :: nav">
+
+</th:block>
+
+<div class="container">
+<h3>Provider View Page</h3>
+<img th:src="${provider.image}" alt="providerImg"/>
+<h4 th:text="${provider.name}"></h4>
+</div>
+
+
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"
+>
+</script>
+
+<th:block th:replace="partials/master :: materializejs">
+
+</th:block>
 
 </body>
 </html>

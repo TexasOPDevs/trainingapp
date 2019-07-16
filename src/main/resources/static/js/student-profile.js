@@ -1,22 +1,7 @@
 (function($) {
 
-    function formatDate(date) {
-        var monthNames = [
-            "January", "February", "March",
-            "April", "May", "June", "July",
-            "August", "September", "October",
-            "November", "December"
-        ];
-
-        var day = date.getDate();
-        var monthIndex = date.getMonth();
-        var year = date.getFullYear();
-
-        return day + ' ' + monthNames[monthIndex] + ' ' + year;
-    }
-
     var request = $.ajax({
-        'url': '/curricula.json'
+        'url': '/all-courses.json'
     });
     request.done(function (curricula) {
 
@@ -31,8 +16,8 @@
             `</tr>`+
             `</thead><tbody>`;
         curricula.forEach(function(cur) {
-            cur.courses.forEach(function(course){
-                if (course.status.name === "approved") {
+            cur.courses.forEach(function(course) {
+                    if (course.status.name === "approved") {
                     html +=
                         `<tr>` +
                         `<td><a class="modal-trigger" href="#modal-cur-id-${cur.id}">${cur.name}</a></td>` +
