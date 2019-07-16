@@ -8,11 +8,9 @@ import com.codeup.trainingapp.models.Needs.Provider;
 import com.codeup.trainingapp.models.Needs.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 
 
 @Controller
@@ -80,13 +78,26 @@ public class CoordinatorController {
 
 
     @PostMapping("/coordinator")
-    @ResponseBody
-    public void createACourse(@ModelAttribute Course course)
+    public String createACourse(@ModelAttribute Course course, @RequestParam(required = false) Long emp_id)
     {
-        System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " "+ course.getInstructors());
-        course.setStatus(StatusDao.findOne(4L));
-        courseDao.save(course);
+        if (course.getLocation() != null) {
+            System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " " + course.getInstructors());
+            course.setStatus(StatusDao.findOne(4L));
+            courseDao.save(course);
+        } else {
+            User user = userDao.findOne(emp_id);
+            user.setRole("instructor");
+            System.out.println("got here! " + user.getFirst_name());
+            userDao.save(user);
+        }
+        return "redirect:/coordinator";
     }
+
+//    @PostMapping(value = "/saveEmployee")
+//    public String makeInstructor (@RequestParam Long emp_id){
+//
+//        return "redirect:/coordinator";
+//    }
 
 }
 

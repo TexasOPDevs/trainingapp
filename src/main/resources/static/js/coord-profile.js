@@ -36,7 +36,7 @@
 
 
 
-(function($) {
+var provider = function($) {
 
     var request = $.ajax({
         'url': '/provider.json'
@@ -44,14 +44,59 @@
     request.done(function (provider) {
 
         console.log(provider);
-        var html= `<img src="${provider.image}"><h1>${provider.name}</h1><h3>Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</h3><table class="highlight"><thead><tr><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody>`;
+
+
+
+
+        var html=` <div class="card horizontal">
+            <div class="card-image">
+            <img src="${provider.image}">
+            </div>
+            <div class="card-stacked">
+            <div class="card-content">
+            <h3>${provider.name}</h3>
+            <p>Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
+        </div>
+        <div class="card-action">
+            <a href="#">This is a link</a>
+        </div>
+        </div>
+        </div>
+        </div>
+        </h3>`;
+
+
+           html += `<table class="highlight"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
         provider.users.forEach(function(element){
-            html += `<tr><td>${element.first_name} ${element.last_name}</td><td>${element.email}</td><td>${element.phone}</td>`
+            html += `<tr><td>${element.first_name} ${element.last_name}</td><td>${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="post" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
         });
         html += '</tbody></table>';
         $('#provider').html(html);
     });
-})(jQuery);
+};
+
+
+$(function() {
+    /*  Submit form using Ajax */
+    $('button[type=submit]').click(function(e) {
+
+        //Prevent default submission of form
+        e.preventDefault();
+
+        //Remove all errors
+       var data = $(".emp_id").val();
+        $.post({
+            url : '/coordinator',
+            contentType: "application/json; charset=utf-8",
+            data : JSON.stringify(data),
+            dataType : "json",
+            success : function(res) {
+
+            }
+        })
+    });
+    provider($);
+});
 
 
 (function($) {
@@ -85,3 +130,5 @@
         M.AutoInit();
     });
 })(jQuery);
+
+provider($);

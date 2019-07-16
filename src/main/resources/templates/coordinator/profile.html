@@ -14,8 +14,8 @@
     <div class="col s12">
         <ul class="tabs">
             <li class="tab col s3"><a href="#provider">Provider</a></li>
-            <li class="tab col s3"><a class="active" href="#test2">Courses</a></li>
-            <li class="tab col s3"><a href="#test3">Classes</a></li>
+            <li class="tab col s3"><a href="#test2">Courses</a></li>
+            <li class="tab col s3"><a class="active" href="#test3">Classes</a></li>
         </ul>
     </div>
     <div id="provider" class="col s12">Test 1</div>
@@ -24,12 +24,12 @@
     </div>
     <div id="test3" class="col s12">
      <ul class="collapsible">
-            <li>
+            <li class="active">
                 <div class="collapsible-header"><i class="material-icons">filter_drama</i>Available Classes</div>
-                <div id="classlist" class="active collapsible-body"></div>
+                <div id="classlist" class="collapsible-body"></div>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                <div class="collapsible-header"><i class="material-icons">place</i>Assign a Class</div>
                 <div class="collapsible-body">
                     <form method="POST" th:action="@{coordinator}" th:object="${course}">
 
