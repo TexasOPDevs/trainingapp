@@ -31,4 +31,7 @@ public class InstructorController {
         return "instructor/courses";
     }
 
+//    @GetMapping("/instructor/courses/{course_id}")
+//    public String CoursePage(Model model, @PathVariable)
+
 }
