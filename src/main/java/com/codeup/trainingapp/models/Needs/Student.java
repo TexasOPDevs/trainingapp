@@ -27,6 +27,17 @@ public class Student {
 //    private List<Attendance> attendances;
 
 
+    public Student() {
+    }
+
+
+    public Student(User user, Course course, Status status) {
+        this.user = user;
+        this.course = course;
+        this.status = status;
+    }
+
+
     public Long getId() {
         return id;
     }
