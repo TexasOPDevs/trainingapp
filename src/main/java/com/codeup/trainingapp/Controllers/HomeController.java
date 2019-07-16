@@ -1,26 +1,31 @@
 package com.codeup.trainingapp.Controllers;
 
 
-import com.codeup.trainingapp.Repositories.CourseRepository;
-import com.codeup.trainingapp.Repositories.UserRepository;
+import com.codeup.trainingapp.Repositories.*;
 import com.codeup.trainingapp.models.Needs.Course;
+import com.codeup.trainingapp.models.Needs.Curriculum;
+import com.codeup.trainingapp.models.Needs.Student;
 import com.codeup.trainingapp.models.Needs.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
 
-    private final CourseRepository courseDao;
+    private final CurriculumRepository curriculumDao;
     private final UserRepository userDao;
+    private final StudentRepository studentDao;
+    private final CourseRepository courseDao;
+    private final StatusRepository statusDao;
 
-    public HomeController(CourseRepository courseDao, UserRepository userDao) {
-        this.courseDao = courseDao;
+
+    public HomeController(CurriculumRepository curriculumDao, UserRepository userDao, StudentRepository studentDao, CourseRepository courseDao, StatusRepository statusDao) {
+        this.curriculumDao = curriculumDao;
         this.userDao = userDao;
+        this.studentDao = studentDao;
+        this.courseDao = courseDao;
+        this.statusDao = statusDao;
     }
 
     @GetMapping("/")
@@ -28,17 +33,13 @@ public class HomeController {
         return "home/landing-page";
     }
 
-    @GetMapping("/courses")
-    public String courseView() {
 
-        return "home/courses";
+
+    @GetMapping("/curricullum.json")
+    public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
+        return curriculumDao.findAll();
     }
 
-    @GetMapping("/courses.json")
-    public @ResponseBody
-    Iterable<Course> viewCoursesInJSON() {
-        return courseDao.findAll();
-    }
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -50,6 +51,17 @@ public class HomeController {
     private String register(@ModelAttribute User user){
         userDao.save(user);
         return "redirect:/courses";
+    }
+    @GetMapping("/courses")
+    public String courseView(Model model) {
+        model.addAttribute("student", new Student());
+        return "home/courses";
+    }
+
+    @PostMapping("/courses")
+    private String signup(@RequestParam("course") Long id){
+        studentDao.save(new Student(userDao.findOne(7L), courseDao.findOne(id), statusDao.findOne(2L)));
+        return "redirect:/student";
     }
 
 }

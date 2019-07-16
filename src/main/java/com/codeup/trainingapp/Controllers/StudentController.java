@@ -25,9 +25,10 @@ public class StudentController {
     public String studentView(){
         return "student/profile";
     }
-//    @GetMapping("/curricula.json")
-//    public @ResponseBody
-//    Iterable<Curriculum> viewCurriculaInJSON(){
-//        return curriculumDao.findAll();
-//    }
+
+    @GetMapping("/allCourses.json")
+    public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
+        return curriculumDao.findAll();
+    }
+
 }
