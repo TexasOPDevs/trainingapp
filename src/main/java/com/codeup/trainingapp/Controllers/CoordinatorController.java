@@ -1,21 +1,16 @@
 package com.codeup.trainingapp.Controllers;
 
 
-import com.codeup.trainingapp.Repositories.CourseRepository;
-import com.codeup.trainingapp.Repositories.CurriculumRepository;
-import com.codeup.trainingapp.Repositories.ProviderRepository;
-import com.codeup.trainingapp.Repositories.UserRepository;
+import com.codeup.trainingapp.Repositories.*;
 import com.codeup.trainingapp.models.Needs.Course;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Provider;
 import com.codeup.trainingapp.models.Needs.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 
 
 @Controller
@@ -29,12 +24,17 @@ public class CoordinatorController {
 
     private final UserRepository userDao;
 
-    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao) {
+    private final StatusRepository StatusDao;
+
+    private final InstructorRepository instructorDao;
+
+    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StatusRepository statusDao, InstructorRepository instructorDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
-
         this.userDao = userDao;
+        StatusDao = statusDao;
+        this.instructorDao = instructorDao;
     }
 
     @GetMapping("/user.json")
@@ -42,10 +42,13 @@ public class CoordinatorController {
         return userDao.findAll();
     }
 
+
     @GetMapping("/curricula.json")
     public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
         return curriculumDao.findAll();
     }
+
+
 
 
             @GetMapping("/provider.json")
@@ -74,13 +77,27 @@ public class CoordinatorController {
     }
 
 
-    @PostMapping
-    @ResponseBody
-    public void createACourse(@ModelAttribute Course course)
+    @PostMapping("/coordinator")
+    public String createACourse(@ModelAttribute Course course, @RequestParam(required = false) Long emp_id)
     {
-        System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " "+ course.getInstructors());
-        courseDao.save(course);
+        if (course.getLocation() != null) {
+            System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " " + course.getInstructors());
+            course.setStatus(StatusDao.findOne(4L));
+            courseDao.save(course);
+        } else {
+            User user = userDao.findOne(emp_id);
+            user.setRole("instructor");
+            System.out.println("got here! " + user.getFirst_name());
+            userDao.save(user);
+        }
+        return "redirect:/coordinator";
     }
+
+//    @PostMapping(value = "/saveEmployee")
+//    public String makeInstructor (@RequestParam Long emp_id){
+//
+//        return "redirect:/coordinator";
+//    }
 
 }
 

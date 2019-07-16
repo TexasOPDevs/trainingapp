@@ -6,6 +6,67 @@
 </head>
 <body>
 
+<th:block th:fragment="nav">
+
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="pl-1 brand-logo">Logo</a>
+            <ul class="right">
+                <li>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger">
+                        <i class="medium material-icons right">menu</i></a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="http://logodesignfx.com/wp-content/uploads/2019/04/tameng-logo-vector-2.jpg"/>
+                </div>
+                <a href="#user"><img class="circle" src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
+        <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect" href="/login"><i class="material-icons">person</i>Login</a></li>
+        <li><a class="waves-effect" href="#!"><i class="material-icons">person_outline</i>Logout</a></li>
+    </ul>
+
+</th:block>
+
+<!--<th:block th:fragment="navBar">-->
+<!--    <ul id="dropdown1" class="dropdown-content">-->
+<!--        <li><a href="/student">My Portal</a></li>-->
+<!--        <li><a href="/courses">Courses</a></li>-->
+<!--        <li class="divider"></li>-->
+<!--        <li><a href="/login">Login</a></li>-->
+<!--        <li><a href="#!">Logout</a></li>-->
+<!--    </ul>-->
+<!--    <nav>-->
+<!--        <div class="nav-wrapper">-->
+<!--            <a href="#!" class="pl-1 brand-logo">Logo</a>-->
+<!--            <ul class="right">-->
+<!--                <li>-->
+<!--                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">-->
+<!--                        <i class="medium material-icons right">arrow_drop_down</i></a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</th:block>-->
+
+
+
 <th:block th:fragment="materialize">
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" />
     <link type="text/css" rel="stylesheet" th:href="@{/node_modules/materialize-css/dist/css/materialize.min.css}"
@@ -13,12 +74,14 @@
     <link rel="stylesheet" th:href="@{/padding.css}"/>
 </th:block>
 
+
+
 <th:block th:fragment="materializejs">
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js}" ></script>
-    <script>
-        M.AutoInit();
-    </script>
+    <th:block th:replace="partials/master :: minit"></th:block>
 </th:block>
+
+
 
 <th:block th:fragment="jquery">
     <script
@@ -28,6 +91,16 @@
     >
     </script>
 </th:block>
+
+
+
+<th:block th:fragment="minit">
+    <script>
+        M.AutoInit();
+    </script>
+</th:block>
+
+
 
 </body>
 </html>

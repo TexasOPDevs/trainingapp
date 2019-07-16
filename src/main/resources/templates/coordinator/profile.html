@@ -14,22 +14,24 @@
     <div class="col s12">
         <ul class="tabs">
             <li class="tab col s3"><a href="#provider">Provider</a></li>
-            <li class="tab col s3"><a class="active" href="#test2">Courses</a></li>
-            <li class="tab col s3"><a href="#test3">Classes</a></li>
+            <li class="tab col s3"><a href="#test2">Courses</a></li>
+            <li class="tab col s3"><a class="active" href="#test3">Classes</a></li>
         </ul>
     </div>
     <div id="provider" class="col s12">Test 1</div>
-    <div id="test2" class="col s12">Test 2</div>
+    <div id="test2" class="col s12">
+        <div id="courselist" ></div>
+    </div>
     <div id="test3" class="col s12">
      <ul class="collapsible">
-            <li>
+            <li class="active">
                 <div class="collapsible-header"><i class="material-icons">filter_drama</i>Available Classes</div>
-                <div id="courselist" class="active collapsible-body"></div>
+                <div id="classlist" class="collapsible-body"></div>
             </li>
             <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                <div class="collapsible-header"><i class="material-icons">place</i>Assign a Class</div>
                 <div class="collapsible-body">
-                    <form method="POST" th:action="@{course/create}" th:object="${course}">
+                    <form method="POST" th:action="@{coordinator}" th:object="${course}">
 
 
                         <div class="row">
@@ -75,10 +77,11 @@
     </div>
 </div>
 
+<th:block th:replace="partials/master :: materializejs"></th:block>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <script src="/js/coord-profile.js"></script>
-<th:block th:replace="partials/master :: materializejs"></th:block>
+
 
 </body>
 </html>
