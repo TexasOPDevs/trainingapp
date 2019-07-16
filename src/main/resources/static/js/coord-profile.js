@@ -68,7 +68,7 @@ var provider = function($) {
 
            html += `<table class="highlight"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
         provider.users.forEach(function(element){
-            html += `<tr><td>${element.first_name} ${element.last_name}</td><td>${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="post" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
+            html += `<tr><td>${element.first_name} ${element.last_name}</td><td>${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="post" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
         });
         html += '</tbody></table>';
         $('#provider').html(html);
@@ -78,7 +78,7 @@ var provider = function($) {
 
 $(function() {
     /*  Submit form using Ajax */
-    $('button[type=submit]').click(function(e) {
+    $('.makeinstructor').click(function(e) {
 
         //Prevent default submission of form
         e.preventDefault();
