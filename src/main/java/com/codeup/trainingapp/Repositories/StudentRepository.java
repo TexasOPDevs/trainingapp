@@ -5,4 +5,6 @@ import com.codeup.trainingapp.models.Needs.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
+
+    Iterable<Student> findAllByUser_Id(Long id);
 }

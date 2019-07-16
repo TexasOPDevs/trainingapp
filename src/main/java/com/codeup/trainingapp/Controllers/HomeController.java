@@ -53,14 +53,17 @@ public class HomeController {
         return "redirect:/courses";
     }
     @GetMapping("/courses")
-    public String courseView(Model model) {
-        model.addAttribute("student", new Student());
+    public String courseView() {
         return "home/courses";
     }
 
     @PostMapping("/courses")
-    private String signup(@RequestParam("course") Long id){
-        studentDao.save(new Student(userDao.findOne(7L), courseDao.findOne(id), statusDao.findOne(2L)));
+    private String signup(@RequestParam(name="course") Long id){
+        Student student = new Student();
+        student.setUser(userDao.findOne(7L));
+        student.setCourse(courseDao.findOne(id));
+        student.setStatus(statusDao.findOne(1L));
+        studentDao.save(student);
         return "redirect:/student";
     }
 
