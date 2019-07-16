@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
+import java.util.Calendar;
 
 
 @Controller
@@ -69,11 +70,22 @@ public class CoordinatorController {
     public String coordinatorPortal(Model model){
 
         Iterable<Curriculum> curricula = curriculumDao.findAllByProvider_Id(2L);
-
+        model.addAttribute("provider", providerDao.findOne(2L));
         model.addAttribute("curricula", curricula);
-
+        model.addAttribute("curriculum", new Curriculum());
         model.addAttribute("course", new Course());
         return "coordinator/profile";
+    }
+
+    @PostMapping("/newCourse")
+    public String createACur(@ModelAttribute Curriculum curriculum){
+        Calendar calendar = Calendar.getInstance();
+        java.util.Date currentDate = calendar.getTime();
+        java.sql.Date date = new java.sql.Date(currentDate.getTime());
+        curriculum.setCreation_date(date);
+        curriculum.setProvider(providerDao.findOne(2L));
+        curriculumDao.save(curriculum);
+        return "redirect:/coordinator";
     }
 
 
@@ -81,7 +93,7 @@ public class CoordinatorController {
     public String createACourse(@ModelAttribute Course course, @RequestParam(required = false) Long emp_id)
     {
         if (course.getLocation() != null) {
-            System.out.println("course.getId() + \" \"+ course.getInstructors() = " + course.getId() + " " + course.getInstructors());
+
             course.setStatus(StatusDao.findOne(4L));
             courseDao.save(course);
         } else {
