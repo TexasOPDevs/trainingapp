@@ -53,7 +53,8 @@ public class HomeController {
         return "redirect:/courses";
     }
     @GetMapping("/courses")
-    public String courseView() {
+    public String courseView(Model model) {
+        model.addAttribute("user", userDao.findOne(7L));
         return "home/courses";
     }
 
@@ -63,7 +64,9 @@ public class HomeController {
         student.setUser(userDao.findOne(7L));
         student.setCourse(courseDao.findOne(id));
         student.setStatus(statusDao.findOne(1L));
-        studentDao.save(student);
+        if(studentDao.findByCourse_IdAndStatus_Id(id, 1L) == null) {
+            studentDao.save(student);
+        }
         return "redirect:/student";
     }
 
