@@ -1,11 +1,13 @@
 use training_db;
 
-# INSERT into status(name)
-# VALUES ('pending'),
-#        ('approved'),
-#        ('rejected'),
-#        ('active'),
-#        ('closed');
+INSERT INTO training_db.status (id, name) VALUES (101, 'enrolled');
+INSERT INTO training_db.status (id, name) VALUES (102, 'pending');
+INSERT INTO training_db.status (id, name) VALUES (103, 'rejected');
+INSERT INTO training_db.status (id, name) VALUES (104, 'credited');
+INSERT INTO training_db.status (id, name) VALUES (201, 'active');
+INSERT INTO training_db.status (id, name) VALUES (202, 'assigned');
+INSERT INTO training_db.status (id, name) VALUES (203, 'closed');
+INSERT INTO training_db.status (id, name) VALUES (204, 'open for enrollment');
 
 # INSERT into role (name, user_id)
 # VALUES ('coordinator', 1),
@@ -20,23 +22,23 @@ use training_db;
 #        ('student', 10);
 
 
-# INSERT into provider(image, name, coordinator_id)
-# VALUES ('https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_1', 1),
-#        ('https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_2', 3);
+INSERT into provider(image, name, coordinator_id)
+VALUES ('https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_1', 1),
+       ('https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_2', 32);
 
-# INSERT INTO material(name)
-# VALUES ('book'),
-#        ('scissors'),
-#        ('taser'),
-#        ('bullets'),
-#        ('cpr doll'),
-#        ('candy'),
-#        ('cold one');
+INSERT INTO material(name)
+VALUES ('book'),
+       ('scissors'),
+       ('taser'),
+       ('bullets'),
+       ('cpr doll'),
+       ('candy'),
+       ('cold one');
 
-# INSERT INTO course (end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id)
-# VALUES ('2017-06-15', 'placeholder', '5008 stowers blvd', '2017-06-02', '08:00:00', 2, 4),
-#        ('2019-03-18', 'placeholder', '5008 stowers blvd', '2019-07-30', '09:00:00', 2, 4),
-#        ('2019-04-15', 'placeholder', '5008 stowers blvd', '2019-05-02', '14:00:00', 2, 4);
+INSERT INTO course (end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id)
+VALUES ('2017-06-15', 'placeholder', '5008 stowers blvd', '2017-06-02', '08:00:00', 2, 4),
+       ('2019-03-18', 'placeholder', '5008 stowers blvd', '2019-07-30', '09:00:00', 2, 4),
+       ('2019-04-15', 'placeholder', '5008 stowers blvd', '2019-05-02', '14:00:00', 2, 4);
 
 INSERT INTO student (course, status_id, user_id)
 VALUES (4, 2, 1),
@@ -65,16 +67,16 @@ VALUES (1, 2),
 
 
 
-# insert into role (name, user_id)
-# VALUES ('instructor', 1);
+insert into role (name, user_id)
+VALUES ('instructor', 1);
 
 
-# insert into instructors (course_id, user_id)
-# values (4, 1);
-#
-# insert into attendances (id, date, present, course_id, user_id)
-# values (1, '2017-06-02', 1, 4, 2),
-#        (2, '2017-06-02', 1, 4, 3),
-#        (3, '2017-06-02', 1, 4, 2),
-#        (4, '2017-06-02', 1, 4, 3)
+insert into instructors (course_id, user_id)
+values (4, 1);
+
+insert into attendances (id, date, present, course_id, user_id)
+values (1, '2017-06-02', 1, 4, 2),
+       (2, '2017-06-02', 1, 4, 3),
+       (3, '2017-06-02', 1, 4, 2),
+       (4, '2017-06-02', 1, 4, 3)
 
