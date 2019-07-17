@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
+</head>
+<body>
+<th:block th:include="partials/master :: nav"></th:block>
+<div class="container">
+
+    <ul th:each="course: ${courses}" class="collapsible">
+        <li>
+                <div class="collapsible-header">
+                    <i class="material-icons"></i>
+                    <p th:text="${course.curriculum.name}"></p>
+                </div>
+
+            <div class="collapsible-body">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3">         <a class="active" th:href="'#roster' + ${course.id}">Roster</a></li>
+                            <li class="tab col s3">         <a th:href="'#attendence' + ${course.id}">Attendance</a></li>
+                            <li class="tab col s3 disabled"><a th:href="'#grades' + ${course.id}">Grades</a></li>
+                            <li class="tab col s3">         <a th:href="'#info' + ${course.id}" >Course Info</a></li>
+                        </ul>
+                    </div>
+                    <div th:switch="${course.students.size()}"  th:id="'roster' + ${course.id}" class="col s12">
+                        <p th:case="0">Currently no one is enrolled.</p>
+                        <table th:case="*">
+                            <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>UserName</th>
+                                <th>E-Mail</th>
+                                <th>Phone</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="student: ${course.students}">
+                                <td th:text="${student.user.first_name}" ></td>
+                                <td th:text="${student.user.last_name}" ></td>
+                                <td th:text="${student.user.username}" ></td>
+                                <td th:text="${student.user.email}" ></td>
+                                <td th:text="${student.user.phone}" ></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div th:id="'attendence' + ${course.id}" >Attendance Will Show Here</div>
+                    <div th:id="'grades' + ${course.id}" >Grades Will Show here</div>
+                    <div th:id="'info' + ${course.id}" >
+                        <div th:switch="${course.curriculum.description}" >
+                            <p th:case="null">No Description Found</p>
+                            <p th:case="*" th:text="${course.curriculum.description}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+
+</div>
+
+<th:block th:replace="partials/master :: jquery"></th:block>
+<th:block th:replace="partials/master :: materializejs"></th:block>
+</body>
+</html>

@@ -10,6 +10,8 @@
        <th:block th:replace="partials/master :: nav"></th:block>
 
 <h1 class="center">Student Portal</h1>
+       <h3 class="center">Welcome <span th:text="${user.first_name}"></span>
+           <span th:text="${user.last_name}"></span></h3>
 <div class="row">
     <div class="col s12">
         <ul class="tabs">
@@ -19,13 +21,40 @@
         </ul>
     </div>
     <div id="Profile" class="col s12">
-
+        <h5>Name: <span th:text="${user.first_name} + ' '+ ${user.last_name}"></span></h5>
+        <p>Bio: <span th:text="${user.bio}"></span></p>
+        <p>Username: <span th:text="${user.username}"></span></p>
+        <h5>Contact Info</h5>
+        <p>Email: <span th:text="${user.email}"></span></p>
+        <p>Phone: <span th:text="${user.phone}"></span></p>
+        <p>Organization <span th:text="${provider.name}"></span></p>
     </div>
     <div id="Classes" class="col s12">
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Instructor</th>
+                <th>Location</th>
+                <th>Status</th>
+            </tr>
+            </thead>
 
+            <tbody th:each="student : ${students}">
+            <tr>
+                <td th:text="${student.course.curriculum.name}"></td>
+                <td th:each="instructor : ${student.course.instructors}">
+                    <span th:text="${instructor.last_name} + ' ' + ${instructor.first_name}"></span>
+                </td>
+                <td th:text="${student.course.location}"></td>
+                <td th:text="${student.status.name}"></td>
+            </tr>
+
+            </tbody>
+        </table>
     </div>
     <div id="Certs" class="col s12">
-
+         This tab will contain a table with a list of the courses the student has credit for
     </div>
 </div>
 

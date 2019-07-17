@@ -1,0 +1,14 @@
+INSERT INTO training_db.material (id, name) VALUES (1, 'book');
+INSERT INTO training_db.material (id, name) VALUES (2, 'scissors');
+INSERT INTO training_db.material (id, name) VALUES (3, 'taser');
+INSERT INTO training_db.material (id, name) VALUES (4, 'bullets');
+INSERT INTO training_db.material (id, name) VALUES (5, 'cpr doll');
+INSERT INTO training_db.material (id, name) VALUES (6, 'candy');
+INSERT INTO training_db.material (id, name) VALUES (7, 'cold one');
+INSERT INTO training_db.material (id, name) VALUES (8, 'book');
+INSERT INTO training_db.material (id, name) VALUES (9, 'scissors');
+INSERT INTO training_db.material (id, name) VALUES (10, 'taser');
+INSERT INTO training_db.material (id, name) VALUES (11, 'bullets');
+INSERT INTO training_db.material (id, name) VALUES (12, 'cpr doll');
+INSERT INTO training_db.material (id, name) VALUES (13, 'candy');
+INSERT INTO training_db.material (id, name) VALUES (14, 'cold one');

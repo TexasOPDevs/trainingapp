@@ -7,6 +7,9 @@
     <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
+<th:block th:replace="partials/master :: nav">
+
+</th:block>
 
 
 <h1>Here's a page</h1>
@@ -26,7 +29,7 @@
                 <div class="collapsible-header">Create A Course</div>
                 <div class="collapsible-body">
                     <div class="row">
-                    <form class="col s12" method="post" action="/newCourse" th:object="${curriculum}">
+                    <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
                         <div class="input-field col s6">
                             <input placeholder="Placeholder" id="first_name" type="text" th:field="*{name}" class="validate"/>
                             <label for="first_name">Course Name</label>
@@ -65,7 +68,7 @@
             <li>
                 <div class="collapsible-header"><i class="material-icons">place</i>Assign a Class</div>
                 <div class="collapsible-body">
-                    <form method="POST" th:action="@{coordinator}" th:object="${course}">
+                    <form method="POST" th:action="@{/coordinator}" th:object="${course}">
 
 
                         <div class="row">
@@ -88,8 +91,7 @@
                                         <select id="instructors" th:field="*{instructors}">
                                             <div th:each="user : ${provider.users}">
                                                 <div th:if="${user.role == 'instructor'}">
-                                                    <option th:value="${user.id}"
-                                                            th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
+                                                    <option th:value="${user.id}" th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
                                                 </div>
                                             </div>
 

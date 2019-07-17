@@ -6,6 +6,7 @@ import com.codeup.trainingapp.models.Needs.Course;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Student;
 import com.codeup.trainingapp.models.Needs.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,19 @@ public class HomeController {
         return "home/landing-page";
     }
 
-
+    @GetMapping("/profile")
+    public String redirect(){
+        System.out.println("here's profile");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(user.getUsername());
+        if (user.getRole().equals("instructor")){
+            return "redirect:/";
+        } else if (user.getRole().equals("coordinator")){
+            return "redirect:/coordinator";
+        } else {
+            return "redirect:/student";
+        }
+    }
 
     @GetMapping("/curricullum.json")
     public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
@@ -41,26 +54,25 @@ public class HomeController {
     }
 
 
-    @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("user", new User());
-        return "home/login-register";
-    }
+//    @GetMapping("/login")
+//    public String login(Model model) {
+//        model.addAttribute("user", new User());
+//        return "home/login-register";
+//    }
 
-    @PostMapping("/login")
-    private String register(@ModelAttribute User user){
-        userDao.save(user);
-        return "redirect:/courses";
-    }
+
     @GetMapping("/courses")
-    public String courseView(Model model) {
-        model.addAttribute("student", new Student());
+    public String courseView() {
         return "home/courses";
     }
 
     @PostMapping("/courses")
-    private String signup(@RequestParam("course") Long id){
-        studentDao.save(new Student(userDao.findOne(7L), courseDao.findOne(id), statusDao.findOne(2L)));
+    private String signup(@RequestParam(name="course") Long id){
+        Student student = new Student();
+        student.setUser(userDao.findOne(7L));
+        student.setCourse(courseDao.findOne(id));
+        student.setStatus(statusDao.findOne(1L));
+        studentDao.save(student);
         return "redirect:/student";
     }
 
