@@ -85,6 +85,7 @@ public class CoordinatorController {
         curriculum.setCreation_date(date);
         curriculum.setProvider(providerDao.findOne(2L));
         curriculumDao.save(curriculum);
+
         return "redirect:/coordinator";
     }
 
