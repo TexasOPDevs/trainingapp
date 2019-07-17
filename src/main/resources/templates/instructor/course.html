@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
+</head>
+<body>
+<th:block th:include="partials/master :: nav"></th:block>
+<div class="container">
+
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">Overview</a></li>
+                <li class="tab col s3"><a class="active" href="#test2">Roster</a></li>
+                <li class="tab col s3"><a href="#test3">Attendance</a></li>
+                <li class="tab col s3 disabled"><a href="#test4">Grades</a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">Test 1</div>
+        <div id="test2" class="col s12">
+
+            <table>
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr th:each="student: ${course.students}">
+                        <td>
+                            <a th:href="'/student/' + ${student.user.id}" th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>
+                        </td>
+                        <td>
+                            <a th:href="'mailto:' + ${student.user.email}" th:target="_blank" class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
+                        </td>
+                        <td>
+                            <a th:href="'tel:' + ${student.user.phone}" class="waves-effect waves-light btn-small">Phone<i class="material-icons right">phone</i></a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
+    </div>
+
+</div>
+
+<th:block th:replace="partials/master :: jquery"></th:block>
+<th:block th:replace="partials/master :: materializejs"></th:block>
+</body>
+</html>

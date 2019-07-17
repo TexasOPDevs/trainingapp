@@ -10,67 +10,101 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
-<div class="container">
+    <div class="container">
 
-    <ul th:each="course: ${courses}" class="collapsible">
-        <li>
-                <div class="collapsible-header">
-                    <i class="material-icons"></i>
-                    <p th:text="${course.curriculum.name}"></p>
-                </div>
-
-            <div class="collapsible-body">
-                <div class="row">
                     <div class="col s12">
-                        <ul class="tabs">
-                            <li class="tab col s3">         <a class="active" th:href="'#roster' + ${course.id}">Roster</a></li>
-                            <li class="tab col s3">         <a th:href="'#attendence' + ${course.id}">Attendance</a></li>
-                            <li class="tab col s3 disabled"><a th:href="'#grades' + ${course.id}">Grades</a></li>
-                            <li class="tab col s3">         <a th:href="'#info' + ${course.id}" >Course Info</a></li>
-                        </ul>
-                    </div>
-                    <div th:switch="${course.students.size()}"  th:id="'roster' + ${course.id}" class="col s12">
-                        <p th:case="0">Currently no one is enrolled.</p>
-                        <table th:case="*">
+                        <table>
                             <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>UserName</th>
-                                <th>E-Mail</th>
-                                <th>Phone</th>
-                            </tr>
+
+                                <tr>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>Dates</th>
+                                    <th></th>
+                                </tr>
+
                             </thead>
 
                             <tbody>
-                            <tr th:each="student: ${course.students}">
-                                <td th:text="${student.user.first_name}" ></td>
-                                <td th:text="${student.user.last_name}" ></td>
-                                <td th:text="${student.user.username}" ></td>
-                                <td th:text="${student.user.email}" ></td>
-                                <td th:text="${student.user.phone}" ></td>
-                            </tr>
+
+                                <tr th:each="course: ${courses}">
+                                    <td th:text="${course.curriculum.name}" ></td>
+                                    <td th:text="${course.id}" ></td>
+                                    <td th:text="${course.start_date} + ' to ' + ${course.end_date}" ></td>
+                                    <td>
+                                        <a th:href="'/instructor/courses/' + ${course.id}" class="waves-effect waves-light btn-small">Details</a>
+                                    </td>
+                                </tr>
 
                             </tbody>
                         </table>
                     </div>
-                    <div th:id="'attendence' + ${course.id}" >Attendance Will Show Here</div>
-                    <div th:id="'grades' + ${course.id}" >Grades Will Show here</div>
-                    <div th:id="'info' + ${course.id}" >
-                        <div th:switch="${course.curriculum.description}" >
-                            <p th:case="null">No Description Found</p>
-                            <p th:case="*" th:text="${course.curriculum.description}"></p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
-        </li>
-    </ul>
+        <div class="fixed-action-btn ">
+            <a href="#addcourse" class="btn-floating btn-large red modal-trigger">
+                <i class="large material-icons">add</i>
+            </a>
 
+
+
+            <div id="addcourse" class="modal">
+                <div class="modal-content">
+                    <h4>Create a Course</h4>
+
+                    <div class="row">
+                        <form class="col s12">
+
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <input id="curriculum" type="text" class="validate" />
+                                    <label for="curriculum">Curriculum</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="capacity" type="number" class="validate" />
+                                    <label for="capacity">Class Capacity</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="start_date" type="text" class="datepicker validate" />
+                                    <label for="start_date">Start Date</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="end_date" type="text" class="datepicker validate" />
+                                    <label for="end_date">End Date</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input id="start_time" type="text" class="timepicker validate" />
+                                    <label for="start_time">Start Time</label>
+                                </div>
+                                <div class="input-field col s8">
+                                    <input id="location" type="text" class=" validate" />
+                                    <label for="location">Location</label>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+
+
+            <div class="modal-footer">
+                <a href="/create" th:method="post" class="modal-close waves-effect waves-green btn-flat">Submit Request</a>
+                <a href="#!" class="modal-close waves_effect waves-green btn-flat">Cancel</a>
+            </div>
+
+        </div>
 </div>
 
-<th:block th:replace="partials/master :: jquery"></th:block>
-<th:block th:replace="partials/master :: materializejs"></th:block>
+
+    <th:block th:replace="partials/master :: jquery"></th:block>
+    <th:block th:replace="partials/master :: materializejs"></th:block>
 </body>
 </html>
