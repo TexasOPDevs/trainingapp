@@ -38,17 +38,18 @@ use training_db;
 #        ('2019-03-18', 'placeholder', '5008 stowers blvd', '2019-07-30', '09:00:00', 2, 4),
 #        ('2019-04-15', 'placeholder', '5008 stowers blvd', '2019-05-02', '14:00:00', 2, 4);
 
-# INSERT INTO student (course, status_id, user_id)
-# VALUES (4, 2, 1),
-#        (4, 2, 2),
-#        (4, 2, 3),
-#        (4, 2, 4),
-#        (4, 2, 5),
-#        (4, 2, 6),
-#        (4, 2, 7),
-#        (4, 2, 8),
-#        (4, 2, 9),
-#        (4, 2, 10);
+INSERT INTO student (course, status_id, user_id)
+VALUES (4, 2, 1),
+       (4, 2, 2),
+       (4, 2, 3),
+       (4, 2, 4),
+       (4, 2, 5),
+       (4, 2, 6),
+       (4, 2, 7),
+       (4, 2, 8),
+       (4, 2, 9),
+       (4, 2, 10);
+
 
 
 insert into user_provider (user_id, provider_id)
