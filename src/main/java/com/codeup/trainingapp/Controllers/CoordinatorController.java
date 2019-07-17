@@ -90,7 +90,7 @@ public class CoordinatorController {
         if (!user.getRole().equals("coordinator")){
             return "redirect:/profile";
         }
-        Provider provider = providerDao.findByCoordinator_Id(user.getId());
+        Provider provider = providerDao.findByCoordinator_Id(32L);
         Calendar calendar = Calendar.getInstance();
         java.util.Date currentDate = calendar.getTime();
         java.sql.Date date = new java.sql.Date(currentDate.getTime());
