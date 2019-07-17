@@ -36,9 +36,7 @@ public class HomeController {
 
     @GetMapping("/profile")
     public String redirect(){
-        System.out.println("here's profile");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user.getUsername());
         if (user.getRole().equals("instructor")){
             return "redirect:/";
         } else if (user.getRole().equals("coordinator")){

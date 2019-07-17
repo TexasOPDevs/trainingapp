@@ -73,9 +73,9 @@ public class CoordinatorController {
             return "redirect:/profile";
         }
 
-        Provider provider = providerDao.findByCoordinator_Id(user.getId());
+        Provider provider = providerDao.findByCoordinator_Id(32L);
 
-        Iterable<Curriculum> curricula = curriculumDao.findAllByProvider_Id(provider.getId());
+        Iterable<Curriculum> curricula = curriculumDao.findAllByProvider_Id(2L);
         model.addAttribute("provider", provider);
         model.addAttribute("curricula", curricula);
         model.addAttribute("curriculum", new Curriculum());

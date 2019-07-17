@@ -104,3 +104,4 @@ INSERT INTO training_db.course (id, end_date, evaluation_file, location, start_d
 # INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (107, 37, '2020-06-07', null, 'Ap #138-7342 A Ave', '2018-10-06', '08:00:00', 3286, 2);
 # INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (108, 30, '2020-07-15', null, 'P.O. Box 236, 8727 Et, Avenue', '2019-02-13', '08:00:00', 1000643, 2);
 # INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (109, 27, '2020-05-04', null, '130-875 Vel, Rd.', '2019-06-12', '08:00:00', 1850, 2);
+
