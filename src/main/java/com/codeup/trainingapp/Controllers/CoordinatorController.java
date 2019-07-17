@@ -123,7 +123,7 @@ public class CoordinatorController {
             return "redirect:/profile";
         }
 
-            course.setStatus(StatusDao.findOne(4L));
+            course.setStatus(StatusDao.findOne(202L));
             courseDao.save(course);
 
         return "redirect:/coordinator";

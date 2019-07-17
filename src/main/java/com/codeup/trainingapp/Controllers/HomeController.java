@@ -63,14 +63,17 @@ public class HomeController {
 
     @GetMapping("/courses")
     public String courseView(Model model) {
-        model.addAttribute("user", userDao.findOne(7L));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userDao.findOne(user.getId()));
         return "home/courses";
     }
 
-    @PostMapping("/courses")
+    @GetMapping("/apply")
     private String signup(@RequestParam(name="course") Long id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         Student student = new Student();
-        student.setUser(userDao.findOne(7L));
+        student.setUser(userDao.findOne(user.getId()));
         student.setCourse(courseDao.findOne(id));
         student.setStatus(statusDao.findOne(1L));
         if(studentDao.findByCourse_IdAndStatus_Id(id, 1L) == null) {
