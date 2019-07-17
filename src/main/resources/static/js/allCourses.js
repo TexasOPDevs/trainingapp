@@ -40,7 +40,7 @@
                         `<td><a href="/provider/${cur.provider.name}">${cur.provider.name}</a></td>` +
                         `<td>${course.start_date}</td>` +
                         `<td>`+
-                            `<form method="post" name="apply" action="/courses">
+                            `<form method="get" name="apply" th:action="@{/apply}">
                                 <input class="course" type="hidden" name="course" value="${course.id}"/>
                                  <button class="right btn waves-effect waves-light" type="submit" name="action">Apply
                                 </button>
@@ -78,8 +78,8 @@ $('button[type=submit]').click(function(e) {
     //Remove all errors
     var data = $(".course").val();
     console.log(data);
-    $.post({
-        url: '/courses',
+    $.get({
+        url: '/apply',
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
         dataType: "json",

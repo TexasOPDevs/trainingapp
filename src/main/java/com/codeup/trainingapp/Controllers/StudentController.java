@@ -27,7 +27,7 @@ public class StudentController {
     @GetMapping("/student")
     public String studentView(Model model){
         model.addAttribute(userDao.findOne(7L));
-        model.addAttribute(providerDao.findByName("org_1"));
+//        model.addAttribute(providerDao.findByName("org_1"));
         model.addAttribute("students", studentDao.findAllByUser_Id(7L));
         return "student/profile";
     }

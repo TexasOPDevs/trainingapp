@@ -42,7 +42,8 @@
         <li><a class="waves-effect" href="/login"><i class="material-icons">person</i>Login</a></li>
         <li>
             <form th:action="@{/logout}" th:method="post">
-                <a class="waves-effect" href="/logout"><i class="material-icons">person_outline</i>Logout</a></form>
+                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+            </form>
         </li>
     </ul>
 
@@ -75,8 +76,8 @@
     <link type="text/css" rel="stylesheet" th:href="@{/node_modules/materialize-css/dist/css/materialize.min.css}"
           media="screen,projection"/>
     <link rel="stylesheet" th:href="@{/padding.css}"/>
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <!--<meta name="_csrf" th:content="${_csrf.token}"/>-->
+    <!--<meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
 </th:block>
 
 
