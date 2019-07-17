@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
+</head>
+<body>
+<th:block th:include="partials/master :: nav"></th:block>
+<div class="container">
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+</div>
+
+<th:block th:replace="partials/master :: jquery"></th:block>
+<th:block th:replace="partials/master :: materializejs"></th:block>
+</body>
+</html>

@@ -31,7 +31,10 @@ public class InstructorController {
         return "instructor/courses";
     }
 
-//    @GetMapping("/instructor/courses/{course_id}")
-//    public String CoursePage(Model model, @PathVariable)
+    @GetMapping("/instructor/courses/{course_id}")
+    public String CoursePage(Model model, @PathVariable Long course_id){
+        model.addAttribute("course", courseDao.findOne(course_id));
+        return "instructor/course";
+    }
 
 }
