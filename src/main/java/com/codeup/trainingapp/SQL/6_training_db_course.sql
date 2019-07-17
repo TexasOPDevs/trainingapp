@@ -1,3 +1,4 @@
+
 INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (4,  '2017-06-15', 'placeholder', '5008 stowers blvd', '2017-06-02', '08:00:00', 4, 201);
 INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (5,  '2019-03-18', 'placeholder', '5008 stowers blvd', '2019-07-30', '09:00:00', 3, 201);
 INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (6,  '2019-04-15', 'placeholder', '5008 stowers blvd', '2019-05-02', '14:00:00', 2, 201);
