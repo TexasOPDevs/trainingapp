@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ProviderRepository extends CrudRepository<Provider, Long> {
     Provider findByCoordinator_Id(Long id);
+
 }

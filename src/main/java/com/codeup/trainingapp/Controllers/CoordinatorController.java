@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.Calendar;
 
 
@@ -55,8 +54,6 @@ public class CoordinatorController {
 
             @GetMapping("/provider.json")
             public @ResponseBody Provider viewProviderInJSON(){
-                User curuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-                Provider provider = providerDao.findByCoordinator_Id(curuser.getId());
                 return providerDao.findOne(2L);
             }
 
