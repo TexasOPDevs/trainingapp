@@ -4,19 +4,23 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Courses</title>
-    <th:block th:replace="partials/master :: materialize"></th:block>
+    <th:block th:replace="partials/master :: materialize">
+
+    </th:block>
 </head>
 <body>
-       <th:block th:replace="partials/master :: nav"></th:block>
+<th:block th:replace="partials/master :: nav">
+
+</th:block>
 
 <h1 class="center">Student Portal</h1>
-       <h3 class="center">Welcome <span th:text="${user.first_name}"></span>
-           <span th:text="${user.last_name}"></span></h3>
+<h3 class="center">Welcome <span th:text="${user.first_name}"></span>
+    <span th:text="${user.last_name}"></span></h3>
 <div class="row">
     <div class="col s12">
         <ul class="tabs">
             <li class="tab col s3"><a class="active" href="#status">Status</a></li>
-            <li class="tab col s3"><a href="#classes">Classes</a></li>
+            <li class="tab col s3"><a href="#standing">Standing</a></li>
             <li class="tab col s3"><a href="#certs">Certs</a></li>
         </ul>
     </div>
@@ -51,7 +55,7 @@
                             </tbody>
                         </table>
                     </div>
-            </div>
+                </div>
                 <div class="card white darken-1 col s12 m12 l6">
                     <div class="card-content">
                         <span class="card-title">Enrolled</span>
@@ -67,7 +71,7 @@
                             </thead>
 
                             <tbody th:each="student : ${students}">
-                            <th:block th:if="${student.status.name == 'approved'}">
+                            <th:block th:if="${student.status.name == 'enrolled'}">
                                 <tr>
                                     <td th:text="${student.course.curriculum.name}"></td>
                                     <td th:each="instructor : ${student.course.instructors}">
@@ -82,20 +86,79 @@
                         </table>
                     </div>
                 </div>
-        </div>
+            </div>
         </div>
     </div>
-    <div id="classes" class="col s12">
+</div>
+<div id="standing">
+        <div class="card white darken-1 col s12">
+            <div class="card-content">
+                <span class="card-title">Credits</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
 
-    </div>
-    <div id="certs" class="col s12">
-         This tab will contain a table with a list of the courses the student has credit for
+                        <th>Attendance</th>
+                    </tr>
+                    </thead>
+
+                    <tbody th:each="student : ${students}">
+                    <th:block th:if="${student.status.name == 'credited'}">
+                        <tr>
+                            <td th:text="${student.course.curriculum.name}"></td>
+                            <td th:text="${student.course.start_date}"></td>
+                            <td th:text="${student.course.end_date}"></td>
+                            <td th:each="attendance : ${student.course.attendances}">
+                            <span th:text="${attendance}"></span>
+                            </td>
+                        </tr>
+                    </th:block>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+<div id="certs" class="col s12">
+    <div id="classes" class="col s12">
+        <div class="card white darken-1 col s12">
+            <div class="card-content">
+                <span class="card-title">Credits</span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Provider</th>
+                        <th>Date</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody th:each="student : ${students}">
+                    <th:block th:if="${student.status.name == 'credited'}">
+                        <tr>
+                            <td th:text="${student.course.curriculum.name}"></td>
+                            <td th:text="${student.course.curriculum.provider.name}"></td>
+                            <td th:text="${student.course.end_date}"></td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
-<th:block th:replace="partials/master :: materializejs"></th:block>
+<th:block th:replace="partials/master :: materializejs">
 
-<th:block th:replace="partials/master :: jquery"></th:block>
+</th:block>
+
+<th:block th:replace="partials/master :: jquery">
+
+</th:block>
 <script src="/js/student-profile.js"></script>
 
 

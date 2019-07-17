@@ -103,3 +103,37 @@ INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, locatio
 INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (107, 37, '2020-06-07', null, 'Ap #138-7342 A Ave', '2018-10-06', '08:00:00', 3286, 2);
 INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (108, 30, '2020-07-15', null, 'P.O. Box 236, 8727 Et, Avenue', '2019-02-13', '08:00:00', 1000643, 2);
 INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id) VALUES (109, 27, '2020-05-04', null, '130-875 Vel, Rd.', '2019-06-12', '08:00:00', 1850, 2);
+
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (4,  '2017-06-15', 'placeholder', '5008 stowers blvd', 
+                                                   '2017-06-02', '08:00:00', 4, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (5,  '2019-03-18', 'placeholder', '5008 stowers blvd', 
+                                                   '2019-07-30', '09:00:00', 1107, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (6,  '2019-04-15', 'placeholder', '5008 stowers blvd', 
+                                                   '2019-05-02', '14:00:00', 2, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (7,  '2017-06-15', 'placeholder', '5008 stowers blvd', 
+                                                   '2017-06-02', '08:00:00', 2, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (8,  '2019-03-18', 'placeholder', '5008 stowers blvd', 
+                                                   '2019-07-30', '09:00:00', 2, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (9,  '2019-04-15', 'placeholder', '5008 stowers blvd', 
+                                                   '2019-05-02', '14:00:00', 2, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (10,  '2020-01-12', 'placeholder', '436-7645 Nulla. Avenue', 
+                                                   '2019-10-24', '08:00:00', 3, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (11,  '2020-04-04', 'placeholder', '1059 Porttitor Road', 
+                                                   '2019-04-17', '08:00:00', 4, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (12,  '2019-11-27', 'placeholder', 'Ap #645-5170 Ante. Ave', 
+                                                   '2020-03-06', '08:00:00', 5, 204);
+INSERT INTO training_db.course (id,  end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (13,  '2020-05-28', 'placeholder', 'P.O. Box 626, 2607 Lectus Av.',
+                                                   '2019-04-22', '08:00:00', 3, 204);
+INSERT INTO training_db.course (id, end_date, evaluation_file, location, start_date, start_time, curriculum_id, 
+                                status_id) VALUES (14,  '2020-06-22', 'placeholder', 'P.O. Box 113, 2111 In, Street',
+                                                   '2019-09-16', '08:00:00', 2, 204);
