@@ -6,6 +6,7 @@ import com.codeup.trainingapp.models.Needs.Course;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Provider;
 import com.codeup.trainingapp.models.Needs.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +55,8 @@ public class CoordinatorController {
 
             @GetMapping("/provider.json")
             public @ResponseBody Provider viewProviderInJSON(){
+                User curuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                Provider provider = providerDao.findByCoordinator_Id(curuser.getId());
                 return providerDao.findOne(2L);
             }
 
@@ -68,9 +71,16 @@ public class CoordinatorController {
 
     @GetMapping("/coordinator")
     public String coordinatorPortal(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        Iterable<Curriculum> curricula = curriculumDao.findAllByProvider_Id(2L);
-        model.addAttribute("provider", providerDao.findOne(2L));
+        if (!user.getRole().equals("coordinator")){
+            return "redirect:/profile";
+        }
+
+        Provider provider = providerDao.findByCoordinator_Id(user.getId());
+
+        Iterable<Curriculum> curricula = curriculumDao.findAllByProvider_Id(provider.getId());
+        model.addAttribute("provider", provider);
         model.addAttribute("curricula", curricula);
         model.addAttribute("curriculum", new Curriculum());
         model.addAttribute("course", new Course());
@@ -79,29 +89,45 @@ public class CoordinatorController {
 
     @PostMapping("/newCourse")
     public String createACur(@ModelAttribute Curriculum curriculum){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!user.getRole().equals("coordinator")){
+            return "redirect:/profile";
+        }
+        Provider provider = providerDao.findByCoordinator_Id(user.getId());
         Calendar calendar = Calendar.getInstance();
         java.util.Date currentDate = calendar.getTime();
         java.sql.Date date = new java.sql.Date(currentDate.getTime());
         curriculum.setCreation_date(date);
-        curriculum.setProvider(providerDao.findOne(2L));
+        curriculum.setProvider(provider);
         curriculumDao.save(curriculum);
+        return "redirect:/coordinator";
+    }
+
+    @GetMapping("/makeInstructor")
+    public String makeInstructor( @RequestParam(required = false) Long emp_id){
+//        User curuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if (!curuser.getRole().equals("coordinator")){
+//            return "redirect:/profile";
+//        }
+        User user = userDao.findOne(emp_id);
+        user.setRole("instructor");
+        System.out.println("got here! " + user.getFirst_name());
+        userDao.save(user);
         return "redirect:/coordinator";
     }
 
 
     @PostMapping("/coordinator")
-    public String createACourse(@ModelAttribute Course course, @RequestParam(required = false) Long emp_id)
+    public String createACourse(@ModelAttribute Course course)
     {
-        if (course.getLocation() != null) {
+        User curuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!curuser.getRole().equals("coordinator")){
+            return "redirect:/profile";
+        }
 
             course.setStatus(StatusDao.findOne(4L));
             courseDao.save(course);
-        } else {
-            User user = userDao.findOne(emp_id);
-            user.setRole("instructor");
-            System.out.println("got here! " + user.getFirst_name());
-            userDao.save(user);
-        }
+
         return "redirect:/coordinator";
     }
 

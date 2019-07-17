@@ -4,7 +4,6 @@ package com.codeup.trainingapp.models.Needs;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -69,6 +68,17 @@ public class User {
 //    private List<Expertise> expertise;
 
     public User() {
+    }
+
+    public User(User copy) {
+        this.id = copy.id;
+        this.username = copy.username;
+        this.first_name = copy.first_name;
+        this.last_name = copy.last_name;
+        this.email = copy.email;
+        this.phone = copy.phone;
+        this.password = copy.password;
+        this.role = copy.role;
     }
 
     public User(Long id, String username, String first_name, String last_name, String email, String phone, String password) {

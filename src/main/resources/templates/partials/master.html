@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:security="http://www.springframework.org/schema/security">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
@@ -28,7 +28,8 @@
                 <div class="background">
                     <img src="http://logodesignfx.com/wp-content/uploads/2019/04/tameng-logo-vector-2.jpg"/>
                 </div>
-                <a href="#user"><img class="circle" src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                <a href="#user"><img class="circle"
+                                     src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
                 <a href="#name"><span class="white-text name">John Doe</span></a>
                 <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
             </div>
@@ -39,7 +40,10 @@
             <div class="divider"></div>
         </li>
         <li><a class="waves-effect" href="/login"><i class="material-icons">person</i>Login</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">person_outline</i>Logout</a></li>
+        <li>
+            <form th:action="@{/logout}" th:method="post">
+                <a class="waves-effect" href="/logout"><i class="material-icons">person_outline</i>Logout</a></form>
+        </li>
     </ul>
 
 </th:block>
@@ -66,21 +70,20 @@
 <!--</th:block>-->
 
 
-
 <th:block th:fragment="materialize">
-    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" />
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"/>
     <link type="text/css" rel="stylesheet" th:href="@{/node_modules/materialize-css/dist/css/materialize.min.css}"
           media="screen,projection"/>
     <link rel="stylesheet" th:href="@{/padding.css}"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 </th:block>
-
 
 
 <th:block th:fragment="materializejs">
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js}" ></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js}"></script>
     <th:block th:replace="partials/master :: minit"></th:block>
 </th:block>
-
 
 
 <th:block th:fragment="jquery">
@@ -93,13 +96,11 @@
 </th:block>
 
 
-
 <th:block th:fragment="minit">
     <script>
         M.AutoInit();
     </script>
 </th:block>
-
 
 
 </body>
