@@ -69,7 +69,6 @@ public class CoordinatorController {
     @GetMapping("/coordinator")
     public String coordinatorPortal(Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         if (!user.getRole().equals("coordinator")){
             return "redirect:/profile";
         }
@@ -87,6 +86,7 @@ public class CoordinatorController {
     @PostMapping("/newCourse")
     public String createACur(@ModelAttribute Curriculum curriculum){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         if (!user.getRole().equals("coordinator")){
             return "redirect:/profile";
         }
@@ -97,6 +97,7 @@ public class CoordinatorController {
         curriculum.setCreation_date(date);
         curriculum.setProvider(provider);
         curriculumDao.save(curriculum);
+
         return "redirect:/coordinator";
     }
 
