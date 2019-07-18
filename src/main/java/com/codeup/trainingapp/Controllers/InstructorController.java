@@ -27,14 +27,45 @@ public class InstructorController {
 
     @GetMapping("/instructor/courses")
     public String InstructorCourseView(Model model){
+        model.addAttribute("curricula", curriculumDao.findAll());
         model.addAttribute("courses", courseDao.findAll());
         return "instructor/courses";
     }
 
-    @GetMapping("/instructor/courses/{course_id}")
+    @GetMapping("/instructor/course/{course_id}")
     public String CoursePage(Model model, @PathVariable Long course_id){
         model.addAttribute("course", courseDao.findOne(course_id));
         return "instructor/course";
+    }
+
+    @GetMapping("/instructor/course/{course_id}/edit")
+    public String CourseEditForm(Model model, @PathVariable Long course_id){
+        model.addAttribute("course", courseDao.findOne(course_id));
+        return "instructor/edit_course";
+    }
+
+    @GetMapping("/instructor/curricula")
+    public String InstructorCurriculaView(Model model){
+        model.addAttribute("curricula", curriculumDao.findAll());
+        model.addAttribute("courses", courseDao.findAll());
+        return "instructor/curricula";
+    }
+
+    @GetMapping("/instructor/curriculum/{curriculum_id}")
+    public String CurriculumPage(Model model, @PathVariable Long curriculum_id){
+        model.addAttribute("curriculum", curriculumDao.findOne(curriculum_id));
+        return "instructor/curriculum";
+    }
+
+    @GetMapping("/instructor/curriculum/create")
+    public String CurriculumCreateForm(){
+        return "instructor/create_curriculum";
+    }
+
+    @GetMapping("/instructor/curriculum/{curriculum_id}/edit")
+    public String CurriculumEditForm(Model model, @PathVariable Long curriculum_id){
+        model.addAttribute("course", curriculumDao.findOne(curriculum_id));
+        return "instructor/edit_curriculum";
     }
 
 }

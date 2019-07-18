@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
+</head>
+<body>
+<th:block th:include="partials/master :: nav"></th:block>
+<div class="container">
+
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">Overview</a></li>
+                <li class="tab col s3"><a class="active" href="#test2">Courses</a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">
+
+        </div>
+
+        <div id="test2" class="col s12">
+
+
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons"></i>
+                        Open
+                        <span class="badge"></span></div>
+                    <div class="collapsible-body">
+
+                        <table>
+                            <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Students</th>
+                                <th></th>
+                            </tr>
+
+                            </thead>
+
+                            <tbody  th:each="course: ${curriculum.courses}" th:switch="${course.status.name}">
+
+                            <tr th:case="'approved'">
+                                <td th:text="${course.id}" ></td>
+                                <td th:text="${course.students.size()}" ></td>
+                                <td>
+                                    <a th:href="'/instructor/course/' + ${course.id}" class="waves-effect waves-light btn-small">Details</a>
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons"></i>
+                        Closed
+                        <span class="badge"></span></div>
+                    <div class="collapsible-body">
+
+                        <table class="highlight">
+                            <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Student</th>
+                                <th></th>
+                            </tr>
+
+                            </thead>
+
+                            <tbody th:each="course: ${curriculum.courses}" th:switch="${course.status.name}">
+
+                            <tr th:case="'closed'" >
+                                <td th:text="${course.id}" ></td>
+                                <td th:text="${course.students.size()}" ></td>
+                                <td>
+                                    <a th:href="'/instructor/course/' + ${course.id}" class="waves-effect waves-light btn-small">Details</a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<th:block th:replace="partials/master :: jquery"></th:block>
+<th:block th:replace="partials/master :: materializejs"></th:block>
+</body>
+</html>

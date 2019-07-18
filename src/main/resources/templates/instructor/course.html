@@ -16,15 +16,52 @@
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s3"><a href="#test1">Overview</a></li>
-                <li class="tab col s3"><a class="active" href="#test2">Roster</a></li>
+                <li class="tab col s3"><a href="#test2">Roster</a></li>
                 <li class="tab col s3"><a href="#test3">Attendance</a></li>
                 <li class="tab col s3 disabled"><a href="#test4">Grades</a></li>
             </ul>
         </div>
-        <div id="test1" class="col s12">Test 1</div>
+        <div id="test1" class="col s12">
+
+            <div class="divider"></div>
+            <div class="section">
+                <h5 th:text="${course.curriculum.name}" >Section 1</h5>
+                    <div class="row">
+                        <p class="col s6" th:text="'Course ID (' + ${course.id} + ')'" ></p>
+                        <p class="col s6" th:text="'Status (' + ${course.status.name} + ')'" ></p>
+                        <p class="col s12" th:text="'Course Location (' + ${course.location} + ')'"></p>
+                        <p class="col s12" th:text="'From (' + ${course.start_date} + ') to (' + ${course.end_date} + ')'"></p>
+                        <p class="col s12" th:text="'Class Starts at (' + ${course.start_time} + ')'" ></p>
+                    </div>
+
+                <h5>Instructor(s)</h5>
+
+                <div class="row" th:each="instructor : ${course.instructors}" th:switch="${instructor.first_name}">
+                    <p th:case="null" class="col s12">tbd</p>
+                    <p th:case="*" class="col s12" th:text="${instructor.first_name} + ', ' + ${instructor.last_name}"></p>
+                </div>
+
+                <h5>Description</h5>
+
+                <div class="row" th:switch="${course.curriculum.description}">
+                    <p th:case="null" class="col s12">No description found</p>
+                    <p th:case="*" class="col s12" th:text="${course.curriculum.description}"></p>
+                </div>
+
+                <h5>Course Outline</h5>
+
+                <div class="row" th:switch="${course.curriculum.course_outline}">
+                    <p th:case="null" class="col s12">No outline found</p>
+                    <p th:case="*" class="col s12" th:text="${course.curriculum.course_outline}"></p>
+                </div>
+
+            </div>
+
+
+        </div>
         <div id="test2" class="col s12">
 
-            <table>
+            <table class="highlight">
                 <thead>
 
                     <tr>

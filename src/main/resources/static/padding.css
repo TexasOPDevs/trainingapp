@@ -1,3 +1,4 @@
+/*Padding Styling*/
 .p1{
     padding: 5% !important;
 }
@@ -87,5 +88,44 @@
 
 .pb-5{
     padding-bottom: 25% !important;
+}
+
+.primary{
+  background-color: #0e0e52 !important;
+}
+
+.secondary{
+  background-color: #150578 !important;
+}
+
+.scheme-grey{
+  background-color: #30323d !important;
+}
+
+.scheme-black{
+  background-color: #0d0106 !important;
+}
+
+.scheme-white{
+  background-color: #fffcf2 !important;
+}
+.primary-text{
+    color: #0e0e52 !important;
+}
+
+.secondary-text{
+    color: #150578 !important;
+}
+
+.scheme-grey-text{
+    color: #30323d !important;
+}
+
+.scheme-black-text{
+    color: #0d0106 !important;
+}
+
+.scheme-white-text{
+    color: #fffcf2 !important;
 }
 

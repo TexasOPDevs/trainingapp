@@ -58,11 +58,20 @@
 
                             <div class="row">
                                 <div class="input-field col s8">
-                                    <input id="curriculum" type="text" class="validate" />
+
+                                    <div class="input-field col s12">
+                                        <select th:each="curriculum: ${curricula}">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option th:value="${curriculum.id}" th:text="curriculum.name"></option>
+                                        </select>
+                                        <label>Materialize Select</label>
+                                    </div>
+
+                                    <input th:field="curric" id="curriculum" type="text" class="validate" />
                                     <label for="curriculum">Curriculum</label>
                                 </div>
                                 <div class="input-field col s4">
-                                    <input id="capacity" type="number" class="validate" />
+                                    <input th:field="capacity" id="capacity" type="number" class="validate" />
                                     <label for="capacity">Class Capacity</label>
                                 </div>
                             </div>

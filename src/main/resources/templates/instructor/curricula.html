@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
+</head>
+<body>
+<th:block th:include="partials/master :: nav"></th:block>
+    <div class="container">
+
+                    <div class="col s12">
+                        <table>
+                            <thead>
+
+                                <tr>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th></th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr th:each="curriculum: ${curricula}">
+                                    <td th:text="${curriculum.name}" ></td>
+                                    <td th:text="${curriculum.id}" ></td>
+                                    <td>
+                                        <a th:href="'/instructor/curriculum/' + ${curriculum.id}" class="waves-effect waves-light btn-small">Details</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+            </div>
+
+        <div class="fixed-action-btn ">
+            <a href="/create_curriculum" class="btn-floating btn-large red">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+
+
+    <th:block th:replace="partials/master :: jquery"></th:block>
+    <th:block th:replace="partials/master :: materializejs"></th:block>
+</body>
+</html>
