@@ -60,26 +60,26 @@
                             </div>
                         </div>
                         <div id="register" class="col s12">
-                            <div class="col s12">
+                            <div class="col s12 pt-1">
                                 <ul class="tabs">
-                                    <li class="tab col s6">
-                                        <a href="#identity" class="active breadcrumb">Identity</a>
+                                    <li class="tab col s3">
+                                        <a href="#identity" class="active">Identity</a>
                                     </li>
-                                    <li class="tab col s6">
-                                        <a href="#credentials" class="breadcrumb">Credentials</a>
+                                    <li class="tab col s3">
+                                        <a href="#credentials">Credentials</a>
                                     </li>
-                                    <li class="tab col s6">
-                                        <a href="#contact" class="breadcrumb">Contact</a>
+                                    <li class="tab col s3">
+                                        <a href="#contact">Contact</a>
                                     </li>
-                                    <li class="tab col s6">
-                                        <a href="#bio" class="breadcrumb">Bio</a>
+                                    <li class="tab col s3">
+                                        <a href="#bio">Bio</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="row">
                                 <form th:action="@{/register}" th:method="post" th:object="${user}"
                                       class="col s12 pt-2">
-                                    <div id="identity" class="row">
+                                    <div id="identity" class="row pl-1 pr-1">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <input th:field="*{first_name}" type="text" class="validate"/>
@@ -97,7 +97,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" id="credentials">
+                                    <div class="row pl-1 pr-1" id="credentials">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <input th:field="*{username}" type="text" class="validate"/>
@@ -115,7 +115,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" id="contact">
+                                    <div class="row pl-1 pr-1" id="contact">
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <input th:field="*{phone}" type="tel" class="validate"/>
@@ -129,7 +129,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" id="bio">
+                                    <div class="row pl-1 pr-1" id="bio">
                                         <div class="row">
                                                 <div class="input-field col s12">
                                                     <textarea th:field="*{bio}"
