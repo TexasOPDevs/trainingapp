@@ -23,9 +23,7 @@ public class Student {
     @OneToOne
     private Status status;
 
-//    @OneToMany(mappedBy = "student")
-//    private List<Attendance> attendances;
-//    sdf
+
 
     public Student() {
     }
