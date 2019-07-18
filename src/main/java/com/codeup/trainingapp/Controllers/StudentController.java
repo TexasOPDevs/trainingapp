@@ -3,6 +3,8 @@ package com.codeup.trainingapp.Controllers;
 
 import com.codeup.trainingapp.Repositories.*;
 import com.codeup.trainingapp.models.Needs.Curriculum;
+import com.codeup.trainingapp.models.Needs.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +28,9 @@ public class StudentController {
 
     @GetMapping("/student")
     public String studentView(Model model){
-        model.addAttribute(userDao.findOne(7L));
-//        model.addAttribute(providerDao.findByName("org_1"));
-        model.addAttribute("students", studentDao.findAllByUser_Id(7L));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+        model.addAttribute("students", studentDao.findAllByUser_Id(user.getId()));
         return "student/profile";
     }
 

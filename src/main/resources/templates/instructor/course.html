@@ -15,19 +15,19 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#test1">Overview</a></li>
-                <li class="tab col s3"><a href="#test2">Roster</a></li>
-                <li class="tab col s3"><a href="#test3">Attendance</a></li>
-                <li class="tab col s3 disabled"><a href="#test4">Grades</a></li>
+                <li class="tab col s3"><a href="#overview">Overview</a></li>
+                <li class="tab col s3"><a href="#roster">Roster</a></li>
+                <li class="tab col s3"><a href="#attendance">Attendance</a></li>
+                <li class="tab col s3 disabled"><a href="#grades">Grades</a></li>
             </ul>
         </div>
-        <div id="test1" class="col s12">
+        <div id="overview" class="col s12">
 
             <div class="divider"></div>
             <div class="section">
                 <h5 th:text="${course.curriculum.name}" >Section 1</h5>
                     <div class="row">
-                        <p class="col s6" th:text="'Course ID (' + ${course.id} + ')'" ></p>
+                        <p class="col s6 text-primary" th:text="'Course ID (' + ${course.id} + ')'" ></p>
                         <p class="col s6" th:text="'Status (' + ${course.status.name} + ')'" ></p>
                         <p class="col s12" th:text="'Course Location (' + ${course.location} + ')'"></p>
                         <p class="col s12" th:text="'From (' + ${course.start_date} + ') to (' + ${course.end_date} + ')'"></p>
@@ -59,7 +59,7 @@
 
 
         </div>
-        <div id="test2" class="col s12">
+        <div id="roster" class="col s12">
 
             <table class="highlight">
                 <thead>
@@ -91,13 +91,75 @@
 
 
         </div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
+        <div id="attendance" class="col s12">
+
+            <div class="row">
+                <div class="col s12">
+
+
+                    <ul class="tabs">
+                        <li th:each="attendance:${course.attendances}" class="tab col s3"><a th:href="'#' + ${attendance.date}" th:text="${attendance.date}"></a></li>
+                    </ul>
+
+
+                </div>
+
+
+
+<!--                    <div th:id="${date}" class="col s12">-->
+<!--    -->
+<!--    -->
+<!--                        <table class="striped">-->
+<!--                            <thead>-->
+<!--    -->
+<!--                            <tr>-->
+<!--                                <th>Name</th>-->
+<!--                                <th>Date</th>-->
+<!--                                <th>Present</th>-->
+<!--                            </tr>-->
+<!--    -->
+<!--                            </thead>-->
+<!--    -->
+<!--                            <tbody>-->
+<!--    -->
+<!--                            <tr th:each="attendance: ${course.attendances}" th:switch="${attendance.date}">-->
+<!--                                <th:block>-->
+<!--                                <td>-->
+<!--                                    <a th:href="'/student/' + ${attendance.}" th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <p th:text="${student.user.attendances.get(0).date}"></p>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <p th:text="${student.user.attendances.get(0).present}"></p>-->
+<!--                                </td>-->
+<!--                                </th:block>-->
+<!--                            </tr>-->
+<!--    -->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--    -->
+<!--                    </div>-->
+<!--                -->
+            </div>
+
+
+
+
+        </div>
+        <div id="grades" class="col s12">Test 4</div>
     </div>
 
 </div>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
+<!--<script>-->
+<!--    $(document).ready(function(){-->
+<!--        $('ul.tabs').tabs({-->
+<!--            swipeable : true-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>
