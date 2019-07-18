@@ -93,33 +93,57 @@
         </div>
         <div id="attendance" class="col s12">
 
-            <table class="highlight">
-                <thead>
+            <div class="row">
+                <div class="col s12">
 
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Present</th>
-                </tr>
 
-                </thead>
+                    <ul class="tabs">
+                        <li th:each="attendance:${course.attendances}" class="tab col s3"><a th:href="'#' + ${attendance.date}" th:text="${attendance.date}"></a></li>
+                    </ul>
 
-                <tbody>
 
-                <tr th:each="student: ${course.students}">
-                    <td>
-                        <a th:href="'/student/' + ${student.user.id}" th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>
-                    </td>
-                    <td>
-                        <p th:text="${student.user.attendances.get(0).date}"></p>
-                    </td>
-                    <td>
-                        <p th:text="${student.user.attendances.get(0).present}"></p>
-                    </td>
-                </tr>
+                </div>
 
-                </tbody>
-            </table>
+
+
+<!--                    <div th:id="${date}" class="col s12">-->
+<!--    -->
+<!--    -->
+<!--                        <table class="striped">-->
+<!--                            <thead>-->
+<!--    -->
+<!--                            <tr>-->
+<!--                                <th>Name</th>-->
+<!--                                <th>Date</th>-->
+<!--                                <th>Present</th>-->
+<!--                            </tr>-->
+<!--    -->
+<!--                            </thead>-->
+<!--    -->
+<!--                            <tbody>-->
+<!--    -->
+<!--                            <tr th:each="attendance: ${course.attendances}" th:switch="${attendance.date}">-->
+<!--                                <th:block>-->
+<!--                                <td>-->
+<!--                                    <a th:href="'/student/' + ${attendance.}" th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <p th:text="${student.user.attendances.get(0).date}"></p>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <p th:text="${student.user.attendances.get(0).present}"></p>-->
+<!--                                </td>-->
+<!--                                </th:block>-->
+<!--                            </tr>-->
+<!--    -->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--    -->
+<!--                    </div>-->
+<!--                -->
+            </div>
+
+
 
 
         </div>
@@ -130,5 +154,12 @@
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
+<!--<script>-->
+<!--    $(document).ready(function(){-->
+<!--        $('ul.tabs').tabs({-->
+<!--            swipeable : true-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>
