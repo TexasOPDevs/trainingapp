@@ -14,35 +14,48 @@
 <div class="container">
 
     <div class="row">
-        <form th:action="@{/curiculum/create}" th:method="post" th:object="${curr}" class="col s12">
+        <form th:action="@{/curriculum/create}" th:method="post" th:object="${curriculum}" class="col s12">
             <div class="row">
                 <div class="input-field col s9">
-                    <input placeholder="Placeholder" th:field="" id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
+                    <input th:field="*{name}" id="name" type="text" class="validate" />
+                    <label for="name">Name</label>
                 </div>
                 <div class="input-field col s3">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
+                    <input th:field="*{id}" id="curriculum_id" type="number" class="validate" />
+                    <label for="curriculum_id">ID</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s9">
+                    <input th:field="*{certification}" id="certification" type="text" class="validate" />
+                    <label for="certification">Certification</label>
+                </div>
+                <div class="input-field col s3">
+                    <input th:field="*{provider}" id="provider" type="number" class="validate" />
+                    <label for="provider">Provider ID</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-                    <label for="disabled">Disabled</label>
+                    <textarea th:field="*{description}" id="description" class="materialize-textarea"></textarea>
+                    <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Password</label>
+                    <textarea th:field="*{course_outline}" id="course_outline" class="materialize-textarea"></textarea>
+                    <label for="course_outline">Course Outline</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
+                    <textarea th:field="*{learning_objectives}" id="learning_objectives" class="materialize-textarea"></textarea>
+                    <label for="learning_objectives">Learning Objectives</label>
                 </div>
             </div>
+            <button class="btn waves-effect waves-light" type="submit">Submit
+                <i class="material-icons right">send</i>
+            </button>
         </form>
     </div>
 

@@ -54,7 +54,7 @@ public class Curriculum {
 
     @OneToMany(mappedBy = "curriculum")
     @JsonManagedReference
-    private List<Course> Courses;
+    private List<Course> courses;
 
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
@@ -165,10 +165,10 @@ public class Curriculum {
     }
 
     public List<Course> getCourses() {
-        return Courses;
+        return courses;
     }
 
     public void setCourses(List<Course> courses) {
-        Courses = courses;
+        this.courses = courses;
     }
 }

@@ -63,11 +63,12 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/curriculum/create")
-    public String CreateCurriculumForm(){
+    public String CreateCurriculumForm(Model model){
+        model.addAttribute("curriculum", new  Curriculum());
         return "instructor/create_curriculum";
     }
 
-    @PostMapping("/create_curriculum")
+    @PostMapping("/curriculum/create")
     public String CreateCurriculumMethod(
             @RequestParam(name = "id") Long id,
             @RequestParam(name = "certification") String certification,
@@ -75,7 +76,7 @@ public class InstructorController {
             @RequestParam(name = "description") String description,
             @RequestParam(name = "learning_objectives") String learning_objectives,
             @RequestParam(name = "name") String name,
-            @RequestParam(name = "provider_id") Long provider_id
+            @RequestParam(name = "provider") Long provider_id
     ) {
         Curriculum newCurriculum = new Curriculum();
         Long millis = System.currentTimeMillis();
