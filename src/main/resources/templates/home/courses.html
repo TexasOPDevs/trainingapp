@@ -20,50 +20,82 @@
 
 <div class="container">
 
-<!--Suggestion 'Make the search options another navbar for styling purposes'-->
+    <!--Suggestion 'Make the search options another navbar for styling purposes'-->
 
-<div class="row">
-    <div class="col s12">
-        <div class="card white">
-        <div class="card-content">
-            <h3 class="card-title center">Courses</h3>
-            <div class="row">
-            <div class="col s3">
-<!--                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Sort by</a>-->
-<!--                <ul id='dropdown1' class='dropdown-content'>-->
-<!--                    <li><a href="#!">Upcoming</a></li>-->
-<!--                    <li><a href="#!">Future</a></li>-->
-<!--                    <li class="divider" tabindex="-1"></li>-->
-<!--                    <li><a href="#!">Name</a></li>-->
-<!--                    <li><a href="#!">Organization</a></li>-->
-<!--                </ul>-->
+    <div class="row">
+        <div class="col s12">
+            <div class="card white">
+                <div class="card-content">
+                    <h3 class="card-title center">Courses</h3>
+                    <div class="row">
+                        <div class="col s3">
+                        </div>
+                    </div>
+                    <!--                    <div th:id="coursesTable"> Converting the data into Thymeleaf so that I can use the User
+                    Session-->
+                    <table class="highlight">
+                        <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Organization</th>
+                            <th>Start Date</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="course : ${courses}">
+                        <tr>
+                            <td>
+                                <a class="modal-trigger" th:href="'#' + ${course.id}"
+                                   th:text="${course.curriculum.name}"></a>
+                            </td>
+                            <td>
+                                <a th:href="/provider/${course.curriculum.provider.name}"
+                                   th:text="${course.curriculum.provider.name}"></a>
+                            </td>
+                            <td th:text="${course.start_date}">
+
+                            </td>
+                            <td>
+                                <!--Check to see if a USER has a course status for the given course if not then show
+                                the apply button-->
+                                <th:block th:each="status : ${student}">
+                                    <th:block th:if="${status.course.id == ${course.id}}">
+                                        <th:block th:if="${status.user.id == ${user.id}}">
+                                            PENDING
+                                        </th:block>
+                                        <th:block th:if="status.user.id != ${user.id}">
+                                            <form method="get" name="apply" th:action="@{/apply}">
+                                                <input class="course" type="hidden" name="course"
+                                                       th:value="${course.id}"/>
+                                                <button class="right btn waves-effect waves-light" type="submit"
+                                                        name="action">Apply
+                                                </button>
+                                            </form>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+                            </td>
+                        </tr>
+                            <div th:id="${course.id}" class="modal">
+                                <div class="modal-content">
+                                    <h4 th:text="${course.curriculum.name}"></h4>
+                                    <h5 th:text="'Location: ' + ${course.location}"></h5>
+                                    <p th:text="${course.curriculum.course_outline}"></p>
+                                    <p th:text="${course.curriculum.description}"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                </div>
+                            </div>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-<!--            <form>-->
-<!--                <div class="input-field col s8">-->
-<!--                    <input name="search" id="search" type="search" th:required="required"/>-->
-<!--                    <label class="label-icon" for="search">-->
-<!--                        <i class="material-icons">search</i>-->
-<!--                    </label>-->
-<!--                    <i class="material-icons">close</i>-->
-<!--                </div>-->
-<!--            </form>-->
-            </div>
-            <div th:id="coursesTable">
-            </div>
-        </div>
         </div>
     </div>
 </div>
-
-</div>
-
-<script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"
->
-</script>
-<script src="/js/allCourses.js"></script>
 
 <th:block th:replace="partials/master :: materializejs">
 
