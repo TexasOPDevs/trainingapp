@@ -3,10 +3,15 @@ package com.codeup.trainingapp.Controllers;
 import com.codeup.trainingapp.Repositories.CourseRepository;
 import com.codeup.trainingapp.Repositories.CurriculumRepository;
 import com.codeup.trainingapp.Repositories.ProviderRepository;
+import com.codeup.trainingapp.models.Needs.Curriculum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.sql.Date;
 
 @Controller
 public class InstructorController {
@@ -58,8 +63,34 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/curriculum/create")
-    public String CurriculumCreateForm(){
+    public String CreateCurriculumForm(){
         return "instructor/create_curriculum";
+    }
+
+    @PostMapping("/create_curriculum")
+    public String CreateCurriculumMethod(
+            @RequestParam(name = "id") Long id,
+            @RequestParam(name = "certification") String certification,
+            @RequestParam(name = "course_outline") String course_outline,
+            @RequestParam(name = "description") String description,
+            @RequestParam(name = "learning_objectives") String learning_objectives,
+            @RequestParam(name = "name") String name,
+            @RequestParam(name = "provider_id") Long provider_id
+    ) {
+        Curriculum newCurriculum = new Curriculum();
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        newCurriculum.setId(id);
+        newCurriculum.setCertification(certification);
+        newCurriculum.setCourse_outline(course_outline);
+        newCurriculum.setDescription(description);
+        newCurriculum.setLearning_objectives(learning_objectives);
+        newCurriculum.setName(name);
+        newCurriculum.setProvider(providerDao.findOne(provider_id));
+        newCurriculum.setCreation_date(date);
+        newCurriculum.setUpdate_date(date);
+        curriculumDao.save(newCurriculum);
+        return "redirect:/instructor/curriculum/" + id;
     }
 
     @GetMapping("/instructor/curriculum/{curriculum_id}/edit")
