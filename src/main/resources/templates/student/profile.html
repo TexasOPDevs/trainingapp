@@ -104,7 +104,6 @@
                         <th>Attendance</th>
                     </tr>
                     </thead>
-
                     <tbody th:each="student : ${students}">
                     <th:block th:if="${student.status.name == 'credited'}">
                         <tr>
