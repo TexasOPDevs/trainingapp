@@ -59,22 +59,22 @@
                             <td>
                                 <!--Check to see if a USER has a course status for the given course if not then show
                                 the apply button-->
-                                <th:block th:each="status : ${student}">
-                                    <th:block th:if="${status.course.id == ${course.id}}">
-                                        <th:block th:if="${status.user.id == ${user.id}}">
-                                            PENDING
-                                        </th:block>
-                                        <th:block th:if="status.user.id != ${user.id}">
-                                            <form method="get" name="apply" th:action="@{/apply}">
+<!--                                <th:block th:each="status : ${student}">-->
+<!--                                    <th:block th:if="${status.course.id == ${course.id}}">-->
+<!--                                        <th:block th:if="${status.user.id == ${user.id}}">-->
+<!--                                            PENDING-->
+<!--                                        </th:block>-->
+<!--                                        <th:block th:if="status.user.id != ${user.id}">-->
+                                            <form th:method="post" name="apply" th:action="@{/apply}">
                                                 <input class="course" type="hidden" name="course"
                                                        th:value="${course.id}"/>
                                                 <button class="right btn waves-effect waves-light" type="submit"
                                                         name="action">Apply
                                                 </button>
                                             </form>
-                                        </th:block>
-                                    </th:block>
-                                </th:block>
+<!--                                        </th:block>-->
+<!--                                    </th:block>-->
+<!--                                </th:block>-->
                             </td>
                         </tr>
                             <div th:id="${course.id}" class="modal">
