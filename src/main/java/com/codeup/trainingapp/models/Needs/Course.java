@@ -30,6 +30,9 @@ public class Course {
     @Column
     private Date end_date;
 
+    @Column
+    private Long capacity;
+
     @ManyToOne
     @JsonBackReference
     private Curriculum curriculum;
@@ -55,6 +58,28 @@ public class Course {
     private List<User> instructors;
 
     public Course() {
+    }
+
+    public Course(String location, String evaluation_file, Time start_time, Date start_date, Date end_date, Long capacity, Curriculum curriculum, Status status, List<Student> students, List<Attendance> attendances, List<User> instructors) {
+        this.location = location;
+        this.evaluation_file = evaluation_file;
+        this.start_time = start_time;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.capacity = capacity;
+        this.curriculum = curriculum;
+        this.status = status;
+        this.students = students;
+        this.attendances = attendances;
+        this.instructors = instructors;
+    }
+
+    public Long getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Long capacity) {
+        this.capacity = capacity;
     }
 
     public Long getId() {

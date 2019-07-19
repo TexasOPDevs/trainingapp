@@ -71,8 +71,6 @@ public class InstructorController {
     @PostMapping("/curriculum/create")
     public String CreateCurriculumMethod(
             @RequestParam(name = "id") Long id,
-            @RequestParam(name = "certification") String certification,
-            @RequestParam(name = "course_outline") String course_outline,
             @RequestParam(name = "description") String description,
             @RequestParam(name = "learning_objectives") String learning_objectives,
             @RequestParam(name = "name") String name,
@@ -82,8 +80,6 @@ public class InstructorController {
         Long millis = System.currentTimeMillis();
         Date date = new Date(millis);
         newCurriculum.setId(id);
-        newCurriculum.setCertification(certification);
-        newCurriculum.setCourse_outline(course_outline);
         newCurriculum.setDescription(description);
         newCurriculum.setLearning_objectives(learning_objectives);
         newCurriculum.setName(name);
@@ -94,9 +90,30 @@ public class InstructorController {
         return "redirect:/instructor/curriculum/" + id;
     }
 
+
+
+    @PostMapping("/curriculum/edit")
+    public String CreateCurriculumMethod(
+            @RequestParam(name = "description") String description,
+            @RequestParam(name = "learning_objectives") String learning_objectives,
+            @RequestParam(name = "name") String name,
+            @RequestParam(name = "provider.id") Long provider_id
+    ) {
+        Curriculum newCurriculum = new Curriculum();
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        newCurriculum.setDescription(description);
+        newCurriculum.setLearning_objectives(learning_objectives);
+        newCurriculum.setName(name);
+        newCurriculum.setProvider(providerDao.findOne(provider_id));
+        newCurriculum.setUpdate_date(date);
+        curriculumDao.save(newCurriculum);
+        return "redirect:/instructor/curriculum/" + newCurriculum.getId();
+    }
+
     @GetMapping("/instructor/curriculum/{curriculum_id}/edit")
     public String CurriculumEditForm(Model model, @PathVariable Long curriculum_id){
-        model.addAttribute("course", curriculumDao.findOne(curriculum_id));
+        model.addAttribute("curriculum", curriculumDao.findOne(curriculum_id));
         return "instructor/edit_curriculum";
     }
 
