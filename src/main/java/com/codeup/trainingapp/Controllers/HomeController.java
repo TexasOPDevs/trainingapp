@@ -2,7 +2,6 @@ package com.codeup.trainingapp.Controllers;
 
 
 import com.codeup.trainingapp.Repositories.*;
-import com.codeup.trainingapp.models.Needs.Course;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Student;
 import com.codeup.trainingapp.models.Needs.User;
