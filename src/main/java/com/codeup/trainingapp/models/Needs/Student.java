@@ -23,8 +23,6 @@ public class Student {
     @OneToOne
     private Status status;
 
-//    d
-
 
     public Student() {
     }
