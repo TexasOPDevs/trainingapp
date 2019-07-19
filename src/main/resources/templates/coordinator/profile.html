@@ -4,7 +4,9 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Courses</title>
-    <th:block th:replace="partials/master :: materialize"></th:block>
+    <th:block th:replace="partials/master :: materialize">
+
+    </th:block>
 </head>
 <body>
 <th:block th:replace="partials/master :: nav">
@@ -31,28 +33,45 @@
                     <div class="row">
                     <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
                         <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="first_name" type="text" th:field="*{name}" class="validate"/>
-                            <label for="first_name">Course Name</label>
+                            <input placeholder="Placeholder"  type="text" th:field="*{name}" class="validate"/>
+                            <label th:for="*{name}">Course Name</label>
                         </div>
 
                         <!--we need to add materials drop down and description-->
 
+                        <!-- *Added the materialdao to controller-->
+                        <!-- *Added dropdone for materials-->
+
+
                         <!--we no longer need capacity-->
+                        <!--*capacity gone-->
+
                         <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="capacity" type="number" th:field="*{capacity}" class="validate"/>
-                            <label for="first_name">Capacity</label>
+                            <a class='dropdown-trigger btn' href='#' data-target='materials'>Add Materials</a>
+                            <ul id='materials' class='dropdown-content'>
+                                <th:block th:each="material : ${materials}">
+                                <li>
+                                    <p>
+                                        <label>
+                                            <input th:field="*{materials}" th:value="${material.getId()}" type="checkbox"/>
+                                            <span th:text="${material}"></span>
+                                        </label>
+                                    </p>
+                                </li>
+                                </th:block>
+                            </ul>
                         </div>
                         <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="cert" type="text" th:field="*{certification}" class="validate"/>
-                            <label for="first_name">Certification</label>
+                            <input placeholder="Placeholder" type="text" th:field="*{certification}" class="validate"/>
+                            <label th:for="*{certification}">Certification</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="textarea1" th:field="*{course_outline}" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Course Outline</label>
+                            <textarea th:field="*{course_outline}" class="materialize-textarea"></textarea>
+                            <label th:for="*{course_outline}">Course Outline</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="learning" th:field="*{learning_objectives}" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Learning Objectives</label>
+                            <textarea th:field="*{learning_objectives}" class="materialize-textarea"></textarea>
+                            <label th:for="*{learning_objectives}">Learning Objectives</label>
                         </div>
 
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
@@ -83,7 +102,9 @@
                                         <select th:field="*{curriculum}">
                                             <div th:each="curriculum : ${curricula}">
                                                 <option th:value="${curriculum.id}"
-                                                        th:text="${curriculum.name}"></option>
+                                                        th:text="${curriculum.name}">
+
+                                                </option>
                                             </div>
                                         </select>
                                         <label>Curriculum</label>
