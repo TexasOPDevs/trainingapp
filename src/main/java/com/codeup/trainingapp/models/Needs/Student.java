@@ -25,7 +25,6 @@ public class Student {
 
 //    @OneToMany(mappedBy = "student")
 //    private List<Attendance> attendances;
-//    sdf
 
     public Student() {
     }
