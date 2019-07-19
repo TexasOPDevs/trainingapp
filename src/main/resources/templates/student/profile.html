@@ -91,9 +91,11 @@
     </div>
 </div>
 <div id="standing">
-        <div class="card white darken-1 col s12">
+    <div class="container">
+
+    <div class="card white darken-1 col s12">
             <div class="card-content">
-                <span class="card-title">Credits</span>
+                <span class="card-title">Standing</span>
                 <table>
                     <thead>
                     <tr>
@@ -105,7 +107,7 @@
                     </tr>
                     </thead>
                     <tbody th:each="student : ${students}">
-                    <th:block th:if="${student.status.name == 'credited'}">
+                    <th:block th:if="${student.status.name == 'enrolled'}">
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
                             <td th:text="${student.course.start_date}"></td>
@@ -120,9 +122,12 @@
                 </table>
             </div>
         </div>
+    </div>
 </div>
 <div id="certs" class="col s12">
     <div id="classes" class="col s12">
+        <div class="container">
+
         <div class="card white darken-1 col s12">
             <div class="card-content">
                 <span class="card-title">Credits</span>
@@ -148,6 +153,7 @@
                 </table>
             </div>
         </div>
+    </div>
     </div>
 </div>
 
