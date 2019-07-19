@@ -29,13 +29,18 @@ public class CoordinatorController {
 
     private final InstructorRepository instructorDao;
 
-    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StatusRepository statusDao, InstructorRepository instructorDao) {
+    private final MaterialRepository materialsDao;
+
+    public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao,
+                                 ProviderRepository providerDao, UserRepository userDao, StatusRepository statusDao,
+                                 InstructorRepository instructorDao, MaterialRepository materialsDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
         this.userDao = userDao;
-        StatusDao = statusDao;
+        this.StatusDao = statusDao;
         this.instructorDao = instructorDao;
+        this.materialsDao = materialsDao;
     }
 
     @GetMapping("/user.json")
@@ -73,13 +78,14 @@ public class CoordinatorController {
             return "redirect:/profile";
         }
 
-        Provider provider = providerDao.findByCoordinator_Id(32L);
+        Provider provider = providerDao.findByCoordinator_Id(2L);
 
         Iterable<Curriculum> curricula = curriculumDao.findAllByProvider_Id(2L);
         model.addAttribute("provider", provider);
         model.addAttribute("curricula", curricula);
         model.addAttribute("curriculum", new Curriculum());
         model.addAttribute("course", new Course());
+        model.addAttribute("materials", materialsDao.findAll());
         return "coordinator/profile";
     }
 

@@ -37,7 +37,7 @@ VALUES (1, 'nec@nec.co.uk', 'Darius', 'Ina', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qi
        (14, 'nonummy@malesuadamalesuadaInteger.co.uk', 'Dylan', 'Ginger', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(109) 964-8734', 'porttitor', null, 'student','https://fer-uig.glitch.me'),
        (32, 'jason@jason.com', 'Jason', 'Lindsey', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(713) 962-9143', 'jason', null, 'coordinator', 'https://fer-uig.glitch.me'),
        (38, 'Nam.consequat.dolor@metus.co.uk', 'Sean', 'Nathaniel', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(829) 444-9732', 'molestie', null, 'instructor', 'https://fer-uig.glitch.me'),
-       (39, 'eleifend.nunc@euodio.co.uk', 'Bell', 'Cameron', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(711) 769-7228', 'quam.', null, 'instructor', 'https://fer-uig.glitch.me'),
+       (39, 'eleifend.nunc@euodio.co.uk', 'Bell', 'Cameron', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(711) 769-7228', 'Tuam', null, 'instructor', 'https://fer-uig.glitch.me'),
        (40, 'non@acfeugiatnon.net', 'Rhonda', 'Dahlia', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(297) 398-4344', 'purus', null, 'instructor', 'https://fer-uig.glitch.me'),
        (41, 'elementum.lorem.ut@dolorFuscemi.ca', 'Melanie', 'Vance', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(760) 663-2027', 'in', null, 'instructor', 'https://fer-uig.glitch.me');
 
@@ -187,7 +187,7 @@ VALUES (1, 2, 101, 3),
        (9, 2, 101, 11),
        (10, 2, 101, 12),
        (11, 2, 101, 13),
-       (10, 2, 101, 14);
+       (12, 2, 101, 14);
 
 INSERT INTO user_provider (user_id, provider_id)
 VALUES (1, 2),
