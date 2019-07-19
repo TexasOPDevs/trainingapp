@@ -16,21 +16,60 @@
 </th:block>
 
 <div class="container">
-<h3>Provider View Page</h3>
-<img th:src="${provider.image}" alt="providerImg"/>
-<h4 th:text="${provider.name}"></h4>
+    <div class="row">
+        <div class="row pt-2">
+            <div class="col s4">
+                <img class="circle" th:src="${provider.image}" alt="providerImg" style="width: 100px; height: 100%;"/>
+            </div>
+        </div>
+        <div class="col s8">
+            <th:block th:if="${provider.image != null}">
+             <h3 th:text="${provider.name}">
+
+             </h3>
+            </th:block>
+        </div>
+        <div class="row">
+            <h3 class="center">Contact Info</h3>
+            <div class="col s6">
+                 <h5>
+                     <span th:text="${provider.coordinator.first_name}"></span>
+                     <span> </span>
+                     <span th:text="${provider.coordinator.last_name}"></span>
+
+                 </h5>
+
+            </div>
+            <div class="col s6">
+                 <h5 th:text="'Phone: ' + ${provider.coordinator.phone} + ', Email: ' + ${provider.coordinator.email}">
+
+                 </h5>
+            </div>
+        </div>
+    </div>
+    <div class="row" th:each="instructor : ${provider.users}">
+           <th:block th:if="${instructor.role == 'instructor'}">
+                   <div class="col s12 m7 l4">
+                       <div class="card">
+                           <div class="card-image">
+                               <img
+                                       src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/>
+                               <span th:text="${instructor.first_name} + ' ' ${instructor.last_name}"
+                                     class="card-title"></span>
+                           </div>
+                           <div class="card-content">
+                               <p th:text="${instructor.bio}">
+
+                               </p>
+                           </div>
+                           <div class="card-action">
+                               <a href="#" th:text="${instructor.email}">This is a link</a>
+                           </div>
+                       </div>
+                   </div>
+           </th:block>
+    </div>
 </div>
-
-
-
-
-
-<script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"
->
-</script>
 
 <th:block th:replace="partials/master :: materializejs">
 
