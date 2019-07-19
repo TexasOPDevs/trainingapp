@@ -15,7 +15,7 @@ public class User {
     @Id
     private Long   id;
 
-    @Column
+    @Column(unique = true)
     private String username;
 
     @Column
@@ -24,7 +24,7 @@ public class User {
     @Column
     private String last_name;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
     @Column
@@ -41,7 +41,9 @@ public class User {
     private String bio;
 
     @Column
-    private String image;
+
+    private String img;
+
 
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -80,6 +82,23 @@ public class User {
     public User() {
     }
 
+    public User(Long id, String username, String first_name, String last_name, String email, String phone, String password, String role, String bio, String img, List<Provider> providers, List<User_Certification> certifications, List<Attendance> attendances, List<Course> courses) {
+        this.id = id;
+        this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.role = role;
+        this.bio = bio;
+        this.img = img;
+        this.providers = providers;
+        this.certifications = certifications;
+        this.attendances = attendances;
+        this.courses = courses;
+    }
+
     public User(User copy) {
         this.id = copy.id;
         this.username = copy.username;
@@ -100,6 +119,14 @@ public class User {
         this.phone = phone;
         this.password = password;
         this.image = image;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public Long getId() {

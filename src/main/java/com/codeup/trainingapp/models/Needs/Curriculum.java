@@ -16,20 +16,11 @@ public class Curriculum {
     @Column
     private String name;
 
-    @Column
-    private Long capacity;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(columnDefinition = "TEXT")
     private String learning_objectives;
-
-    @Column(columnDefinition = "TEXT")
-    private String course_outline;
-
-    @Column
-    private String certification;
 
     @Column
     private Date creation_date;
@@ -56,18 +47,10 @@ public class Curriculum {
     @JsonManagedReference
     private List<Course> courses;
 
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
-//    private List<Gradable> gradables;
-
-
-    public Curriculum(String name, Long capacity, String description, String learning_objectives, String course_outline, String certification, Date creation_date, Date update_date, Provider provider) {
+    public Curriculum(String name, Long capacity, String description, String learning_objectives, String outline, String certification, Date creation_date, Date update_date, Provider provider) {
         this.name = name;
-        this.capacity = capacity;
         this.description = description;
         this.learning_objectives = learning_objectives;
-        this.course_outline = course_outline;
-        this.certification = certification;
         this.creation_date = creation_date;
         this.update_date = update_date;
         this.provider = provider;
@@ -92,14 +75,6 @@ public class Curriculum {
         this.name = name;
     }
 
-    public Long getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Long capacity) {
-        this.capacity = capacity;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -114,22 +89,6 @@ public class Curriculum {
 
     public void setLearning_objectives(String learning_objectives) {
         this.learning_objectives = learning_objectives;
-    }
-
-    public String getCourse_outline() {
-        return course_outline;
-    }
-
-    public void setCourse_outline(String course_outline) {
-        this.course_outline = course_outline;
-    }
-
-    public String getCertification() {
-        return certification;
-    }
-
-    public void setCertification(String certification) {
-        this.certification = certification;
     }
 
     public Date getCreation_date() {

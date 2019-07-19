@@ -50,9 +50,9 @@
 
                 <h5>Course Outline</h5>
 
-                <div class="row" th:switch="${course.curriculum.course_outline}">
+                <div class="row" th:switch="${course.curriculum.outline}">
                     <p th:case="null" class="col s12">No outline found</p>
-                    <p th:case="*" class="col s12" th:text="${course.curriculum.course_outline}"></p>
+                    <p th:case="*" class="col s12" th:text="${course.curriculum.outline}"></p>
                 </div>
 
             </div>
