@@ -15,8 +15,8 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#overview">Overview</a></li>
-                <li class="tab col s3"><a class="active" href="#allcourses">Courses</a></li>
+                <li class="tab col s3"><a class="active" href="#overview">Overview</a></li>
+                <li class="tab col s3"><a href="#allcourses">Courses</a></li>
             </ul>
         </div>
         <div id="overview" class="col s12">
@@ -33,7 +33,7 @@
                     <h6>Description</h6>
                     <p class="col s12" th:text="${curriculum.description}" ></p>
                     <h6>Course Outline</h6>
-                    <p class="col s12" th:text="${curriculum.course_outline}" ></p>
+                    <p class="col s12" th:text="${curriculum.outline}" ></p>
                     <h6>Learning Objectives</h6>
                     <p class="col s12" th:text="${curriculum.learning_objectives}" ></p>
 
@@ -127,6 +127,12 @@
 
     </div>
 
+</div>
+
+<div class="fixed-action-btn">
+    <a th:href="'/instructor/curriculum/' + ${curriculum.id} + '/edit'" class="btn-floating btn-large red">
+        <i class="large material-icons">edit</i>
+    </a>
 </div>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
