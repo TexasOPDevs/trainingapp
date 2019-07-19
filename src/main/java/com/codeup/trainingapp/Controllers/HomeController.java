@@ -65,6 +65,7 @@ public class HomeController {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("user", userDao.findOne(user.getId()));
         }
+        System.out.println("test first");
         model.addAttribute("user", new User());
         model.addAttribute("courses", courseDao.findAllByStatus_Id(204L));
         model.addAttribute("student", studentDao.findAll());
@@ -74,12 +75,12 @@ public class HomeController {
     @PostMapping("/apply")
     private String signup(@RequestParam(name="course") Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         Student student = new Student();
+        System.out.println("test postmap");
         student.setUser(userDao.findOne(user.getId()));
         student.setCourse(courseDao.findOne(id));
         student.setStatus(statusDao.findOne(102L));
-        if(studentDao.findByCourse_IdAndStatus_Id(id, 102L) == null) {
+        if(studentDao.findByCourse_IdAndStatus_Id(id, 102L) != null) {
             studentDao.save(student);
         }
         return "redirect:/student";
