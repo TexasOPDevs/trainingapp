@@ -50,38 +50,27 @@
                                    th:text="${course.curriculum.name}"></a>
                             </td>
                             <td>
-                                <a th:href="/provider/${course.curriculum.provider.name}"
+                                <a th:href="'/provider/' + ${course.curriculum.provider.name}"
                                    th:text="${course.curriculum.provider.name}"></a>
                             </td>
                             <td th:text="${course.start_date}">
 
                             </td>
                             <td>
-                                <!--Check to see if a USER has a course status for the given course if not then show
-                                the apply button-->
-<!--                                <th:block th:each="status : ${student}">-->
-<!--                                    <th:block th:if="${status.course.id == ${course.id}}">-->
-<!--                                        <th:block th:if="${status.user.id == ${user.id}}">-->
-<!--                                            PENDING-->
-<!--                                        </th:block>-->
-<!--                                        <th:block th:if="status.user.id != ${user.id}">-->
-                                            <form th:method="post" name="apply" th:action="@{/apply}">
-                                                <input class="course" type="hidden" name="course"
-                                                       th:value="${course.id}"/>
-                                                <button class="right btn waves-effect waves-light" type="submit"
-                                                        name="action">Apply
-                                                </button>
-                                            </form>
-<!--                                        </th:block>-->
-<!--                                    </th:block>-->
-<!--                                </th:block>-->
+
+                                <form th:method="post" name="apply" th:action="@{/apply}">
+                                    <input class="course" type="hidden" name="course"
+                                           th:value="${course.id}"/>
+                                    <button class="right btn waves-effect waves-light" type="submit"
+                                            name="action">Apply
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                             <div th:id="${course.id}" class="modal">
                                 <div class="modal-content">
                                     <h4 th:text="${course.curriculum.name}"></h4>
                                     <h5 th:text="'Location: ' + ${course.location}"></h5>
-                                    <p th:text="${course.curriculum.outline}"></p>
                                     <p th:text="${course.curriculum.description}"></p>
                                 </div>
                                 <div class="modal-footer">

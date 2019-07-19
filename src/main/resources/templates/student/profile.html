@@ -43,13 +43,29 @@
                             <tbody th:each="student : ${students}">
                             <th:block th:if="${student.status.name == 'pending'}">
                                 <tr>
-                                    <td th:text="${student.course.curriculum.name}"></td>
+                                    <td>
+                                        <a class="modal-trigger" th:href="'#' + ${student.course.id}"
+                                           th:text="${student.course.curriculum.name}"></a>
+                                    </td>
                                     <td th:each="instructor : ${student.course.instructors}">
                                         <span th:text="${instructor.last_name} + ' ' + ${instructor.first_name}"></span>
                                     </td>
                                     <td th:text="${student.course.location}"></td>
-                                    <td th:text="${student.course.curriculum.provider.name}"></td>
+                                    <td>
+                                        <a th:href="'/provider/' + ${student.course.curriculum.provider.name}"
+                                           th:text="${student.course.curriculum.provider.name}"></a>
+                                    </td>
                                 </tr>
+                                <div th:id="${student.course.id}" class="modal white">
+                                    <div class="modal-content black-text">
+                                        <h4 th:text="${student.course.curriculum.name}"></h4>
+                                        <h5 th:text="'Location: ' + ${student.course.location}"></h5>
+                                        <p th:text="${student.course.curriculum.description}"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </th:block>
 
                             </tbody>
@@ -73,13 +89,29 @@
                             <tbody th:each="student : ${students}">
                             <th:block th:if="${student.status.name == 'enrolled'}">
                                 <tr>
-                                    <td th:text="${student.course.curriculum.name}"></td>
+                                    <td>
+                                        <a class="modal-trigger" th:href="'#' + ${student.course.id}"
+                                           th:text="${student.course.curriculum.name}"></a>
+                                    </td>
                                     <td th:each="instructor : ${student.course.instructors}">
                                         <span th:text="${instructor.last_name} + ' ' + ${instructor.first_name}"></span>
                                     </td>
                                     <td th:text="${student.course.location}"></td>
-                                    <td th:text="${student.course.curriculum.provider.name}"></td>
+                                    <td>
+                                        <a th:href="'/provider/' + ${student.course.curriculum.provider.name}"
+                                           th:text="${student.course.curriculum.provider.name}"></a>
+                                    </td>
                                 </tr>
+                                <div th:id="${student.course.id}" class="modal">
+                                    <div class="modal-content">
+                                        <h4 th:text="${student.course.curriculum.name}"></h4>
+                                        <h5 th:text="'Location: ' + ${student.course.location}"></h5>
+                                        <p th:text="${student.course.curriculum.description}"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </th:block>
 
                             </tbody>
@@ -112,8 +144,15 @@
                             <td th:text="${student.course.curriculum.name}"></td>
                             <td th:text="${student.course.start_date}"></td>
                             <td th:text="${student.course.end_date}"></td>
-                            <td th:each="attendance : ${student.course.attendances}">
-                            <span th:text="${attendance}"></span>
+                            <td th:text="${attendanceAvgs}">
+<!--                                <th:block th:with="attend = 0, count = 0">-->
+
+<!--                                    <th:block th:if="${attendance.present == true}">-->
+<!--                                         <th:block th:with="${attend = attend + 1}">-->
+<!--                                             -->
+<!--                                         </th:block>-->
+<!--                                    </th:block>-->
+<!--                                </th:block>-->
                             </td>
                         </tr>
                     </th:block>
