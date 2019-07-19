@@ -41,7 +41,9 @@ public class User {
     private String bio;
 
     @Column
+
     private String img;
+
 
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -65,6 +67,13 @@ public class User {
     @JsonBackReference
     private List<Course> courses;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
 
 //    @ManyToMany(mappedBy = "expertise")
@@ -101,7 +110,7 @@ public class User {
         this.role = copy.role;
     }
 
-    public User(Long id, String username, String first_name, String last_name, String email, String phone, String password) {
+    public User(Long id, String username, String first_name, String last_name, String email, String phone, String password, String image) {
         this.id = id;
         this.username = username;
         this.first_name = first_name;
@@ -109,6 +118,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.image = image;
     }
 
     public String getImg() {
