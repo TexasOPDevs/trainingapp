@@ -59,7 +59,7 @@ var provider = function($) {
             <p>Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
         </div>
         <div class="card-action">
-            <a href="#">This is a link</a>
+            <a href="/provider/${provider.name}">View Page</a>
         </div>
         </div>
         </div>
