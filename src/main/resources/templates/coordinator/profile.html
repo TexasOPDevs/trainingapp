@@ -46,37 +46,35 @@
                         <!--we no longer need capacity-->
                         <!--*capacity gone-->
 
-                        <div class="input-field col s6">
-                            <a class='dropdown-trigger btn' href='#' data-target='materials'>Add Materials</a>
-                            <ul id='materials' class='dropdown-content'>
-                                <th:block th:each="material : ${materials}">
-                                <li>
-                                    <p>
-                                        <label>
-                                            <input th:field="*{materials}" th:value="${material.getId()}" type="checkbox"/>
-                                            <span th:text="${material}"></span>
-                                        </label>
-                                    </p>
-                                </li>
-                                </th:block>
-                            </ul>
-                        </div>
-                        <div class="input-field col s6">
-                            <input placeholder="Placeholder" type="text" th:field="*{certification}" class="validate"/>
-                            <label th:for="*{certification}">Certification</label>
-                        </div>
+
+
+
+
+
+                                <div class="input-field input-field">
+                                    <select multiple="multiple" th:field="*{materials}" name="tags" id="tags">
+                                        <option value="" disabled="disabled" selected="selected">Choose your option</option>
+                                        <option  th:each="material : ${materials}" th:text="${material.name}" th:value="${material.id}" th:selected="${material.id}" />
+                                    </select>
+                                    <label th:for="*{materials}"></label>
+                                </div>
+
+
+
                         <div class="input-field col s12">
-                            <textarea th:field="*{course_outline}" class="materialize-textarea"></textarea>
-                            <label th:for="*{course_outline}">Course Outline</label>
+                            <textarea th:field="*{description}" class="materialize-textarea"></textarea>
+                            <label th:for="*{description}">Description</label>
                         </div>
+
                         <div class="input-field col s12">
                             <textarea th:field="*{learning_objectives}" class="materialize-textarea"></textarea>
                             <label th:for="*{learning_objectives}">Learning Objectives</label>
                         </div>
-
+                    <div class="input-field col s12">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
+                    </div>
                     </form>
                     </div>
                 </div>

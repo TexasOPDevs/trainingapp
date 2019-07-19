@@ -7,9 +7,9 @@
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Certification</th><th>Learning Objectives</th><th>Creation Date</th><th>Materials</th><th></th></tr></thead><tbody>';
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Creation Date</th><th>Materials</th><th></th></tr></thead><tbody>';
         curricula.forEach(function(cur) {
-            html += `<tr><td>${cur.name}</td><td>${cur.certification}</td><td>${cur.learning_objectives}</td><td>${cur.creation_date}</td><td>`;
+            html += `<tr><td>${cur.name}</td><td>${cur.creation_date}</td><td>`;
             cur.materials.forEach(function(element){
                 html += ` ${element.name} `
             });
@@ -17,8 +17,8 @@
             <div id="modal-cur-${cur.id}" class="modal">
                 <div class="modal-content">
                   <h4>${cur.name}</h4>
-                  <h5>Outline:</h5>
-                  <p>${cur.course_outline}</p>
+                  <h5>Learning Objectives:</h5>
+                  <pre><p>${cur.learning_objectives}</p></pre>
                   <h5>Description:</h5>
                   <p>${cur.description}</p>
                   <a href="">View all active classes</a>
