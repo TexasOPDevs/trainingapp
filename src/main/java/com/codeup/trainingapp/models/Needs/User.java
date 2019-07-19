@@ -67,17 +67,7 @@ public class User {
     @JsonBackReference
     private List<Course> courses;
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-
-//    @ManyToMany(mappedBy = "expertise")
-//    private List<Expertise> expertise;
 
     public User() {
     }
@@ -118,7 +108,6 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.image = image;
     }
 
     public String getImg() {
