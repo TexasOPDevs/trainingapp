@@ -44,12 +44,13 @@
                     <li>
                         <div class="divider"></div>
                     </li>
-                    <li><a class="waves-effect" th:action="@{/logout}" ><i class="material-icons">directions_run</i>Logout</a></li>
+                    <li>
+                        <button class="btn waves-effect waves-light" th:action="@{/logout}" type="submit" name="action">Logout
+                            <i class="material-icons right">directions_run</i>
+                        </button>
+                    </li>
 
                 </ul>
-
-
-
 
 
                 <ul th:case="'instructor'" id="slide-out" class="sidenav scheme-white">
@@ -63,13 +64,39 @@
                     </li>
                     <li><a href="/instructor/courses"><i class="material-icons">dns</i>Courses</a></li>
                     <li><a href="/instructor/curricula"><i class="material-icons">dns</i>Curricula</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li>
+                        <button class="btn waves-effect waves-light" th:action="@{/logout}" type="submit" name="action">Logout
+                            <i class="material-icons right">directions_run</i>
+                        </button>
+                    </li>
+                    </ul>
+
+
+                <ul th:case="'coordinator'" id="slide-out" class="sidenav scheme-white">
+                    <li>
+                        <div class="user-view scheme-grey">
+                            <a href="#user"><img class="circle"
+                                                 src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                            <a href="#name"><span th:text="${#authentication.principal.username}" class="white-text name"></span></a>
+                            <a href="#email"><span th:text="${#authentication.principal.email}" class="white-text email"></span></a>
+                        </div>
+                    </li>
+                    <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
                     <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
                     <li>
                         <div class="divider"></div>
                     </li>
-                    <li><a class="waves-effect" th:action="@{/logout}" ><i class="material-icons">directions_run</i>Logout</a></li>
+                    <li>
+                    <button class="btn waves-effect waves-light" th:action="@{/logout}" type="submit" name="action">Logout
+                        <i class="material-icons right">directions_run</i>
+                    </button>
+                    </li>
 
                 </ul>
+
             </th:block>
 
         </div>
