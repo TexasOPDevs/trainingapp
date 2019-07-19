@@ -20,7 +20,7 @@ VALUES (101, 'enrolled'),
        (203, 'closed'),
        (204, 'open for enrollment');
 
-INSERT INTO training_db.user (id, email, first_name, last_name, password, phone, username, bio, role, image)
+INSERT INTO training_db.user (id, email, first_name, last_name, password, phone, username, bio, role, img)
 VALUES (1, 'nec@nec.co.uk', 'Darius', 'Ina', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(976) 328-7437', 'sagittis', null, 'instructor', 'https://fer-uig.glitch.me'),
        (2, 'risus.at@euismodurnaNullam.org', 'Lucy', 'Jorden', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(810) 280-2106', 'Donec', null, 'instructor', 'https://fer-uig.glitch.me'),
        (3, 'ridiculus.mus@Nullafacilisis.edu', 'Wyoming', 'Zelenia', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(199) 264-2861', 'rutrum', null, 'student', 'https://fer-uig.glitch.me'),
