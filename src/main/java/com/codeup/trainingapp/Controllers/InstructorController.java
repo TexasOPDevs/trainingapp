@@ -136,13 +136,15 @@ public class InstructorController {
     @PostMapping("/curriculum/create_grade")
     public String CreateCurriculumMethod(
             @RequestParam(name = "name") String name,
-            @RequestParam(name = "weight") int weight
+            @RequestParam(name = "weight") int weight,
+            @RequestParam(name = "curriculum") Curriculum curriculum
             ){
         Gradable newGradable = new Gradable();
         Long millis = System.currentTimeMillis();
         Date date = new Date(millis);
         newGradable.setName(name);
         newGradable.setWeight(weight);
+        newGradable.setCurriculum(curriculum);
         newGradable.setCreation_date(date);
         newGradable.setUpdate_date(date);
         gradableDao.save(newGradable);
