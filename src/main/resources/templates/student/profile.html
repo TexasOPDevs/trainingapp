@@ -30,53 +30,53 @@
         </ul>
     </div>
     <div id="status" class="col s12">
-        <div class="row pt-2">
-            <div class="container">
-                <div class="card blue-grey darken-1 col s12 m12 l6">
-                    <div class="card-content white-text">
-                        <span class="card-title">Pending Approval</span>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Instructor</th>
-                                <th>Location</th>
-                                <th>Training Provider</th>
-                            </tr>
-                            </thead>
+                <div class="row pt-2">
+                    <div class="container">
+                        <div class="card blue-grey darken-1 col s12 m12 l6">
+                            <div class="card-content white-text">
+                                <span class="card-title">Pending Approval</span>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Instructor</th>
+                                        <th>Location</th>
+                                        <th>Training Provider</th>
+                                    </tr>
+                                    </thead>
 
-                            <tbody th:each="student : ${students}">
-                            <th:block th:if="${student.status.name == 'pending'}">
-                                <tr>
-                                    <td>
-                                        <a class="modal-trigger" th:href="'#' + ${student.course.id}"
-                                           th:text="${student.course.curriculum.name}"></a>
-                                    </td>
-                                    <td th:each="instructor : ${student.course.instructors}">
-                                        <span th:text="${instructor.last_name} + ' ' + ${instructor.first_name}"></span>
-                                    </td>
-                                    <td th:text="${student.course.location}"></td>
-                                    <td>
-                                        <a th:href="'/provider/' + ${student.course.curriculum.provider.name}"
-                                           th:text="${student.course.curriculum.provider.name}"></a>
-                                    </td>
-                                </tr>
-                                <div th:id="${student.course.id}" class="modal white">
-                                    <div class="modal-content black-text">
-                                        <h4 th:text="${student.course.curriculum.name}"></h4>
-                                        <h5 th:text="'Location: ' + ${student.course.location}"></h5>
-                                        <p th:text="${student.course.curriculum.description}"></p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                    </div>
-                                </div>
-                            </th:block>
+                                    <tbody th:each="student : ${students}">
+                                    <th:block th:if="${student.status.name == 'pending'}">
+                                        <tr>
+                                            <td>
+                                                <a class="modal-trigger" th:href="'#' + ${student.course.id}"
+                                                   th:text="${student.course.curriculum.name}"></a>
+                                            </td>
+                                            <td th:each="instructor : ${student.course.instructors}">
+                                                <span th:text="${instructor.last_name} + ' ' + ${instructor.first_name}"></span>
+                                            </td>
+                                            <td th:text="${student.course.location}"></td>
+                                            <td>
+                                                <a th:href="'/provider/' + ${student.course.curriculum.provider.name}"
+                                                   th:text="${student.course.curriculum.provider.name}"></a>
+                                            </td>
+                                        </tr>
+                                        <div th:id="${student.course.id}" class="modal white">
+                                            <div class="modal-content black-text">
+                                                <h4 th:text="${student.course.curriculum.name}"></h4>
+                                                <h5 th:text="'Location: ' + ${student.course.location}"></h5>
+                                                <p th:text="${student.course.curriculum.description}"></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                            </div>
+                                        </div>
+                                    </th:block>
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                 <div class="card white darken-1 col s12 m12 l6">
                     <div class="card-content">
                         <span class="card-title">Enrolled</span>
