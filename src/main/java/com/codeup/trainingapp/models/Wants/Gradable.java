@@ -25,7 +25,7 @@ public class Gradable {
     @Column
     private Date update_date;
 
-    @ManyToOne()
+    @ManyToOne
     private Curriculum curriculum;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gradable")
