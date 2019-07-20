@@ -1,10 +1,6 @@
-<!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:security="http://www.springframework.org/schema/security">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
+
 
 <th:block th:fragment="nav">
 
@@ -14,9 +10,9 @@
             <a href="/" class="pl-1 brand-logo">TOP</a>
             <ul class="right">
                 <li>
-                    <a href="#" data-target="slide-out" class="sidenav-trigger">
-                        <i class="medium material-icons right">menu</i></a>
-
+                    <a href="#" data-target="slide-out" class="sidenav-trigger valign-wrapper">
+                    <img th:src="@{img/toplogowhite.png}"  width="50px" alt="landing_page_img" />
+                    </a>
                 </li>
             </ul>
         </div>
@@ -45,9 +41,11 @@
                         <div class="divider"></div>
                     </li>
                     <li>
-                        <button class="btn waves-effect waves-light" th:action="@{/logout}" type="submit" name="action">Logout
-                            <i class="material-icons right">directions_run</i>
-                        </button>
+                        <form th:action="@{/logout}" th:method="post" type="submit">
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                <i class="material-icons left">directions_run</i>
+                            </button>
+                        </form>
                     </li>
 
                 </ul>
@@ -68,9 +66,11 @@
                         <div class="divider"></div>
                     </li>
                     <li>
-                        <button class="btn waves-effect waves-light" th:action="@{/logout}" type="submit" name="action">Logout
-                            <i class="material-icons right">directions_run</i>
-                        </button>
+                        <form th:action="@{/logout}" th:method="post" type="submit">
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                <i class="material-icons left">directions_run</i>
+                            </button>
+                        </form>
                     </li>
                     </ul>
 
@@ -90,9 +90,11 @@
                         <div class="divider"></div>
                     </li>
                     <li>
-                    <button class="btn waves-effect waves-light" th:action="@{/logout}" type="submit" name="action">Logout
-                        <i class="material-icons right">directions_run</i>
-                    </button>
+                        <form th:action="@{/logout}" th:method="post" type="submit">
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                <i class="material-icons left">directions_run</i>
+                            </button>
+                        </form>
                     </li>
 
                 </ul>
@@ -124,26 +126,6 @@
 
 </th:block>
 
-<!--<th:block th:fragment="navBar">-->
-<!--    <ul id="dropdown1" class="dropdown-content">-->
-<!--        <li><a href="/student">My Portal</a></li>-->
-<!--        <li><a href="/courses">Courses</a></li>-->
-<!--        <li class="divider"></li>-->
-<!--        <li><a href="/login">Login</a></li>-->
-<!--        <li><a href="#!">Logout</a></li>-->
-<!--    </ul>-->
-<!--    <nav>-->
-<!--        <div class="nav-wrapper">-->
-<!--            <a href="#!" class="pl-1 brand-logo">Logo</a>-->
-<!--            <ul class="right">-->
-<!--                <li>-->
-<!--                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">-->
-<!--                        <i class="medium material-icons right">arrow_drop_down</i></a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </nav>-->
-<!--</th:block>-->
 
 
 <th:block th:fragment="materialize">
@@ -151,8 +133,7 @@
     <link type="text/css" rel="stylesheet" th:href="@{/node_modules/materialize-css/dist/css/materialize.css}"
           media="screen,projection"/>
     <link rel="stylesheet" th:href="@{/padding.css}"/>
-    <!--<meta name="_csrf" th:content="${_csrf.token}"/>-->
-    <!--<meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <link rel="shortcut icon" type="image/png" th:href="@{img/toplogoblue.png}"/>
 </th:block>
 
 
@@ -180,5 +161,4 @@
 </th:block>
 
 
-</body>
 </html>

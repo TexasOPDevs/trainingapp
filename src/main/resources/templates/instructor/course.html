@@ -10,18 +10,17 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
-<div class="container">
 
     <div class="row">
-        <div class="col s12">
+        <div class="s12">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#overview">Overview</a></li>
-                <li class="tab col s3"><a href="#roster">Roster</a></li>
-                <li class="tab col s3"><a href="#attendance">Attendance</a></li>
-                <li class="tab col s3 disabled"><a href="#grades">Grades</a></li>
+                <li class="tab s3"><a href="#overview">Overview</a></li>
+                <li class="tab s3"><a href="#roster">Roster</a></li>
+                <li class="tab s3"><a href="#attendance">Attendance</a></li>
+                <li class="tab s3"><a href="#grades">Grades</a></li>
             </ul>
         </div>
-        <div id="overview" class="col s12">
+        <div id="overview" class="s12">
 
             <div class="divider"></div>
             <div class="section">
@@ -53,9 +52,9 @@
 
 
         </div>
-        <div id="roster" class="col s12">
+        <div id="roster" class="s12">
 
-            <table class="highlight">
+            <table class="highlight centered">
                 <thead>
 
                     <tr>
@@ -85,10 +84,10 @@
 
 
         </div>
-        <div id="attendance" class="col s12">
+        <div id="attendance" class="s12">
 
             <div class="row">
-                <div class="col s12">
+                <div class=" s12">
 
 
                     <ul class="tabs">
@@ -141,10 +140,11 @@
 
 
         </div>
-        <div id="grades" class="col s12">Test 4</div>
+        <div id="grades" class="col s12">
+
+        </div>
     </div>
 
-</div>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
