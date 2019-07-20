@@ -14,6 +14,11 @@
 </th:block>
 
 <h1 class="center">Student Portal</h1>
+
+<th:block th:if="${error != null}">
+<h1 th:text="${error}"></h1>
+</th:block>
+
 <h3 class="center">Welcome <span th:text="${user.first_name}"></span>
     <span th:text="${user.last_name}"></span></h3>
 <div class="row">
