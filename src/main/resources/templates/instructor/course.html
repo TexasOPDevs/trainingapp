@@ -86,16 +86,16 @@
         </div>
         <div id="attendance" class="s12">
 
-            <div class="row">
-                <div class=" s12">
+            <!--<div class="row">-->
+            <!--<div class=" s12">-->
 
 
-                    <ul class="tabs">
-                        <li th:each="attendance:${course.attendances}" class="tab col s3"><a th:href="'#' + ${attendance.date}" th:text="${attendance.date}"></a></li>
-                    </ul>
+                    <!--<ul class="tabs">-->
+                        <!--<li th:each="attendance:${course.attendances}" class="tab col s3"><a th:href="'#' + ${attendance.date}" th:text="${attendance.date}"></a></li>-->
+                    <!--</ul>-->
 
 
-                </div>
+                <!--</div>-->
 
 
 
@@ -134,26 +134,55 @@
 <!--    -->
 <!--                    </div>-->
 <!--                -->
-            </div>
-
+            <!--</div>-->
 
 
 
         </div>
+
+        <!--</div>-->
         <div id="grades" class="col s12">
 
-        </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Assignment</th>
+                        <th>Date</th>
+                        <th>Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="student : ${course.gradable_students}">
+                        <td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>
+                        <td th:text="${student.getGradable().getName()}"></td>
+                        <td th:text="${student.posted_at}"></td>
+                        <div th:if="${student.getGrade() != null}">
+                            <td th:text="${student.getGrade()} + '/' + ${student.getGradable().getWeight()}"></td></div>
+                        <div th:if="${student.getGrade() == null}">
+                            <td>
+                                <form action="">
+                                <input th:name="${student.grade}" th:max="${student.gradable.weight}" th:id="${student.grade}" type="number"/>
+                                <label th:for="${student.grade}" th:text="'Enter Score out of ' + ${student.gradable.weight}"></label>
+                                    <button>submit</button>
+                                </form>
+
+                            </td>
+                        </div>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
     </div>
+
+
 
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
-<!--<script>-->
-<!--    $(document).ready(function(){-->
-<!--        $('ul.tabs').tabs({-->
-<!--            swipeable : true-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
+
 </body>
 </html>

@@ -134,4 +134,12 @@ public class Curriculum {
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
+
+    public List<Gradable> getGradables() {
+        return gradables;
+    }
+
+    public void setGradables(List<Gradable> gradables) {
+        this.gradables = gradables;
+    }
 }
