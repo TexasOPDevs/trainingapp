@@ -90,8 +90,8 @@ Introduction to Use of Force
 
 
 INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id)
-VALUES (1, 28, '2020-09-07', null, 'Ap #512-4625 Cras Av.', '2019-02-22', '12:00:00', 2, 201),
-       (2, 26, '2020-08-02', null, '217-1172 Ad Rd.', '2018-07-27', '16:00:00', 3, 201),
+VALUES (1, 28, '2020-09-07', null, 'Ap #512-4625 Cras Av.', '2019-02-22', '12:00:00', 3, 201),
+       (2, 26, '2020-08-02', null, '217-1172 Ad Rd.', '2018-07-27', '16:00:00', 2, 201),
        (3, 27, '2020-04-02', null, 'P.O. Box 680, 1294 Leo, Rd.', '2019-03-30', '08:00:00', 3, 204),
        (4, 33, '2020-04-04', null, 'P.O. Box 393, 8316 Sed St.', '2019-01-23', '08:00:00', 4, 204),
        (5, 12, '2019-12-15', null, 'P.O. Box 634, 6632 Ac Street', '2019-06-04', '18:00:00', 5, 202),
