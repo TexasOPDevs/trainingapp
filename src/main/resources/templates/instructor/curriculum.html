@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Courses</title>
+    <title>Curriculum</title>
     <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
@@ -65,9 +65,9 @@
 
                             </thead>
 
-                            <tbody  th:each="course: ${curriculum.courses}" th:switch="${course.status.name}">
+                            <tbody  th:each="course: ${curriculum.courses}">
 
-                            <tr th:case="'approved'">
+                            <tr>
                                 <td th:text="${course.id}" ></td>
                                 <td th:text="${course.students.size()}" ></td>
                                 <td>
