@@ -2,8 +2,10 @@ package com.codeup.trainingapp.Controllers;
 
 import com.codeup.trainingapp.Repositories.CourseRepository;
 import com.codeup.trainingapp.Repositories.CurriculumRepository;
+import com.codeup.trainingapp.Repositories.GradableRepository;
 import com.codeup.trainingapp.Repositories.ProviderRepository;
 import com.codeup.trainingapp.models.Needs.Curriculum;
+import com.codeup.trainingapp.models.Wants.Gradable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.rmi.MarshalledObject;
 import java.sql.Date;
 
 @Controller
@@ -22,11 +25,14 @@ public class InstructorController {
 
     private final ProviderRepository providerDao;
 
-    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao) {
+    private final GradableRepository gradableDao;
+
+    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao) {
 
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
+        this.gradableDao = gradableDao;
     }
 
 
@@ -115,6 +121,34 @@ public class InstructorController {
     public String CurriculumEditForm(Model model, @PathVariable Long curriculum_id){
         model.addAttribute("curriculum", curriculumDao.findOne(curriculum_id));
         return "instructor/edit_curriculum";
+    }
+
+
+    @GetMapping("/instructor/curriculum/{curriculum_id}/create_grade")
+    public String CreateCurriculumGrade(Model model, @PathVariable Long curriculum_id){
+        Gradable newGradable = new Gradable();
+        newGradable.setCurriculum(curriculumDao.findOne(curriculum_id));
+        model.addAttribute("gradable", newGradable);
+        return "instructor/add_gradable";
+    }
+
+
+    @PostMapping("/curriculum/create_grade")
+    public String CreateCurriculumMethod(
+            @RequestParam(name = "name") String name,
+            @RequestParam(name = "weight") int weight,
+            @RequestParam(name = "curriculum") Curriculum curriculum
+            ){
+        Gradable newGradable = new Gradable();
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        newGradable.setName(name);
+        newGradable.setWeight(weight);
+        newGradable.setCurriculum(curriculum);
+        newGradable.setCreation_date(date);
+        newGradable.setUpdate_date(date);
+        gradableDao.save(newGradable);
+        return "redirect:/instructor/curriculum/" + newGradable.getCurriculum().getId();
     }
 
 }
