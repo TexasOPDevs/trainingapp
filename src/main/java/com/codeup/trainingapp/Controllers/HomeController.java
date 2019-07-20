@@ -72,14 +72,14 @@ public class HomeController {
     }
 
     @PostMapping("/apply")
-    private String signup(@RequestParam(name="course") Long id){
+    private String signup(@RequestParam(name="course") Long id, Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = new Student();
         System.out.println("test postmap");
-        student.setUser(userDao.findOne(user.getId()));
-        student.setCourse(courseDao.findOne(id));
-        student.setStatus(statusDao.findOne(102L));
-        if(studentDao.findByCourse_IdAndStatus_Id(id, 102L) != null) {
+        if(studentDao.findByCourse_IdAndStatus_Id(id, 102L) == null) {
+            student.setUser(userDao.findOne(user.getId()));
+            student.setCourse(courseDao.findOne(id));
+            student.setStatus(statusDao.findOne(102L));
             studentDao.save(student);
         }
         return "redirect:/student";
