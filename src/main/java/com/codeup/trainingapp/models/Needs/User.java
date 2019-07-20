@@ -2,6 +2,7 @@ package com.codeup.trainingapp.models.Needs;
 
 
 
+import com.codeup.trainingapp.models.Wants.Gradable_Student;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -67,6 +68,9 @@ public class User {
     @JsonBackReference
     private List<Course> courses;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Gradable_Student> gradable_students;
+
 
 
     public User() {
@@ -108,6 +112,14 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
+    }
+
+    public List<Gradable_Student> getGradable_students() {
+        return gradable_students;
+    }
+
+    public void setGradable_students(List<Gradable_Student> gradable_students) {
+        this.gradable_students = gradable_students;
     }
 
     public String getImg() {

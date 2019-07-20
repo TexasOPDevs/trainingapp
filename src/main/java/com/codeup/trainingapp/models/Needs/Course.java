@@ -1,5 +1,6 @@
 package com.codeup.trainingapp.models.Needs;
 
+import com.codeup.trainingapp.models.Wants.Gradable_Student;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -57,6 +58,9 @@ public class Course {
     @JsonManagedReference
     private List<User> instructors;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    private List<Gradable_Student> gradable_students;
+
     public Course() {
     }
 
@@ -72,6 +76,14 @@ public class Course {
         this.students = students;
         this.attendances = attendances;
         this.instructors = instructors;
+    }
+
+    public List<Gradable_Student> getGradable_students() {
+        return gradable_students;
+    }
+
+    public void setGradable_students(List<Gradable_Student> gradable_students) {
+        this.gradable_students = gradable_students;
     }
 
     public Long getCapacity() {
