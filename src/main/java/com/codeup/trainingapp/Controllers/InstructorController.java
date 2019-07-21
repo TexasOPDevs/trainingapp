@@ -1,12 +1,11 @@
 package com.codeup.trainingapp.Controllers;
 
-
-import com.codeup.trainingapp.Repositories.CourseRepository;
-import com.codeup.trainingapp.Repositories.CurriculumRepository;
-import com.codeup.trainingapp.Repositories.GradableRepository;
-import com.codeup.trainingapp.Repositories.ProviderRepository;
+import com.codeup.trainingapp.Repositories.*;
 import com.codeup.trainingapp.models.Needs.Curriculum;
+import com.codeup.trainingapp.models.Needs.Student;
+import com.codeup.trainingapp.models.Needs.User;
 import com.codeup.trainingapp.models.Wants.Gradable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.rmi.MarshalledObject;
 import java.sql.Date;
 
 @Controller
@@ -32,12 +30,9 @@ public class InstructorController {
 
     private final StatusRepository statusDao;
 
-    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao,
-                                ProviderRepository providerDao, StudentRepository studentDao, UserRepository userDao,
-                                StatusRepository statusDao) {
     private final GradableRepository gradableDao;
 
-    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao) {
+    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, UserRepository userDao, StudentRepository studentDao, StatusRepository statusDao) {
 
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
