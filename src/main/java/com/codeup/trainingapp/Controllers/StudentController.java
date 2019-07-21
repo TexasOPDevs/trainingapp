@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 @Controller
 public class StudentController {
     private final CourseRepository courseDao;
@@ -22,6 +25,9 @@ public class StudentController {
     private final ProviderRepository providerDao;
     private final UserRepository userDao;
     private final StudentRepository studentDao;
+
+//    private static DecimalFormat df = new DecimalFormat(".##");
+
 
     public StudentController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StudentRepository studentDao) {
         this.courseDao = courseDao;
@@ -35,13 +41,13 @@ public class StudentController {
     public String studentView(Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
-        Iterable<Student> students  =    studentDao.findAllByUser_Id(user.getId());
+        Iterable<Student> students  = studentDao.findAllByUser_Id(user.getId());
         List<Double> attendanceAvgs= new ArrayList<>();
         int i=0;
         double count = 0;
         for(Student student: students){
             System.out.println(student.getUser().getId());
-            if(student.getUser().getId().equals((((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()))) {
+            if(student.getUser().getId().equals(user.getId())) {
                 for (Attendance attend : student.getUser().getAttendances()) {
                     i++;
                     if (attend.getPresent()) {
