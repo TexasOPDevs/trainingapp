@@ -11,7 +11,7 @@
             <ul class="right">
                 <li>
                     <a href="#" data-target="slide-out" class="sidenav-trigger valign-wrapper">
-                    <img th:src="@{img/toplogowhite.png}"  width="50px" alt="landing_page_img" />
+                    <img th:src="@{toplogowhite.png}"  width="50px" alt="landing_page_img" />
                     </a>
                 </li>
             </ul>
@@ -133,14 +133,12 @@
     <link type="text/css" rel="stylesheet" th:href="@{/node_modules/materialize-css/dist/css/materialize.css}"
           media="screen,projection"/>
     <link rel="stylesheet" th:href="@{/padding.css}"/>
-    <link rel="shortcut icon" type="image/png" th:href="@{img/toplogoblue.png}"/>
 </th:block>
 
 
 <th:block th:fragment="materializejs">
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js}"></script>
     <th:block th:replace="partials/master :: minit"></th:block>
-<!--    <th:block th:replace="partials/master :: modal"></th:block>-->
 </th:block>
 
 

@@ -63,6 +63,14 @@ public class Curriculum {
     public Curriculum() {
     }
 
+    public List<Gradable> getGradables() {
+        return gradables;
+    }
+
+    public void setGradables(List<Gradable> gradables) {
+        this.gradables = gradables;
+    }
+
     public Long getId() {
         return id;
     }
