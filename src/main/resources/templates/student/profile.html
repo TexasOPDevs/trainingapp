@@ -15,9 +15,6 @@
 
 <h1 class="center">Student Portal</h1>
 
-<th:block th:if="${error != null}">
-<h1 th:text="${error}"></h1>
-</th:block>
 
 <h3 class="center">Welcome <span th:text="${user.first_name}"></span>
     <span th:text="${user.last_name}"></span></h3>
@@ -147,12 +144,20 @@
                     <th:block th:if="${student.status.name == 'enrolled'}">
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
-                            <td th:text="${student.course.start_date}"></td>
-                            <td th:text="${student.course.end_date}"></td>
+                            <td th:text="${#dates.format(student.course.start_date, 'MM-dd-yy')}"></td>
+                            <td th:text="${#dates.format(student.course.end_date, 'MM-dd-yy')}"></td>
                             <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
                             </td>
-                            <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
-                            </td>
+                            <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN')}">
+                                <td>
+                                    N/A
+                                </td>
+                            </th:block>
+                            <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN') == false}">
+                                <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
+                                    
+                                </td>
+                            </th:block>
                         </tr>
                     </th:block>
 
@@ -184,7 +189,7 @@
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
                             <td th:text="${student.course.curriculum.provider.name}"></td>
-                            <td th:text="${student.course.end_date}"></td>
+                            <td th:text="${#dates.format(student.course.end_date, 'MM-dd-yy')}"></td>
                         </tr>
                     </th:block>
                     </tbody>
