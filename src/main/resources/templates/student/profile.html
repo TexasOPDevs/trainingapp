@@ -139,8 +139,8 @@
                         <th>Name</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-
                         <th>Attendance</th>
+                        <th>Grade</th>
                     </tr>
                     </thead>
                     <tbody th:each="student : ${students}">
@@ -150,6 +150,8 @@
                             <td th:text="${student.course.start_date}"></td>
                             <td th:text="${student.course.end_date}"></td>
                             <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
+                            </td>
+                            <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
                             </td>
                         </tr>
                     </th:block>

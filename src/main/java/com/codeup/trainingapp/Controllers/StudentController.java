@@ -6,6 +6,7 @@ import com.codeup.trainingapp.models.Needs.Attendance;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Student;
 import com.codeup.trainingapp.models.Needs.User;
+import com.codeup.trainingapp.models.Wants.Gradable_Student;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,10 +58,23 @@ public class StudentController {
             }
 
         }
+        List<Double> gradesAvgs = new ArrayList<>();
+        int x=0;
+        double total = 0;
+        for(Student student: students){
+            if(student.getUser().getId().equals(user.getId())){
+                for(Gradable_Student grade : student.getUser().getGradable_students()){
+                    x++;
+                    total += grade.getGrade();
+                }
+            }
+        }
+
         System.out.println("count and i = " + count + " and " + i);
         attendanceAvgs.add(count/i);
-
+        gradesAvgs.add(total/x);
         model.addAttribute("attendanceAvgs",attendanceAvgs);
+        model.addAttribute("gradesAvgs", gradesAvgs);
         model.addAttribute("students", students);
         return "student/profile";
     }
