@@ -72,7 +72,7 @@ public class HomeController {
     }
 
     @PostMapping("/apply")
-    private String signup(@RequestParam(name="course") Long id, Model model){
+    private String signup(@RequestParam(name="course") Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = new Student();
         System.out.println("test postmap");
