@@ -74,8 +74,12 @@ public class InstructorController {
     public String addGrade(Model model, @PathVariable Long gradable_id){
 
         Iterable <Gradable_Student> students = gradable_studentDao.findAllByCourse_IdAndGradeIsNull(gradable_id);
-        model.addAttribute("gradable_students", students);
-        return "instructor/add-grade";
+        if (students == null){
+            return "sendredirect:/instructor/course" + gradable_id;
+        } else {
+            model.addAttribute("gradable_students", students);
+            return "instructor/add-grade";
+        }
     }
 
     @PostMapping("/instructor/add-grades/{course_id}")

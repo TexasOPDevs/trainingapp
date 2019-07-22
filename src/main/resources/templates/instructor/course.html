@@ -110,10 +110,10 @@
                         <td th:text="${student.getGradable().getName()}"></td>
                         <td th:text="${student.posted_at}"></td>
                         <div th:if="${student.getGrade() != null}">
-                            <td th:text="${student.getGrade()} + '/' + ${student.getGradable().getWeight()}"></td></div>
+                            <td th:text="${student.getGrade()} + '%'"></td></div>
                         <div th:if="${student.getGrade() == null}">
                             <td>
-                                <a th:href="'/instructor/course/add-grade/' + ${course.id}"></a>
+                                <a th:href="'/instructor/course/add-grade/' + ${course.id}">Update Grade</a>
                             </td>
                         </div>
                     </tr>
