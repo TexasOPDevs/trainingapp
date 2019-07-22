@@ -59,7 +59,7 @@ public class HomeController {
         } else{
             model.addAttribute("user", new User());
         }
-        model.addAttribute("courses", courseDao.findAllByStatus_Id(204L));
+        model.addAttribute("courses", courseDao.findAllByStatus_IdOrderByStartDateAsc(204L));
         model.addAttribute("student", studentDao.findAll());
         return "home/courses";
     }
