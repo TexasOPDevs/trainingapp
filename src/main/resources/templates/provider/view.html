@@ -47,13 +47,13 @@
             </div>
         </div>
     </div>
-    <div class="row" th:each="instructor : ${provider.users}">
+    <div class="row">
+        <th:block th:each="instructor : ${provider.users}">
            <th:block th:if="${instructor.role == 'instructor'}">
-                   <div class="col s12 m7 l4">
+                   <div class="col s12 m6 l4">
                        <div class="card">
                            <div class="card-image">
-                               <img
-                                       src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/>
+                               <img src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/>
                                <span th:text="${instructor.first_name} + ' ' + ${instructor.last_name}"
                                      class="card-title"></span>
                            </div>
@@ -62,12 +62,55 @@
 
                                </p>
                            </div>
-                           <div class="card-action">
-                               <a href="#" th:text="${instructor.email}">This is a link</a>
+                           <div class="card-action center-align">
+                               <a th:href="'mailto:' + ${instructor.email}" th:target="_blank"
+                                  class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
                            </div>
                        </div>
                    </div>
            </th:block>
+        </th:block>
+    </div>
+    <div class="row">
+        <table class="highlight">
+            <thead>
+            <tr>
+                <th>Course</th>
+                <th>Location</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody th:each="course : ${courses}">
+            <th:block th:if="${course.status.id == 204}">
+                <tr>
+                    <td th:text="${course.curriculum.name}">
+
+                    </td>
+                    <td th:text="${course.location}">
+
+                    </td>
+
+                    <td th:text="${#dates.format(course.startDate, 'MM-dd-yy')}">
+
+                    </td>
+                    <td th:text="${#dates.format(course.endDate, 'MM-dd-yy')}">
+
+                    </td>
+                    <td>
+                        <form th:method="post" name="apply" th:action="@{/apply}">
+                            <input class="course" type="hidden" name="course"
+                                   th:value="${course.id}"/>
+                            <button class="right btn waves-effect waves-light" type="submit"
+                                    name="action">Apply
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
     </div>
 </div>
 
