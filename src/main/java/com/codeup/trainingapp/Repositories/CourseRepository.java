@@ -10,4 +10,6 @@ public interface CourseRepository extends CrudRepository<Course, Long> {
     Iterable<Course> findAllByStatus_IdOrderByStartDateAsc(Long id);
     Iterable<Course> findAll(Sort sort);
 
+    Iterable<Course> findAllByCurriculum_Provider_NameOrderByStartDateAsc(String name);
+
 }
