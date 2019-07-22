@@ -24,10 +24,10 @@ public class Curriculum {
     private String learning_objectives;
 
     @Column
-    private Date creation_date;
+    private Date creationDate;
 
     @Column
-    private Date update_date;
+    private Date updateDate;
 
     @ManyToOne
     @JsonManagedReference
@@ -51,16 +51,24 @@ public class Curriculum {
     @OneToMany(mappedBy = "curriculum")
     private List<Gradable> gradables;
 
-    public Curriculum(String name, Long capacity, String description, String learning_objectives, String outline, String certification, Date creation_date, Date update_date, Provider provider) {
+    public Curriculum(String name, Long capacity, String description, String learning_objectives, String outline, String certification, Date creationDate, Date updateDate, Provider provider) {
         this.name = name;
         this.description = description;
         this.learning_objectives = learning_objectives;
-        this.creation_date = creation_date;
-        this.update_date = update_date;
+        this.creationDate = creationDate;
+        this.updateDate = updateDate;
         this.provider = provider;
     }
 
     public Curriculum() {
+    }
+
+    public List<Gradable> getGradables() {
+        return gradables;
+    }
+
+    public void setGradables(List<Gradable> gradables) {
+        this.gradables = gradables;
     }
 
     public Long getId() {
@@ -95,20 +103,20 @@ public class Curriculum {
         this.learning_objectives = learning_objectives;
     }
 
-    public Date getCreation_date() {
-        return creation_date;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreation_date(Date creation_date) {
-        this.creation_date = creation_date;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public Date getUpdate_date() {
-        return update_date;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpdate_date(Date update_date) {
-        this.update_date = update_date;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
     public Provider getProvider() {
@@ -135,11 +143,4 @@ public class Curriculum {
         this.courses = courses;
     }
 
-    public List<Gradable> getGradables() {
-        return gradables;
-    }
-
-    public void setGradables(List<Gradable> gradables) {
-        this.gradables = gradables;
-    }
 }

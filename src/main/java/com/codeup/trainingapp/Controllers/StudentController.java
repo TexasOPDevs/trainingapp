@@ -6,6 +6,7 @@ import com.codeup.trainingapp.models.Needs.Attendance;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Student;
 import com.codeup.trainingapp.models.Needs.User;
+import com.codeup.trainingapp.models.Wants.Gradable_Student;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Controller
 public class StudentController {
     private final CourseRepository courseDao;
@@ -22,6 +24,7 @@ public class StudentController {
     private final ProviderRepository providerDao;
     private final UserRepository userDao;
     private final StudentRepository studentDao;
+
 
     public StudentController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StudentRepository studentDao) {
         this.courseDao = courseDao;
@@ -35,13 +38,12 @@ public class StudentController {
     public String studentView(Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
-        Iterable<Student> students  =    studentDao.findAllByUser_Id(user.getId());
+        Iterable<Student> students  = studentDao.findAllByUser_Id(user.getId());
         List<Double> attendanceAvgs= new ArrayList<>();
         int i=0;
         double count = 0;
         for(Student student: students){
-            System.out.println(student.getUser().getId());
-            if(student.getUser().getId().equals((((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()))) {
+            if(student.getUser().getId().equals(user.getId())) {
                 for (Attendance attend : student.getUser().getAttendances()) {
                     i++;
                     if (attend.getPresent()) {
@@ -51,10 +53,22 @@ public class StudentController {
             }
 
         }
-        System.out.println("count and i = " + count + " and " + i);
+        List<Double> gradesAvgs = new ArrayList<>();
+        int x=0;
+        double total = 0;
+        for(Student student: students){
+            if(student.getUser().getId().equals(user.getId())){
+                for(Gradable_Student grade : student.getUser().getGradable_students()){
+                    x++;
+                    total += (grade.getGrade() * ((double)(grade.getGradable().getWeight() / 100)));
+                }
+            }
+        }
         attendanceAvgs.add(count/i);
-
+        gradesAvgs.add(total/x);
+        System.out.println(gradesAvgs);
         model.addAttribute("attendanceAvgs",attendanceAvgs);
+        model.addAttribute("gradesAvgs", gradesAvgs);
         model.addAttribute("students", students);
         return "student/profile";
     }

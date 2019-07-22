@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
@@ -29,8 +28,8 @@
                         <p class="col s6 text-primary" th:text="'Course ID (' + ${course.id} + ')'" ></p>
                         <p class="col s6" th:text="'Status (' + ${course.status.name} + ')'" ></p>
                         <p class="col s12" th:text="'Course Location (' + ${course.location} + ')'"></p>
-                        <p class="col s12" th:text="'From (' + ${course.start_date} + ') to (' + ${course.end_date} + ')'"></p>
-                        <p class="col s12" th:text="'Class Starts at (' + ${course.start_time} + ')'" ></p>
+                        <p class="col s12" th:text="'From (' + ${course.startDate} + ') to (' + ${course.endDate} + ')'"></p>
+                        <p class="col s12" th:text="'Class Starts at (' + ${course.startTime} + ')'" ></p>
                     </div>
 
                 <h5>Instructor(s)</h5>
@@ -62,11 +61,8 @@
                         <th></th>
                         <th></th>
                     </tr>
-
                 </thead>
-
                 <tbody>
-
                     <tr th:each="student: ${course.students}">
                         <td>
                             <a th:href="'/student/' + ${student.user.id}" th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>
@@ -78,69 +74,24 @@
                             <a th:href="'tel:' + ${student.user.phone}" class="waves-effect waves-light btn-small">Phone<i class="material-icons right">phone</i></a>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
-
-
         </div>
+
+
         <div id="attendance" class="s12">
-
-            <!--<div class="row">-->
-            <!--<div class=" s12">-->
-
-
-                    <!--<ul class="tabs">-->
-                        <!--<li th:each="attendance:${course.attendances}" class="tab col s3"><a th:href="'#' + ${attendance.date}" th:text="${attendance.date}"></a></li>-->
-                    <!--</ul>-->
-
-
-                <!--</div>-->
-
-
-
-<!--                    <div th:id="${date}" class="col s12">-->
-<!--    -->
-<!--    -->
-<!--                        <table class="striped">-->
-<!--                            <thead>-->
-<!--    -->
-<!--                            <tr>-->
-<!--                                <th>Name</th>-->
-<!--                                <th>Date</th>-->
-<!--                                <th>Present</th>-->
-<!--                            </tr>-->
-<!--    -->
-<!--                            </thead>-->
-<!--    -->
-<!--                            <tbody>-->
-<!--    -->
-<!--                            <tr th:each="attendance: ${course.attendances}" th:switch="${attendance.date}">-->
-<!--                                <th:block>-->
-<!--                                <td>-->
-<!--                                    <a th:href="'/student/' + ${attendance.}" th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>-->
-<!--                                </td>-->
-<!--                                <td>-->
-<!--                                    <p th:text="${student.user.attendances.get(0).date}"></p>-->
-<!--                                </td>-->
-<!--                                <td>-->
-<!--                                    <p th:text="${student.user.attendances.get(0).present}"></p>-->
-<!--                                </td>-->
-<!--                                </th:block>-->
-<!--                            </tr>-->
-<!--    -->
-<!--                            </tbody>-->
-<!--                        </table>-->
-<!--    -->
-<!--                    </div>-->
-<!--                -->
-            <!--</div>-->
-
-
-
+            <div class="collection" >
+                    <th:block th:each="attendence:${course.students.get(0).user.attendances}">
+                <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}" class="collection-item" th:text="${attendence.date}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
+                </th:block>
+            </div>
         </div>
 
-        <!--</div>-->
+
+
+
+
+
         <div id="grades" class="col s12">
 
                 <table>

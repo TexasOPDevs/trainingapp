@@ -51,32 +51,25 @@ public class HomeController {
     }
 
 
-//    @GetMapping("/login")
-//    public String login(Model model) {
-//        model.addAttribute("user", new User());
-//        return "home/login-register";
-//    }
-
-
     @GetMapping("/courses")
     public String courseView(Model model) {
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("user", userDao.findOne(user.getId()));
+        } else{
+            model.addAttribute("user", new User());
         }
-        System.out.println("test first");
-        model.addAttribute("user", new User());
-        model.addAttribute("courses", courseDao.findAllByStatus_Id(204L));
+        model.addAttribute("courses", courseDao.findAllByStatus_IdOrderByStartDateAsc(204L));
         model.addAttribute("student", studentDao.findAll());
         return "home/courses";
     }
 
     @PostMapping("/apply")
-    private String signup(@RequestParam(name="course") Long id, Model model){
+    private String signup(@RequestParam(name="course") Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = new Student();
-        System.out.println("test postmap");
-        if(studentDao.findByCourse_IdAndStatus_Id(id, 102L) == null) {
+        if(studentDao.findByCourse_IdAndUser_IdAndStatus_Id(id, user.getId(), 102L).toString().equals("[]")) {
+            System.out.println("got here");
             student.setUser(userDao.findOne(user.getId()));
             student.setCourse(courseDao.findOne(id));
             student.setStatus(statusDao.findOne(102L));

@@ -233,4 +233,8 @@ public class User {
     public void setBio(String bio) {
         this.bio = bio;
     }
+
+    public String getFullName() {
+        return first_name + ", " + last_name;
+    }
 }

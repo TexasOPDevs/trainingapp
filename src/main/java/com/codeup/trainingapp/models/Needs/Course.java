@@ -23,13 +23,13 @@ public class Course {
     private String evaluation_file;
 
     @Column
-    private Time start_time;
+    private Time startTime;
 
     @Column
-    private Date start_date;
+    private Date startDate;
 
     @Column
-    private Date end_date;
+    private Date endDate;
 
     @Column
     private Long capacity;
@@ -64,12 +64,12 @@ public class Course {
     public Course() {
     }
 
-    public Course(String location, String evaluation_file, Time start_time, Date start_date, Date end_date, Long capacity, Curriculum curriculum, Status status, List<Student> students, List<Attendance> attendances, List<User> instructors) {
+    public Course(String location, String evaluation_file, Time startTime, Date startDate, Date end_date, Long capacity, Curriculum curriculum, Status status, List<Student> students, List<Attendance> attendances, List<User> instructors) {
         this.location = location;
         this.evaluation_file = evaluation_file;
-        this.start_time = start_time;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.startTime = startTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.capacity = capacity;
         this.curriculum = curriculum;
         this.status = status;
@@ -118,28 +118,28 @@ public class Course {
         this.evaluation_file = evaluation_file;
     }
 
-    public Time getStart_time() {
-        return start_time;
+    public Time getStartTime() {
+        return startTime;
     }
 
-    public void setStart_time(Time start_time) {
-        this.start_time = start_time;
+    public void setStartTime(Time startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public Curriculum getCurriculum() {
