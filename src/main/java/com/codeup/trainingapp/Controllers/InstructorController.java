@@ -2,7 +2,7 @@ package com.codeup.trainingapp.Controllers;
 
 
 import com.codeup.trainingapp.Repositories.*;
-import com.codeup.trainingapp.models.Needs.Curriculum;
+import com.codeup.trainingapp.models.Needs.*;
 import com.codeup.trainingapp.models.Wants.Gradable;
 import com.codeup.trainingapp.models.Wants.Gradable_Student;
 import org.springframework.data.domain.Sort;
@@ -184,6 +184,39 @@ public class InstructorController {
     public String AttendanceSheet(Model model, @PathVariable Long course_id, @PathVariable Date day){
         model.addAttribute("attendances", attendanceDao.findByDateAndCourse(day, courseDao.findOne(course_id)));
         return "instructor/attendance";
+    }
+
+    @GetMapping("/instructor/course/{course_id}/attendance_form")
+    public String AttendanceForm(Model model, @PathVariable Long course_id){
+        Course course = courseDao.findOne(course_id);
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+
+        AttendancesCreationDto attendanceForm = new AttendancesCreationDto();
+
+        for (int i = 0; i < course.getStudents().size() ; i++ ){
+            System.out.println(date);
+            System.out.println(true);
+            System.out.println(course.getStudents().get(i).getUser().getFullName());
+            System.out.println(course.getId());
+            System.out.println(course.getStudents());
+
+            attendanceForm.addAttendance(new Attendance(date,true,course.getStudents().get(i).getUser(),course));
+            System.out.println(i);
+        }
+        model.addAttribute("attendanceForm", attendanceForm);
+        return ("instructor/create_attendance");
+    }
+
+    @PostMapping("/submit_attendance")
+    public String submitAttendance(@ModelAttribute AttendancesCreationDto attendanceForm){
+
+        for (int i = 0; i < attendanceForm.getAttendances().size() ; i++ ){
+            System.out.println(i);
+            attendanceDao.save(attendanceForm.getAttendances().get(i));
+        }
+
+        return "redirect:/instructor/course/" + attendanceForm.getAttendances().get(0).getCourse().getId();
     }
 
 }

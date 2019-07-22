@@ -31,6 +31,13 @@ public class Attendance {
     private Course course;
 
 
+    public Attendance(Date date, Boolean present, User user, Course course) {
+        this.date = date;
+        this.present = present;
+        this.user = user;
+        this.course = course;
+    }
+
     public Attendance() {
     }
 
