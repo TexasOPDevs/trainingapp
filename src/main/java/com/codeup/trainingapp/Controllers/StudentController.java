@@ -60,7 +60,9 @@ public class StudentController {
             if(student.getUser().getId().equals(user.getId())){
                 for(Gradable_Student grade : student.getUser().getGradable_students()){
                     x++;
-                    total += (grade.getGrade() * ((double)(grade.getGradable().getWeight() / 100)));
+                    if(grade.getGrade() != null) {
+                        total += (grade.getGrade() * ((double) (grade.getGradable().getWeight() / 100)));
+                    }
                 }
             }
         }
