@@ -6,11 +6,13 @@ import com.codeup.trainingapp.models.Needs.Course;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Provider;
 import com.codeup.trainingapp.models.Needs.User;
+import com.codeup.trainingapp.models.Wants.Gradable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Calendar;
 
 
@@ -31,9 +33,11 @@ public class CoordinatorController {
 
     private final MaterialRepository materialsDao;
 
+    private final GradableRepository gradablesDao;
+
     public CoordinatorController(CourseRepository courseDao, CurriculumRepository curriculumDao,
                                  ProviderRepository providerDao, UserRepository userDao, StatusRepository statusDao,
-                                 InstructorRepository instructorDao, MaterialRepository materialsDao) {
+                                 InstructorRepository instructorDao, MaterialRepository materialsDao, GradableRepository gradablesDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
@@ -41,6 +45,7 @@ public class CoordinatorController {
         this.StatusDao = statusDao;
         this.instructorDao = instructorDao;
         this.materialsDao = materialsDao;
+        this.gradablesDao = gradablesDao;
     }
 
     @GetMapping("/user.json")
@@ -104,6 +109,24 @@ public class CoordinatorController {
         curriculum.setProvider(provider);
         curriculumDao.save(curriculum);
 
+        return "redirect:/coordinator";
+    }
+
+    @PostMapping("/add_gradable")
+    public String createGradable(
+            @RequestParam(name = "grade_name") String name,
+            @RequestParam(name = "grade_weight") int weight,
+            @RequestParam(name = "curriculum") Long curriculum_id
+    ){
+        Gradable newGradable = new Gradable();
+        Long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        newGradable.setName(name);
+        newGradable.setWeight(weight);
+        newGradable.setCurriculum(curriculumDao.findOne(curriculum_id));
+        newGradable.setCreationDate(date);
+        newGradable.setUpdateDate(date);
+        gradablesDao.save(newGradable);
         return "redirect:/coordinator";
     }
 

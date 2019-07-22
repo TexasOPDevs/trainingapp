@@ -54,7 +54,7 @@
                                 <div class="input-field input-field">
                                     <select multiple="multiple" th:field="*{materials}" name="tags" id="tags">
                                         <option value="" disabled="disabled" selected="selected">Choose your option</option>
-                                        <option  th:each="material : ${materials}" th:text="${material.name}" th:value="${material.id}" th:selected="${material.id}" />
+                                        <option  th:each="material : ${materials}" th:text="${material.name}" th:value="${material.id}"  th:selected="${material.id}" />
                                     </select>
                                     <label th:for="*{materials}"></label>
                                 </div>
@@ -78,6 +78,33 @@
                     </form>
                     </div>
                 </div>
+            </li>
+            <li>
+                <div class="collapsible-header">Create A Gradable</div>
+                <div class="collapsible-body">
+
+                    <form th:action="@{/add_gradable}" th:type="post">
+                        <div class="input-field input-field">
+                            <select>
+                                <option value="" disabled="disabled" selected="selected">Choose your option</option>
+                                <option  th:each="curriculum : ${curricula}" th:text="${curriculum.name}" name="curriculum" th:value="${curriculum.getId()}" th:selected="${curriculum.id}" />
+                            </select>
+                        </div>
+                        <div class="input-field col s9">
+                            <input name="grade_name" id="grade_name" type="text" class="validate" />
+                            <label for="grade_name">Name</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <input name="grade_weight" id="weight" type="number" class="validate" />
+                            <label for="weight">Weight</label>
+                        </div>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
+
+                </div>
+
             </li>
         </ul>
     </div>

@@ -80,15 +80,20 @@
                 </tbody>
             </table>
         </div>
+        <th:block th:if="${course.students == null}">
+            <p>There is currently no attendances</p>
+        </th:block>
+        <th:block th:if="${course.students != null}">
 
-
-        <div id="attendance" class="s12">
-            <div class="collection" >
+        <div id="attendance" class="s12" th:switch="${course.students}">
+            <div class="collection" th:case="*" >
                     <th:block th:each="attendence:${course.students.get(0).user.attendances}">
                 <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}" class="collection-item" th:text="${attendence.date}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
-                </th:block>
+                    </th:block>
             </div>
         </div>
+        </th:block>
+
 
 
 
