@@ -1,6 +1,7 @@
 package com.codeup.trainingapp.models.Wants;
 
 import com.codeup.trainingapp.models.Needs.Curriculum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -26,9 +27,11 @@ public class Gradable {
     private Date updateDate;
 
     @ManyToOne
+    @JsonIgnore
     private Curriculum curriculum;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gradable")
+    @JsonIgnore
     private List<Gradable_Student> gradable_students;
 
 

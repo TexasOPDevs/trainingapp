@@ -1,6 +1,7 @@
 package com.codeup.trainingapp.models.Needs;
 
 import com.codeup.trainingapp.models.Wants.Gradable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -49,6 +50,7 @@ public class Curriculum {
     private List<Course> courses;
 
     @OneToMany(mappedBy = "curriculum")
+    @JsonIgnore
     private List<Gradable> gradables;
 
     public Curriculum(String name, Long capacity, String description, String learning_objectives, String outline, String certification, Date creationDate, Date updateDate, Provider provider) {

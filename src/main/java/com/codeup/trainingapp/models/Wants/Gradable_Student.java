@@ -2,6 +2,7 @@ package com.codeup.trainingapp.models.Wants;
 
         import com.codeup.trainingapp.models.Needs.Course;
         import com.codeup.trainingapp.models.Needs.User;
+        import com.fasterxml.jackson.annotation.JsonIgnore;
 
         import javax.persistence.*;
         import java.sql.Date;
@@ -20,12 +21,15 @@ public class Gradable_Student {
     private Date posted_at;
 
     @ManyToOne
+    @JsonIgnore
     private Course course;
 
     @ManyToOne
+    @JsonIgnore
     private Gradable gradable;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     public Gradable_Student() {
