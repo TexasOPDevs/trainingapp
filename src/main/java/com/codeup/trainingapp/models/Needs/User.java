@@ -69,6 +69,7 @@ public class User {
     private List<Course> courses;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnore
     private List<Gradable_Student> gradable_students;
 
 
