@@ -53,7 +53,8 @@
                                 <a th:href="'/provider/' + ${course.curriculum.provider.name}"
                                    th:text="${course.curriculum.provider.name}"></a>
                             </td>
-                            <td th:text="${course.startDate}">
+
+                            <td th:text="${#dates.format(course.start_date, 'MM-dd-yy')}">
 
                             </td>
                             <td>

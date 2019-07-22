@@ -1,5 +1,6 @@
 package com.codeup.trainingapp.Controllers;
 
+
 import com.codeup.trainingapp.Repositories.*;
 import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Student;
@@ -25,11 +26,6 @@ public class InstructorController {
 
     private final ProviderRepository providerDao;
 
-    private final StudentRepository studentDao;
-
-    private final UserRepository userDao;
-
-    private final StatusRepository statusDao;
 
     private final GradableRepository gradableDao;
 
@@ -40,42 +36,16 @@ public class InstructorController {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
-        this.studentDao = studentDao;
-        this.userDao = userDao;
-        this.statusDao = statusDao;
         this.gradableDao = gradableDao;
         this.attendanceDao = attendanceDao;
     }
 
 
     @GetMapping("/instructor/courses")
-    public String InstructorCourseView(Model model) {
+    public String InstructorCourseView(Model model){
         model.addAttribute("curricula", curriculumDao.findAll());
         model.addAttribute("courses", courseDao.findAll(new Sort(Sort.Direction.ASC, "startDate")));
         return "instructor/courses";
-    }
-
-    @GetMapping("/instructor/applicants")
-    public String InstructorApplicantsView(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", userDao.findOne(user.getId()));
-        model.addAttribute("curricula", curriculumDao.findAll());
-        model.addAttribute("courses", courseDao.findAll());
-        model.addAttribute("students", studentDao.findAll());
-        return "instructor/applicants";
-    }
-
-    @PostMapping("/applicants")
-    private String enroll(@RequestParam(name = "course") Long id) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Student student = new Student();
-        System.out.println("test postmap");
-        student.setUser(userDao.findOne(user.getId()));
-        student.setCourse(courseDao.findOne(id));
-        student.setStatus(statusDao.findOne(101L));
-        studentDao.save(student);
-        return"redirect:/instructor/applicants";
-
     }
 
     @GetMapping("/instructor/course/{course_id}")

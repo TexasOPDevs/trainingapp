@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 @Controller
 public class StudentController {
@@ -26,8 +24,6 @@ public class StudentController {
     private final ProviderRepository providerDao;
     private final UserRepository userDao;
     private final StudentRepository studentDao;
-
-//    private static DecimalFormat df = new DecimalFormat(".##");
 
 
     public StudentController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StudentRepository studentDao) {
@@ -47,7 +43,6 @@ public class StudentController {
         int i=0;
         double count = 0;
         for(Student student: students){
-            System.out.println(student.getUser().getId());
             if(student.getUser().getId().equals(user.getId())) {
                 for (Attendance attend : student.getUser().getAttendances()) {
                     i++;
@@ -65,14 +60,13 @@ public class StudentController {
             if(student.getUser().getId().equals(user.getId())){
                 for(Gradable_Student grade : student.getUser().getGradable_students()){
                     x++;
-                    total += grade.getGrade();
+                    total += (grade.getGrade() * ((double)(grade.getGradable().getWeight() / 100)));
                 }
             }
         }
-
-        System.out.println("count and i = " + count + " and " + i);
         attendanceAvgs.add(count/i);
         gradesAvgs.add(total/x);
+        System.out.println(gradesAvgs);
         model.addAttribute("attendanceAvgs",attendanceAvgs);
         model.addAttribute("gradesAvgs", gradesAvgs);
         model.addAttribute("students", students);
