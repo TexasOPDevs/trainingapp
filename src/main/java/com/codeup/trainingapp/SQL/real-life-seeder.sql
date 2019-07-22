@@ -207,11 +207,11 @@ VALUES (1, 2),
 
 
 INSERT INTO gradeable (creation_date, name, update_date, weight, curriculum_id)
-VALUES ('2019-06-09', 'Test 1', null, '20', 2),
-       ('2019-06-09', 'Quiz 1', null, '10', 2),
-       ('2019-06-09', 'Quiz 2', null, '20', 2),
-       ('2019-06-09', 'Test 2', null, '20', 2),
-       ('2019-06-09', 'Demo', null, '30', 2);
+VALUES ('2019-06-09', 'Test 1', null, 20, 2),
+       ('2019-06-09', 'Quiz 1', null, 10, 2),
+       ('2019-06-09', 'Quiz 2', null, 20, 2),
+       ('2019-06-09', 'Test 2', null, 20, 2),
+       ('2019-06-09', 'Demo', null, 30, 2);
 
 
 INSERT INTO gradable_student (grade, posted_at, course_id, gradable_id, user_id)
