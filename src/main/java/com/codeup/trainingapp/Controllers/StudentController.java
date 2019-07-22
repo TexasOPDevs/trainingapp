@@ -66,7 +66,6 @@ public class StudentController {
         }
         attendanceAvgs.add(count/i);
         gradesAvgs.add(total/x);
-        System.out.println(attendanceAvgs);
         model.addAttribute("attendanceAvgs",attendanceAvgs);
         model.addAttribute("gradesAvgs", gradesAvgs);
         model.addAttribute("students", students);
