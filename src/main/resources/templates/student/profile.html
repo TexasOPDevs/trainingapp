@@ -161,13 +161,13 @@
                                 <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
                                 </td>
                             </th:block>
-                            <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN')}">
+                            <th:block th:if="${#strings.startsWith(gradesAvgs, 'NaN')}">
                                 <td>
                                     N/A
                                 </td>
                             </th:block>
-                            <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN') == false}">
-                                <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
+                            <th:block th:if="${#strings.startsWith(gradesAvgs, '[')}">
+                                <td th:text="${#strings.substring(gradesAvgs,1,3) + '%'}">
 
                                 </td>
                             </th:block>
