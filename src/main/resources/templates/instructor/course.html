@@ -54,14 +54,6 @@
         <div id="roster" class="s12">
 
             <table class="highlight centered">
-                <thead>
-
-                    <tr>
-                        <th>Name</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr th:each="student: ${course.students}">
                         <td>
@@ -85,6 +77,13 @@
                 <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}" class="collection-item" th:text="${attendence.date}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
                 </th:block>
             </div>
+
+            <div class="fixed-action-btn">
+                <a th:href="'/instructor/course/' + ${course.id} + '/attendance_form'" class="btn-floating btn-large red">
+                    <i class="large material-icons">add</i>
+                </a>
+            </div>
+
         </div>
 
 
@@ -99,12 +98,5 @@
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
-<!--<script>-->
-<!--    $(document).ready(function(){-->
-<!--        $('ul.tabs').tabs({-->
-<!--            swipeable : true-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
 </body>
 </html>
