@@ -20,10 +20,10 @@ public class Gradable {
     private int weight;
 
     @Column
-    private Date creation_date;
+    private Date creationDate;
 
     @Column
-    private Date update_date;
+    private Date updateDate;
 
     @ManyToOne
     private Curriculum curriculum;
@@ -59,20 +59,20 @@ public class Gradable {
         this.weight = weight;
     }
 
-    public Date getCreation_date() {
-        return creation_date;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreation_date(Date creation_date) {
-        this.creation_date = creation_date;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public Date getUpdate_date() {
-        return update_date;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpdate_date(Date update_date) {
-        this.update_date = update_date;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
     public Curriculum getCurriculum() {

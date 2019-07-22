@@ -100,7 +100,7 @@ public class CoordinatorController {
         Calendar calendar = Calendar.getInstance();
         java.util.Date currentDate = calendar.getTime();
         java.sql.Date date = new java.sql.Date(currentDate.getTime());
-        curriculum.setCreation_date(date);
+        curriculum.setCreationDate(date);
         curriculum.setProvider(provider);
         curriculumDao.save(curriculum);
 

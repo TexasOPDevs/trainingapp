@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -53,6 +53,7 @@
                                 <a th:href="'/provider/' + ${course.curriculum.provider.name}"
                                    th:text="${course.curriculum.provider.name}"></a>
                             </td>
+
                             <td th:text="${#dates.format(course.start_date, 'MM-dd-yy')}">
 
                             </td>

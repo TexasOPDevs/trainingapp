@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Attendance</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
+</head>
+<body>
+<th:block th:include="partials/master :: nav"></th:block>
+
+
+<table class="col highlight centered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="attendance:${attendances}">
+        <td th:text="${attendance.user.getFullName()}"></td>
+        <td th:text="${attendance.wasPresent()}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+<th:block th:replace="partials/master :: jquery"></th:block>
+<th:block th:replace="partials/master :: materializejs"></th:block>
+</body>
+</html>

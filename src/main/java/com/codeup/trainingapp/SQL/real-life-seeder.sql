@@ -48,7 +48,7 @@ VALUES (1, 'https://media.licdn.com/dms/image/C4E0BAQFmQKOT4l12NA/company-logo_2
 
 
 
-INSERT INTO training_db.curriculum (id, creation_date, description, learning_objectives, name, update_date, provider_id)
+INSERT INTO training_db.curriculum (id, creationDate, description, learning_objectives, name, updateDate, provider_id)
 VALUES       (3,  '2019-07-12', 'In this course the student will be able to use a technique of manually compressing the heart
 from the exterior
 of
@@ -89,7 +89,7 @@ Introduction to Use of Force
 7. The student will be able to identification factors to consider when determining the need to use force.', 'Use of Force in a Jail', '2014-02-14', 2);
 
 
-INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, location, start_date, start_time, curriculum_id, status_id)
+INSERT INTO training_db.course (id, capacity, endDate, evaluation_file, location, start_date, startTime, curriculum_id, status_id)
 VALUES (1, 28, '2020-09-07', null, 'Ap #512-4625 Cras Av.', '2019-02-22', '12:00:00', 3, 201),
        (2, 26, '2020-08-02', null, '217-1172 Ad Rd.', '2018-07-27', '16:00:00', 2, 201),
        (3, 27, '2020-04-02', null, 'P.O. Box 680, 1294 Leo, Rd.', '2019-03-30', '08:00:00', 3, 204),
@@ -205,7 +205,7 @@ VALUES (1, 2),
        (9, 2);
 
 
-INSERT INTO gradeable (creation_date, name, update_date, weight, curriculum_id)
+INSERT INTO gradeable (creationDate, name, updateDate, weight, curriculum_id)
 VALUES ('2019-06-09', 'Test 1', null, '20', 2),
        ('2019-06-09', 'Quiz 1', null, '10', 2),
        ('2019-06-09', 'Quiz 2', null, '20', 2),

@@ -6,6 +6,7 @@ import com.codeup.trainingapp.models.Needs.Curriculum;
 import com.codeup.trainingapp.models.Needs.Student;
 import com.codeup.trainingapp.models.Needs.User;
 import com.codeup.trainingapp.models.Wants.Gradable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,19 +29,22 @@ public class InstructorController {
 
     private final GradableRepository gradableDao;
 
-    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, UserRepository userDao, StudentRepository studentDao, StatusRepository statusDao) {
+    private final AttendanceRepository attendanceDao;
+
+    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, UserRepository userDao, StudentRepository studentDao, StatusRepository statusDao, AttendanceRepository attendanceDao) {
 
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
         this.gradableDao = gradableDao;
+        this.attendanceDao = attendanceDao;
     }
 
 
     @GetMapping("/instructor/courses")
     public String InstructorCourseView(Model model){
         model.addAttribute("curricula", curriculumDao.findAll());
-        model.addAttribute("courses", courseDao.findAll());
+        model.addAttribute("courses", courseDao.findAll(new Sort(Sort.Direction.ASC, "startDate")));
         return "instructor/courses";
     }
 
@@ -91,8 +95,8 @@ public class InstructorController {
         newCurriculum.setLearning_objectives(learning_objectives);
         newCurriculum.setName(name);
         newCurriculum.setProvider(providerDao.findOne(provider_id));
-        newCurriculum.setCreation_date(date);
-        newCurriculum.setUpdate_date(date);
+        newCurriculum.setCreationDate(date);
+        newCurriculum.setUpdateDate(date);
         curriculumDao.save(newCurriculum);
         return "redirect:/instructor/curriculum/" + id;
     }
@@ -113,7 +117,7 @@ public class InstructorController {
         newCurriculum.setLearning_objectives(learning_objectives);
         newCurriculum.setName(name);
         newCurriculum.setProvider(providerDao.findOne(provider_id));
-        newCurriculum.setUpdate_date(date);
+        newCurriculum.setUpdateDate(date);
         curriculumDao.save(newCurriculum);
         return "redirect:/instructor/curriculum/" + newCurriculum.getId();
     }
@@ -146,10 +150,16 @@ public class InstructorController {
         newGradable.setName(name);
         newGradable.setWeight(weight);
         newGradable.setCurriculum(curriculum);
-        newGradable.setCreation_date(date);
-        newGradable.setUpdate_date(date);
+        newGradable.setCreationDate(date);
+        newGradable.setUpdateDate(date);
         gradableDao.save(newGradable);
         return "redirect:/instructor/curriculum/" + newGradable.getCurriculum().getId();
+    }
+
+    @GetMapping("/instructor/course/{course_id}/attendance/{day}")
+    public String AttendanceSheet(Model model, @PathVariable Long course_id, @PathVariable Date day){
+        model.addAttribute("attendances", attendanceDao.findByDateAndCourse(day, courseDao.findOne(course_id)));
+        return "instructor/attendance";
     }
 
 }

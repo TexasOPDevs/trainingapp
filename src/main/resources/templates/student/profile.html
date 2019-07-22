@@ -144,8 +144,10 @@
                     <th:block th:if="${student.status.name == 'enrolled'}">
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
+
                             <td th:text="${#dates.format(student.course.start_date, 'MM-dd-yy')}"></td>
                             <td th:text="${#dates.format(student.course.end_date, 'MM-dd-yy')}"></td>
+
                             <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
                             </td>
                             <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN')}">
@@ -189,7 +191,9 @@
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
                             <td th:text="${student.course.curriculum.provider.name}"></td>
+
                             <td th:text="${#dates.format(student.course.end_date, 'MM-dd-yy')}"></td>
+
                         </tr>
                     </th:block>
                     </tbody>
