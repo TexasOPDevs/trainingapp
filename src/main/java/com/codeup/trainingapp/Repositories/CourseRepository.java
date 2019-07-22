@@ -11,4 +11,6 @@ public interface CourseRepository extends CrudRepository<Course, Long> {
 
     Iterable<Course> findAll(Sort sort);
 
+    Iterable<Course> findAllByCurriculum_Provider_NameOrderByStartDateAsc(String name);
+
 }
