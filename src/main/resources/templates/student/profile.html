@@ -15,9 +15,6 @@
 
 <h1 class="center">Student Portal</h1>
 
-<th:block th:if="${error != null}">
-<h1 th:text="${error}"></h1>
-</th:block>
 
 <h3 class="center">Welcome <span th:text="${user.first_name}"></span>
     <span th:text="${user.last_name}"></span></h3>
@@ -30,53 +27,53 @@
         </ul>
     </div>
     <div id="status" class="col s12">
-                <div class="row pt-2">
-                    <div class="container">
-                        <div class="card blue-grey darken-1 col s12 m12 l6">
-                            <div class="card-content white-text">
-                                <span class="card-title">Pending Approval</span>
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Instructor</th>
-                                        <th>Location</th>
-                                        <th>Training Provider</th>
-                                    </tr>
-                                    </thead>
+        <div class="row pt-2">
+            <div class="container">
+                <div class="card blue-grey darken-1 col s12 m12 l6">
+                    <div class="card-content white-text">
+                        <span class="card-title">Pending Approval</span>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Instructor</th>
+                                <th>Location</th>
+                                <th>Training Provider</th>
+                            </tr>
+                            </thead>
 
-                                    <tbody th:each="student : ${students}">
-                                    <th:block th:if="${student.status.name == 'pending'}">
-                                        <tr>
-                                            <td>
-                                                <a class="modal-trigger" th:href="'#' + ${student.course.id}"
-                                                   th:text="${student.course.curriculum.name}"></a>
-                                            </td>
-                                            <td th:each="instructor : ${student.course.instructors}">
-                                                <span th:text="${instructor.last_name} + ' ' + ${instructor.first_name}"></span>
-                                            </td>
-                                            <td th:text="${student.course.location}"></td>
-                                            <td>
-                                                <a th:href="'/provider/' + ${student.course.curriculum.provider.name}"
-                                                   th:text="${student.course.curriculum.provider.name}"></a>
-                                            </td>
-                                        </tr>
-                                        <div th:id="${student.course.id}" class="modal white">
-                                            <div class="modal-content black-text">
-                                                <h4 th:text="${student.course.curriculum.name}"></h4>
-                                                <h5 th:text="'Location: ' + ${student.course.location}"></h5>
-                                                <p th:text="${student.course.curriculum.description}"></p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                                            </div>
-                                        </div>
-                                    </th:block>
+                            <tbody th:each="student : ${students}">
+                            <th:block th:if="${student.status.name == 'pending'}">
+                                <tr>
+                                    <td>
+                                        <a class="modal-trigger" th:href="'#' + ${student.course.id}"
+                                           th:text="${student.course.curriculum.name}"></a>
+                                    </td>
+                                    <td th:each="instructor : ${student.course.instructors}">
+                                        <span th:text="${instructor.last_name} + ' ' + ${instructor.first_name}"></span>
+                                    </td>
+                                    <td th:text="${student.course.location}"></td>
+                                    <td>
+                                        <a th:href="'/provider/' + ${student.course.curriculum.provider.name}"
+                                           th:text="${student.course.curriculum.provider.name}"></a>
+                                    </td>
+                                </tr>
+                                <div th:id="${student.course.id}" class="modal white">
+                                    <div class="modal-content black-text">
+                                        <h4 th:text="${student.course.curriculum.name}"></h4>
+                                        <h5 th:text="'Location: ' + ${student.course.location}"></h5>
+                                        <p th:text="${student.course.curriculum.description}"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </th:block>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div class="card white darken-1 col s12 m12 l6">
                     <div class="card-content">
                         <span class="card-title">Enrolled</span>
@@ -130,7 +127,7 @@
 <div id="standing">
     <div class="container">
 
-    <div class="card white darken-1 col s12">
+        <div class="card white darken-1 col s12">
             <div class="card-content">
                 <span class="card-title">Standing</span>
                 <table>
@@ -147,12 +144,33 @@
                     <th:block th:if="${student.status.name == 'enrolled'}">
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
-                            <td th:text="${student.course.startDate}"></td>
-                            <td th:text="${student.course.endDate}"></td>
-                            <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
-                            </td>
-                            <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
-                            </td>
+
+                            <td th:text="${#dates.format(student.course.startDate, 'MM-dd-yy')}"></td>
+                            <td th:text="${#dates.format(student.course.endDate, 'MM-dd-yy')}"></td>
+                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[1.')}">
+                                <td>
+                                    100%
+                                </td>
+                            </th:block>
+                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[]')}">
+                                <td>
+                                    N/A
+                                </td>
+                            </th:block>
+                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[0.')}">
+                                <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
+                                </td>
+                            </th:block>
+                            <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN')}">
+                                <td>
+                                    N/A
+                                </td>
+                            </th:block>
+                            <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN') == false}">
+                                <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
+
+                                </td>
+                            </th:block>
                         </tr>
                     </th:block>
 
@@ -166,32 +184,34 @@
     <div id="classes" class="col s12">
         <div class="container">
 
-        <div class="card white darken-1 col s12">
-            <div class="card-content">
-                <span class="card-title">Credits</span>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Provider</th>
-                        <th>Date</th>
-
-                    </tr>
-                    </thead>
-
-                    <tbody th:each="student : ${students}">
-                    <th:block th:if="${student.status.name == 'credited'}">
+            <div class="card white darken-1 col s12">
+                <div class="card-content">
+                    <span class="card-title">Credits</span>
+                    <table>
+                        <thead>
                         <tr>
-                            <td th:text="${student.course.curriculum.name}"></td>
-                            <td th:text="${student.course.curriculum.provider.name}"></td>
-                            <td th:text="${student.course.endDate}"></td>
+                            <th>Name</th>
+                            <th>Provider</th>
+                            <th>Date</th>
+
                         </tr>
-                    </th:block>
-                    </tbody>
-                </table>
+                        </thead>
+
+                        <tbody th:each="student : ${students}">
+                        <th:block th:if="${student.status.name == 'credited'}">
+                            <tr>
+                                <td th:text="${student.course.curriculum.name}"></td>
+                                <td th:text="${student.course.curriculum.provider.name}"></td>
+
+                                <td th:text="${#dates.format(student.course.endDate, 'MM-dd-yy')}"></td>
+
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </div>
 

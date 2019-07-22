@@ -59,7 +59,7 @@ public class HomeController {
         } else{
             model.addAttribute("user", new User());
         }
-        model.addAttribute("courses", courseDao.findAllByStatus_Id(204L));
+        model.addAttribute("courses", courseDao.findAllByStatus_IdOrderByStartDateAsc(204L));
         model.addAttribute("student", studentDao.findAll());
         return "home/courses";
     }
@@ -68,8 +68,6 @@ public class HomeController {
     private String signup(@RequestParam(name="course") Long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = new Student();
-        System.out.println("test postmap");
-        System.out.println(studentDao.findByCourse_IdAndUser_IdAndStatus_Id(id, user.getId(), 102L).toString());
         if(studentDao.findByCourse_IdAndUser_IdAndStatus_Id(id, user.getId(), 102L).toString().equals("[]")) {
             System.out.println("got here");
             student.setUser(userDao.findOne(user.getId()));
