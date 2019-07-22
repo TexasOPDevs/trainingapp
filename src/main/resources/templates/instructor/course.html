@@ -113,12 +113,7 @@
                             <td th:text="${student.getGrade()} + '/' + ${student.getGradable().getWeight()}"></td></div>
                         <div th:if="${student.getGrade() == null}">
                             <td>
-                                <form action="">
-                                <input th:name="${student.grade}" th:max="${student.gradable.weight}" th:id="${student.grade}" type="number"/>
-                                <label th:for="${student.grade}" th:text="'Enter Score out of ' + ${student.gradable.weight}"></label>
-                                    <button>submit</button>
-                                </form>
-
+                                <a th:href="'/instructor/course/add-grade/' + ${course.id}"></a>
                             </td>
                         </div>
                     </tr>
