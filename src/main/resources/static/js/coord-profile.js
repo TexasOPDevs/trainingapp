@@ -7,7 +7,7 @@
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html = '<table class=""><thead><tr><th>Course Name</th><th>Creation Date</th><th>Materials</th><th></th></tr></thead><tbody>';
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Creation Date</th><th>Materials</th><th></th></tr></thead><tbody>';
         curricula.forEach(function(cur) {
             html += `<tr><td>${cur.name}</td><td>${cur.creation_date}</td><td>`;
             cur.materials.forEach(function(element){
@@ -67,7 +67,7 @@ var provider = function($) {
         </h3>`;
 
 
-           html += `<table class=" "><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
+           html += `<table class="highlight "><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
         provider.users.forEach(function(element){
 
             html += `<tr><td>${element.first_name} ${element.last_name}</td><td>${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="get" action="/makeInstructor" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
@@ -118,7 +118,7 @@ $(function() {
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html = '<table class=""><thead><tr><th>Course Name</th><th>Location</th><th>Start Date</th><th>End Date</th><th>Status</th><th>Instructors</th></tr></thead><tbody>';
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Location</th><th>Start Date</th><th>End Date</th><th>Status</th><th>Instructors</th></tr></thead><tbody>';
         curricula.forEach(function(cur) {
             cur.courses.forEach(function (course) {
                 if (course.start_date === null){
