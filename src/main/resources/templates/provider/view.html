@@ -17,43 +17,65 @@
 
 <div class="container">
     <div class="row">
-        <div class="row pt-2">
+        <div class="row pt-1">
             <div class="col s4">
-                <img class="circle" th:src="${provider.image}" alt="providerImg" style="width: 100px; height: 100%;"/>
+                <img class="circle" th:src="${provider.image}" alt="providerImg" style="width: 250px; height: 250%;"/>
+            </div>
+            <div class="col s4 offset-s3">
+                <h3 th:text="${provider.name}">
+
+                </h3>
             </div>
         </div>
         <div class="col s8">
             <th:block th:if="${provider.image != null}">
-             <h3 th:text="${provider.name}">
 
-             </h3>
             </th:block>
         </div>
         <div class="row">
-            <h3 class="center">Contact Info</h3>
-            <div class="col s6">
-                 <h5>
-                     <span th:text="${provider.coordinator.first_name}"></span>
-                     <span> </span>
-                     <span th:text="${provider.coordinator.last_name}"></span>
-
-                 </h5>
-
+            <h3 class="center">Training Coordinator</h3>
+            <div class="col s12 m6 l6">
+                <div class="card">
+                    <div class="card-image">
+                        <img th:src="${provider.coordinator.img}"/>
+                        <span th:text="${provider.coordinator.first_name} + ' ' + ${provider.coordinator.last_name}"
+                              class="card-title"></span>
+                    </div>
+                </div>
             </div>
-            <div class="col s6">
-                 <h5 th:text="'Phone: ' + ${provider.coordinator.phone} + ', Email: ' + ${provider.coordinator.email}">
-
-                 </h5>
+            <div class="col s12 m6 l6">
+                    <div class="row">
+                        <h5 th:text="'Email: ' + ${provider.coordinator.email}"></h5>
+                    </div>
+                    <div class="row">
+                        <a th:href="'mailto:' + ${provider.coordinator.email}" th:target="_blank"
+                           class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
+                    </div>
+                </div>
+                <div class="col s6">
+                    <div class="row">
+                        <h5 th:text="'Phone: ' + ${provider.coordinator.phone}"></h5>
+                    </div>
+                    <div class="row">
+                        <a th:href="'tel:' + ${provider.coordinator.phone}" class="waves-effect waves-light btn-small">Phone<i
+                                class="material-icons right">phone</i></a>
+                    </div>
+                    <div class="row">
+                        <h5>Bio: </h5>
+                        <p th:text="${provider.coordinator.bio}">
+                        </p>
+                    </div>
             </div>
         </div>
     </div>
     <div class="row">
+        <h3 class="center">Instructors</h3>
         <th:block th:each="instructor : ${provider.users}">
            <th:block th:if="${instructor.role == 'instructor'}">
                    <div class="col s12 m6 l4">
                        <div class="card">
                            <div class="card-image">
-                               <img src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/>
+                               <img th:src="${instructor.img}"/>
                                <span th:text="${instructor.first_name} + ' ' + ${instructor.last_name}"
                                      class="card-title"></span>
                            </div>
