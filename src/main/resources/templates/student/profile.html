@@ -147,9 +147,20 @@
 
                             <td th:text="${#dates.format(student.course.startDate, 'MM-dd-yy')}"></td>
                             <td th:text="${#dates.format(student.course.endDate, 'MM-dd-yy')}"></td>
-
-                            <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
-                            </td>
+                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[1.')}">
+                                <td>
+                                    100%
+                                </td>
+                            </th:block>
+                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[]')}">
+                                <td>
+                                    N/A
+                                </td>
+                            </th:block>
+                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[0.')}">
+                                <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
+                                </td>
+                            </th:block>
                             <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN')}">
                                 <td>
                                     N/A
@@ -157,7 +168,7 @@
                             </th:block>
                             <th:block th:if="${#strings.arrayContains(gradesAvgs, 'NaN') == false}">
                                 <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
-                                    
+
                                 </td>
                             </th:block>
                         </tr>
