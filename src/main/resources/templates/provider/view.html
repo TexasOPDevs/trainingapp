@@ -93,14 +93,14 @@
            </th:block>
         </th:block>
     </div>
-    <div class="row">
+    <div class="row card pl-1 pr-1 pt-1 pb-1">
+        <h5>Course Catalog</h5>
         <table class="highlight">
             <thead>
             <tr>
                 <th>Course</th>
                 <th>Location</th>
                 <th>Start Date</th>
-                <th>End Date</th>
                 <th></th>
             </tr>
             </thead>
@@ -113,10 +113,7 @@
                     <td th:text="${course.location}">
 
                     </td>
-
-                    <td th:text="${#dates.format(course.startDate, 'MM-dd-yy')}">
-
-                    </td>
+                    
                     <td th:text="${#dates.format(course.endDate, 'MM-dd-yy')}">
 
                     </td>
