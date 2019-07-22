@@ -3,19 +3,15 @@ package com.codeup.trainingapp.Controllers;
 
 import com.codeup.trainingapp.Repositories.*;
 import com.codeup.trainingapp.models.Needs.Curriculum;
-import com.codeup.trainingapp.models.Needs.Student;
-import com.codeup.trainingapp.models.Needs.User;
 import com.codeup.trainingapp.models.Wants.Gradable;
+import com.codeup.trainingapp.models.Wants.Gradable_Student;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Controller
 public class InstructorController {
@@ -31,15 +27,16 @@ public class InstructorController {
 
     private final AttendanceRepository attendanceDao;
 
-    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, UserRepository userDao, StudentRepository studentDao, StatusRepository statusDao, AttendanceRepository attendanceDao) {
+    private final Gradable_StudentRepository gradable_studentDao;
 
+    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, AttendanceRepository attendanceDao, Gradable_StudentRepository gradable_studentDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
         this.gradableDao = gradableDao;
         this.attendanceDao = attendanceDao;
+        this.gradable_studentDao = gradable_studentDao;
     }
-
 
     @GetMapping("/instructor/courses")
     public String InstructorCourseView(Model model){
@@ -72,6 +69,29 @@ public class InstructorController {
         model.addAttribute("curriculum", curriculumDao.findOne(curriculum_id));
         return "instructor/curriculum";
     }
+
+    @GetMapping("/instructor/course/add-grade/{gradable_id}")
+    public String addGrade(Model model, @PathVariable Long gradable_id){
+
+        Iterable <Gradable_Student> students = gradable_studentDao.findAllByCourse_IdAndGradeIsNull(gradable_id);
+        model.addAttribute("gradable_students", students);
+        return "instructor/add-grade";
+    }
+
+    @PostMapping("/instructor/add-grades/{course_id}")
+    public String insertGrades(@RequestParam List<Long> grades, @PathVariable Long course_id){
+        Iterable<Gradable_Student> students = gradable_studentDao.findAllByCourse_IdAndGradeIsNull(course_id);
+       int i=0;
+        for(Gradable_Student student: students){
+            student.setGrade(grades.get(i));
+            i++;
+        }
+            gradable_studentDao.save(students);
+
+
+        return "redirect:/instructor/course/" + course_id;
+    }
+
 
     @GetMapping("/instructor/curriculum/create")
     public String CreateCurriculumForm(Model model){
