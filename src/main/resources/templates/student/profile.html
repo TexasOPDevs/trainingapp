@@ -147,8 +147,8 @@
                     <th:block th:if="${student.status.name == 'enrolled'}">
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
-                            <td th:text="${student.course.start_date}"></td>
-                            <td th:text="${student.course.end_date}"></td>
+                            <td th:text="${student.course.startDate}"></td>
+                            <td th:text="${student.course.endDate}"></td>
                             <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
                             </td>
                             <td th:text="${#strings.substring(gradesAvgs,3,5) + '%'}">
@@ -184,7 +184,7 @@
                         <tr>
                             <td th:text="${student.course.curriculum.name}"></td>
                             <td th:text="${student.course.curriculum.provider.name}"></td>
-                            <td th:text="${student.course.end_date}"></td>
+                            <td th:text="${student.course.endDate}"></td>
                         </tr>
                     </th:block>
                     </tbody>

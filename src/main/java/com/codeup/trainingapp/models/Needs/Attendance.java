@@ -54,6 +54,14 @@ public class Attendance {
         return present;
     }
 
+    public String wasPresent() {
+        if (present) {
+            return "Present";
+        }else {
+            return "Absent";
+        }
+    }
+
     public void setPresent(Boolean present) {
         this.present = present;
     }
