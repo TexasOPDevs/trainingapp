@@ -45,8 +45,7 @@ public class InstructorController {
         if (!user.getRole().equals("instructor")){
             return "redirect:/";
         }
-        model.addAttribute("curricula", curriculumDao.findAll());
-        model.addAttribute("courses", courseDao.findAll(new Sort(Sort.Direction.ASC, "startDate")));
+        model.addAttribute("courses", courseDao.findByInstructors(user));
         return "instructor/courses";
     }
 
