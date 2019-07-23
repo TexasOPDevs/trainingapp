@@ -7,6 +7,11 @@
     <th:block th:replace="partials/master :: materialize">
 
     </th:block>
+    <style>
+        #name{
+            z-index: 99;
+        }
+    </style>
 </head>
 <body>
 <th:block th:replace="partials/master :: nav">
@@ -32,8 +37,8 @@
                 <div class="collapsible-body">
                     <div class="row">
                     <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
-                        <div class="input-field col s6">
-                            <input placeholder="Placeholder"  type="text" th:field="*{name}" class="validate"/>
+                        <div class="input-field col">
+                            <input placeholder="Course Name" id="name" type="text" th:field="*{name}" class="validate"/>
                             <label th:for="*{name}">Course Name</label>
                         </div>
 
@@ -51,10 +56,10 @@
 
 
 
-                                <div class="input-field input-field">
+                                <div class="col s12 input-field input-field">
                                     <select multiple="multiple" th:field="*{materials}" name="tags" id="tags">
-                                        <option value="" disabled="disabled" selected="selected">Choose your option</option>
-                                        <option  th:each="material : ${materials}" th:text="${material.name}" th:value="${material.id}"  th:selected="${material.id}" />
+                                        <option value="" disabled="disabled" selected="selected">Add Materials</option>
+                                        <option  th:each="material : ${materials}" th:text="${material.name}" th:value="${material.id}"  th:selected="${material.id}"></option>
                                     </select>
                                     <label th:for="*{materials}"></label>
                                 </div>
@@ -83,11 +88,11 @@
                 <div class="collapsible-header">Create A Gradable</div>
                 <div class="collapsible-body">
 
-                    <form th:action="@{/add_gradable}" th:type="post">
+                    <form th:method="POST" th:action="@{/add_gradable}" th:type="post">
                         <div class="input-field input-field">
-                            <select>
-                                <option value="" disabled="disabled" selected="selected">Choose your option</option>
-                                <option  th:each="curriculum : ${curricula}" th:text="${curriculum.name}" name="curriculum" th:value="${curriculum.getId()}" th:selected="${curriculum.id}" />
+                            <select name="curriculum">
+                                <option value="" disabled="disabled" selected="selected">Add Materials</option>
+                                <option  th:each="curriculum : ${curricula}" th:text="${curriculum.name}"  th:value="${curriculum.getId()}" th:selected="${curriculum.id}" ></option>
                             </select>
                         </div>
                         <div class="input-field col s9">

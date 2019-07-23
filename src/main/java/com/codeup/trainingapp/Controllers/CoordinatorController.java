@@ -109,7 +109,7 @@ public class CoordinatorController {
         curriculum.setProvider(provider);
         curriculumDao.save(curriculum);
 
-        return "redirect:/coordinator";
+        return "redirect:/coordinator#test2";
     }
 
     @PostMapping("/add_gradable")
@@ -127,7 +127,7 @@ public class CoordinatorController {
         newGradable.setCreationDate(date);
         newGradable.setUpdateDate(date);
         gradablesDao.save(newGradable);
-        return "redirect:/coordinator";
+        return "redirect:/coordinator#test3";
     }
 
     @GetMapping("/makeInstructor")
@@ -155,7 +155,7 @@ public class CoordinatorController {
             course.setStatus(StatusDao.findOne(202L));
             courseDao.save(course);
 
-        return "redirect:/coordinator";
+        return "redirect:/coordinator#test3";
     }
 
 
