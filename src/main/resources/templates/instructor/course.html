@@ -80,7 +80,7 @@
         <div id="attendance" class="s12" th:switch="${course.students}">
             <div class="collection" th:case="*" >
                     <th:block th:each="attendence:${course.students.get(0).user.attendances}">
-                <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}" class="collection-item" th:text="${attendence.date}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
+                <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}" class="collection-item" th:text="${attendence.date}"><span class="new badge red" data-badge-caption="absent" ></span></a>
                     </th:block>
             </div>
 
@@ -101,33 +101,49 @@
 
         <div id="grades" class="col s12">
 
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Student</th>
-                        <th>Assignment</th>
-                        <th>Date</th>
-                        <th>Grade</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+            <th:block th:if="${course.students.size() != 0}">
 
-                    <tr th:each="student : ${course.gradable_students}">
-                        <td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>
-                        <td th:text="${student.getGradable().getName()}"></td>
-                        <td th:text="${student.posted_at}"></td>
-                        <div th:if="${student.getGrade() != null}">
-                            <td th:text="${student.getGrade()} + '%'"></td></div>
-                        <div th:if="${student.getGrade() == null}">
-                            <td>
-                                <a th:href="'/instructor/course/add-grade/' + ${course.id}">Update Grade</a>
-                            </td>
-                        </div>
-                    </tr>
+                        <th:block th:each="grade:${course.curriculum.gradables}">
+                            <a th:href="'/instructor/course/grades/' + ${course.id}" class="collection-item" th:text="${grade.name}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
+                        </th:block>
 
-                    </tbody>
+                    <div class="fixed-action-btn">
+                        <a th:href="'/instructor/course/add-grade/' + ${course.id}" class="btn-floating btn-large red">
+                            <i class="large material-icons">add</i>
+                        </a>
+                    </div>
 
-                </table>
+            </th:block>
+
+
+
+            <!--<table>-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th>Student</th>-->
+                        <!--<th>Assignment</th>-->
+                        <!--<th>Date</th>-->
+                        <!--<th>Grade</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+
+                    <!--<tr th:each="student : ${course.gradable_students}">-->
+                        <!--<td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>-->
+                        <!--<td th:text="${student.getGradable().getName()}"></td>-->
+                        <!--<td th:text="${student.posted_at}"></td>-->
+                        <!--<div th:if="${student.getGrade() != null}">-->
+                            <!--<td th:text="${student.getGrade()} + '%'"></td></div>-->
+                        <!--<div th:if="${student.getGrade() == null}">-->
+                            <!--<td>-->
+                                <!--<a th:href="'/instructor/course/add-grade/' + ${course.id}">Update Grade</a>-->
+                            <!--</td>-->
+                        <!--</div>-->
+                    <!--</tr>-->
+
+                    <!--</tbody>-->
+
+                <!--</table>-->
             </div>
         <div id="applicants" class="s12">
             <table class="highlight centered">
