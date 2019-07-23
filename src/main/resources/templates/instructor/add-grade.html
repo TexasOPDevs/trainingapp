@@ -10,8 +10,8 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
+<a th:href="'/instructor/course/' + ${gradable_students.get(0).course.id} +'#grades'"><i class="material-icons">chevron_left</i>Back</a>
 <h1 th:text="${gradable_students.get(0).gradable.name}"></h1>
-
 <form th:method="POST" th:action="@{'/instructor/add-grades/' + ${gradable_students.get(0).getCourse().id}}" th:object="${gradable_students}">
     <table>
         <thead>

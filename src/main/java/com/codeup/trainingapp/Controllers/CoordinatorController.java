@@ -158,11 +158,7 @@ public class CoordinatorController {
         return "redirect:/coordinator";
     }
 
-//    @PostMapping(value = "/saveEmployee")
-//    public String makeInstructor (@RequestParam Long emp_id){
-//
-//        return "redirect:/coordinator";
-//    }
+
 
 }
 
