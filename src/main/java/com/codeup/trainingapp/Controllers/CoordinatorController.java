@@ -49,37 +49,36 @@ public class CoordinatorController {
     }
 
     @GetMapping("/user.json")
-    public @ResponseBody Iterable<User> viewUsersInJSON(){
+    public @ResponseBody
+    Iterable<User> viewUsersInJSON() {
         return userDao.findAll();
     }
 
 
     @GetMapping("/curricula.json")
-    public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
+    public @ResponseBody
+    Iterable<Curriculum> viewCurriculaInJSON() {
         return curriculumDao.findAll();
     }
 
 
+    @GetMapping("/provider.json")
+    public @ResponseBody
+    Provider viewProviderInJSON() {
+        return providerDao.findOne(2L);
+    }
 
-
-            @GetMapping("/provider.json")
-            public @ResponseBody Provider viewProviderInJSON(){
-                return providerDao.findOne(2L);
-            }
-
-            @GetMapping("/course.json")
-            public @ResponseBody Iterable<Course> viewCoursesInJSON() {
-                return courseDao.findAll();
-            }
-
-
-
+    @GetMapping("/course.json")
+    public @ResponseBody
+    Iterable<Course> viewCoursesInJSON() {
+        return courseDao.findAll();
+    }
 
 
     @GetMapping("/coordinator")
-    public String coordinatorPortal(Model model){
+    public String coordinatorPortal(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("coordinator")){
+        if (!user.getRole().equals("coordinator")) {
             return "redirect:/profile";
         }
 
@@ -95,10 +94,10 @@ public class CoordinatorController {
     }
 
     @PostMapping("/newCourse")
-    public String createACur(@ModelAttribute Curriculum curriculum){
+    public String createACur(@ModelAttribute Curriculum curriculum) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if (!user.getRole().equals("coordinator")){
+        if (!user.getRole().equals("coordinator")) {
             return "redirect:/profile";
         }
         Provider provider = providerDao.findByCoordinator_Id(32L);
@@ -109,7 +108,7 @@ public class CoordinatorController {
         curriculum.setProvider(provider);
         curriculumDao.save(curriculum);
 
-        return "redirect:/coordinator";
+        return "redirect:/coordinator#test2";
     }
 
     @PostMapping("/add_gradable")
@@ -117,7 +116,7 @@ public class CoordinatorController {
             @RequestParam(name = "grade_name") String name,
             @RequestParam(name = "grade_weight") int weight,
             @RequestParam(name = "curriculum") Long curriculum_id
-    ){
+    ) {
         Gradable newGradable = new Gradable();
         Long millis = System.currentTimeMillis();
         Date date = new Date(millis);
@@ -127,15 +126,11 @@ public class CoordinatorController {
         newGradable.setCreationDate(date);
         newGradable.setUpdateDate(date);
         gradablesDao.save(newGradable);
-        return "redirect:/coordinator";
+        return "redirect:/coordinator#test3";
     }
 
     @GetMapping("/makeInstructor")
-    public String makeInstructor( @RequestParam(required = false) Long emp_id){
-//        User curuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if (!curuser.getRole().equals("coordinator")){
-//            return "redirect:/profile";
-//        }
+    public String makeInstructor(@RequestParam(required = false) Long emp_id) {
         User user = userDao.findOne(emp_id);
         user.setRole("instructor");
         System.out.println("got here! " + user.getFirst_name());
@@ -145,19 +140,17 @@ public class CoordinatorController {
 
 
     @PostMapping("/coordinator")
-    public String createACourse(@ModelAttribute Course course)
-    {
+    public String createACourse(@ModelAttribute Course course) {
         User curuser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!curuser.getRole().equals("coordinator")){
+        if (!curuser.getRole().equals("coordinator")) {
             return "redirect:/profile";
         }
 
-            course.setStatus(StatusDao.findOne(202L));
-            courseDao.save(course);
+        course.setStatus(StatusDao.findOne(202L));
+        courseDao.save(course);
 
-        return "redirect:/coordinator";
+        return "redirect:/coordinator#test3";
     }
-
 
 
 }

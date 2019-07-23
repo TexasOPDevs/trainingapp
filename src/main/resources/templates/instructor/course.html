@@ -10,138 +10,135 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 
-    <div class="row">
-        <div class="s12">
-            <ul class="tabs">
-                <li class="tab s3"><a href="#overview">Overview</a></li>
-                <li class="tab s3"><a href="#roster">Roster</a></li>
-                <li class="tab s3"><a href="#attendance">Attendance</a></li>
-                <li class="tab s3"><a href="#grades">Grades</a></li>
-                <li class="tab s3"><a href="#applicants">Applicants</a></li>
-            </ul>
-        </div>
-        <div id="overview" class="s12">
+<div class="row">
+    <div class="s12">
+        <ul class="tabs">
+            <li class="tab s3"><a href="#overview">Overview</a></li>
+            <li class="tab s3"><a href="#roster">Roster</a></li>
+            <li class="tab s3"><a href="#attendance">Attendance</a></li>
+            <li class="tab s3"><a href="#grades">Grades</a></li>
+            <li class="tab s3"><a href="#applicants">Applicants</a></li>
+        </ul>
+    </div>
+    <div id="overview" class="s12">
 
-            <div class="divider"></div>
-            <div class="section">
-                <h5 th:text="${course.curriculum.name}" >Section 1</h5>
-                    <div class="row">
-                        <p class="col s6 text-primary" th:text="'Course ID (' + ${course.id} + ')'" ></p>
-                        <p class="col s6" th:text="'Status (' + ${course.status.name} + ')'" ></p>
-                        <p class="col s12" th:text="'Course Location (' + ${course.location} + ')'"></p>
-                        <p class="col s12" th:text="'From (' + ${course.startDate} + ') to (' + ${course.endDate} + ')'"></p>
-                        <p class="col s12" th:text="'Class Starts at (' + ${course.startTime} + ')'" ></p>
-                    </div>
+        <div class="divider"></div>
+        <div class="section">
+            <h5 th:text="${course.curriculum.name}">Section 1</h5>
+            <div class="row">
+                <p class="col s6 text-primary" th:text="'Course ID (' + ${course.id} + ')'"></p>
+                <p class="col s6" th:text="'Status (' + ${course.status.name} + ')'"></p>
+                <p class="col s12" th:text="'Course Location (' + ${course.location} + ')'"></p>
+                <p class="col s12" th:text="'From (' + ${course.startDate} + ') to (' + ${course.endDate} + ')'"></p>
+                <p class="col s12" th:text="'Class Starts at (' + ${course.startTime} + ')'"></p>
+            </div>
 
-                <h5>Instructor(s)</h5>
+            <h5>Instructor(s)</h5>
 
-                <div class="row" th:each="instructor : ${course.instructors}" th:switch="${instructor.first_name}">
-                    <p th:case="null" class="col s12">tbd</p>
-                    <p th:case="*" class="col s12" th:text="${instructor.first_name} + ', ' + ${instructor.last_name}"></p>
-                </div>
+            <div class="row" th:each="instructor : ${course.instructors}" th:switch="${instructor.first_name}">
+                <p th:case="null" class="col s12">tbd</p>
+                <p th:case="*" class="col s12" th:text="${instructor.first_name} + ', ' + ${instructor.last_name}"></p>
+            </div>
 
-                <h5>Description</h5>
+            <h5>Description</h5>
 
-                <div class="row" th:switch="${course.curriculum.description}">
-                    <p th:case="null" class="col s12">No description found</p>
-                    <p th:case="*" class="col s12" th:text="${course.curriculum.description}"></p>
-                </div>
-
-
+            <div class="row" th:switch="${course.curriculum.description}">
+                <p th:case="null" class="col s12">No description found</p>
+                <p th:case="*" class="col s12" th:text="${course.curriculum.description}"></p>
             </div>
 
 
         </div>
-        <div id="roster" class="s12">
 
-            <table class="highlight centered">
-                <tbody>
-                    <tr th:each="student: ${course.students}">
-                        <th:block th:if="${student.status.id == 101}">
-                        <td>
-                            <a th:href="'/student/' + ${student.user.id}" th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>
-                        </td>
-                        <td>
-                            <a th:href="'mailto:' + ${student.user.email}" th:target="_blank" class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
-                        </td>
-                        <td>
-                            <a th:href="'tel:' + ${student.user.phone}" class="waves-effect waves-light btn-small">Phone<i class="material-icons right">phone</i></a>
-                        </td>
-                        </th:block>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <th:block th:if="${course.students.size() == 0}">
-            <p>There is currently no attendances</p>
-        </th:block>
-        <th:block th:if="${course.students.size() != 0}">
+
+    </div>
+    <div id="roster" class="s12">
+
+        <table class="highlight centered">
+            <tbody>
+            <tr th:each="student: ${course.students}">
+                <th:block th:if="${student.status.id == 101}">
+                    <td>
+                        <a th:href="'/student/' + ${student.user.id}"
+                           th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></a>
+                    </td>
+                    <td>
+                        <a th:href="'mailto:' + ${student.user.email}" th:target="_blank"
+                           class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
+                    </td>
+                    <td>
+                        <a th:href="'tel:' + ${student.user.phone}" class="waves-effect waves-light btn-small">Phone<i
+                                class="material-icons right">phone</i></a>
+                    </td>
+                </th:block>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <th:block th:if="${course.students.size() == 0}">
+        <p>There is currently no attendances</p>
+    </th:block>
+    <th:block th:if="${course.students.size() != 0}">
 
         <div id="attendance" class="s12" th:switch="${course.students}">
-            <div class="collection" th:case="*" >
-                    <th:block th:each="attendence:${course.students.get(0).user.attendances}">
-                <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}" class="collection-item" th:text="${attendence.date}"><span class="new badge red" data-badge-caption="absent" ></span></a>
-                    </th:block>
+            <div class="collection" th:case="*">
+                <th:block th:each="attendence:${course.students.get(0).user.attendances}">
+                    <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}"
+                       class="collection-item" th:text="${attendence.date}"><span class="new badge red"
+                                                                                  data-badge-caption="absent"></span></a>
+                </th:block>
             </div>
 
             <div class="fixed-action-btn">
-                <a th:href="'/instructor/course/' + ${course.id} + '/attendance_form'" class="btn-floating btn-large red">
+                <a th:href="'/instructor/course/' + ${course.id} + '/attendance_form'"
+                   class="btn-floating btn-large red">
                     <i class="large material-icons">add</i>
                 </a>
             </div>
 
         </div>
+    </th:block>
+
+
+    <div id="grades" class="col s12">
+
+        <th:block th:if="${course.students.size() != 0}">
+            <ul class="collection with-header">
+                <li class="collection-header"><h4 th:text="${course.curriculum.name} + ' Assignments'"></h4></li>
+                <th:block th:each="grade:${course.curriculum.gradables}">
+                    <th:block th:if="${grade.gradable_students.get(0).grade != null}">
+                        <li class="collection-item"><a th:href="'/instructor/course/grades/' + ${grade.id}"
+                                                       th:text="${grade.name}"><span class="new badge red"
+                                                                                     data-badge-caption="absent"></span></a>
+                        </li>
+                    </th:block>
+                    <th:block th:if="${grade.gradable_students.get(0).grade == null}">
+                        <li class="collection-item"><a th:href="'/instructor/course/add-grade/' + ${course.id}"
+                                                       class="red-text"
+                                                       th:text="${grade.name} + ' - enter grades'"><span
+                                class="new badge red" data-badge-caption="absent"></span>Update Grade</a></li>
+                    </th:block>
+                </th:block>
+            </ul>
+
+
         </th:block>
 
 
-
-
-
-
-
-        <div id="grades" class="col s12">
-
-            <th:block th:if="${course.students.size() != 0}">
-                        <ul class="collection with-header">
-                            <li class="collection-header" ><h4 th:text="${course.curriculum.name} + ' Assignments'"></h4></li>
-                        <th:block th:each="grade:${course.curriculum.gradables}">
-                            <th:block th:if="${grade.gradable_students.get(0).grade != null}">
-                                <li class="collection-item"><a th:href="'/instructor/course/grades/' + ${grade.id}"  th:text="${grade.name}" ><span class="new badge red" data-badge-caption="absent" ></span></a></li>
-                            </th:block>
-                            <th:block th:if="${grade.gradable_students.get(0).grade == null}">
-                                <li class="collection-item"><a th:href="'/instructor/course/add-grade/' + ${course.id}" class="red-text" th:text="${grade.name} + ' - enter grades'" ><span class="new badge red" data-badge-caption="absent"></span>Update Grade</a></li>
-                            </th:block>
-                        </th:block>
-                        </ul>
-
-                    <!--<div class="fixed-action-btn">-->
-                        <!--<a th:href="'/instructor/course/add-grade/' + ${course.id}" class="btn-floating btn-large red">-->
-                            <!--<i class="large material-icons">add</i>-->
-                        <!--</a>-->
-                    <!--</div>-->
-                            <!--<td th:if="${grade. == null}">-->
-                                <!--<a th:href="'/instructor/course/add-grade/' + ${course.id}">Update Grade</a>-->
-                            <!--</td>-->
-
-            </th:block>
-
-
-
-
-            </div>
-        <div id="applicants" class="s12">
-            <table class="highlight centered">
-                <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="student: ${course.students}">
-                    <th:block th:if="${student.status.id == 102}">
+    </div>
+    <div id="applicants" class="s12">
+        <table class="highlight centered">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student: ${course.students}">
+                <th:block th:if="${student.status.id == 102}">
                     <td th:text="${student.user.first_name}">
 
                     </td>
@@ -150,10 +147,12 @@
 
                     </td>
                     <td>
-                        <a th:href="'mailto:' + ${student.user.email}" th:target="_blank" class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
+                        <a th:href="'mailto:' + ${student.user.email}" th:target="_blank"
+                           class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
                     </td>
                     <td>
-                        <a th:href="'tel:' + ${student.user.phone}" class="waves-effect waves-light btn-small">Phone<i class="material-icons right">phone</i></a>
+                        <a th:href="'tel:' + ${student.user.phone}" class="waves-effect waves-light btn-small">Phone<i
+                                class="material-icons right">phone</i></a>
                     </td>
                     <td>
                         <form th:method="post" name="apply" th:action="@{/enroll}">
@@ -166,15 +165,13 @@
                             </button>
                         </form>
                     </td>
-                    </th:block>
-                </tr>
+                </th:block>
+            </tr>
 
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
-
-
+</div>
 
 
 <th:block th:replace="partials/master :: jquery"></th:block>

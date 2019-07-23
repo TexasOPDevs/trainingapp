@@ -29,16 +29,16 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String landing(){
+    public String landing() {
         return "home/landing-page";
     }
 
     @GetMapping("/profile")
-    public String redirect(){
+    public String redirect() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (user.getRole().equals("instructor")){
+        if (user.getRole().equals("instructor")) {
             return "redirect:/instructor/course/2";
-        } else if (user.getRole().equals("coordinator")){
+        } else if (user.getRole().equals("coordinator")) {
             return "redirect:/coordinator";
         } else {
             return "redirect:/student";
@@ -46,17 +46,18 @@ public class HomeController {
     }
 
     @GetMapping("/curricullum.json")
-    public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
+    public @ResponseBody
+    Iterable<Curriculum> viewCurriculaInJSON() {
         return curriculumDao.findAll();
     }
 
 
     @GetMapping("/courses")
     public String courseView(Model model) {
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("user", userDao.findOne(user.getId()));
-        } else{
+        } else {
             model.addAttribute("user", new User());
         }
         model.addAttribute("courses", courseDao.findAllByStatus_IdOrderByStartDateAsc(204L));
@@ -65,10 +66,10 @@ public class HomeController {
     }
 
     @PostMapping("/apply")
-    private String signup(@RequestParam(name="course") Long id){
+    private String signup(@RequestParam(name = "course") Long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = new Student();
-        if(studentDao.findByCourse_IdAndUser_IdAndStatus_Id(id, user.getId(), 102L).toString().equals("[]")) {
+        if (studentDao.findByCourse_IdAndUser_IdAndStatus_Id(id, user.getId(), 102L).toString().equals("[]")) {
             System.out.println("got here");
             student.setUser(userDao.findOne(user.getId()));
             student.setCourse(courseDao.findOne(id));

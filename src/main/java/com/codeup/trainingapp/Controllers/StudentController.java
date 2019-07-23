@@ -35,15 +35,15 @@ public class StudentController {
     }
 
     @GetMapping("/student")
-    public String studentView(Model model){
+    public String studentView(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
-        Iterable<Student> students  = studentDao.findAllByUser_Id(user.getId());
-        List<Double> attendanceAvgs= new ArrayList<>();
-        int i=0;
+        Iterable<Student> students = studentDao.findAllByUser_Id(user.getId());
+        List<Double> attendanceAvgs = new ArrayList<>();
+        int i = 0;
         double count = 0;
-        for(Student student: students){
-            if(student.getUser().getId().equals(user.getId())) {
+        for (Student student : students) {
+            if (student.getUser().getId().equals(user.getId())) {
                 for (Attendance attend : student.getUser().getAttendances()) {
                     i++;
                     if (attend.getPresent()) {
@@ -55,20 +55,20 @@ public class StudentController {
         }
         List<Double> gradesAvgs = new ArrayList<>();
         double total = 0;
-        for(Student student: students){
-            if(student.getUser().getId().equals(user.getId())){
-                for(Gradable_Student grade : student.getUser().getGradable_students()){
-                    if(grade.getGrade() != null) {
-                        total += (grade.getGrade() * ( ((float) grade.getGradable().getWeight() / 100)));
+        for (Student student : students) {
+            if (student.getUser().getId().equals(user.getId())) {
+                for (Gradable_Student grade : student.getUser().getGradable_students()) {
+                    if (grade.getGrade() != null) {
+                        total += (grade.getGrade() * (((float) grade.getGradable().getWeight() / 100)));
                         System.out.println(total);
                     }
                 }
             }
         }
-        attendanceAvgs.add(count/i);
+        attendanceAvgs.add(count / i);
         gradesAvgs.add(total);
         System.out.println(gradesAvgs);
-        model.addAttribute("attendanceAvgs",attendanceAvgs);
+        model.addAttribute("attendanceAvgs", attendanceAvgs);
         model.addAttribute("gradesAvgs", gradesAvgs);
         model.addAttribute("students", students);
         return "student/profile";
@@ -76,11 +76,10 @@ public class StudentController {
 
 
     @GetMapping("/allCourses.json")
-    public @ResponseBody Iterable<Curriculum> viewCurriculaInJSON(){
+    public @ResponseBody
+    Iterable<Curriculum> viewCurriculaInJSON() {
         return curriculumDao.findAll();
     }
-    
-
 
 
 }

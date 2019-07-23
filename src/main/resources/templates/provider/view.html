@@ -44,53 +44,53 @@
                 </div>
             </div>
             <div class="col s12 m6 l6">
-                    <div class="row">
-                        <h5 th:text="'Email: ' + ${provider.coordinator.email}"></h5>
-                    </div>
-                    <div class="row">
-                        <a th:href="'mailto:' + ${provider.coordinator.email}" th:target="_blank"
-                           class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
-                    </div>
+                <div class="row">
+                    <h5 th:text="'Email: ' + ${provider.coordinator.email}"></h5>
                 </div>
-                <div class="col s6">
-                    <div class="row">
-                        <h5 th:text="'Phone: ' + ${provider.coordinator.phone}"></h5>
-                    </div>
-                    <div class="row">
-                        <a th:href="'tel:' + ${provider.coordinator.phone}" class="waves-effect waves-light btn-small">Phone<i
-                                class="material-icons right">phone</i></a>
-                    </div>
-                    <div class="row">
-                        <h5>Bio: </h5>
-                        <p th:text="${provider.coordinator.bio}">
-                        </p>
-                    </div>
+                <div class="row">
+                    <a th:href="'mailto:' + ${provider.coordinator.email}" th:target="_blank"
+                       class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="row">
+                    <h5 th:text="'Phone: ' + ${provider.coordinator.phone}"></h5>
+                </div>
+                <div class="row">
+                    <a th:href="'tel:' + ${provider.coordinator.phone}" class="waves-effect waves-light btn-small">Phone<i
+                            class="material-icons right">phone</i></a>
+                </div>
+                <div class="row">
+                    <h5>Bio: </h5>
+                    <p th:text="${provider.coordinator.bio}">
+                    </p>
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
         <h3 class="center">Instructors</h3>
         <th:block th:each="instructor : ${provider.users}">
-           <th:block th:if="${instructor.role == 'instructor'}">
-                   <div class="col s12 m6 l4">
-                       <div class="card">
-                           <div class="card-image">
-                               <img th:src="${instructor.img}"/>
-                               <span th:text="${instructor.first_name} + ' ' + ${instructor.last_name}"
-                                     class="card-title"></span>
-                           </div>
-                           <div class="card-content">
-                               <p th:text="${instructor.bio}">
+            <th:block th:if="${instructor.role == 'instructor'}">
+                <div class="col s12 m6 l4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img th:src="${instructor.img}"/>
+                            <span th:text="${instructor.first_name} + ' ' + ${instructor.last_name}"
+                                  class="card-title"></span>
+                        </div>
+                        <div class="card-content">
+                            <p th:text="${instructor.bio}">
 
-                               </p>
-                           </div>
-                           <div class="card-action center-align">
-                               <a th:href="'mailto:' + ${instructor.email}" th:target="_blank"
-                                  class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
-                           </div>
-                       </div>
-                   </div>
-           </th:block>
+                            </p>
+                        </div>
+                        <div class="card-action center-align">
+                            <a th:href="'mailto:' + ${instructor.email}" th:target="_blank"
+                               class="waves-effect waves-light btn-small">E-Mail<i class="material-icons right">mail</i></a>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
         </th:block>
     </div>
     <div class="row card pl-1 pr-1 pt-1 pb-1">
@@ -113,7 +113,7 @@
                     <td th:text="${course.location}">
 
                     </td>
-                    
+
                     <td th:text="${#dates.format(course.endDate, 'MM-dd-yy')}">
 
                     </td>

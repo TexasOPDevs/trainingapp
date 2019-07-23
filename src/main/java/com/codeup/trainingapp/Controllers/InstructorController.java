@@ -40,9 +40,9 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/courses")
-    public String InstructorCourseView(Model model){
+    public String InstructorCourseView(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         model.addAttribute("courses", courseDao.findByInstructors(user));
@@ -50,12 +50,12 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/course/{course_id}")
-    public String CoursePage(Model model, @PathVariable Long course_id){
+    public String CoursePage(Model model, @PathVariable Long course_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
-        if (!courseDao.findOne(course_id).getInstructors().contains(user)){
+        if (!courseDao.findOne(course_id).getInstructors().contains(user)) {
             return "redirect:/instructor/courses";
         }
         model.addAttribute("course", courseDao.findOne(course_id));
@@ -63,12 +63,12 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/course/{course_id}/edit")
-    public String CourseEditForm(Model model, @PathVariable Long course_id){
+    public String CourseEditForm(Model model, @PathVariable Long course_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
-        if (!courseDao.findOne(course_id).getInstructors().contains(user)){
+        if (!courseDao.findOne(course_id).getInstructors().contains(user)) {
             return "redirect:/instructor/courses";
         }
         model.addAttribute("course", courseDao.findOne(course_id));
@@ -76,9 +76,9 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/curricula")
-    public String InstructorCurriculaView(Model model){
+    public String InstructorCurriculaView(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         model.addAttribute("curricula", curriculumDao.findAll());
@@ -87,9 +87,9 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/curriculum/{curriculum_id}")
-    public String CurriculumPage(Model model, @PathVariable Long curriculum_id){
+    public String CurriculumPage(Model model, @PathVariable Long curriculum_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         model.addAttribute("curriculum", curriculumDao.findOne(curriculum_id));
@@ -97,14 +97,14 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/course/add-grade/{gradable_id}")
-    public String addGrade(Model model, @PathVariable Long gradable_id){
+    public String addGrade(Model model, @PathVariable Long gradable_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
 
-        Iterable <Gradable_Student> students = gradable_studentDao.findAllByCourse_IdAndGradeIsNull(gradable_id);
-        if (students == null){
+        Iterable<Gradable_Student> students = gradable_studentDao.findAllByCourse_IdAndGradeIsNull(gradable_id);
+        if (students == null) {
             return "sendredirect:/instructor/course" + gradable_id;
         } else {
             model.addAttribute("gradable_students", students);
@@ -113,25 +113,25 @@ public class InstructorController {
     }
 
     @PostMapping("/instructor/add-grades/{course_id}")
-    public String insertGrades(@RequestParam List<Long> grades, @PathVariable Long course_id){
+    public String insertGrades(@RequestParam List<Long> grades, @PathVariable Long course_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         Iterable<Gradable_Student> students = gradable_studentDao.findAllByCourse_IdAndGradeIsNull(course_id);
-       int i=0;
-        for(Gradable_Student student: students){
+        int i = 0;
+        for (Gradable_Student student : students) {
             student.setGrade(grades.get(i));
             i++;
         }
-            gradable_studentDao.save(students);
+        gradable_studentDao.save(students);
 
 
         return "redirect:/instructor/course/" + course_id;
     }
 
     @GetMapping("/instructor/course/grades/{gradable_id}")
-    public String viewGrades(Model model, @PathVariable Long gradable_id){
+    public String viewGrades(Model model, @PathVariable Long gradable_id) {
         Iterable<Gradable_Student> students = gradable_studentDao.findAllByGradable_id(gradable_id);
         model.addAttribute("gradable_students", students);
         return "instructor/grade";
@@ -139,12 +139,12 @@ public class InstructorController {
 
 
     @GetMapping("/instructor/curriculum/create")
-    public String CreateCurriculumForm(Model model){
+    public String CreateCurriculumForm(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
-        model.addAttribute("curriculum", new  Curriculum());
+        model.addAttribute("curriculum", new Curriculum());
         return "instructor/create_curriculum";
     }
 
@@ -158,7 +158,7 @@ public class InstructorController {
             @RequestParam(name = "provider") Long provider_id
     ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         Curriculum newCurriculum = new Curriculum();
@@ -176,7 +176,6 @@ public class InstructorController {
     }
 
 
-
     @PostMapping("/curriculum/edit")
     public String CreateCurriculumMethod(
             @RequestParam(name = "description") String description,
@@ -185,7 +184,7 @@ public class InstructorController {
             @RequestParam(name = "provider.id") Long provider_id
     ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         Curriculum newCurriculum = new Curriculum();
@@ -201,9 +200,9 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/curriculum/{curriculum_id}/edit")
-    public String CurriculumEditForm(Model model, @PathVariable Long curriculum_id){
+    public String CurriculumEditForm(Model model, @PathVariable Long curriculum_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         model.addAttribute("curriculum", curriculumDao.findOne(curriculum_id));
@@ -212,9 +211,9 @@ public class InstructorController {
 
 
     @GetMapping("/instructor/curriculum/{curriculum_id}/create_grade")
-    public String CreateCurriculumGrade(Model model, @PathVariable Long curriculum_id){
+    public String CreateCurriculumGrade(Model model, @PathVariable Long curriculum_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         Gradable newGradable = new Gradable();
@@ -229,9 +228,9 @@ public class InstructorController {
             @RequestParam(name = "name") String name,
             @RequestParam(name = "weight") int weight,
             @RequestParam(name = "curriculum") Curriculum curriculum
-            ){
+    ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         Gradable newGradable = new Gradable();
@@ -247,9 +246,9 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/course/{course_id}/attendance/{day}")
-    public String AttendanceSheet(Model model, @PathVariable Long course_id, @PathVariable Date day){
+    public String AttendanceSheet(Model model, @PathVariable Long course_id, @PathVariable Date day) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         model.addAttribute("attendances", attendanceDao.findByDateAndCourse(day, courseDao.findOne(course_id)));
@@ -257,9 +256,9 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor/course/{course_id}/attendance_form")
-    public String AttendanceForm(Model model, @PathVariable Long course_id){
+    public String AttendanceForm(Model model, @PathVariable Long course_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
         Course course = courseDao.findOne(course_id);
@@ -268,14 +267,14 @@ public class InstructorController {
 
         AttendancesCreationDto attendanceForm = new AttendancesCreationDto();
 
-        for (int i = 0; i < course.getStudents().size() ; i++ ){
+        for (int i = 0; i < course.getStudents().size(); i++) {
             System.out.println(date);
             System.out.println(true);
             System.out.println(course.getStudents().get(i).getUser().getFullName());
             System.out.println(course.getId());
             System.out.println(course.getStudents());
 
-            attendanceForm.addAttendance(new Attendance(date,true,course.getStudents().get(i).getUser(),course));
+            attendanceForm.addAttendance(new Attendance(date, true, course.getStudents().get(i).getUser(), course));
             System.out.println(i);
         }
         model.addAttribute("attendanceForm", attendanceForm);
@@ -283,13 +282,13 @@ public class InstructorController {
     }
 
     @PostMapping("/submit_attendance")
-    public String submitAttendance(@ModelAttribute AttendancesCreationDto attendanceForm){
+    public String submitAttendance(@ModelAttribute AttendancesCreationDto attendanceForm) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.getRole().equals("instructor")){
+        if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
 
-        for (int i = 0; i < attendanceForm.getAttendances().size() ; i++ ){
+        for (int i = 0; i < attendanceForm.getAttendances().size(); i++) {
             System.out.println(i);
             attendanceDao.save(attendanceForm.getAttendances().get(i));
         }
