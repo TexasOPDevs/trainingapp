@@ -105,7 +105,7 @@
                         <div class="collection">
                         <th:block th:each="grade:${course.curriculum.gradables}">
                             <th:block th:if="${grade.gradable_students.get(0).grade != null}">
-                                <a th:href="'/instructor/course/grades/' + ${course.id}" class="collection-item" th:text="${grade.name}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
+                                <a th:href="'/instructor/course/grades/' + ${grade.id}" class="collection-item" th:text="${grade.name}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
                             </th:block>
                             <th:block th:if="${grade.gradable_students.get(0).grade == null}">
                                 <a th:href="'/instructor/course/add-grade/' + ${course.id}" class="collection-item red-text" th:text="${grade.name} + ' - enter grades'" ><span class="new badge red" data-badge-caption="absent"></span>Update Grade</a>
