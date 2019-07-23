@@ -55,19 +55,20 @@ public class StudentController {
         }
         List<Double> gradesAvgs = new ArrayList<>();
         double total = 0;
-        for(Student student: students){
+        for(Student student : students){
             if(student.getUser().getId().equals(user.getId())){
                 for(Gradable_Student grade : student.getUser().getGradable_students()){
-                    if(grade.getGrade() != null) {
+                        System.out.println("Grade Id: " + grade.getId());
+                        System.out.println("Weight: " + grade.getGradable().getWeight());
+                        System.out.println(grade.getGrade());
                         total += (grade.getGrade() * ( ((float) grade.getGradable().getWeight() / 100)));
                         System.out.println(total);
-                    }
                 }
             }
         }
         attendanceAvgs.add(count/i);
         gradesAvgs.add(total);
-        System.out.println(gradesAvgs);
+        System.out.println(total/3);
         model.addAttribute("attendanceAvgs",attendanceAvgs);
         model.addAttribute("gradesAvgs", gradesAvgs);
         model.addAttribute("students", students);
