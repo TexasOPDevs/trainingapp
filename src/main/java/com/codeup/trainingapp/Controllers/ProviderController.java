@@ -27,8 +27,8 @@ public class ProviderController {
         this.courseDao = courseDao;
     }
 
-    @GetMapping(path= "/provider/{name}")
-    public String provider(@PathVariable String name, Model model){
+    @GetMapping(path = "/provider/{name}")
+    public String provider(@PathVariable String name, Model model) {
 
         model.addAttribute("provider", providerDao.findByName(name));
         model.addAttribute("courses", courseDao.findAllByCurriculum_Provider_NameOrderByStartDateAsc(name));

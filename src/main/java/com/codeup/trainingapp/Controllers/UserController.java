@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute User user){
+    public String updateUser(@ModelAttribute User user) {
         User loggedIn = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user.setId(loggedIn.getId());
         user.setPassword(loggedIn.getPassword());
@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("/user/update")
-    public String update(Model model){
+    public String update(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         return "user/update";

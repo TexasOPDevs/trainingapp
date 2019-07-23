@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 
     var request = $.ajax({
         'url': '/curricula.json',
@@ -8,9 +8,9 @@
 
         console.log(curricula);
         var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Creation Date</th><th class="hide-on-med-and-down">Materials</th><th></th></tr></thead><tbody>';
-        curricula.forEach(function(cur) {
-            html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${cur.creationDate}</td><td class="hide-on-med-and-down">`;
-            cur.materials.forEach(function(element){
+        curricula.forEach(function (cur) {
+            html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${cur.}</td><td class="hide-on-med-and-down">`;
+            cur.materials.forEach(function (element) {
                 html += ` ${element.name} `
             });
             html += `</td><td> <a class="waves-effect waves-light btn modal-trigger" href="#modal-cur-${cur.id}">More Info</a>
@@ -36,8 +36,7 @@
 })(jQuery);
 
 
-
-var provider = function($) {
+var provider = function ($) {
 
     var request = $.ajax({
         'url': '/provider.json'
@@ -47,9 +46,7 @@ var provider = function($) {
         console.log(provider);
 
 
-
-
-        var html=` <div class="card horizontal">
+        var html = ` <div class="card horizontal">
             <div class="card-image">
             <img src="${provider.image}">
             </div>
@@ -67,8 +64,8 @@ var provider = function($) {
         </h3>`;
 
 
-           html += `<table class="highlight "><thead><tr><th>Name</th><div><th class="hide-on-med-and-down">Email</th></div><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
-        provider.users.forEach(function(element){
+        html += `<table class="highlight "><thead><tr><th>Name</th><div><th class="hide-on-med-and-down">Email</th></div><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
+        provider.users.forEach(function (element) {
 
             html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="get" action="/makeInstructor" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
 
@@ -79,29 +76,29 @@ var provider = function($) {
 };
 
 
-$(function() {
+$(function () {
     /*  Submit form using Ajax */
-    $('.makeinstructor').click(function(e) {
+    $('.makeinstructor').click(function (e) {
 
         //Prevent default submission of form
         e.preventDefault();
 
-    var token = $("meta[name='_csrf']").attr("content");
-    var header = $("meta[name='_csrf_header']").attr("content");
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
         //Remove all errors
-       var data = $(".emp_id").val();
+        var data = $(".emp_id").val();
         $.get({
-            url : '/makeInstructor',
+            url: '/makeInstructor',
             contentType: "application/json; charset=utf-8",
-            data : JSON.stringify(data),
-            dataType : "json",
+            data: JSON.stringify(data),
+            dataType: "json",
             // ajaxOptions : {
             //     beforeSend: function(xhr)
             //     {
             //         xhr.setRequestHeader(token, header)
             //     }
             // },
-            success : function(res) {
+            success: function (res) {
 
             }
         })
@@ -110,7 +107,7 @@ $(function() {
 });
 
 
-(function($) {
+(function ($) {
 
     var request = $.ajax({
         'url': '/curricula.json'
@@ -119,19 +116,19 @@ $(function() {
 
         console.log(curricula);
         var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
-        curricula.forEach(function(cur) {
+        curricula.forEach(function (cur) {
             cur.courses.forEach(function (course) {
-                if (course.start_date === null){
+                if (course.start_date === null) {
                     course.start_date = "tbd";
                 }
-                if (course.end_date === null){
+                if (course.end_date === null) {
                     course.end_date = "tbd";
                 }
-                if (course.location === null){
+                if (course.location === null) {
                     course.location = "tbd";
                 }
                 html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${course.location}</td><td class="hide-on-med-and-down">${course.start_date}</td><td class="hide-on-med-and-down">${course.end_date}</td><td class="hide-on-med-and-down">${course.status.name}</td><td>`;
-                course.instructors.forEach(function(element){
+                course.instructors.forEach(function (element) {
                     html += ` ${element.first_name} ${element.last_name}`
                 })
             });

@@ -8,7 +8,7 @@
 
     </th:block>
     <style>
-        #name{
+        #name {
             z-index: 99;
         }
     </style>
@@ -36,51 +36,37 @@
                 <div class="collapsible-header">Create A Course</div>
                 <div class="collapsible-body">
                     <div class="row">
-                    <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
-                        <div class="input-field col">
-                            <input placeholder="Course Name" id="name" type="text" th:field="*{name}" class="validate"/>
-                            <label th:for="*{name}">Course Name</label>
-                        </div>
-
-                        <!--we need to add materials drop down and description-->
-
-                        <!-- *Added the materialdao to controller-->
-                        <!-- *Added dropdone for materials-->
-
-
-                        <!--we no longer need capacity-->
-                        <!--*capacity gone-->
-
-
+                        <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
+                            <div class="input-field col">
+                                <input placeholder="Course Name" id="name" type="text" th:field="*{name}"
+                                       class="validate"/>
+                                <label th:for="*{name}">Course Name</label>
+                            </div>
+                            <div class="col s12 input-field input-field">
+                                <select multiple="multiple" th:field="*{materials}" name="tags" id="tags">
+                                    <option value="" disabled="disabled" selected="selected">Add Materials</option>
+                                    <option th:each="material : ${materials}" th:text="${material.name}"
+                                            th:value="${material.id}" th:selected="${material.id}"></option>
+                                </select>
+                                <label th:for="*{materials}"></label>
+                            </div>
 
 
+                            <div class="input-field col s12">
+                                <textarea th:field="*{description}" class="materialize-textarea"></textarea>
+                                <label th:for="*{description}">Description</label>
+                            </div>
 
-
-                                <div class="col s12 input-field input-field">
-                                    <select multiple="multiple" th:field="*{materials}" name="tags" id="tags">
-                                        <option value="" disabled="disabled" selected="selected">Add Materials</option>
-                                        <option  th:each="material : ${materials}" th:text="${material.name}" th:value="${material.id}"  th:selected="${material.id}"></option>
-                                    </select>
-                                    <label th:for="*{materials}"></label>
-                                </div>
-
-
-
-                        <div class="input-field col s12">
-                            <textarea th:field="*{description}" class="materialize-textarea"></textarea>
-                            <label th:for="*{description}">Description</label>
-                        </div>
-
-                        <div class="input-field col s12">
-                            <textarea th:field="*{learning_objectives}" class="materialize-textarea"></textarea>
-                            <label th:for="*{learning_objectives}">Learning Objectives</label>
-                        </div>
-                    <div class="input-field col s12">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                    </form>
+                            <div class="input-field col s12">
+                                <textarea th:field="*{learning_objectives}" class="materialize-textarea"></textarea>
+                                <label th:for="*{learning_objectives}">Learning Objectives</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </li>
@@ -92,15 +78,16 @@
                         <div class="input-field input-field">
                             <select name="curriculum">
                                 <option value="" disabled="disabled" selected="selected">Add Materials</option>
-                                <option  th:each="curriculum : ${curricula}" th:text="${curriculum.name}"  th:value="${curriculum.getId()}" th:selected="${curriculum.id}" ></option>
+                                <option th:each="curriculum : ${curricula}" th:text="${curriculum.name}"
+                                        th:value="${curriculum.getId()}" th:selected="${curriculum.id}"></option>
                             </select>
                         </div>
                         <div class="input-field col s9">
-                            <input name="grade_name" id="grade_name" type="text" class="validate" />
+                            <input name="grade_name" id="grade_name" type="text" class="validate"/>
                             <label for="grade_name">Name</label>
                         </div>
                         <div class="input-field col s3">
-                            <input name="grade_weight" id="weight" type="number" class="validate" />
+                            <input name="grade_weight" id="weight" type="number" class="validate"/>
                             <label for="weight">Weight</label>
                         </div>
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
@@ -145,7 +132,8 @@
                                         <select id="instructors" th:field="*{instructors}">
                                             <div th:each="user : ${provider.users}">
                                                 <div th:if="${user.role == 'instructor'}">
-                                                    <option th:value="${user.id}" th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
+                                                    <option th:value="${user.id}"
+                                                            th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
                                                 </div>
                                             </div>
 

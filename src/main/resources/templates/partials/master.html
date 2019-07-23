@@ -1,4 +1,3 @@
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:security="http://www.springframework.org/schema/security">
 
 
@@ -9,7 +8,7 @@
         <div class="nav-wrapper">
             <a href="/" class="pl-1 brand-logo">TOP</a>
             <a href="#" data-target="slide-out" class="sidenav-trigger valign-wrapper">
-                <img src="/toplogowhite.png"  width="40px" alt="landing_page_img" />
+                <img src="/toplogowhite.png" width="40px" alt="landing_page_img"/>
             </a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="/instructor/courses">Courses</a></li>
@@ -18,93 +17,96 @@
         </div>
     </nav>
 
-        <div sec:authorize="isAuthenticated()">
+    <div sec:authorize="isAuthenticated()">
 
 
-            <th:block th:switch="${#authentication.principal.role}">
+        <th:block th:switch="${#authentication.principal.role}">
 
 
+            <ul th:case="'student'" id="slide-out" class="sidenav scheme-white">
+                <li>
+                    <div class="user-view scheme-grey">
+                        <a href="#user"><img class="circle"
+                                             src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                        <a href="#name"><span th:text="${#authentication.principal.username}"
+                                              class="white-text name"></span></a>
+                        <a href="#email"><span th:text="${#authentication.principal.email}"
+                                               class="white-text email"></span></a>
+                    </div>
+                </li>
+                <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
+                <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
+                <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Update Profile</a></li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <form th:action="@{/logout}" th:method="post" type="submit">
+                        <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                            <i class="material-icons left">directions_run</i>
+                        </button>
+                    </form>
+                </li>
+
+            </ul>
 
 
-                <ul th:case="'student'" id="slide-out" class="sidenav scheme-white">
-                    <li>
-                        <div class="user-view scheme-grey">
-                            <a href="#user"><img class="circle"
-                                                 src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
-                            <a href="#name"><span th:text="${#authentication.principal.username}" class="white-text name"></span></a>
-                            <a href="#email"><span th:text="${#authentication.principal.email}" class="white-text email"></span></a>
-                        </div>
-                    </li>
-                    <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
-                    <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
-                    <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Update Profile</a></li>
-
-                    <li>
-                        <div class="divider"></div>
-                    </li>
-                    <li>
-                        <form th:action="@{/logout}" th:method="post" type="submit">
-                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                                <i class="material-icons left">directions_run</i>
-                            </button>
-                        </form>
-                    </li>
-
-                </ul>
-
-
-                <ul th:case="'instructor'" id="slide-out" class="sidenav scheme-white">
-                    <li>
-                        <div class="user-view scheme-grey">
-                            <a href="#user"><img class="circle"
-                                                 src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
-                            <a href="#name"><span th:text="${#authentication.principal.username}" class="white-text name"></span></a>
-                            <a href="#email"><span th:text="${#authentication.principal.email}" class="white-text email"></span></a>
-                        </div>
-                    </li>
-                    <li><a href="/instructor/courses"><i class="material-icons">dns</i>Courses</a></li>
-                    <li><a href="/instructor/curricula"><i class="material-icons">dns</i>Curricula</a></li>
-                    <li>
-                        <div class="divider"></div>
-                    </li>
-                    <li>
-                        <form th:action="@{/logout}" th:method="post" type="submit">
-                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                                <i class="material-icons left">directions_run</i>
-                            </button>
-                        </form>
-                    </li>
-                    </ul>
+            <ul th:case="'instructor'" id="slide-out" class="sidenav scheme-white">
+                <li>
+                    <div class="user-view scheme-grey">
+                        <a href="#user"><img class="circle"
+                                             src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                        <a href="#name"><span th:text="${#authentication.principal.username}"
+                                              class="white-text name"></span></a>
+                        <a href="#email"><span th:text="${#authentication.principal.email}"
+                                               class="white-text email"></span></a>
+                    </div>
+                </li>
+                <li><a href="/instructor/courses"><i class="material-icons">dns</i>Courses</a></li>
+                <li><a href="/instructor/curricula"><i class="material-icons">dns</i>Curricula</a></li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <form th:action="@{/logout}" th:method="post" type="submit">
+                        <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                            <i class="material-icons left">directions_run</i>
+                        </button>
+                    </form>
+                </li>
+            </ul>
 
 
-                <ul th:case="'coordinator'" id="slide-out" class="sidenav scheme-white">
-                    <li>
-                        <div class="user-view scheme-grey">
-                            <a href="#user"><img class="circle"
-                                                 src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
-                            <a href="#name"><span th:text="${#authentication.principal.username}" class="white-text name"></span></a>
-                            <a href="#email"><span th:text="${#authentication.principal.email}" class="white-text email"></span></a>
-                        </div>
-                    </li>
-                    <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
-                    <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
-                    <li>
-                        <div class="divider"></div>
-                    </li>
-                    <li>
-                        <form th:action="@{/logout}" th:method="post" type="submit">
-                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                                <i class="material-icons left">directions_run</i>
-                            </button>
-                        </form>
-                    </li>
+            <ul th:case="'coordinator'" id="slide-out" class="sidenav scheme-white">
+                <li>
+                    <div class="user-view scheme-grey">
+                        <a href="#user"><img class="circle"
+                                             src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                        <a href="#name"><span th:text="${#authentication.principal.username}"
+                                              class="white-text name"></span></a>
+                        <a href="#email"><span th:text="${#authentication.principal.email}"
+                                               class="white-text email"></span></a>
+                    </div>
+                </li>
+                <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
+                <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <form th:action="@{/logout}" th:method="post" type="submit">
+                        <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                            <i class="material-icons left">directions_run</i>
+                        </button>
+                    </form>
+                </li>
 
-                </ul>
+            </ul>
 
-            </th:block>
+        </th:block>
 
-        </div>
-
+    </div>
 
 
     <div sec:authorize="isAnonymous()">
@@ -113,12 +115,15 @@
         <ul id="slide-out" class="sidenav scheme-white">
             <li>
                 <div class="user-view scheme-grey">
-                    <a href="#user"><img class="circle" src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                    <a href="#user"><img class="circle"
+                                         src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
                 </div>
             </li>
             <li><a href="/courses"><i class="material-icons disabled">dns</i>Courses</a></li>
             <li><a href="/student"><i class="material-icons disabled">dvr</i>Your Portal</a></li>
-            <li><div class="divider"></div></li>
+            <li>
+                <div class="divider"></div>
+            </li>
             <li><a class="waves-effect" href="/login"><i class="material-icons">person</i>Login</a></li>
         </ul>
 
@@ -127,7 +132,6 @@
 
 
 </th:block>
-
 
 
 <th:block th:fragment="materialize">

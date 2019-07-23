@@ -13,7 +13,7 @@ public class AttendancesCreationDto {
 
     }
 
-    public void addAttendance(Attendance attendance){
+    public void addAttendance(Attendance attendance) {
         this.attendances.add(attendance);
     }
 
