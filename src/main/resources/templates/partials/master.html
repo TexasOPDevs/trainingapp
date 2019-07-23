@@ -8,15 +8,12 @@
     <nav class="primary">
         <div class="nav-wrapper">
             <a href="/" class="pl-1 brand-logo">TOP</a>
-            <a href="#" data-target="slide-out" class="sidenav-trigger valign-wrapper">
-                <img src="/toplogowhite.png"  width="40px" alt="landing_page_img" />
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="/instructor/courses">Courses</a></li>
-                <li><a href="/instructor/curricula">Curricula</a></li>
-            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large show-on-extra-large right"><i
+                    class="material-icons large">
+                menu</i></a>
         </div>
     </nav>
+
 
         <div sec:authorize="isAuthenticated()">
 
@@ -126,6 +123,11 @@
     </div>
 
 
+</th:block>
+
+<th:block th:fragment="logo">
+
+    <img src="/toplogowhite.png" alt="logo" id="TOP_logo"/>
 </th:block>
 
 
