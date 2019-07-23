@@ -28,7 +28,6 @@ public class Provider {
     private List<Curriculum> curricula;
 
 
-
     @ManyToMany(mappedBy = "providers")
     @JsonManagedReference
     private List<User> users;

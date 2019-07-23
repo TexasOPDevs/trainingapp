@@ -21,9 +21,8 @@ public class RegisterController {
     }
 
 
-
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         user.setRole("student");

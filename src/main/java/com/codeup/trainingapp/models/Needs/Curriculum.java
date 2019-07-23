@@ -12,7 +12,8 @@ import java.util.List;
 @Table(name = "curriculum")
 public class Curriculum {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -35,11 +36,10 @@ public class Curriculum {
     private Provider provider;
 
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "curriculum_material",
-            joinColumns ={@JoinColumn(name = "curriculum_id")},
+            joinColumns = {@JoinColumn(name = "curriculum_id")},
             inverseJoinColumns = {@JoinColumn(name = "material_id")}
     )
     @JsonManagedReference

@@ -10,20 +10,20 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 
-<form  th:action="@{/submit_attendance}" th:object="${attendanceForm}" method="post">
+<form th:action="@{/submit_attendance}" th:object="${attendanceForm}" method="post">
 
     <th:block th:each="attendance, itemStat : *{attendances}">
 
         <p th:text="*{attendances[__${itemStat.index}__].user.getFullName()}"></p>
-                <input type="text" th:field="*{attendances[__${itemStat.index}__].present}" />
+        <input type="text" th:field="*{attendances[__${itemStat.index}__].present}"/>
 
-        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].user}" />
-        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].course}" />
-        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].date}" />
+        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].user}"/>
+        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].course}"/>
+        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].date}"/>
 
 
     </th:block>
-    <input type="submit" />
+    <input type="submit"/>
 </form>
 
 <th:block th:replace="partials/master :: jquery"></th:block>

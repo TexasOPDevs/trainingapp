@@ -64,7 +64,7 @@ public class Attendance {
     public String wasPresent() {
         if (present) {
             return "Present";
-        }else {
+        } else {
             return "Absent";
         }
     }

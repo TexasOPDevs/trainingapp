@@ -1,7 +1,6 @@
 package com.codeup.trainingapp.models.Needs;
 
 
-
 import com.codeup.trainingapp.models.Wants.Gradable_Student;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,7 +13,7 @@ import java.util.List;
 public class User {
 
     @Id
-    private Long   id;
+    private Long id;
 
     @Column(unique = true)
     private String username;
@@ -46,12 +45,11 @@ public class User {
     private String img;
 
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_provider",
-            joinColumns ={@JoinColumn(name = "user_id")},
-            inverseJoinColumns ={@JoinColumn(name = "provider_id")}
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "provider_id")}
     )
     @JsonBackReference
     private List<Provider> providers;
@@ -71,7 +69,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonIgnore
     private List<Gradable_Student> gradable_students;
-
 
 
     public User() {
