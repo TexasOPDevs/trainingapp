@@ -55,9 +55,6 @@ public class InstructorController {
         if (!user.getRole().equals("instructor")) {
             return "redirect:/";
         }
-        if (!courseDao.findOne(course_id).getInstructors().contains(user)) {
-            return "redirect:/instructor/courses";
-        }
         model.addAttribute("course", courseDao.findOne(course_id));
         return "instructor/course";
     }
