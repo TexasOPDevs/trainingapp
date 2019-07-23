@@ -7,9 +7,9 @@
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Creation Date</th><th>Materials</th><th></th></tr></thead><tbody>';
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down-and-down">Creation Date</th><th class="hide-on-med-and-down-and-down">Materials</th><th></th></tr></thead><tbody>';
         curricula.forEach(function(cur) {
-            html += `<tr><td>${cur.name}</td><td>${cur.creation_date}</td><td>`;
+            html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down-and-down">${cur.creationDate}</td><td class="hide-on-med-and-down-and-down">`;
             cur.materials.forEach(function(element){
                 html += ` ${element.name} `
             });
@@ -67,10 +67,10 @@ var provider = function($) {
         </h3>`;
 
 
-           html += `<table class="highlight "><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
+           html += `<table class="highlight "><thead><tr><th>Name</th><div><th class="hide-on-med-and-down-and-down">Email</th></div><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
         provider.users.forEach(function(element){
 
-            html += `<tr><td>${element.first_name} ${element.last_name}</td><td>${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="get" action="/makeInstructor" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
+            html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="get" action="/makeInstructor" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
 
         });
         html += '</tbody></table>';
@@ -118,7 +118,7 @@ $(function() {
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th>Location</th><th>Start Date</th><th>End Date</th><th>Status</th><th>Instructors</th></tr></thead><tbody>';
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down-and-down">Location</th><th>Start Date</th><th class="hide-on-med-and-down-and-down">End Date</th><th class="hide-on-med-and-down-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
         curricula.forEach(function(cur) {
             cur.courses.forEach(function (course) {
                 if (course.start_date === null){
@@ -130,7 +130,7 @@ $(function() {
                 if (course.location === null){
                     course.location = "tbd";
                 }
-                html += `<tr><td>${cur.name}</td><td>${course.location}</td><td>${course.start_date}</td><td>${course.end_date}</td><td>${course.status.name}</td><td>`;
+                html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down-and-down">${course.location}</td><td class="hide-on-med-and-down-and-down">${course.start_date}</td><td class="hide-on-med-and-down-and-down">${course.end_date}</td><td class="hide-on-med-and-down-and-down">${course.status.name}</td><td>`;
                 course.instructors.forEach(function(element){
                     html += ` ${element.first_name} ${element.last_name}`
                 })
