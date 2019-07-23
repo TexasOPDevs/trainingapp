@@ -102,48 +102,31 @@
         <div id="grades" class="col s12">
 
             <th:block th:if="${course.students.size() != 0}">
-
+                        <div class="collection">
                         <th:block th:each="grade:${course.curriculum.gradables}">
-                            <a th:href="'/instructor/course/grades/' + ${course.id}" class="collection-item" th:text="${grade.name}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
+                            <th:block th:if="${grade.gradable_students.get(0).grade != null}">
+                                <a th:href="'/instructor/course/grades/' + ${course.id}" class="collection-item" th:text="${grade.name}" ><span class="new badge red" data-badge-caption="absent" ></span></a>
+                            </th:block>
+                            <th:block th:if="${grade.gradable_students.get(0).grade == null}">
+                                <a th:href="'/instructor/course/add-grade/' + ${course.id}" class="collection-item red-text" th:text="${grade.name} + ' - enter grades'" ><span class="new badge red" data-badge-caption="absent"></span>Update Grade</a>
+                            </th:block>
                         </th:block>
+                        </div>
 
-                    <div class="fixed-action-btn">
-                        <a th:href="'/instructor/course/add-grade/' + ${course.id}" class="btn-floating btn-large red">
-                            <i class="large material-icons">add</i>
-                        </a>
-                    </div>
+                    <!--<div class="fixed-action-btn">-->
+                        <!--<a th:href="'/instructor/course/add-grade/' + ${course.id}" class="btn-floating btn-large red">-->
+                            <!--<i class="large material-icons">add</i>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                            <!--<td th:if="${grade. == null}">-->
+                                <!--<a th:href="'/instructor/course/add-grade/' + ${course.id}">Update Grade</a>-->
+                            <!--</td>-->
 
             </th:block>
 
 
 
-            <!--<table>-->
-                    <!--<thead>-->
-                    <!--<tr>-->
-                        <!--<th>Student</th>-->
-                        <!--<th>Assignment</th>-->
-                        <!--<th>Date</th>-->
-                        <!--<th>Grade</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
 
-                    <!--<tr th:each="student : ${course.gradable_students}">-->
-                        <!--<td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>-->
-                        <!--<td th:text="${student.getGradable().getName()}"></td>-->
-                        <!--<td th:text="${student.posted_at}"></td>-->
-                        <!--<div th:if="${student.getGrade() != null}">-->
-                            <!--<td th:text="${student.getGrade()} + '%'"></td></div>-->
-                        <!--<div th:if="${student.getGrade() == null}">-->
-                            <!--<td>-->
-                                <!--<a th:href="'/instructor/course/add-grade/' + ${course.id}">Update Grade</a>-->
-                            <!--</td>-->
-                        <!--</div>-->
-                    <!--</tr>-->
-
-                    <!--</tbody>-->
-
-                <!--</table>-->
             </div>
         <div id="applicants" class="s12">
             <table class="highlight centered">
