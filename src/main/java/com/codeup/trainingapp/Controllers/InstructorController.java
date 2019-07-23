@@ -124,6 +124,13 @@ public class InstructorController {
         return "redirect:/instructor/course/" + course_id;
     }
 
+    @GetMapping("/instructor/course/grades/{gradable_id}")
+    public String viewGrades(Model model, @PathVariable Long gradable_id){
+        Iterable<Gradable_Student> students = gradable_studentDao.findAllByGradable_id(gradable_id);
+        model.addAttribute("gradable_students", students);
+        return "instructor/grade";
+    }
+
 
     @GetMapping("/instructor/curriculum/create")
     public String CreateCurriculumForm(Model model){
