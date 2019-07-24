@@ -82,7 +82,7 @@ public class CoordinatorController {
             return "redirect:/profile";
         }
 
-        Provider provider = providerDao.findByCoordinator_Id(32L);
+        Provider provider = providerDao.findByCoordinator_Id(user.getId());
 
         Iterable<Curriculum> curricula = curriculumDao.findAllByProvider_Id(provider.getId());
         model.addAttribute("provider", provider);
@@ -100,7 +100,7 @@ public class CoordinatorController {
         if (!user.getRole().equals("coordinator")) {
             return "redirect:/profile";
         }
-        Provider provider = providerDao.findByCoordinator_Id(32L);
+        Provider provider = providerDao.findByCoordinator_Id(user.getId());
         Calendar calendar = Calendar.getInstance();
         java.util.Date currentDate = calendar.getTime();
         java.sql.Date date = new java.sql.Date(currentDate.getTime());

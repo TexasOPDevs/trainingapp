@@ -1,0 +1,52 @@
+Good afternoon,
+
+I’m Johnny Ruiz, This is Sam Moore, and Jason Lindsey  and together
+we built the Texas Officer Training Portal
+AKA T.O.P
+
+TOP Training is a web application that allows
+Texas Law Enforcement Officer’s to view and apply to courses,
+Instructors to manage their courses and students,
+And Training Coordinators  to update and manage their curriculum and staff.
+
+As a former Training Coordinator I spent a considerable amount of time doing tedious tasks which
+took from the time I could have utilized to improve the teachable content.
+
+I also did not have an effective way to inform officers of the upcoming courses I was teaching.
+
+We created an effective solution to this with our application
+
+Jason will now go further into the features available to a training coordinator
+============================================================
+Jason:
+Let's log in as a training coordinator. our site uses spring security to authenticate users and then authorize them to use the site according to their roles. Here in the Coordinator's portal, a coordinator can view each of the members in their organization and change a student into an instructor. this is done asynchronously, using ajax requests which persist the data in our database without ever having to redirect or refresh the page. In the next tab, the coordinator can view each of the curricula provided by his or her organization. The coordinator can also create a new curriculum for the organization to provide. Now that We've created a curriculum, we can add a gradable assignment to the curriculum.  finally the coordinator can view each of the existing courses and assign a new course to an instructor, who upon receiving it will fill in the rest of the course information and open it for enrollment. let's assign a course to sam who will now walk you through the features available to an instructor.
+============================================================
+Sam:
+My main contribution to the application was creating the instructors portal. As an Instructor we can check out the current courses that we are currently assigned to. Here we can see the new course that my user was just recently assigned to. Here in the overview tab we are able to edit the course details such as location, dates, times. Now let’s take a look at an older course. So here we can see a course that has been going on for a few weeks now. As you can see we have a roster that allows an instructor to contact a student either by email or phone. Our next tab as an instructor is the Attendance tab were we can see a list of dates each representing a specific day of class. We are able to make submissions to the currents days attendance simply by clicking the plus symbol and going through the roster selecting any students that might be absent today. As you can see we now have a tab with todays date that represents the attendance for today. The next tab is a grades tab will show us individual grades for each student for each grade. We can also submit grades. Next we can see students awaiting enrollment. We can confirm their request and now they are a student in this course, now let’s go through a students portal with johnny.
+============================================================
+Johnny:
+I will now log in as an existing user that Sam Approved to the “course name” course
+
+As you can see after logging in I am directed to my Dashboard
+Here I can immediately view the courses that I have applied to and the ones I am enrolled in.
+
+I am now enrolled in the course that Sam approved.
+
+I can also
+View the average for Grades, Attendance
+
+As you can see I have not yet enrolled in any courses. A user can go to the courses page to view all courses that are open for enrollment.
+
+I can view course information by clicking on the course name. I can also click on the provider name which directs me to the providers page
+
+As you can see the course is now pending approval and the appropriate instructor can approve or deny my request.
+
+Another thing I can view is the courses I have have received credit for completing.
+
+Let’s say I’ve created a new email and I need to update it for my profile. Any user can click on the update profile tab and update any information.
+
+Click the side nav to show the change.
+
+This page(about us) displays our team’s contact information as well as links to our linked in and GitHub accounts.
+
+We look forward to meeting with you all and answering any questions you may have.

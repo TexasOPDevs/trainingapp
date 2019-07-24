@@ -12,17 +12,34 @@
 
 <form th:action="@{/submit_attendance}" th:object="${attendanceForm}" method="post">
 
-    <th:block th:each="attendance, itemStat : *{attendances}">
+    <table class="col highlight centered">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Present/Absent</th>
+            </tr>
 
-        <p th:text="*{attendances[__${itemStat.index}__].user.getFullName()}"></p>
-        <input type="text" th:field="*{attendances[__${itemStat.index}__].present}"/>
+        </thead>
+    <th:block th:each="attendance, itemStat : *{attendances}">
+        <tbody>
+        <tr>
+        <td th:text="*{attendances[__${itemStat.index}__].user.getFullName()}"></td>
+        <td>
+            <select th:field="*{attendances[__${itemStat.index}__].present}">
+                <option value="true">Present</option>
+                <option value="false">Absent</option>
+            </select>
+
 
         <input type="hidden" th:field="*{attendances[__${itemStat.index}__].user}"/>
         <input type="hidden" th:field="*{attendances[__${itemStat.index}__].course}"/>
         <input type="hidden" th:field="*{attendances[__${itemStat.index}__].date}"/>
 
-
+        </td>
+        </tr>
+        </tbody>
     </th:block>
+    </table>
     <input type="submit"/>
 </form>
 
