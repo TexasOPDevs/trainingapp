@@ -129,4 +129,21 @@
     color: #fffcf2 !important;
 }
 
+a{
+    color: #0e0e52;
+    text-decoration: underline;
+}
+a:hover{
+    color: #30323d;
+    
+}
+
+/*input:focus {*/
+/*    border-bottom: 1px solid #0e0e52 !important;*/
+/*    box-shadow: 0 1px 0 0 #0e0e52 !important;*/
+/*}*/
+
+/*label.active {*/
+/*    color: #0e0e52;*/
+/*}*/
 

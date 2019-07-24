@@ -9,30 +9,28 @@
     </th:block>
 
 </head>
-<body>
+<body style="background-color: lightgrey">
 
 <th:block th:replace="partials/master :: nav">
 
 </th:block>
 
 
-<h4>A list of all the courses for anyone to view</h4>
-
 <div class="container">
 
     <!--Suggestion 'Make the search options another navbar for styling purposes'-->
 
-    <div class="row">
-        <div class="col s12">
+    <div class="row center-align pt-2">
+        <div class="col s12 l10 offset-l1">
             <div class="card white">
-                <div class="card-content">
-                    <h3 class="card-title center">Courses</h3>
+                <div class="card-content z-depth-4">
+                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
+                    top: 1%; left: 1%; opacity: .15;"/>
+                    <h5 class="card-title primary-text center">COURSES</h5>
                     <div class="row">
                         <div class="col s3">
                         </div>
                     </div>
-                    <!--                    <div th:id="coursesTable"> Converting the data into Thymeleaf so that I can use the User
-                    Session-->
                     <table class="highlight">
                         <thead>
                         <tr>
@@ -68,10 +66,23 @@
                                 </form>
                             </td>
                         </tr>
-                            <div th:id="${course.id}" class="modal">
+                            <div th:id="${course.id}" class="modal" style="min-height:363px;min-width: 596px
+                            ;max-height: 363px; max-width: 596px;">
                                 <div class="modal-content">
-                                    <h4 th:text="${course.curriculum.name}"></h4>
+                                    <img src="/toplogoblue.png" alt="logo" style="height: 300px; width: 300px;
+                                    position: absolute;
+                    top: 55.5px; left: 149px; opacity: .15;"/>
+                                    <h3 class="center" th:text="${course.curriculum.name}"></h3>
+                                    <div class="row">
+                                    <h4>Instructors</h4>
+                                        <th:block th:each="instructor : ${course.instructors}">
+                                            <div class="col s4">
+                                            <h5 th:text="${instructor.last_name} + ' ' + ${instructor.last_name}"></h5>
+                                            </div>
+                                        </th:block>
+                                    </div>
                                     <h5 th:text="'Location: ' + ${course.location}"></h5>
+                                    <h5 class="center">Description</h5>
                                     <p th:text="${course.curriculum.description}"></p>
                                 </div>
                                 <div class="modal-footer">
