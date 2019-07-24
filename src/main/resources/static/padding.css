@@ -129,7 +129,7 @@
     color: #fffcf2 !important;
 }
 
-a{
+.underline a{
     color: #0e0e52;
     text-decoration: underline;
 }
