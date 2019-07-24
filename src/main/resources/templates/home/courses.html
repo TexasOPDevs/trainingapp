@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
@@ -42,30 +42,30 @@
                         </thead>
                         <tbody>
                         <th:block th:each="course : ${courses}">
-                        <tr>
-                            <td>
-                                <a class="modal-trigger" th:href="'#' + ${course.id}"
-                                   th:text="${course.curriculum.name}"></a>
-                            </td>
-                            <td>
-                                <a th:href="'/provider/' + ${course.curriculum.provider.name}"
-                                   th:text="${course.curriculum.provider.name}"></a>
-                            </td>
+                            <tr>
+                                <td>
+                                    <a class="modal-trigger" th:href="'#' + ${course.id}"
+                                       th:text="${course.curriculum.name}"></a>
+                                </td>
+                                <td>
+                                    <a th:href="'/provider/' + ${course.curriculum.provider.name}"
+                                       th:text="${course.curriculum.provider.name}"></a>
+                                </td>
 
-                            <td th:text="${#dates.format(course.startDate, 'MM-dd-yy')}">
+                                <td th:text="${#dates.format(course.startDate, 'MM-dd-yy')}">
 
-                            </td>
-                            <td>
+                                </td>
+                                <td>
 
-                                <form th:method="post" name="apply" th:action="@{/apply}">
-                                    <input class="course" type="hidden" name="course"
-                                           th:value="${course.id}"/>
-                                    <button class="right btn waves-effect waves-light" type="submit"
-                                            name="action">Apply
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                                    <form th:method="post" name="apply" th:action="@{/apply}">
+                                        <input class="course" type="hidden" name="course"
+                                               th:value="${course.id}"/>
+                                        <button class="right btn waves-effect waves-light" type="submit"
+                                                name="action">Apply
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
                             <div th:id="${course.id}" class="modal" style="min-height:363px;min-width: 596px
                             ;max-height: 363px; max-width: 596px;">
                                 <div class="modal-content">
@@ -74,10 +74,10 @@
                     top: 55.5px; left: 149px; opacity: .15;"/>
                                     <h3 class="center" th:text="${course.curriculum.name}"></h3>
                                     <div class="row">
-                                    <h4>Instructors</h4>
+                                        <h4>Instructors</h4>
                                         <th:block th:each="instructor : ${course.instructors}">
                                             <div class="col s4">
-                                            <h5 th:text="${instructor.last_name} + ' ' + ${instructor.last_name}"></h5>
+                                                <h5 th:text="${instructor.last_name} + ' ' + ${instructor.last_name}"></h5>
                                             </div>
                                         </th:block>
                                     </div>
