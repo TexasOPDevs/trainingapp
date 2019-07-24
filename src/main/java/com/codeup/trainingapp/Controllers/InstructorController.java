@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 @Controller
@@ -64,9 +65,6 @@ public class InstructorController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!user.getRole().equals("instructor")) {
             return "redirect:/";
-        }
-        if (!courseDao.findOne(course_id).getInstructors().contains(user)) {
-            return "redirect:/instructor/courses";
         }
         model.addAttribute("course", courseDao.findOne(course_id));
         return "instructor/edit_course";
@@ -196,6 +194,25 @@ public class InstructorController {
         newCurriculum.setUpdateDate(date);
         curriculumDao.save(newCurriculum);
         return "redirect:/instructor/curriculum/" + newCurriculum.getId();
+    }
+
+    @PostMapping("/course/edit")
+    public String editCourse(
+            @RequestParam(name = "id") Long course_id,
+            @RequestParam(name = "capacity") Long capacity,
+            @RequestParam(name = "location") String location,
+            @RequestParam(name = "startDate") Date start_date,
+            @RequestParam(name = "endDate") Date end_date,
+            @RequestParam(name = "startTime")Time start_time
+            ){
+        Course newcourse = courseDao.findOne(course_id);
+        newcourse.setCapacity(capacity);
+        newcourse.setLocation(location);
+        newcourse.setStartDate(start_date);
+        newcourse.setEndDate(end_date);
+        newcourse.setStartTime(start_time);
+        courseDao.save(newcourse);
+        return "redirect:/instructor/course/" + newcourse.getId();
     }
 
     @GetMapping("/instructor/curriculum/{curriculum_id}/edit")
