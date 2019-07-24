@@ -18,13 +18,14 @@
                             <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
                         </a>
                         <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-                        <ul class="right hide-on-med-and-down">
+                        <ul class="right hide-on-med-and-down pr-1">
                             <li><a href="/courses" >Courses</a></li>
                             <li><a href="/student" >Dashboard</a></li>
                             <li><a href="/user/update">Profile</a></li>
-                            <li><form th:action="@{/logout}" th:method="post" type="submit">
-                                <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                                    <i class="material-icons left">directions_run</i>
+                            <li><form th:action="@{/logout}" th:method="post" type="submit"
+                                       style="-webkit-appearance: none;">
+                                <button class="btn waves-effect waves-light">
+                                    LOGOUT
                                 </button>
                             </form></li>
                         </ul>
@@ -45,18 +46,13 @@
                     <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
                     <li><a href="/student"><i class="material-icons">dvr</i>Dashboard</a></li>
                     <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Profile</a></li>
-
-                    <li>
-                        <div class="divider"></div>
-                    </li>
-                    <li>
-                        <form th:action="@{/logout}" th:method="post" type="submit">
-                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                                <i class="material-icons left">directions_run</i>
+                        <form th:action="@{/logout}" th:method="post" type="submit" style="-webkit-appearance: none;"
+                              class="center">
+                            <button class="btn waves-effect waves-light" type="submit"
+                                    name="action">
+                                LOGOUT
                             </button>
                         </form>
-                    </li>
-
                 </ul>
 
             </th:bock>
@@ -74,11 +70,13 @@
                             <li><a href="/instructor/curricula" >Curricula</a></li>
                             <li><a href="/instructor/courses" >Courses</a></li>
                             <li><a href="/user/update">Profile</a></li>
-                            <li><form th:action="@{/logout}" th:method="post" type="submit">
-                                <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                                    <i class="material-icons left">directions_run</i>
-                                </button>
-                            </form></li>
+                            <li>
+                                <form th:action="@{/logout}" th:method="post" type="submit">
+                                    <button class="btn-flat waves-effect waves-light">
+                                        <i class="material-icons left">directions_run</i>
+                                    </button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </nav>
