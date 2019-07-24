@@ -67,50 +67,55 @@ var provider = function ($) {
         html += `<table class="highlight "><thead><tr><th>Name</th><div><th class="hide-on-med-and-down">Email</th></div><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
         provider.users.forEach(function (element) {
 
-            html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form class="employeeform" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
+            html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}"  type="submit">Submit</button></form></td></tr>`
 
         });
         html += '</tbody></table>';
         $('#provider').html(html);
+        addListener();
+
     });
 };
 
 provider($);
 
-var makeInstructor = function ($) {
-    /*  Submit form using Ajax */
-
-    $('.employeeform button').on("click", '.makeinstructor', function(e) {
+function addListener(){
+    $('.makeinstructor').on('click', function(e){
         e.preventDefault();
+        /*  Submit form using Ajax */
+        var emp_id =($(this).prop("value"));
         //Prevent default submission of form
         //event delegate
+        // e.preventDefault();
         //replace click for .on(click
 
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
         console.log(token);
         console.log(header);
+        console.log(emp_id);
+        var data= emp_id;
         //Remove all errors
-        var data = {
-            token: token,
-            header: header,
-            emp_id: $(".emp_id").val()
-        };
+
 
 
         $.post({
-            url: '/makeInstructor',
+            url: '/makeInstructor/' + emp_id,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data),
+            beforeSend: function(jqXHR){
+                jqXHR.setRequestHeader('X-CSRF-Token', token,)
+            },
             dataType: "json",
-            jsonpCallback:provider($),
             success: function (html) {
-                provider($);
-                return false;
             }
-        })
+        });
+        provider($);
     });
-};
+
+}
+
+ // var makeinstructor = function($)
 
 
 (function ($) {
