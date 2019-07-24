@@ -26,14 +26,17 @@
                 html += ` ${element.name} `
             });
             html += `</td><td> <a class="waves-effect waves-light btn modal-trigger" href="#modal-cur-${cur.id}">More Info</a>
-            <div id="modal-cur-${cur.id}" class="modal">
+            <div id="modal-cur-${cur.id}" class="modal" style="min-height:363px;min-width:596px;max-height:363px; max-width:596px;" >
                 <div class="modal-content">
+                <img src="/toplogoblue.png" alt="logo" style="height:300px; width:300px;
+                                    position: absolute;
+                    top:55.5px; left:149px; opacity:.15;"/>
                   <h4>${cur.name}</h4>
                   <h5>Learning Objectives:</h5>
                   <pre style="font: inherit;"><p>${cur.learning_objectives}</p></pre>
                   <h5>Description:</h5>
                   <p>${cur.description}</p>
-                  <a th:href="@{}">View all active classes</a>
+                  <a th:href="@{/courses}">View all active courses</a>
                 </div>
                 <div class="modal-footer">
                   <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
@@ -58,7 +61,7 @@ function provider($) {
         console.log(provider);
 
 
-        var top = `<div class="card horizontal">
+        var top = `<div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
             <div class="card-image">
             <img src="${provider.image}">
             </div>

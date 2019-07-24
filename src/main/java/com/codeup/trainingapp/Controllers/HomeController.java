@@ -37,7 +37,7 @@ public class HomeController {
     public String redirect() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (user.getRole().equals("instructor")) {
-            return "redirect:/instructor/course/2";
+            return "redirect:/instructor/courses";
         } else if (user.getRole().equals("coordinator")) {
             return "redirect:/coordinator";
         } else {
