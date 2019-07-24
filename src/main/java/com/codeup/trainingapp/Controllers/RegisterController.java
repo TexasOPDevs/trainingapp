@@ -23,6 +23,12 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user) {
+        if (userDao.findOne(user.getId()) != null){
+            return "redirect:/login";
+        }
+        if (userDao.findByUsername(user.getUsername()) != null){
+            return "redirect:/login";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         user.setRole("student");
