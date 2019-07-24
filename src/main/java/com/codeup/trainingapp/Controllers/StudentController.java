@@ -64,10 +64,10 @@ public class StudentController {
                         total += (grade.getGrade() * ( ((float) grade.getGradable().getWeight() / 100)));
                         System.out.println(total);
                 }
+                gradesAvgs.add(total);
             }
         }
         attendanceAvgs.add(count / i);
-        gradesAvgs.add(total);
         System.out.println(gradesAvgs);
         model.addAttribute("attendanceAvgs", attendanceAvgs);
         model.addAttribute("gradesAvgs", gradesAvgs);
