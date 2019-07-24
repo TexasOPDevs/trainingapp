@@ -129,14 +129,16 @@ public class CoordinatorController {
         return "redirect:/coordinator#test3";
     }
 
-    @PostMapping("/makeInstructor")
+    @PostMapping("/makeInstructor/{emp_id}")
     @ResponseBody
-    public  String makeInstructor(@RequestParam(required = false) Long emp_id) {
+    public  String makeInstructor(@PathVariable(required = false) Long emp_id) {
+        System.out.println("got ere");
+        System.out.println(emp_id);
         User user = userDao.findOne(emp_id);
         user.setRole("instructor");
         System.out.println("got here! " + user.getFirst_name());
         userDao.save(user);
-        return "ok";
+        return user.getRole();
     }
 
 

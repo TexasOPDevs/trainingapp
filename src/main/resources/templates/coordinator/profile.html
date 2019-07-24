@@ -12,6 +12,9 @@
             z-index: 99;
         }
     </style>
+
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 </head>
 <body>
 <th:block th:replace="partials/master :: nav">
@@ -170,6 +173,8 @@
 <th:block th:replace="partials/master :: materializejs"></th:block>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
+
+
 <script src="/js/coord-profile.js"></script>
 
 
