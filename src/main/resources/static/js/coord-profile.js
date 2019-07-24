@@ -7,11 +7,11 @@
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html = html += `<div class="row">
-        <div class="col s12">
-            <div class="card white">
+        var html =`<div class="s12">
+            <div style="margin-top: 0px;
+" class="card white">
                 <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
+                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; border:none; opacity:.15; position: absolute;
                     top: 1%; left: 1%;"/>
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
@@ -58,7 +58,7 @@ function provider($) {
         console.log(provider);
 
 
-        var html = ` <div class="card horizontal">
+        var top = `<div class="card horizontal">
             <div class="card-image">
             <img src="${provider.image}">
             </div>
@@ -75,9 +75,10 @@ function provider($) {
         </div>
         </h3>`;
 
-        html += `<div class="row">
+        var html = `<div class="row">
         <div class="col s12">
-            <div class="card white">
+            <div style="margin-top: 0px;
+" class="card white">
                 <div class="card-content">
                     <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
                     top: 1%; left: 1%;"/>
@@ -94,6 +95,7 @@ function provider($) {
 
         });
         html += '</tbody></table>';
+        $('#top').html(top);
         $('#provider').html(html);
         addListener();
 
@@ -163,9 +165,9 @@ function addListener() {
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html = html += `<div class="row">
-        <div class="col s12">
-            <div class="card white">
+        var html =`<div class="s12">
+            <div style="margin-top: 0px;
+" class="card white">
                 <div class="card-content">
                     <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
                     top: 1%; left: 1%;"/>
