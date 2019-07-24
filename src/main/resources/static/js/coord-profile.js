@@ -9,7 +9,7 @@
         console.log(curricula);
         var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Creation Date</th><th class="hide-on-med-and-down">Materials</th><th></th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
-            html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${cur.}</td><td class="hide-on-med-and-down">`;
+            html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${cur.creationDate}</td><td class="hide-on-med-and-down">`;
             cur.materials.forEach(function (element) {
                 html += ` ${element.name} `
             });
@@ -67,7 +67,7 @@ var provider = function ($) {
         html += `<table class="highlight "><thead><tr><th>Name</th><div><th class="hide-on-med-and-down">Email</th></div><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
         provider.users.forEach(function (element) {
 
-            html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form method="get" action="/makeInstructor" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
+            html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form class="employeeform" name="employeeForm"><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor" name="employee" value="${element.id}" type="submit">Submit</button></form></td></tr>`
 
         });
         html += '</tbody></table>';
@@ -75,36 +75,42 @@ var provider = function ($) {
     });
 };
 
+provider($);
 
-$(function () {
+var makeInstructor = function ($) {
     /*  Submit form using Ajax */
-    $('.makeinstructor').click(function (e) {
 
-        //Prevent default submission of form
+    $('.employeeform button').on("click", '.makeinstructor', function(e) {
         e.preventDefault();
+        //Prevent default submission of form
+        //event delegate
+        //replace click for .on(click
 
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
+        console.log(token);
+        console.log(header);
         //Remove all errors
-        var data = $(".emp_id").val();
-        $.get({
+        var data = {
+            token: token,
+            header: header,
+            emp_id: $(".emp_id").val()
+        };
+
+
+        $.post({
             url: '/makeInstructor',
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data),
             dataType: "json",
-            // ajaxOptions : {
-            //     beforeSend: function(xhr)
-            //     {
-            //         xhr.setRequestHeader(token, header)
-            //     }
-            // },
-            success: function (res) {
-
+            jsonpCallback:provider($),
+            success: function (html) {
+                provider($);
+                return false;
             }
         })
     });
-    provider($);
-});
+};
 
 
 (function ($) {
@@ -118,16 +124,16 @@ $(function () {
         var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
             cur.courses.forEach(function (course) {
-                if (course.start_date === null) {
-                    course.start_date = "tbd";
+                if (course.startDate === null) {
+                    course.startDate = "tbd";
                 }
-                if (course.end_date === null) {
-                    course.end_date = "tbd";
+                if (course.endDate === null) {
+                    course.endDate = "tbd";
                 }
                 if (course.location === null) {
                     course.location = "tbd";
                 }
-                html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${course.location}</td><td class="hide-on-med-and-down">${course.start_date}</td><td class="hide-on-med-and-down">${course.end_date}</td><td class="hide-on-med-and-down">${course.status.name}</td><td>`;
+                html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${course.location}</td><td class="hide-on-med-and-down">${course.startDate}</td><td class="hide-on-med-and-down">${course.endDate}</td><td class="hide-on-med-and-down">${course.status.name}</td><td>`;
                 course.instructors.forEach(function (element) {
                     html += ` ${element.first_name} ${element.last_name}`
                 })
@@ -139,4 +145,4 @@ $(function () {
     });
 })(jQuery);
 
-provider($);
+
