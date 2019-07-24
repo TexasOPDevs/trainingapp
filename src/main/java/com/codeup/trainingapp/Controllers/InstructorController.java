@@ -118,6 +118,8 @@ public class InstructorController {
         Iterable<Gradable_Student> students = gradable_studentDao.findAllByCourse_IdAndGradeIsNull(course_id);
         int i = 0;
         for (Gradable_Student student : students) {
+            System.out.println(student.getUser().getFirst_name());
+            System.out.println(grades.get(i));
             student.setGrade(grades.get(i));
             i++;
         }
