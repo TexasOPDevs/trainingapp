@@ -56,9 +56,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/makeInstructor",
                         "/profile",
                         "/instructor/courses",
+                        "/instructor/course/{course_id}",
+                        "/instructor/course/{course_id}/edit",
+                        "/instructor/curricula",
+                        "/instructor/curriculum/{curriculum_id}",
+                        "/instructor/course/add-grade/{gradable_id}",
+                        "/instructor/curriculum/create",
+                        "/curriculum/create_grade",
+                        "/instructor/course/{course_id}/attendance_form",
+                        "/submit_attendance",
                         "/student",
                         "/courses",
-                        "/provider/{name}"
+                        "/provider/{name}",
+                        "/instructor/curriculum/{curriculum_id}/create_grade"
                         // only authenticated users can edit ads
                 )
                 .authenticated()
