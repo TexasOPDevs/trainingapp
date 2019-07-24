@@ -26,8 +26,8 @@
             <div class="row">
                 <p class="col s12" th:text="'Curriculum ID (' + ${curriculum.id} + ')'"></p>
                 <p class="col s12" th:text="'Number of Courses (' + ${curriculum.courses.size()} + ')'"></p>
-                <p class="col s12" th:text="'Creation Date (' + ${curriculum.creationDate} + ')'"></p>
-                <p class="col s12" th:text="'Revision Date (' + ${curriculum.updateDate} + ')'"></p>
+                <p class="col s12" th:text="'Creation Date (' + ${#dates.format(curriculum.creationDate, 'MM-dd-yy')} + ')'"></p>
+                <p class="col s12" th:text="'Revision Date (' + ${#dates.format(curriculum.updateDate, 'MM-dd-yy')} + ')'"></p>
                 <h6>Description</h6>
                 <p class="col s12" th:text="${curriculum.description}"></p>
                 <h6>Learning Objectives</h6>

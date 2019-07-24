@@ -22,6 +22,7 @@
     </div>
     <div id="overview" class="s12">
 
+        <div class="container" style="background-color: ">
         <div class="divider"></div>
         <div class="section">
             <h5 th:text="${course.curriculum.name}">Section 1</h5>
@@ -29,7 +30,7 @@
                 <p class="col s6 text-primary" th:text="'Course ID (' + ${course.id} + ')'"></p>
                 <p class="col s6" th:text="'Status (' + ${course.status.name} + ')'"></p>
                 <p class="col s12" th:text="'Course Location (' + ${course.location} + ')'"></p>
-                <p class="col s12" th:text="'From (' + ${course.startDate} + ') to (' + ${course.endDate} + ')'"></p>
+                <p class="col s12" th:text="'From (' + ${#dates.format(course.startDate, 'MM-dd-yy')} + ') to (' + ${#dates.format(course.endDate, 'MM-dd-yy')} + ')'"></p>
                 <p class="col s12" th:text="'Class Starts at (' + ${course.startTime} + ')'"></p>
             </div>
 
@@ -47,13 +48,14 @@
                 <p th:case="*" class="col s12" th:text="${course.curriculum.description}"></p>
             </div>
 
-
+        </div>
         </div>
 
 
     </div>
     <div id="roster" class="s12">
 
+        <div class="container">
         <table class="highlight centered">
             <tbody>
             <tr th:each="student: ${course.students}">
@@ -74,17 +76,21 @@
             </tr>
             </tbody>
         </table>
+        </div>
     </div>
+
     <th:block th:if="${course.students.size() == 0}">
         <p>There is currently no attendances</p>
     </th:block>
     <th:block th:if="${course.students.size() != 0}">
 
+
+
         <div id="attendance" class="s12" th:switch="${course.students}">
             <div class="collection" th:case="*">
                 <th:block th:each="attendence:${course.students.get(0).user.attendances}">
                     <a th:href="'/instructor/course/' + ${course.id} + '/attendance/' + ${attendence.date}"
-                       class="collection-item" th:text="${attendence.date}"><span class="new badge red"
+                       class="collection-item" th:text="${#dates.format(attendence.date, 'MM-dd-yy')}"><span class="new badge red"
                                                                                   data-badge-caption="absent"></span></a>
                 </th:block>
             </div>

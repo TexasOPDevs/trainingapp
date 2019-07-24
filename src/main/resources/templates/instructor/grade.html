@@ -25,7 +25,7 @@
     <tr th:each="student : ${gradable_students}">
         <td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>
         <td th:text="${student.getGradable().getName()}"></td>
-        <td th:text="${student.posted_at}"></td>
+        <td th:text="${#dates.format(student.posted_at, 'MM-dd-yy')}"></td>
         <td th:text="${student.getGrade()} + '%'"></td>
 
     </tr>

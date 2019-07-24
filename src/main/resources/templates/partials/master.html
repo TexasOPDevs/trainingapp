@@ -4,112 +4,190 @@
 <th:block th:fragment="nav">
 
 
-    <nav class="primary">
-        <div class="nav-wrapper">
-            <a href="/" class="pl-1 brand-logo">TOP</a>
-            <a href="#" data-target="slide-out" class="sidenav-trigger valign-wrapper">
-                <img src="/toplogowhite.png" width="40px" alt="landing_page_img"/>
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="/instructor/courses">Courses</a></li>
-                <li><a href="/instructor/curricula">Curricula</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <div sec:authorize="isAuthenticated()">
 
 
         <th:block th:switch="${#authentication.principal.role}">
 
+            <th:bock th:case="'student'">
 
-            <ul th:case="'student'" id="slide-out" class="sidenav scheme-white">
-                <li>
-                    <div class="user-view scheme-grey">
-                        <a href="#user"><img class="circle"
-                                             src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
-                        <a href="#name"><span th:text="${#authentication.principal.username}"
-                                              class="white-text name"></span></a>
-                        <a href="#email"><span th:text="${#authentication.principal.email}"
-                                               class="white-text email"></span></a>
+                <nav class="primary">
+                    <div class="nav-wrapper">
+                        <a href="/" class="brand-logo center">
+                            <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
+                        </a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="/courses" >Courses</a></li>
+                            <li><a href="/student" >Dashboard</a></li>
+                            <li><a href="/user/update">Profile</a></li>
+                            <li><form th:action="@{/logout}" th:method="post" type="submit">
+                                <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                    <i class="material-icons left">directions_run</i>
+                                </button>
+                            </form></li>
+                        </ul>
                     </div>
-                </li>
-                <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
-                <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
-                <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Update Profile</a></li>
+                </nav>
 
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <li>
-                    <form th:action="@{/logout}" th:method="post" type="submit">
-                        <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                            <i class="material-icons left">directions_run</i>
-                        </button>
-                    </form>
-                </li>
+                <ul id="slide-out" class="sidenav scheme-white">
+                    <li>
+                        <div class="user-view scheme-grey">
+                            <a href="#user"><img class="circle"
+                                                 src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                            <a href="#name"><span th:text="${#authentication.principal.username}"
+                                                  class="white-text name"></span></a>
+                            <a href="#email"><span th:text="${#authentication.principal.email}"
+                                                   class="white-text email"></span></a>
+                        </div>
+                    </li>
+                    <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
+                    <li><a href="/student"><i class="material-icons">dvr</i>Dashboard</a></li>
+                    <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Profile</a></li>
 
-            </ul>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="post" type="submit">
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                <i class="material-icons left">directions_run</i>
+                            </button>
+                        </form>
+                    </li>
+
+                </ul>
+
+            </th:bock>
+
+            <th:block th:case="'instructor'">
 
 
-            <ul th:case="'instructor'" id="slide-out" class="sidenav scheme-white">
-                <li>
-                    <div class="user-view scheme-grey">
-                        <a href="#user"><img class="circle"
-                                             src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
-                        <a href="#name"><span th:text="${#authentication.principal.username}"
-                                              class="white-text name"></span></a>
-                        <a href="#email"><span th:text="${#authentication.principal.email}"
-                                               class="white-text email"></span></a>
+                <nav class="primary">
+                    <div class="nav-wrapper">
+                        <a href="/" class="brand-logo center">
+                            <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
+                        </a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="/instructor/curricula" >Curricula</a></li>
+                            <li><a href="/instructor/courses" >Courses</a></li>
+                            <li><a href="/user/update">Profile</a></li>
+                            <li><form th:action="@{/logout}" th:method="post" type="submit">
+                                <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                    <i class="material-icons left">directions_run</i>
+                                </button>
+                            </form></li>
+                        </ul>
                     </div>
-                </li>
-                <li><a href="/instructor/courses"><i class="material-icons">dns</i>Courses</a></li>
-                <li><a href="/instructor/curricula"><i class="material-icons">dns</i>Curricula</a></li>
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <li>
-                    <form th:action="@{/logout}" th:method="post" type="submit">
-                        <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                            <i class="material-icons left">directions_run</i>
-                        </button>
-                    </form>
-                </li>
-            </ul>
+                </nav>
+
+                <ul id="slide-out" class="sidenav scheme-white">
+                    <li>
+                        <div class="user-view scheme-grey">
+                            <a href="#user"><img class="circle"
+                                                 src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                            <a href="#name"><span th:text="${#authentication.principal.username}"
+                                                  class="white-text name"></span></a>
+                            <a href="#email"><span th:text="${#authentication.principal.email}"
+                                                   class="white-text email"></span></a>
+                        </div>
+                    </li>
+                    <li><a href="/instructor/curricula"><i class="material-icons">dns</i>Curricula</a></li>
+                    <li><a href="/instructor/courses"><i class="material-icons">dvr</i>Courses</a></li>
+                    <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Profile</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="post" type="submit">
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                <i class="material-icons left">directions_run</i>
+                            </button>
+                        </form>
+                    </li>
+
+                </ul>
+
+            </th:block>
 
 
-            <ul th:case="'coordinator'" id="slide-out" class="sidenav scheme-white">
-                <li>
-                    <div class="user-view scheme-grey">
-                        <a href="#user"><img class="circle"
-                                             src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
-                        <a href="#name"><span th:text="${#authentication.principal.username}"
-                                              class="white-text name"></span></a>
-                        <a href="#email"><span th:text="${#authentication.principal.email}"
-                                               class="white-text email"></span></a>
+            <th:block th:case="'coordinator'">
+
+
+                <nav class="primary">
+                    <div class="nav-wrapper">
+                        <a href="/" class="brand-logo center">
+                            <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
+                        </a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="/courses" >Courses</a></li>
+                            <li><a href="/coordinator" >Dashboard</a></li>
+                            <li><a href="/user/update">Profile</a></li>
+                            <li><form th:action="@{/logout}" th:method="post" type="submit">
+                                <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                    <i class="material-icons left">directions_run</i>
+                                </button>
+                            </form></li>
+                        </ul>
                     </div>
-                </li>
-                <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
-                <li><a href="/student"><i class="material-icons">dvr</i>Your Portal</a></li>
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <li>
-                    <form th:action="@{/logout}" th:method="post" type="submit">
-                        <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                            <i class="material-icons left">directions_run</i>
-                        </button>
-                    </form>
-                </li>
+                </nav>
 
-            </ul>
+                <ul id="slide-out" class="sidenav scheme-white">
+                    <li>
+                        <div class="user-view scheme-grey">
+                            <a href="#user"><img class="circle"
+                                                 src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
+                            <a href="#name"><span th:text="${#authentication.principal.username}"
+                                                  class="white-text name"></span></a>
+                            <a href="#email"><span th:text="${#authentication.principal.email}"
+                                                   class="white-text email"></span></a>
+                        </div>
+                    </li>
+                    <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
+                    <li><a href="/coordinator"><i class="material-icons">dvr</i>DashBoard</a></li>
+                    <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Profile</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="post" type="submit">
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                                <i class="material-icons left">directions_run</i>
+                            </button>
+                        </form>
+                    </li>
+
+                </ul>
+
+            </th:block>
+
 
         </th:block>
+
+
+
+
 
     </div>
 
 
     <div sec:authorize="isAnonymous()">
+
+
+        <nav class="primary">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo center">
+                    <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
+                </a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/login" class="waves-effect waves-light btn">Login<i class="material-icons left">person</i></a></li>
+                </ul>
+            </div>
+        </nav>
 
 
         <ul id="slide-out" class="sidenav scheme-white">
@@ -118,11 +196,6 @@
                     <a href="#user"><img class="circle"
                                          src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
                 </div>
-            </li>
-            <li><a href="/courses"><i class="material-icons disabled">dns</i>Courses</a></li>
-            <li><a href="/student"><i class="material-icons disabled">dvr</i>Your Portal</a></li>
-            <li>
-                <div class="divider"></div>
             </li>
             <li><a class="waves-effect" href="/login"><i class="material-icons">person</i>Login</a></li>
         </ul>
