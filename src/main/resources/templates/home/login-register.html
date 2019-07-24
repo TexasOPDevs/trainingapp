@@ -36,6 +36,11 @@
                                     <form th:action="@{/login}" th:method="post" class="col s12" style="padding-top:
                                     10%;">
                                         <div class="row">
+                                            <th:block th:if="${param.error} != null">
+                                                <div class="row">
+                                                <span class="red-text col">Invalid Username or Password</span>
+                                                </div>
+                                            </th:block>
                                             <div class="input-field col s12">
                                                 <input id="username" name="username" type="text" class="validate"/>
                                                 <label for="username">Username</label>
