@@ -9,6 +9,10 @@
         console.log(curricula);
         var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Creation Date</th><th class="hide-on-med-and-down">Materials</th><th></th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
+            cur.creationDate = cur.creationDate.split('-');
+            let year = cur.creationDate.shift();
+            cur.creationDate.push(year);
+            cur.creationDate = cur.creationDate.join('-');
             html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${cur.creationDate}</td><td class="hide-on-med-and-down">`;
             cur.materials.forEach(function (element) {
                 html += ` ${element.name} `
@@ -36,7 +40,7 @@
 })(jQuery);
 
 
-var provider = function ($) {
+ function provider($) {
 
     var request = $.ajax({
         'url': '/provider.json'
@@ -75,12 +79,12 @@ var provider = function ($) {
         addListener();
 
     });
-};
+}
 
 provider($);
 
 function addListener(){
-    $('.makeinstructor').on('click', function(e){
+    $('.makeinstructor').mousedown(function(e){
         e.preventDefault();
         /*  Submit form using Ajax */
         var emp_id =($(this).prop("value"));
@@ -108,12 +112,18 @@ function addListener(){
             },
             dataType: "json",
             success: function (html) {
+                console.log(html);
             }
         });
-        provider($);
+        provider($)
     });
+    $('.makeinstructor').mouseup(function(e){
+        e.preventDefault();
+        provider($);
+    })
 
 }
+
 
  // var makeinstructor = function($)
 
