@@ -58,11 +58,13 @@ public class StudentController {
         for(Student student : students){
             if(student.getUser().getId().equals(user.getId())){
                 for(Gradable_Student grade : student.getUser().getGradable_students()){
+                    if(grade.getGrade() != null) {
                         System.out.println("Grade Id: " + grade.getId());
                         System.out.println("Weight: " + grade.getGradable().getWeight());
                         System.out.println(grade.getGrade());
-                        total += (grade.getGrade() * ( ((float) grade.getGradable().getWeight() / 100)));
+                        total += (grade.getGrade() * (((float) grade.getGradable().getWeight() / 100)));
                         System.out.println(total);
+                    }
                 }
                 gradesAvgs.add(total);
             }
