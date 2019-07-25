@@ -1,4 +1,4 @@
-(function ($) {
+function curricula ($) {
 
     var request = $.ajax({
         'url': '/curricula.json',
@@ -7,7 +7,7 @@
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html =`<div class="s12">
+        var html = `<div class="s12">
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
@@ -46,9 +46,68 @@
         });
         html += '</tbody></table>';
         $('#courselist').html(html);
+
         M.AutoInit();
     });
-})(jQuery);
+
+}
+
+curricula($);
+
+//
+// function otherListener() {
+//
+//     $('#beginSumission').mousedown(function () {
+//
+//         $('#newCurSubmit').submit(function (e) {
+//
+//             e.preventDefault();
+//             /*  Submit form using Ajax */
+// //Prevent default submission of form
+// //event delegate
+// // e.preventDefault();
+// //replace click for .on(click
+//
+//             var token = $("meta[name='_csrf']").attr("content");
+//             var header = $("meta[name='_csrf_header']").attr("content");
+//             console.log(token);
+//             console.log(header);
+//             let name = $('#name').val();
+//             let materials = $('#tags').val();
+//             let description = $('#description').val();
+//             let learning_objectives = $('#learning_objectives').val();
+//             let data = {
+//                 name,
+//                 materials,
+//                 description,
+//                 learning_objectives,
+//             };
+//             console.log(data);
+// //Remove all errors
+//
+//
+//             $.post({
+//                 url: '/newCourse',
+//                 contentType: "application/json; charset=utf-8",
+//                 data: JSON.stringify(data),
+//                 beforeSend: function (jqXHR) {
+//                     jqXHR.setRequestHeader('X-CSRF-Token', token,)
+//                 },
+//                 dataType: "json",
+//                 success: function (html) {
+//                     console.log(html);
+//                 }
+//             });
+//
+//         });
+//
+//     });
+//     $('#beginSumission').mouseup(function (e) {
+//         e.preventDefault();
+//         curricula($);
+//     })
+//
+// }
 
 
 function provider($) {

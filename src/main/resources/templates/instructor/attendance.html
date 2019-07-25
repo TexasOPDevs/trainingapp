@@ -11,22 +11,43 @@
 <th:block th:include="partials/master :: nav"></th:block>
 
 
-<table class="col highlight centered">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th></th>
-    </tr>
-    </thead>
+<!--<table class="col highlight centered">-->
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<th>Name</th>-->
+        <!--<th></th>-->
+    <!--</tr>-->
+    <!--</thead>-->
 
-    <tbody>
-    <tr th:each="attendance:${attendances}">
-        <td th:text="${attendance.user.getFullName()}"></td>
-        <td th:text="${attendance.wasPresent()}"></td>
-    </tr>
+    <!---->
 
-    </tbody>
-</table>
+    <!--</tbody>-->
+<!--</table>-->
+
+
+    <div class="container">
+        <div class="card col s12 m12 l6">
+            <div class="card-content">
+                <img src="/toplogowhite.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
+                    top: 1%; left: 1%; opacity: .15;"/>
+                <span class="card-title center" th:text="${attendances}"></span>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="attendance:${attendances}">
+                        <td th:text="${attendance.user.getFullName()}"></td>
+                        <td th:text="${attendance.wasPresent()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
