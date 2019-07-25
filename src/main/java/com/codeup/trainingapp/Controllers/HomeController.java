@@ -65,6 +65,11 @@ public class HomeController {
         return "home/courses";
     }
 
+    @GetMapping("/about_us")
+    public String aboutUsPage(){
+        return "home/about";
+    }
+
     @PostMapping("/apply")
     private String signup(@RequestParam(name = "course") Long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
