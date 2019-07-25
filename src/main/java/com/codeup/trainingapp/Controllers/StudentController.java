@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.DecimalFormat;
+
 
 
 @Controller
@@ -24,6 +26,10 @@ public class StudentController {
     private final ProviderRepository providerDao;
     private final UserRepository userDao;
     private final StudentRepository studentDao;
+
+    private static DecimalFormat df = new DecimalFormat("0.00");
+
+
 
 
     public StudentController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, UserRepository userDao, StudentRepository studentDao) {
@@ -45,8 +51,8 @@ public class StudentController {
         for (Student student : students) {
             if (student.getUser().getId().equals(user.getId())) {
                 for (Attendance attend : student.getUser().getAttendances()) {
-                    i++;
-                    if (attend.getPresent()) {
+                    i+= 1;
+                    if (attend.getPresent()){
                         count += 1;
                     }
                 }
@@ -55,24 +61,21 @@ public class StudentController {
         }
         List<Double> gradesAvgs = new ArrayList<>();
         double total = 0;
+        double weight = 0;
         for(Student student : students){
             if(student.getUser().getId().equals(user.getId())){
                 for(Gradable_Student grade : student.getUser().getGradable_students()){
                     if(grade.getGrade() != null) {
-                        System.out.println("Grade Id: " + grade.getId());
-                        System.out.println("Weight: " + grade.getGradable().getWeight());
-                        System.out.println(grade.getGrade());
-                        total += (grade.getGrade() * (((float) grade.getGradable().getWeight() / 100)));
-                        System.out.println(total);
+                        total += (grade.getGrade() * (((double) grade.getGradable().getWeight() / 100)));
+                        weight += grade.getGradable().getWeight();
                     }
                 }
-                gradesAvgs.add(total);
+                gradesAvgs.add(total/weight);
             }
         }
         attendanceAvgs.add(count / i);
-        System.out.println(gradesAvgs);
-        model.addAttribute("attendanceAvgs", attendanceAvgs);
-        model.addAttribute("gradesAvgs", gradesAvgs);
+        model.addAttribute("attendanceAvgs", df.format(attendanceAvgs.get(0)));
+        model.addAttribute("gradesAvgs", df.format(gradesAvgs.get(0)));
         model.addAttribute("students", students);
         return "student/profile";
     }
