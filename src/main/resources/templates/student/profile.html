@@ -143,29 +143,42 @@
 
                             <td th:text="${#dates.format(student.course.startDate, 'MM-dd-yy')}"></td>
                             <td th:text="${#dates.format(student.course.endDate, 'MM-dd-yy')}"></td>
-                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[1.')}">
-                                <td>
-                                    100%
-                                </td>
-                            </th:block>
-                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[]')}">
-                                <td>
-                                    N/A
-                                </td>
-                            </th:block>
-                            <th:block th:if="${#strings.startsWith(attendanceAvgs, '[0.')}">
-                                <td th:text="${#strings.substring(attendanceAvgs,3,5) + '%'}">
-                                </td>
-                            </th:block>
-                            <th:block th:if="${#strings.startsWith(gradesAvgs, 'NaN')}">
-                                <td>
-                                    N/A
-                                </td>
-                            </th:block>
-                            <th:block th:if="${#strings.startsWith(gradesAvgs, '[')}">
-                                <td th:text="${#strings.substring(gradesAvgs,1,3) + '%'}">
 
-                                </td>
+                            <th:block th:if="${#strings.length(attendanceAvgs == 4)}">
+                                <th:block th:if="${#strings.startsWith(attendanceAvgs, 1)}">
+                                    <td>
+                                        100%
+                                    </td>
+                                </th:block>
+                                <th:block th:if="${#strings.startsWith(attendanceAvgs, 0)}">
+                                    <th:block th:if="${attendanceAvgs == '0.00'}">
+                                        <td>
+                                            N/A
+                                        </td>
+                                    </th:block>
+                                    <th:block th:if="${attendanceAvgs != '0.00'}">
+                                        <td th:text="${#strings.substring(attendanceAvgs,2,4) + '%'}">
+                                        </td>
+                                    </th:block>
+                                </th:block>
+                            </th:block>
+                            <th:block th:if="${#strings.length(gradesAvgs == 4)}">
+                                <th:block th:if="${#strings.startsWith(gradesAvgs, 1)}">
+                                    <td>
+                                        100%
+                                    </td>
+                                </th:block>
+                                <th:block th:if="${#strings.startsWith(gradesAvgs, 0)}">
+                                    <th:block th:if="${attendanceAvgs == '0.00'}">
+                                        <td>
+                                            N/A
+                                        </td>
+                                    </th:block>
+                                    <th:block th:if="${attendanceAvgs != '0.00'}">
+                                        <td th:text="${#strings.substring(gradesAvgs,2,4) + '%'}">
+                                        </td>
+                                    </th:block>
+                                </th:block>
                             </th:block>
                         </tr>
                     </th:block>
