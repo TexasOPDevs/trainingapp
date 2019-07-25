@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Courses</title>
+    <th:block th:replace="partials/master :: materialize"></th:block>
+</head>
+<body>
+<th:block th:include="partials/master :: nav"></th:block>
+
+<div class="col row">
+
+
+        <div  class="card col s12 m4 l4">
+            <div class="card-image">
+                <img th:src="@{/Jason_Lindey.jpg}" />
+                <span class="card-title">Jason Lindey</span>
+                <a th:href="'tel:(713) 962-9143'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">phone</i></a>
+            </div>
+            <div class="card-content">
+                <a href="mailto: jason.andrew@gmail.com" class="btn-flat">email</a>
+                <a href="https://github.com/nnosajasonn" class="btn-flat">github</a>
+                <a href="https://www.linkedin.com/in/jasonalindsey" class="btn-flat">linked</a>               </div>
+        </div>
+
+        <div  class="card col s12 m4 l4">
+            <div class="card-image">
+                <img th:src="@{/Johnny_Ruiz.jpg}" />
+                <span class="card-title">Johnny Ripples</span>
+                <a th:href="'tel:(210) 727-2420'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">phone</i></a>
+            </div>
+            <div class="card-content">
+                <a href="mailto: johnny.p@gmail.com" class="btn-flat">email</a>
+                <a href="https://github.com/johnnyruiz" class="btn-flat">github</a>
+                <a href="https://www.linkedin.com/in/johnny-p-ruiz" class="btn-flat">linked</a>            </div>
+        </div>
+
+        <div  class="card col s12 m4 l4">
+            <div class="card-image">
+                <img th:src="@{/Samuel_Moore.jpg}" />
+                <span class="card-title">Samuel Moore</span>
+                <a th:href="'tel:(830) 353-3076'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">phone</i></a>
+            </div>
+            <div class="card-content">
+                <a href="mailto: samuel.c.moore1221@gmail.com" class="btn-flat">email</a>
+                <a href="https://github.com/samuelmoorec" class="btn-flat">github</a>
+                <a href="https://www.linkedin.com/in/samuelcmoore" class="btn-flat">linked</a>
+            </div>
+        </div>
+
+
+</div>
+
+
+<th:block th:replace="partials/master :: jquery"></th:block>
+<th:block th:replace="partials/master :: materializejs"></th:block>
+</body>
+</html>
