@@ -18,7 +18,7 @@ function curricula ($) {
                         <div class="col s3">
                         </div>
                     </div>`;
-        html += '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Creation Date</th><th class="hide-on-med-and-down">Materials</th><th></th></tr></thead><tbody>';
+        html += '<table class="highlight"><thead><tr><th>Curriculum Name</th><th class="hide-on-med-and-down">Creation Date</th><th class="hide-on-med-and-down">Materials</th><th></th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
             cur.creationDate = dateShift(cur.creationDate);
             html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${cur.creationDate}</td><td class="hide-on-med-and-down">`;
@@ -54,60 +54,7 @@ function curricula ($) {
 
 curricula($);
 
-//
-// function otherListener() {
-//
-//     $('#beginSumission').mousedown(function () {
-//
-//         $('#newCurSubmit').submit(function (e) {
-//
-//             e.preventDefault();
-//             /*  Submit form using Ajax */
-// //Prevent default submission of form
-// //event delegate
-// // e.preventDefault();
-// //replace click for .on(click
-//
-//             var token = $("meta[name='_csrf']").attr("content");
-//             var header = $("meta[name='_csrf_header']").attr("content");
-//             console.log(token);
-//             console.log(header);
-//             let name = $('#name').val();
-//             let materials = $('#tags').val();
-//             let description = $('#description').val();
-//             let learning_objectives = $('#learning_objectives').val();
-//             let data = {
-//                 name,
-//                 materials,
-//                 description,
-//                 learning_objectives,
-//             };
-//             console.log(data);
-// //Remove all errors
-//
-//
-//             $.post({
-//                 url: '/newCourse',
-//                 contentType: "application/json; charset=utf-8",
-//                 data: JSON.stringify(data),
-//                 beforeSend: function (jqXHR) {
-//                     jqXHR.setRequestHeader('X-CSRF-Token', token,)
-//                 },
-//                 dataType: "json",
-//                 success: function (html) {
-//                     console.log(html);
-//                 }
-//             });
-//
-//         });
-//
-//     });
-//     $('#beginSumission').mouseup(function (e) {
-//         e.preventDefault();
-//         curricula($);
-//     })
-//
-// }
+
 
 
 function provider($) {
@@ -120,8 +67,9 @@ function provider($) {
         console.log(provider);
 
 
-        var top = `<div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
-            <div class="card-image">
+        var top = `<div class="s12">
+<div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
+            <div style="padding-left: 10px; padding-top: 16px;" class="card-image">
             <img src="${provider.image}">
             </div>
             <div class="card-stacked">
@@ -130,7 +78,6 @@ function provider($) {
             <p>Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
         </div>
         <div class="card-action">
-            <a href="/provider/${provider.name}">View Page</a>
         </div>
         </div>
         </div>
@@ -138,12 +85,13 @@ function provider($) {
         </h3>`;
 
         var html = `<div class="row">
+
         <div class="col s12">
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
-                    top: 1%; left: 1%;"/>
+                    <!--<img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;-->
+                    <!--top: 1%; left: 1%;"/>-->
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
                         <div class="col s3">
@@ -176,7 +124,7 @@ provider($);
 
 function addListener() {
     $('.makeinstructor').mousedown(function (e) {
-        $(this).attr("disabled", true);
+
         e.preventDefault();
         /*  Submit form using Ajax */
         var emp_id = ($(this).prop("value"));
@@ -270,4 +218,7 @@ function addListener() {
     });
 })(jQuery);
 
-
+//
+// $(document).ready(function(){
+//     $("#top").css({'width':($(".first_div").width()+'px')});
+// });

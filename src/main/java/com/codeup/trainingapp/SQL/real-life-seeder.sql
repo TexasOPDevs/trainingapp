@@ -21,10 +21,10 @@ VALUES (101, 'enrolled'),
        (204, 'open for enrollment');
 
 INSERT INTO training_db.user (id, email, first_name, last_name, password, phone, username, bio, role, img)
-VALUES (1, 'nec@nec.co.uk', 'Darius', 'Ina', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(976) 328-7437', 'sagittis', null, 'instructor', 'https://fer-uig.glitch.me'),
+VALUES (1, 'nec@nec.co.uk', 'Darius', 'Ina', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(976) 328-7437', 'instructor', null, 'instructor', 'https://fer-uig.glitch.me'),
        (2, 'risus.at@euismodurnaNullam.org', 'Lucy', 'Jorden', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(810) 280-2106', 'Donec', null, 'instructor', 'https://fer-uig.glitch.me'),
        (3, 'ridiculus.mus@Nullafacilisis.edu', 'Wyoming', 'Zelenia', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(199) 264-2861', 'rutrum', null, 'student', 'https://fer-uig.glitch.me'),
-       (4, 'libero.Donec@tellussem.co.uk', 'Lane', 'Fuller', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(511) 108-6330', 'at', null, 'student', 'https://fer-uig.glitch.me'),
+       (4, 'libero.Donec@tellussem.co.uk', 'Lane', 'Fuller', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(511) 108-6330', 'student', null, 'student', 'https://fer-uig.glitch.me'),
        (5, 'neque@auguescelerisque.ca', 'Emi', 'Preston', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq,', '(361) 328-5613', 'eu,', null, 'student', 'https://fer-uig.glitch.me'),
        (6, 'tincidunt.aliquam@eumetusIn.org', 'Maite', 'Leandra', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(216) 600-9028', 'non', null, 'student', 'https://fer-uig.glitch.me'),
        (7, 'auctor@mollisneccursus.edu', 'Keaton', 'Thor', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(471) 173-2829', 'Integer', null, 'student', 'https://fer-uig.glitch.me'),
@@ -35,7 +35,7 @@ VALUES (1, 'nec@nec.co.uk', 'Darius', 'Ina', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qi
        (12, 'massa@diamlorem.ca', 'Zeph', 'Karly', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq,', '(993) 739-8126', 'adipiscing', null, 'student', 'https://fer-uig.glitch.me'),
        (13, 'Quisque@velquam.ca', 'Brody', 'Dean', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(187) 644-6940', 'in,', null, 'student', 'https://fer-uig.glitch.me'),
        (14, 'nonummy@malesuadamalesuadaInteger.co.uk', 'Dylan', 'Ginger', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(109) 964-8734', 'porttitor', null, 'student','https://fer-uig.glitch.me'),
-       (32, 'jason@jason.com', 'Jason', 'Lindsey', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(713) 962-9143', 'jason', null, 'coordinator', 'https://fer-uig.glitch.me'),
+       (32, 'jason@jason.com', 'Jason', 'Lindsey', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(713) 962-9143', 'coordinator', null, 'coordinator', 'https://fer-uig.glitch.me'),
        (38, 'Nam.consequat.dolor@metus.co.uk', 'Sean', 'Nathaniel', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(829) 444-9732', 'molestie', null, 'instructor', 'https://fer-uig.glitch.me'),
        (39, 'eleifend.nunc@euodio.co.uk', 'Bell', 'Cameron', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(711) 769-7228', 'Tuam', null, 'instructor', 'https://fer-uig.glitch.me'),
        (40, 'non@acfeugiatnon.net', 'Rhonda', 'Dahlia', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(297) 398-4344', 'purus', null, 'instructor', 'https://fer-uig.glitch.me'),
@@ -94,9 +94,9 @@ INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, locatio
 VALUES (1, 28, '2020-09-07', null, 'Ap #512-4625 Cras Av.', '2019-02-22', '12:00:00', 3, 201),
        (2, 26, '2020-08-02', null, '217-1172 Ad Rd.', '2018-07-27', '16:00:00', 2, 201),
        (3, 27, '2020-04-02', null, 'P.O. Box 680, 1294 Leo, Rd.', '2019-03-30', '08:00:00', 3, 204),
-       (4, 33, '2020-04-04', null, 'P.O. Box 393, 8316 Sed St.', '2019-01-23', '08:00:00', 4, 204),
+       (4, 33, '2020-04-04', null, 'P.O. Box 393, 8316 Sed St.', '2019-01-23', '08:00:00', 4, 203),
        (5, 12, '2019-12-15', null, 'P.O. Box 634, 6632 Ac Street', '2019-06-04', '18:00:00', 5, 202),
-       (6, 31, '2020-07-27', null, '6997 Dictum St.', '2020-01-20', '18:00:00', 4, 203),
+       (6, 31, '2020-07-27', null, '6997 Dictum St.', '2020-01-20', '18:00:00', 6, 203),
        (7, 10, '2020-04-26', null, 'P.O. Box 641, 7303 Sem St.', '2019-09-26', '20:00:00', 6, 202),
        (8, 40, '2020-01-23', null, '180-3073 Eu Ave', '2019-09-04', '08:00:00', 3, 201),
        (9, 11, '2020-08-17', null, '7428 Lobortis Avenue', '2019-03-02', '08:00:00', 3, 204),
@@ -188,7 +188,9 @@ VALUES (1, 2, 101, 3),
        (9, 2, 101, 11),
        (10, 2, 101, 12),
        (11, 2, 101, 13),
-       (12, 2, 101, 14);
+       (12, 2, 101, 14),
+       (13, 4, 104, 4),
+       (14, 6, 104, 4);
 
 INSERT INTO user_provider (user_id, provider_id)
 VALUES (1, 2),
@@ -215,7 +217,7 @@ VALUES ('2019-06-09', 'Test 1', null, 20, 2),
        ('2019-06-09', 'Demo', null, 30, 2);
 
 
-TRUNCATE gradable_student;
+
 
 INSERT INTO gradable_student (grade, posted_at, course_id, gradable_id, user_id)
  VALUES (80, '2019-07-09', 2, 1, 3),
