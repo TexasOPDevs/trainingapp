@@ -10,30 +10,35 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <a th:href="'/instructor/course/' + ${gradable_students.get(0).course.id} +'#grades'"><i class="material-icons">chevron_left</i>Back</a>
+<div class="container">
+    <div class="card col s12 m12 l6">
+        <div class="card-content">
+            <img src="/toplogowhite.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
+                    top: 1%; left: 1%; opacity: .15;"/>
+            <span class="card-title center" th:text="${gradable_students.get(0).getGradable().getName()}"></span>
+            <table>
+                <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Date</th>
+                    <th>Grade</th>
+                </tr>
+                </thead>
+                <tbody>
 
-<table>
-    <thead>
-    <tr>
-        <th>Student</th>
-        <th>Assignment</th>
-        <th>Date</th>
-        <th>Grade</th>
-    </tr>
-    </thead>
-    <tbody>
+                <tr th:each="student : ${gradable_students}">
+                    <td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>
+                    <td th:text="${#dates.format(student.posted_at, 'MM-dd-yy')}"></td>
+                    <td th:text="${student.getGrade()} + '%'"></td>
 
-    <tr th:each="student : ${gradable_students}">
-        <td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>
-        <td th:text="${student.getGradable().getName()}"></td>
-        <td th:text="${#dates.format(student.posted_at, 'MM-dd-yy')}"></td>
-        <td th:text="${student.getGrade()} + '%'"></td>
+                </tr>
 
-    </tr>
+                </tbody>
 
-    </tbody>
-
-</table>
-
+            </table>
+        </div>
+    </div>
+</div>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
