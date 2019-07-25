@@ -10,19 +10,7 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 
-
-<!--<table class="col highlight centered">-->
-    <!--<thead>-->
-    <!--<tr>-->
-        <!--<th>Name</th>-->
-        <!--<th></th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-
-    <!---->
-
-    <!--</tbody>-->
-<!--</table>-->
+<a th:href="'/instructor/course/' + ${attendances.get(0).course.id} +'#attendance'"><i class="material-icons">chevron_left</i>Back</a>
 
 
     <div class="container">
@@ -30,7 +18,7 @@
             <div class="card-content">
                 <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
                     top: 1%; left: 1%; opacity: .15;"/>
-                <span class="card-title center" th:text="${#dates.format(attendances.get(0).getDate(), 'MM-dd-yy')}"></span>
+                <h3 class="card-title center" th:text="${#dates.format(attendances.get(0).getDate(), 'MM-dd-yy')}"></h3>
                 <table>
                     <thead>
                     <tr>
