@@ -74,8 +74,14 @@ public class StudentController {
             }
         }
         attendanceAvgs.add(count / i);
-        model.addAttribute("attendanceAvgs", df.format(attendanceAvgs.get(0)));
-        model.addAttribute("gradesAvgs", df.format(gradesAvgs.get(0)));
+        System.out.println(attendanceAvgs);
+        System.out.println(gradesAvgs);
+        if(!attendanceAvgs.isEmpty()){
+            model.addAttribute("attendanceAvgs", df.format(attendanceAvgs.get(0)));
+        }
+        if(!gradesAvgs.isEmpty()){
+            model.addAttribute("gradesAvgs", df.format(gradesAvgs.get(0)));
+        }
         model.addAttribute("students", students);
         return "student/profile";
     }
