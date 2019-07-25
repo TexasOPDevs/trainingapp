@@ -28,7 +28,7 @@ public class UserController {
         user.setUsername(loggedIn.getUsername());
         user.setRole(loggedIn.getRole());
         userDao.save(user);
-        return "redirect:/";
+        return "redirect:/profile";
     }
 
     @GetMapping("/user/update")
