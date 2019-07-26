@@ -74,10 +74,10 @@
 <!--                    top: 55.5px; left: 149px; opacity: .15;"/>-->
                                     <h3 class="center" th:text="${course.curriculum.name}"></h3>
                                     <div class="row">
-                                        <h4>Instructors</h4>
+                                        <h4>Instructor(s)</h4>
                                         <th:block th:each="instructor : ${course.instructors}">
                                             <div class="col s4">
-                                                <h5 th:text="${instructor.last_name} + ' ' + ${instructor.last_name}"></h5>
+                                                <h5 th:text="${instructor.first_name} + ' ' + ${instructor.last_name}"></h5>
                                             </div>
                                         </th:block>
                                     </div>
