@@ -28,9 +28,9 @@ function curricula ($) {
             html += `</td><td> <a class="waves-effect waves-light btn modal-trigger" href="#modal-cur-${cur.id}">More Info</a>
             <div id="modal-cur-${cur.id}" class="modal" style="min-height:363px;min-width:596px;max-height:363px; max-width:596px;" >
                 <div class="modal-content">
-                <img src="/toplogoblue.png" alt="logo" style="height:300px; width:300px;
-                                    position: absolute;
-                    top:55.5px; left:149px; opacity:.15;"/>
+                <!--<img src="/toplogoblue.png" alt="logo" style="height:300px; width:300px;-->
+                                    <!--position: absolute;-->
+                    <!--top:55.5px; left:149px; opacity:.15;"/>-->
                   <h4>${cur.name}</h4>
                   <h5>Learning Objectives:</h5>
                   <pre style="font: inherit;"><p>${cur.learning_objectives}</p></pre>
@@ -75,7 +75,7 @@ function provider($) {
             <div class="card-stacked">
             <div class="card-content">
             <h3>${provider.name}</h3>
-            <p>Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
+            <p class="hide-on-med-and-down">Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
         </div>
         <div class="card-action">
         </div>
@@ -90,8 +90,8 @@ function provider($) {
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
-                    <!--<img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;-->
-                    <!--top: 1%; left: 1%;"/>-->
+                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
+                    top: 1%; left: 1%;"/>
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
                         <div class="col s3">
