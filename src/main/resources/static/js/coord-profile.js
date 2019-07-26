@@ -18,7 +18,7 @@ function curricula ($) {
                         <div class="col s3">
                         </div>
                     </div>`;
-        html += '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Creation Date</th><th class="hide-on-med-and-down">Materials</th><th></th></tr></thead><tbody>';
+        html += '<table class="highlight"><thead><tr><th>Curriculum Name</th><th class="hide-on-med-and-down">Creation Date</th><th class="hide-on-med-and-down">Materials</th><th></th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
             cur.creationDate = dateShift(cur.creationDate);
             html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${cur.creationDate}</td><td class="hide-on-med-and-down">`;
@@ -28,9 +28,9 @@ function curricula ($) {
             html += `</td><td> <a class="waves-effect waves-light btn modal-trigger" href="#modal-cur-${cur.id}">More Info</a>
             <div id="modal-cur-${cur.id}" class="modal" style="min-height:363px;min-width:596px;max-height:363px; max-width:596px;" >
                 <div class="modal-content">
-                <img src="/toplogoblue.png" alt="logo" style="height:300px; width:300px;
-                                    position: absolute;
-                    top:55.5px; left:149px; opacity:.15;"/>
+                <!--<img src="/toplogoblue.png" alt="logo" style="height:300px; width:300px;-->
+                                    <!--position: absolute;-->
+                    <!--top:55.5px; left:149px; opacity:.15;"/>-->
                   <h4>${cur.name}</h4>
                   <h5>Learning Objectives:</h5>
                   <pre style="font: inherit;"><p>${cur.learning_objectives}</p></pre>
@@ -54,60 +54,7 @@ function curricula ($) {
 
 curricula($);
 
-//
-// function otherListener() {
-//
-//     $('#beginSumission').mousedown(function () {
-//
-//         $('#newCurSubmit').submit(function (e) {
-//
-//             e.preventDefault();
-//             /*  Submit form using Ajax */
-// //Prevent default submission of form
-// //event delegate
-// // e.preventDefault();
-// //replace click for .on(click
-//
-//             var token = $("meta[name='_csrf']").attr("content");
-//             var header = $("meta[name='_csrf_header']").attr("content");
-//             console.log(token);
-//             console.log(header);
-//             let name = $('#name').val();
-//             let materials = $('#tags').val();
-//             let description = $('#description').val();
-//             let learning_objectives = $('#learning_objectives').val();
-//             let data = {
-//                 name,
-//                 materials,
-//                 description,
-//                 learning_objectives,
-//             };
-//             console.log(data);
-// //Remove all errors
-//
-//
-//             $.post({
-//                 url: '/newCourse',
-//                 contentType: "application/json; charset=utf-8",
-//                 data: JSON.stringify(data),
-//                 beforeSend: function (jqXHR) {
-//                     jqXHR.setRequestHeader('X-CSRF-Token', token,)
-//                 },
-//                 dataType: "json",
-//                 success: function (html) {
-//                     console.log(html);
-//                 }
-//             });
-//
-//         });
-//
-//     });
-//     $('#beginSumission').mouseup(function (e) {
-//         e.preventDefault();
-//         curricula($);
-//     })
-//
-// }
+
 
 
 function provider($) {
@@ -120,17 +67,17 @@ function provider($) {
         console.log(provider);
 
 
-        var top = `<div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
-            <div class="card-image">
+        var top = `<div class="s12">
+<div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
+            <div style="padding-left: 10px; padding-top: 16px;" class="card-image">
             <img src="${provider.image}">
             </div>
             <div class="card-stacked">
             <div class="card-content">
             <h3>${provider.name}</h3>
-            <p>Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
+            <p class="hide-on-med-and-down">Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
         </div>
         <div class="card-action">
-            <a href="/provider/${provider.name}">View Page</a>
         </div>
         </div>
         </div>
@@ -138,6 +85,7 @@ function provider($) {
         </h3>`;
 
         var html = `<div class="row">
+
         <div class="col s12">
             <div style="margin-top: 0px;
 " class="card white">
@@ -176,7 +124,7 @@ provider($);
 
 function addListener() {
     $('.makeinstructor').mousedown(function (e) {
-        $(this).attr("disabled", true);
+
         e.preventDefault();
         /*  Submit form using Ajax */
         var emp_id = ($(this).prop("value"));
@@ -270,4 +218,7 @@ function addListener() {
     });
 })(jQuery);
 
-
+//
+// $(document).ready(function(){
+//     $("#top").css({'width':($(".first_div").width()+'px')});
+// });

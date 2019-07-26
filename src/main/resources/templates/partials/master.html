@@ -14,20 +14,27 @@
 
                 <nav class="primary">
                     <div class="nav-wrapper">
-                        <a href="/" class="brand-logo center">
-                            <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
+                        <a href="/" class="brand-logo left" style="margin-top: 10px; margin-left: 2%;">
+                            <img src="/longlogo_white_short.png" width="90px"
+                                 alt="landing_page_img"/>
                         </a>
                         <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-                        <ul class="right hide-on-med-and-down pr-1">
-                            <li><a href="/courses" >Courses</a></li>
-                            <li><a href="/student" >Dashboard</a></li>
-                            <li><a href="/user/update">Profile</a></li>
-                            <li><form th:action="@{/logout}" th:method="post" type="submit"
-                                       style="-webkit-appearance: none;">
-                                <button class="btn waves-effect waves-light">
-                                    LOGOUT
-                                </button>
-                            </form></li>
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                    <a href="/courses">Courses</a>
+                            </li>
+                            <li>
+                                    <a href="/student">Dashboard</a>
+                            </li>
+                            <li>
+                                    <a href="/user/update">Profile</a>
+                            </li>
+                            <li>
+                                <form th:action="@{/logout}" th:method="post" type="submit"
+                                      style="-webkit-appearance: none;">
+                                    <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -43,15 +50,29 @@
                                                    class="white-text email"></span></a>
                         </div>
                     </li>
-                    <li><a href="/courses"><i class="material-icons">dns</i>Courses</a></li>
-                    <li><a href="/student"><i class="material-icons">dvr</i>Dashboard</a></li>
-                    <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Profile</a></li>
-                    <li><form th:action="@{/logout}" th:method="post" type="submit"
+                    <li>
+                        <a href="/courses">
+                            <i class="material-icons">dns</i>Courses
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/student">
+                            <i class="material-icons">dvr</i>Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/user/update">
+                            <i class="material-icons">assignment_ind</i>Profile
+                        </a>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="post" type="submit"
                               style="-webkit-appearance: none;">
-                        <button class="btn waves-effect waves-light">
-                            LOGOUT
-                        </button>
-                    </form></li>
+                            <button type="submit" name="action">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
                 </ul>
 
             </th:bock>
@@ -61,20 +82,29 @@
 
                 <nav class="primary">
                     <div class="nav-wrapper">
-                        <a href="/" class="brand-logo center">
+                        <a href="/" class="brand-logo center" style="margin-top: 10px;">
                             <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
                         </a>
                         <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="/instructor/curricula" >Curricula</a></li>
-                            <li><a href="/instructor/courses" >Courses</a></li>
-                            <li><a href="/user/update">Profile</a></li>
-                            <li><form th:action="@{/logout}" th:method="post" type="submit"
+                            <li>
+
+                                    <a href="/instructor/curricula">Curricula</a>
+                            </li>
+                            <li>
+
+                                    <a href="/instructor/courses">Courses</a>
+                            </li>
+                            <li>
+
+                                    <a href="/user/update">Profile</a>
+                            </li>
+                            <li>
+                                <form th:action="@{/logout}" th:method="post" type="submit"
                                       style="-webkit-appearance: none;">
-                                <button class="btn waves-effect waves-light">
-                                    LOGOUT
-                                </button>
-                            </form></li>
+                                    <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -90,15 +120,22 @@
                                                    class="white-text email"></span></a>
                         </div>
                     </li>
-                    <li><a href="/instructor/curricula"><i class="material-icons">dns</i>Curricula</a></li>
-                    <li><a href="/instructor/courses"><i class="material-icons">dvr</i>Courses</a></li>
-                    <li><a href="/user/update"><i class="material-icons">assignment_ind</i>Profile</a></li>
+                    <li>
+
+                        <a href="/instructor/curricula"><i class="material-icons">dns</i>Curricula</a>
+                    </li>
+                    <li>
+                        <a href="/instructor/courses"><i class="material-icons">dvr</i>Courses</a>
+                    </li>
+                    <li>
+                        <a href="/user/update"><i class="material-icons">assignment_ind</i>Profile</a>
+                    </li>
                     <li>
                         <div class="divider"></div>
                     </li>
                     <li>
                         <form th:action="@{/logout}" th:method="post" type="submit">
-                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action" style="-webkit-appearance: none;">Logout
                                 <i class="material-icons left">directions_run</i>
                             </button>
                         </form>
@@ -114,19 +151,29 @@
 
                 <nav class="primary">
                     <div class="nav-wrapper">
-                        <a href="/" class="brand-logo center">
+                        <a href="/" class="brand-logo center" style="margin-top: 10px;">
                             <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
                         </a>
                         <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="/courses" >Courses</a></li>
-                            <li><a href="/coordinator" >Dashboard</a></li>
-                            <li><a href="/user/update">Profile</a></li>
-                            <li><form th:action="@{/logout}" th:method="post" type="submit">
-                                <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
-                                    <i class="material-icons left">directions_run</i>
+                            <li>
+                                <button class="btn waves-effect waves-light">
+
+                                <a href="/courses" >Courses</a>
                                 </button>
-                            </form></li>
+                            </li>
+                            <li>
+
+                                <a href="/coordinator" >Dashboard</a>
+                            </li>
+                            <li>
+
+                                <a href="/user/update">Profile</a>
+                            </li>
+                            <li><form th:action="@{/logout}" th:method="post" type="submit" style="-webkit-appearance: none;">
+                                <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
+                            </form>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -149,7 +196,7 @@
                         <div class="divider"></div>
                     </li>
                     <li>
-                        <form th:action="@{/logout}" th:method="post" type="submit">
+                        <form th:action="@{/logout}" th:method="post" type="submit" style="-webkit-appearance: none;">
                             <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action">Logout
                                 <i class="material-icons left">directions_run</i>
                             </button>
@@ -175,12 +222,14 @@
 
         <nav class="primary">
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo center">
+                <a href="/" class="brand-logo center" style="margin-top: 10px;">
                     <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
                 </a>
                 <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="/login" class="waves-effect waves-light btn">Login<i class="material-icons left">person</i></a></li>
+                    <li>
+                        <a href="/login">Login</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -193,7 +242,7 @@
                                          src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/></a>
                 </div>
             </li>
-            <li><a class="waves-effect" href="/login"><i class="material-icons">person</i>Login</a></li>
+            <li class="pr-1"><a class="waves-effect" href="/login"><i class="material-icons">person</i>Login</a></li>
         </ul>
 
 
@@ -211,6 +260,9 @@
     <style>
         body{
             background: lightgrey;
+        }
+        .collapsible-body{
+            background: white;
         }
     </style>
 </th:block>

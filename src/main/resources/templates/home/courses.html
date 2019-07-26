@@ -24,7 +24,7 @@
         <div class="col s12 l10 offset-l1">
             <div class="card white">
                 <div class="card-content z-depth-4">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
+                    <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; position: absolute;
                     top: 1%; left: 1%; opacity: .15;"/>
                     <h5 class="card-title primary-text center">COURSES</h5>
                     <div class="row">
@@ -69,15 +69,15 @@
                             <div th:id="${course.id}" class="modal" style="min-height:363px;min-width: 596px
                             ;max-height: 363px; max-width: 596px;">
                                 <div class="modal-content">
-                                    <img src="/toplogoblue.png" alt="logo" style="height: 300px; width: 300px;
-                                    position: absolute;
-                    top: 55.5px; left: 149px; opacity: .15;"/>
+<!--                                    <img src="/toplogoblue.png" alt="logo" style="height: 300px; width: 300px;-->
+<!--                                    position: absolute;-->
+<!--                    top: 55.5px; left: 149px; opacity: .15;"/>-->
                                     <h3 class="center" th:text="${course.curriculum.name}"></h3>
                                     <div class="row">
-                                        <h4>Instructors</h4>
+                                        <h4>Instructor(s)</h4>
                                         <th:block th:each="instructor : ${course.instructors}">
                                             <div class="col s4">
-                                                <h5 th:text="${instructor.last_name} + ' ' + ${instructor.last_name}"></h5>
+                                                <h5 th:text="${instructor.first_name} + ' ' + ${instructor.last_name}"></h5>
                                             </div>
                                         </th:block>
                                     </div>

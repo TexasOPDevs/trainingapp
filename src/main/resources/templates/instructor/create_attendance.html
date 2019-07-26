@@ -10,38 +10,53 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 
-<form th:action="@{/submit_attendance}" th:object="${attendanceForm}" method="post">
-
-    <table class="col highlight centered">
-        <thead>
-            <tr>
-                <th>Student</th>
-                <th>Present/Absent</th>
-            </tr>
-
-        </thead>
-    <th:block th:each="attendance, itemStat : *{attendances}">
-        <tbody>
-        <tr>
-        <td th:text="*{attendances[__${itemStat.index}__].user.getFullName()}"></td>
-        <td>
-            <select th:field="*{attendances[__${itemStat.index}__].present}">
-                <option value="true">Present</option>
-                <option value="false">Absent</option>
-            </select>
+<a th:href="'/instructor/course/' + ${attendanceForm.attendances.get(0).course.id} +'#attendance'"><i
+        class="material-icons">chevron_left</i>Back</a>
 
 
-        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].user}"/>
-        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].course}"/>
-        <input type="hidden" th:field="*{attendances[__${itemStat.index}__].date}"/>
+<div class="container">
+    <div class="card col s12 m12 l6">
+        <div class="card-content">
+            <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
+                    top: 1%; left: 1%; opacity: .05;"/>
+            <span class="card-title center" th:text="${#dates.format(#dates.createNow(), 'MM-dd-yy')}"></span>
+            <form th:action="@{/submit_attendance}" th:object="${attendanceForm}" method="post">
 
-        </td>
-        </tr>
-        </tbody>
-    </th:block>
-    </table>
-    <input type="submit"/>
-</form>
+                <table class="col highlight centered">
+                    <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Present/Absent</th>
+                    </tr>
+
+                    </thead>
+                    <th:block th:each="attendance, itemStat : *{attendances}">
+                        <tbody>
+                        <tr>
+                            <td th:text="*{attendances[__${itemStat.index}__].user.getFullName()}"></td>
+                            <td>
+                                <select th:field="*{attendances[__${itemStat.index}__].present}">
+                                    <option value="true">Present</option>
+                                    <option value="false">Absent</option>
+                                </select>
+
+
+                                <input type="hidden" th:field="*{attendances[__${itemStat.index}__].user}"/>
+                                <input type="hidden" th:field="*{attendances[__${itemStat.index}__].course}"/>
+                                <input type="hidden" th:field="*{attendances[__${itemStat.index}__].date}"/>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </th:block>
+                </table>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
