@@ -23,12 +23,16 @@
 
 
 <div class="row">
-    <div id="top"></div>
+    <div class="container">
+        <div class="col s12">
+    <div style="box-sizing: content-box;" id="top"></div>
+        </div>
+            <div class="card-content ">
     <div class=" col s12">
-        <ul class="tabs col">
-            <li class="tab col s3"><a class="active" href="#provider">Provider</a></li>
-            <li class="tab col s3"><a href="#test2">Courses</a></li>
-            <li class="tab col s3"><a href="#test3">Classes</a></li>
+        <ul class="tabs center-align col">
+            <li class="tab col s4"><a class="active" href="#provider">Provider</a></li>
+            <li class="tab col s4"><a href="#test2">Curricula</a></li>
+            <li class="tab col s4"><a href="#test3">Courses</a></li>
         </ul>
     </div>
     <div id="provider" class="col s12">Test 1</div>
@@ -110,7 +114,7 @@
         <div id="classlist"></div>
         <ul class="collapsible">
             <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Assign a Class</div>
+                <div class="collapsible-header"><i class="material-icons">place</i>Assign a Course</div>
                 <div class="collapsible-body">
                     <form method="POST" th:action="@{/coordinator}" th:object="${course}">
 
@@ -155,6 +159,9 @@
                 </div>
             </li>
         </ul>
+    </div>
+</div>
+        <!--</div>-->
     </div>
 </div>
 
