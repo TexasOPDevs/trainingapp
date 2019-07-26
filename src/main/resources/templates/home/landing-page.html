@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Courses</title>
     <th:block th:replace="partials/master :: materialize"></th:block>
+    <style>
+        .backgroundimg{
+            width: 100%;
+            height: auto;
+        }
+        body{
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,154 +21,58 @@
 
 </th:block>
 
-<div class="row">
-    <div class="s12 m12 l12">
-        <div id="welcome" class="section scrollspy blue white-text">
-            <h3 class="center">Welcome to Texas Officers Portal</h3>
-        </div>
-        <div class="parallax-container">
-            <div class="parallax">
-                <img th:src="@{/landing_page_img.jpg}" alt="landing_page_img"/>
+<div class="row s12 m9 l9">
+    <img th:src="@{/Blue_Background_with_Officers.png}" class="backgroundimg"  alt="landing_page_img"/>
+    <div class="row">
+
+        <div class="col s12 m4">
+
+            <div class="card-panel white-text blue">
+                <h4>Student</h4>
+                As a student you will be able to
+                <ul>
+                    <li>View Available</li>
+                    <li>Apply to Courses</li>
+                    <li>View grades and Attendance</li>
+                    <li>View Credited Courses</li>
+                </ul>
             </div>
         </div>
-        <div id="Students" class="white blue-text">
-            <h3 class="center black-text">Students</h3>
-            <div class="row center">
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> View Available Courses
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">assignment</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6>Apply to a course</h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">get_app</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> View Grades and Attendance
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">assignment</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> View Credited Courses
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">dns</i>
-                    </div>
-                </div>
+
+        <div class="col s12 m4">
+
+            <div class="card-panel white-text blue">
+                <h4>Instructor</h4>
+                As a instructor you will be able to
+                <ul>
+                    <li>Update/Manage Curricula</li>
+                    <li>Manage Classes</li>
+                    <li>Post Grades/Attendance</li>
+                    <li>Add Students to a Course</li>
+                    <li>Access Dynamic Rosters</li>
+                </ul>
             </div>
+
         </div>
-        <div id="Instructor" class="white blue-text">
-            <h3 class="center black-text">Instructors</h3>
-            <div class="row center">
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Update/Create Curricula
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">edit</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Manages Classes
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">event_note</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Post Grades/Attendance
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">note_add</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Add students to a course
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">person_add</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Access Dynamic Rosters
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">list</i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="Coordinator" class="white blue-text">
-            <h3 class="center black-text">Coordinators</h3>
-            <div class="row center">
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Manage Your Users
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">people</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Manage Curricula
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">person_add</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Assign Courses to Instructors
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">perm_contact_calendar</i>
-                    </div>
-                </div>
-                <div class="col s6 m4 l3">
-                    <div class="row">
-                        <h6> Manage Instructors
-                        </h6>
-                    </div>
-                    <div class="row">
-                        <i class="material-icons medium">offline_pin</i>
-                    </div>
-                </div>
+
+        <div class="col s12 m4">
+            <div class="card-panel white-text blue">
+                <h4>Coordinators</h4>
+                As a coordinator you will be able to
+                <ul>
+                    <li>Manage your Users</li>
+                    <li>Manage Curricula</li>
+                    <li>Assign Courses to Instructors</li>
+                    <li>Manage Instructors</li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="container">
 
-</div>
+
 
 <th:block th:replace="partials/master :: materializejs"></th:block>
 </body>
