@@ -11,8 +11,8 @@ function curricula ($) {
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; border:none; opacity:.15; position: absolute;
-                    top: 1%; left: 1%;"/>
+                    <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; position: absolute;
+                    top: 1%; left: 1%; opacity: .15;"/>
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
                         <div class="col s3">
@@ -69,13 +69,13 @@ function provider($) {
 
         var top = `<div class="s12">
 <div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
-            <div style="padding-left: 10px; padding-top: 16px;" class="card-image">
+            <div class="center-align"  style="padding-left: 10px; padding-top: 16px;" class="card-image">
             <img src="${provider.image}">
             </div>
-            <div class="card-stacked">
+            <div class="hide-on-med-and-down card-stacked">
             <div class="card-content">
-            <h3>${provider.name}</h3>
-            <p class="hide-on-med-and-down">Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
+            <h3 class="center-align hide-on-med-and-down">${provider.name}</h3>
+            <p class="center-align hide-on-med-and-down">Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
         </div>
         <div class="card-action">
         </div>
@@ -90,7 +90,7 @@ function provider($) {
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
+                    <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; opacity:.15; position: absolute;
                     top: 1%; left: 1%;"/>
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
@@ -126,12 +126,8 @@ function addListener() {
     $('.makeinstructor').mousedown(function (e) {
 
         e.preventDefault();
-        /*  Submit form using Ajax */
         var emp_id = ($(this).prop("value"));
-        //Prevent default submission of form
-        //event delegate
-        // e.preventDefault();
-        //replace click for .on(click
+
 
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
@@ -179,8 +175,8 @@ function addListener() {
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
-                    top: 1%; left: 1%;"/>
+                    <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; position: absolute;
+                    top: 1%; left: 1%; opacity: .15;"/>
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
                         <div class="col s3">
