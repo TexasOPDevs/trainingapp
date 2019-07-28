@@ -228,6 +228,9 @@ $("#status").on('change', function(){
 });
 
 
+
+
+
 function statusFilter(status) {
     var request = $.ajax({
         'url': '/curricula.json'
@@ -270,10 +273,3 @@ function statusFilter(status) {
     })
 }
 
-
-
-
-//
-// $(document).ready(function(){
-//     $("#top").css({'width':($(".first_div").width()+'px')});
-// });
