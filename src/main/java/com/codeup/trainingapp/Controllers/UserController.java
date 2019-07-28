@@ -34,7 +34,8 @@ public class UserController {
     @GetMapping("/user/update")
     public String update(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", user);
+        User user1 = userDao.findOne(user.getId());
+        model.addAttribute("user", user1);
         return "user/update";
     }
 }
