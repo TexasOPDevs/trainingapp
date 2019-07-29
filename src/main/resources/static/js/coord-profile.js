@@ -68,7 +68,7 @@ function provider($) {
         var top = `<div class="s12">
 <div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
             <div class="center-align"  style="padding-left: 10px; padding-top: 16px;" class="card-image">
-            <img src="${provider.image}">
+            <img src="${provider.image}" style="height:200px; width:200px;">
             </div>
             <div class="hide-on-med-and-down card-stacked">
             <div class="card-content">
