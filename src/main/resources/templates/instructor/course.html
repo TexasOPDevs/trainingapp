@@ -59,17 +59,19 @@
                             <p th:case="null" class="col s12">No description found</p>
                             <p th:case="*" class="col s12" th:text="${course.curriculum.description}"></p>
                         </div>
+
+                    </div>
+                    <div style="position: absolute; bottom: 2% ; right: 1%">
+                        <a th:href="'/instructor/course/' + ${course.id} + '/edit'" class="btn-floating btn-large red">
+                            <i class="large material-icons">edit</i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="fixed-action-btn">
-            <a th:href="'/instructor/course/' + ${course.id} + '/edit'" class="btn-floating btn-large red">
-                <i class="large material-icons">edit</i>
-            </a>
-        </div>
+
 
 
     </div>
@@ -125,13 +127,14 @@
                                         class="new badge red" data-badge-caption="absent"></span></a>
                             </th:block>
                         </div>
-                    </div>
 
-                    <div class="fixed-action-btn">
-                        <a th:href="'/instructor/course/' + ${course.id} + '/attendance_form'"
-                           class="btn-floating btn-large red">
-                            <i class="large material-icons">add</i>
-                        </a>
+                        <div style="position: absolute; bottom: 2% ; right: 1%">
+                            <a th:href="'/instructor/course/' + ${course.id} + '/attendance_form'"
+                               class="btn-floating btn-large red">
+                                <i class="large material-icons">add</i>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
