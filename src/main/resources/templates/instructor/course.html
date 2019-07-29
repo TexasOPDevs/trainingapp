@@ -9,7 +9,7 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
-
+<main>
 <div class="row">
     <div class=" s12">
         <ul th:if="${course.status.id != 204}" class="tabs ">
@@ -217,8 +217,10 @@
         </table>
     </div>
 </div>
+</main>
+<th:block th:replace="partials/master :: footer">
 
-
+</th:block>
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
 </body>

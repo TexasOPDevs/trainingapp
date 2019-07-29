@@ -9,6 +9,7 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
+<main>
 <div class="container">
 
     <div class="card white">
@@ -49,10 +50,12 @@
         <i class="large material-icons">add</i>
     </a>
 </div>
+</main>
+<th:block th:replace="partials/master :: footer">
     </div>
 </div>
 
-
+</th:block>
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
 </body>
