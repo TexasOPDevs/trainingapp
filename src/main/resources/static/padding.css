@@ -138,12 +138,26 @@ a:hover{
     
 }
 
-/*input:focus {*/
-/*    border-bottom: 1px solid #0e0e52 !important;*/
-/*    box-shadow: 0 1px 0 0 #0e0e52 !important;*/
-/*}*/
+#team{
+    color: white;
+    text-decoration: underline white;
+}
+#team:hover{
+    color: darkslategray;
+    text-decoration: underline darkslategray;
+    transition: ease 1s;
+}
+html{scroll-behavior: smooth}
 
-/*label.active {*/
-/*    color: #0e0e52;*/
-/*}*/
+#scroll{
+    height: 100px;
+    width: 100px;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    position:fixed;
+    bottom: 3%;
+    z-index: 1;
 
+}
