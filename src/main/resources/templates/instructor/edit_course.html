@@ -26,7 +26,7 @@
                     <label for="location">Location</label>
                 </div>
                 <div class="input-field col s12">
-                    <input th:field="*{capacity}" id="cap" type="text" class="validate"/>
+                    <input th:field="*{capacity}" id="cap" type="number" class="validate"/>
                     <label for="cap">Class Size</label>
                 </div>
                 <div class="input-field col s12">
@@ -37,10 +37,10 @@
                     <input th:field="*{endDate}" id="end_date" type="date" class=" validate"/>
                     <label for="end_date">End Date</label>
                 </div>
-                <div class="input-field col s12">
-                    <input th:field="*{startTime}" id="start_time" type="time" class="validate"/>
-                    <label for="start_time">Start Time</label>
-                </div>
+                <!--<div class="input-field col s12">-->
+                    <!--<input th:field="*{startTime}" id="start_time" type="time" class="validate"/>-->
+                    <!--<label for="start_time">Start Time</label>-->
+                <!--</div>-->
                 <input th:field="*{id}" type="hidden" />
 
 

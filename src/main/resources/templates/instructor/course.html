@@ -36,12 +36,20 @@
                     <div class="section">
                         <h5 th:text="${course.curriculum.name}">Section 1</h5>
                         <div class="row">
+
                             <p class="col s6 text-primary" th:text="'Course ID (' + ${course.id} + ')'"></p>
+
                             <p class="col s6" th:text="'Status (' + ${course.status.name} + ')'"></p>
+
                             <p class="col s12" th:text="'Course Location (' + ${course.location} + ')'"></p>
-                            <p class="col s12"
+
+                            <p th:if="${course.startDate != null}" class="col s12"
                                th:text="'From (' + ${#dates.format(course.startDate, 'MM-dd-yy')} + ') to (' + ${#dates.format(course.endDate, 'MM-dd-yy')} + ')'"></p>
-                            <p class="col s12" th:text="'Class Starts at (' + ${course.startTime} + ')'"></p>
+                            <p th:if="${course.startDate == null}" class="col s12"
+                               th:text="'TBD'"></p>
+
+                            <p th:if="${course.startTime != null}" class="col s12" th:text="'Class Starts at (' + ${#dates.format(course.startTime, 'hh:mm a')} + ')'"></p>
+
                         </div>
 
                         <h5>Instructor(s)</h5>
@@ -50,7 +58,7 @@
                              th:switch="${instructor.first_name}">
                             <p th:case="null" class="col s12">tbd</p>
                             <p th:case="*" class="col s12"
-                               th:text="${instructor.first_name} + ', ' + ${instructor.last_name}"></p>
+                               th:text="${instructor.first_name} + ' ' + ${instructor.last_name}"></p>
                         </div>
 
                         <h5>Description</h5>
