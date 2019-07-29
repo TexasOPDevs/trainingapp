@@ -21,10 +21,10 @@ VALUES (101, 'enrolled'),
        (204, 'open for enrollment');
 
 INSERT INTO training_db.user (id, email, first_name, last_name, password, phone, username, bio, role, img)
-VALUES (1, 'nec@nec.co.uk', 'Darius', 'Ina', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(976) 328-7437', 'instructor', null, 'instructor', 'https://fer-uig.glitch.me'),
+VALUES (1, 'nec@nec.co.uk', 'Sam', 'Moore', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(976) 328-7437', 'instructor', null, 'instructor', 'https://fer-uig.glitch.me'),
        (2, 'risus.at@euismodurnaNullam.org', 'Lucy', 'Jorden', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(810) 280-2106', 'Donec', null, 'instructor', 'https://fer-uig.glitch.me'),
        (3, 'ridiculus.mus@Nullafacilisis.edu', 'Wyoming', 'Zelenia', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(199) 264-2861', 'rutrum', null, 'student', 'https://fer-uig.glitch.me'),
-       (4, 'libero.Donec@tellussem.co.uk', 'Lane', 'Fuller', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(511) 108-6330', 'student', null, 'student', 'https://fer-uig.glitch.me'),
+       (4, 'libero.Donec@tellussem.co.uk', 'Johnny', 'Ruiz', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(511) 108-6330', 'student', null, 'student', 'https://fer-uig.glitch.me'),
        (5, 'neque@auguescelerisque.ca', 'Emi', 'Preston', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq,', '(361) 328-5613', 'eu,', null, 'student', 'https://fer-uig.glitch.me'),
        (6, 'tincidunt.aliquam@eumetusIn.org', 'Maite', 'Leandra', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(216) 600-9028', 'non', null, 'student', 'https://fer-uig.glitch.me'),
        (7, 'auctor@mollisneccursus.edu', 'Keaton', 'Thor', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qiIfXYvZrI1.KhOQd.9rW4FdgYMq', '(471) 173-2829', 'Integer', null, 'student', 'https://fer-uig.glitch.me'),
@@ -44,7 +44,7 @@ VALUES (1, 'nec@nec.co.uk', 'Darius', 'Ina', '$2a$10$W33b0ii4ZPRlSF14uvk1SuuQ/qi
 
 INSERT INTO provider (id, image, name, coordinator_id)
 VALUES (1, 'https://media.licdn.com/dms/image/C4E0BAQFmQKOT4l12NA/company-logo_200_200/0?e=2159024400&v=beta&t=93dv9NPLRwlQAzhJgzso3IAegJzWV9SfVITQ9dlSF2I', 'San Antonio Police Department', 1),
-       (2, 'https://www.bexar.org/ImageRepository/Document?documentID=2821', 'Bexar County Sheriff\'s', 32);
+       (2, '/topcounty.png', 'TOP Police Dept.', 32);
 
 
 
@@ -285,15 +285,3 @@ INSERT INTO gradable_student (grade, posted_at, course_id, gradable_id, user_id)
        (null, '2019-07-11', 2, 5, 13),
        (null, '2019-07-11', 2, 5, 14);
 
-
-
-
-#       (101, 'enrolled'),
-#        (102, 'pending'),
-#        (103, 'rejected'),
-#        (104, 'credited'),
-#        (201, 'active'),
-#        (202, 'assigned'),
-#        (203, 'closed'),
-#        (204, 'open for enrollment');
-#         duty sidearm body armor gloves cpr doll protective eyeware
