@@ -25,7 +25,7 @@
 <th:block th:replace="partials/master :: nav">
 
 </th:block>
-<main>
+
 
 <div class="row">
     <div class="container">
@@ -144,79 +144,71 @@
                     </div>
                 </div>
 
-                        <ul class="collapsible">
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons prefix">expand_more</i>  Assign a Course</div>
-                                <div class="collapsible-body">
-                                    <form method="POST" th:action="@{/coordinator}" th:object="${course}">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons prefix">expand_more</i>  Assign a Course</div>
+                        <div class="collapsible-body">
+                            <form method="POST" th:action="@{/coordinator}" th:object="${course}">
 
 
-                                        <div class="row">
-                                            <div class="row">
-                                                <div class="input-field col s6">
-                                                    <div class="input-field col s12">
-                                                        <select th:field="*{curriculum}">
-                                                            <div th:each="curriculum : ${curricula}">
-                                                                <option th:value="${curriculum.id}"
-                                                                        th:text="${curriculum.name}">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <div class="input-field col s12">
+                                                <select th:field="*{curriculum}">
+                                                    <div th:each="curriculum : ${curricula}">
+                                                        <option th:value="${curriculum.id}"
+                                                                th:text="${curriculum.name}">
 
-                                                                </option>
-                                                            </div>
-                                                        </select>
-                                                        <label>Curriculum</label>
+                                                        </option>
                                                     </div>
-                                                </div>
-                                                <div class="input-field col s6">
-                                                    <div class="input-field col s12">
-                                                        <select id="instructors" th:field="*{instructors}">
-                                                            <div th:each="user : ${provider.users}">
-                                                                <div th:if="${user.role == 'instructor'}">
-                                                                    <option th:value="${user.id}"
-                                                                            th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
-                                                                </div>
-                                                            </div>
-
-                                                        </select>
-                                                        <label>Instructor</label>
+                                                </select>
+                                                <label>Curriculum</label>
+                                            </div>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <div class="input-field col s12">
+                                                <select id="instructors" th:field="*{instructors}">
+                                                    <div th:each="user : ${provider.users}">
+                                                        <div th:if="${user.role == 'instructor'}">
+                                                            <option th:value="${user.id}"
+                                                                    th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <button class="btn waves-effect waves-light" type="submit"
-                                                        name="action">Submit
-                                                    <i class="material-icons right">send</i>
-                                                </button>
+                                                </select>
+                                                <label>Instructor</label>
                                             </div>
                                         </div>
 
-                                    </form>
+                                        <button class="btn waves-effect waves-light" type="submit"
+                                                name="action">Submit
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
+
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <!--</div>-->
     </div>
 </div>
-</main>
+
 <th:block th:replace="partials/master :: footer">
 
 </th:block>
 
+<th:block th:replace="partials/master :: materializejs"></th:block>
 
-                <!--</div>-->
-            </div>
-        </div>
-
-        <th:block th:replace="partials/master :: materializejs"></th:block>
-
-        <th:block th:replace="partials/master :: jquery"></th:block>
+<th:block th:replace="partials/master :: jquery"></th:block>
 
 
-        <script src="/js/coord-profile.js"></script>
+<script src="/js/coord-profile.js"></script>
 
 
 </body>
