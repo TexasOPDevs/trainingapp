@@ -10,51 +10,41 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
-<div class="container">
+    <div class="container">
+        <div class="card white">
+            <div class="card-content z-depth-4">
+                <span class="card-title center">Curricula</span>
+                <div class="col s12">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>ID</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="curriculum: ${curricula}">
+                            <td th:text="${curriculum.name}"></td>
+                            <td th:text="${curriculum.id}"></td>
+                            <td>
+                                <a th:href="'/instructor/curriculum/' + ${curriculum.id}" class="waves-effect waves-light btn-small">Details</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-    <div class="card white">
-        <div class="card-content z-depth-4">
-            <span class="card-title center">Curricula</span>
+                <div style="position: absolute; bottom: 2% ; right: 1%"><a href="/instructor/curriculum/create" class="btn-floating btn-large red">
+                    <i class="large material-icons">add</i>
+                </a>
+                </div>
 
-    <div class="col s12">
-        <table>
-            <thead>
-
-            <tr>
-                <th>Name</th>
-                <th>ID</th>
-                <th></th>
-            </tr>
-
-            </thead>
-
-            <tbody>
-
-            <tr th:each="curriculum: ${curricula}">
-                <td th:text="${curriculum.name}"></td>
-                <td th:text="${curriculum.id}"></td>
-                <td>
-                    <a th:href="'/instructor/curriculum/' + ${curriculum.id}"
-                       class="waves-effect waves-light btn-small">Details</a>
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
+            </div>
+        </div>
     </div>
-
-</div>
-
-<div class="fixed-action-btn">
-    <a href="/instructor/curriculum/create" class="btn-floating btn-large red">
-        <i class="large material-icons">add</i>
-    </a>
-</div>
 </main>
 <th:block th:replace="partials/master :: footer">
-    </div>
-</div>
-
 </th:block>
 <th:block th:replace="partials/master :: jquery"></th:block>
 <th:block th:replace="partials/master :: materializejs"></th:block>
