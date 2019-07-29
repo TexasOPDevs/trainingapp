@@ -36,14 +36,16 @@ public class InstructorController {
     private final AttendanceRepository attendanceDao;
 
     private final Gradable_StudentRepository gradable_studentDao;
+    private final StatusRepository statusDao;
 
-    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, AttendanceRepository attendanceDao, Gradable_StudentRepository gradable_studentDao) {
+    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, AttendanceRepository attendanceDao, Gradable_StudentRepository gradable_studentDao, StatusRepository statusDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
         this.gradableDao = gradableDao;
         this.attendanceDao = attendanceDao;
         this.gradable_studentDao = gradable_studentDao;
+        this.statusDao = statusDao;
     }
 
     @GetMapping("/instructor/courses")
@@ -208,15 +210,13 @@ public class InstructorController {
             @RequestParam(name = "capacity") Long capacity,
             @RequestParam(name = "location") String location,
             @RequestParam(name = "startDate") Date start_date,
-            @RequestParam(name = "endDate") Date end_date,
-            @RequestParam(name = "startTime")  String start_time
-            ) {
+            @RequestParam(name = "endDate") Date end_date) {
 
         Course newcourse = courseDao.findOne(course_id);
         newcourse.setCapacity(capacity);
         newcourse.setLocation(location);
         newcourse.setStartDate(start_date);
-
+        newcourse.setStatus(statusDao.findOne(204L));
         newcourse.setEndDate(end_date);
         courseDao.save(newcourse);
         return "redirect:/instructor/course/" + newcourse.getId();
