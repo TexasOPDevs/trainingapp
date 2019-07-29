@@ -13,7 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class InstructorController {
@@ -203,14 +209,15 @@ public class InstructorController {
             @RequestParam(name = "location") String location,
             @RequestParam(name = "startDate") Date start_date,
             @RequestParam(name = "endDate") Date end_date,
-            @RequestParam(name = "startTime")Time start_time
-            ){
+            @RequestParam(name = "startTime")  String start_time
+            ) {
+
         Course newcourse = courseDao.findOne(course_id);
         newcourse.setCapacity(capacity);
         newcourse.setLocation(location);
         newcourse.setStartDate(start_date);
+
         newcourse.setEndDate(end_date);
-        newcourse.setStartTime(start_time);
         courseDao.save(newcourse);
         return "redirect:/instructor/course/" + newcourse.getId();
     }
