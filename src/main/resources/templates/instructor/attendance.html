@@ -10,10 +10,11 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
-<a th:href="'/instructor/course/' + ${attendances.get(0).course.id} +'#attendance'"><i class="material-icons">chevron_left</i>Back</a>
 
 
     <div class="container">
+        <a th:href="'/instructor/course/' + ${attendances.get(0).course.id} +'#attendance'"><i
+                class="material-icons medium">arrow_back</i></a>
         <div class="card col s12 m12 l6">
             <div class="card-content">
                 <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
