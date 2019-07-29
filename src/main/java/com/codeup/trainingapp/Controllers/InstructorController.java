@@ -258,7 +258,7 @@ public class InstructorController {
         newGradable.setCreationDate(date);
         newGradable.setUpdateDate(date);
         gradableDao.save(newGradable);
-        return "redirect:/instructor/curriculum/" + newGradable.getCurriculum().getId();
+        return "redirect:/instructor/curriculum/" + newGradable.getCurriculum().getId() +"#grades";
     }
 
     @GetMapping("/instructor/course/{course_id}/attendance/{day}")
@@ -309,7 +309,7 @@ public class InstructorController {
             attendanceDao.save(attendanceForm.getAttendances().get(i));
         }
 
-        return "redirect:/instructor/course/" + attendanceForm.getAttendances().get(0).getCourse().getId();
+        return "redirect:/instructor/course/" + attendanceForm.getAttendances().get(0).getCourse().getId() + "#attendance";
     }
 
 }
