@@ -137,27 +137,47 @@ a:hover{
     color: #30323d;
     
 }
-
-#team{
-    color: white;
-    text-decoration: underline white;
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
-#team:hover{
-    color: darkslategray;
-    text-decoration: underline darkslategray;
-    transition: ease 1s;
-}
-html{scroll-behavior: smooth}
 
-#scroll{
-    height: 100px;
-    width: 100px;
-    left: 0;
-    right: 0;
-    margin-right: auto;
-    margin-left: auto;
-    position:fixed;
-    bottom: 3%;
-    z-index: 1;
-
+main {
+    flex: 1 0 auto;
 }
+
+.backgroundimg{
+     width: 100%;
+     height: 40%;
+}
+#landing{
+    background-image: url("/Blue_Background_with_Officers.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+/*#team{*/
+/*    color: white;*/
+/*    text-decoration: underline white;*/
+/*}*/
+/*#team:hover{*/
+/*    color: darkslategray;*/
+/*    text-decoration: underline darkslategray;*/
+/*    transition: ease 1s;*/
+/*}*/
+/*html{scroll-behavior: smooth}*/
+
+/*#scroll{*/
+/*    height: 100px;*/
+/*    width: 100px;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    margin-right: auto;*/
+/*    margin-left: auto;*/
+/*    position:fixed;*/
+/*    bottom: 30px;*/
+/*    z-index: 1;*/
+
+/*}*/

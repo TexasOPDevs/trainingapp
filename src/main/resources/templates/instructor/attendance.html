@@ -9,7 +9,7 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
-
+<main>
 <a th:href="'/instructor/course/' + ${attendances.get(0).course.id} +'#attendance'"><i class="material-icons">chevron_left</i>Back</a>
 
 
@@ -36,6 +36,7 @@
             </div>
         </div>
     </div>
+</main>
 <th:block th:replace="partials/master :: footer">
 
 </th:block>

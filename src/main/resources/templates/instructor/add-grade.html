@@ -9,6 +9,7 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
+<main>
 <a th:href="'/instructor/course/' + ${gradable_students.get(0).course.id} +'#grades'"><i class="material-icons">chevron_left</i>Back</a>
 <div class="container">
     <div class="card col s12 m12 l6">
@@ -44,7 +45,7 @@
     </div>
 </div>
 
-
+</main>
 <th:block th:replace="partials/master :: footer">
 
 </th:block>
