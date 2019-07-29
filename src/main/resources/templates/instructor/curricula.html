@@ -4,13 +4,17 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Courses</title>
+    <title>Curricula</title>
     <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
 <div class="container">
+
+    <div class="card white">
+        <div class="card-content z-depth-4">
+            <span class="card-title center">Curricula</span>
 
     <div class="col s12">
         <table>
@@ -48,6 +52,8 @@
 </div>
 </main>
 <th:block th:replace="partials/master :: footer">
+    </div>
+</div>
 
 </th:block>
 <th:block th:replace="partials/master :: jquery"></th:block>

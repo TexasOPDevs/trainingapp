@@ -1,4 +1,4 @@
-function curricula ($) {
+function curricula($) {
 
     var request = $.ajax({
         'url': '/curricula.json',
@@ -11,8 +11,8 @@ function curricula ($) {
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; border:none; opacity:.15; position: absolute;
-                    top: 1%; left: 1%;"/>
+                    <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; position: absolute;
+                    top: 1%; left: 1%; opacity: .15;"/>
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
                         <div class="col s3">
@@ -55,8 +55,6 @@ function curricula ($) {
 curricula($);
 
 
-
-
 function provider($) {
 
     var request = $.ajax({
@@ -69,13 +67,13 @@ function provider($) {
 
         var top = `<div class="s12">
 <div style="margin-top: 0px; z-index:-10000;" class="card horizontal">
-            <div style="padding-left: 10px; padding-top: 16px;" class="card-image">
+            <div class="center-align"  style="padding-left: 10px; padding-top: 16px;" class="card-image">
             <img src="${provider.image}">
             </div>
-            <div class="card-stacked">
+            <div class="hide-on-med-and-down card-stacked">
             <div class="card-content">
-            <h3>${provider.name}</h3>
-            <p class="hide-on-med-and-down">Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
+            <h3 class="center-align hide-on-med-and-down">${provider.name}</h3>
+            <p class="center-align hide-on-med-and-down">Coordinator: ${provider.coordinator.first_name} ${provider.coordinator.last_name}</p>
         </div>
         <div class="card-action">
         </div>
@@ -90,7 +88,7 @@ function provider($) {
             <div style="margin-top: 0px;
 " class="card white">
                 <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
+                    <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; opacity:.15; position: absolute;
                     top: 1%; left: 1%;"/>
                     <h3 class="card-title center">Courses</h3>
                     <div class="row">
@@ -126,12 +124,8 @@ function addListener() {
     $('.makeinstructor').mousedown(function (e) {
 
         e.preventDefault();
-        /*  Submit form using Ajax */
         var emp_id = ($(this).prop("value"));
-        //Prevent default submission of form
-        //event delegate
-        // e.preventDefault();
-        //replace click for .on(click
+
 
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
@@ -167,7 +161,7 @@ function addListener() {
 // var makeinstructor = function($)
 
 
-(function ($) {
+function classList($) {
 
     var request = $.ajax({
         'url': '/curricula.json'
@@ -175,18 +169,8 @@ function addListener() {
     request.done(function (curricula) {
 
         console.log(curricula);
-        var html =`<div class="s12">
-            <div style="margin-top: 0px;
-" class="card white">
-                <div class="card-content">
-                    <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; opacity:.15; position: absolute;
-                    top: 1%; left: 1%;"/>
-                    <h3 class="card-title center">Courses</h3>
-                    <div class="row">
-                        <div class="col s3">
-                        </div>
-                    </div>`;
-        html += '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
+
+       var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
             cur.courses.forEach(function (course) {
 
@@ -212,13 +196,80 @@ function addListener() {
                 })
             });
         });
-        html += '</tbody></table>';
+        html += '</tbody>';
         $('#classlist').html(html);
         M.AutoInit();
     });
-})(jQuery);
+}
+classList($);
 
-//
-// $(document).ready(function(){
-//     $("#top").css({'width':($(".first_div").width()+'px')});
-// });
+$("#status").on('change', function(){
+    let status = $("#status").val();
+    console.log(status);
+   switch (status) {
+       case 1:
+           classList($);
+            break;
+       case '201':
+           statusFilter(status);
+           break;
+       case '202':
+           statusFilter(status);
+           break;
+       case '203':
+           statusFilter(status);
+           break;
+       case '204':
+           statusFilter(status);
+           break;
+       default:
+           classList($);
+   }
+});
+
+
+
+
+
+function statusFilter(status) {
+    var request = $.ajax({
+        'url': '/curricula.json'
+    });
+    request.done(function (curricula) {
+
+        console.log(curricula);
+
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
+        curricula.forEach(function (cur) {
+            cur.courses.forEach(function (course) {
+                console.log(course.status + ' ' + status);
+                if (course.status.id == status) {
+
+                    if (course.startDate === null) {
+                        course.startDate = "tbd";
+                    } else {
+                        course.startDate = dateShift(course.startDate);
+                    }
+                    if (course.endDate === null) {
+                        course.endDate = "tbd";
+                    } else {
+                        course.endDate = dateShift(course.endDate);
+                    }
+                    if (course.location === null) {
+                        course.location = "tbd";
+                    }
+
+
+                    html += `<tr><td>${cur.name}</td><td class="hide-on-med-and-down">${course.location}</td><td class="hide-on-med-and-down">${course.startDate}</td><td class="hide-on-med-and-down">${course.endDate}</td><td class="hide-on-med-and-down">${course.status.name}</td><td>`;
+                    course.instructors.forEach(function (element) {
+                        html += ` ${element.first_name} ${element.last_name}`
+                    })
+                }
+            });
+
+        });
+        html += '</tbody>';
+        $('#classlist').html(html);
+    })
+}
+

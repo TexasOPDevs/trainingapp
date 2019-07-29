@@ -11,13 +11,20 @@
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
 <div class="row">
-    <div class="s12">
-        <ul class="tabs">
-            <li class="tab s3"><a href="#overview">Overview</a></li>
-            <li class="tab s3"><a href="#roster">Roster</a></li>
-            <li class="tab s3"><a href="#attendance">Attendance</a></li>
-            <li class="tab s3"><a href="#grades">Grades</a></li>
-            <li th:if="${course.status == 202}" class="tab s3"><a href="#applicants">Applicants</a></li>
+    <div class=" s12">
+        <ul th:if="${course.status.id != 204}" class="tabs ">
+            <li class="tab col s3"><a href="#overview">Overview</a></li>
+            <li class="tab col s3"><a href="#roster">Roster</a></li>
+            <li class="tab col s3"><a href="#attendance">Attendance</a></li>
+            <li class="tab col s3"><a href="#grades">Grades</a></li>
+        </ul>
+
+        <ul th:if="${course.status.id == 204}" class="tabs ">
+            <li class="tab col s2"><a href="#overview">Overview</a></li>
+            <li class="tab col s3"><a href="#roster">Roster</a></li>
+            <li class="tab col s2"><a href="#attendance">Attendance</a></li>
+            <li class="tab col s3"><a href="#grades">Grades</a></li>
+            <li class="tab col s2"><a href="#applicants">Applicants</a></li>
         </ul>
     </div>
     <div id="overview" class="s12">
@@ -78,7 +85,7 @@
                             <th:block th:if="${student.status.id == 101}">
                                 <td>
                                     <p
-                                            th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></p>
+                                       th:text="${student.user.first_name} + ', ' + ${student.user.last_name}"></p>
                                 </td>
                                 <td>
                                     <a th:href="'mailto:' + ${student.user.email}" th:target="_blank"

@@ -11,6 +11,11 @@
         #name {
             z-index: 99;
         }
+        .collapsible li.active i {
+            -ms-transform: rotate(180deg); /* IE 9 */
+            -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+            transform: rotate(180deg);
+        }
     </style>
 
     <meta name="_csrf" th:content="${_csrf.token}"/>
@@ -25,137 +30,169 @@
 <div class="row">
     <div class="container">
         <div class="col s12">
-    <div style="box-sizing: content-box;" id="top"></div>
+            <div style="box-sizing: content-box;" id="top"></div>
         </div>
-            <div class="card-content ">
-    <div class=" col s12">
-        <ul class="tabs center-align col">
-            <li class="tab col s4"><a class="active" href="#provider">Provider</a></li>
-            <li class="tab col s4"><a href="#test2">Curricula</a></li>
-            <li class="tab col s4"><a href="#test3">Courses</a></li>
-        </ul>
-    </div>
-    <div id="provider" class="col s12">Test 1</div>
-    <div id="test2" class="col s12">
-        <div id="courselist"></div>
-        <ul class="collapsible">
-            <li>
-                <div class="collapsible-header">Create A Course</div>
-                <div class="collapsible-body">
-                    <div class="row">
-                        <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
-                            <div class="input-field col">
-                                <input placeholder="Course Name" id="name" type="text" th:field="*{name}"
-                                       class="validate"/>
-                                <label th:for="*{name}">Course Name</label>
-                            </div>
+        <div class="card-content ">
+            <div class=" col s12">
+                <ul class="tabs center-align col">
+                    <li class="tab col s4"><a class="active" href="#provider">Provider</a></li>
+                    <li class="tab col s4"><a href="#test2">Curricula</a></li>
+                    <li class="tab col s4"><a href="#test3">Courses</a></li>
+                </ul>
+            </div>
+            <div id="provider" class="col s12">Test 1</div>
+            <div id="test2" class="col s12">
+                <div id="courselist"></div>
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons prefix">expand_more</i> Create A Course</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
+                                    <div class="input-field col">
+                                        <input placeholder="Course Name" id="name" type="text" th:field="*{name}"
+                                               class="validate"/>
+                                        <label th:for="*{name}">Course Name</label>
+                                    </div>
 
-                            <div class="col s12 input-field input-field">
-                                <select multiple="multiple" th:field="*{materials}" name="tags" id="tags">
-                                    <option value="" disabled="disabled" selected="selected">Add Materials</option>
-                                    <option th:each="material : ${materials}" th:text="${material.name}"
-                                            th:value="${material.id}" th:selected="${material.id}"></option>
-                                </select>
-                                <label th:for="*{materials}"></label>
-                            </div>
+                                    <div class="col s12 input-field input-field">
+                                        <select multiple="multiple" th:field="*{materials}" name="tags" id="tags">
+                                            <option value="" disabled="disabled" selected="selected">Add Materials
+                                            </option>
+                                            <option th:each="material : ${materials}" th:text="${material.name}"
+                                                    th:value="${material.id}" th:selected="${material.id}"></option>
+                                        </select>
+                                        <label th:for="*{materials}"></label>
+                                    </div>
 
 
-                            <div class="input-field col s12">
-                                <textarea th:field="*{description}" class="materialize-textarea"></textarea>
-                                <label th:for="*{description}">Description</label>
-                            </div>
+                                    <div class="input-field col s12">
+                                        <textarea th:field="*{description}" class="materialize-textarea"></textarea>
+                                        <label th:for="*{description}">Description</label>
+                                    </div>
 
-                            <div class="input-field col s12">
-                                <textarea th:field="*{learning_objectives}" class="materialize-textarea"></textarea>
-                                <label th:for="*{learning_objectives}">Learning Objectives</label>
+                                    <div class="input-field col s12">
+                                        <textarea th:field="*{learning_objectives}"
+                                                  class="materialize-textarea"></textarea>
+                                        <label th:for="*{learning_objectives}">Learning Objectives</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="input-field col s12">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons prefix">expand_more</i>  Create A Gradable</div>
+                        <div class="collapsible-body">
+
+                            <form th:method="POST" th:action="@{/add_gradable}" th:type="post">
+                                <div class="input-field input-field">
+                                    <select name="curriculum">
+                                        <option value="" disabled="disabled" selected="selected">Add Materials</option>
+                                        <option th:each="curriculum : ${curricula}" th:text="${curriculum.name}"
+                                                th:value="${curriculum.getId()}"
+                                                th:selected="${curriculum.id}"></option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s9">
+                                    <input name="grade_name" id="grade_name" type="text" class="validate"/>
+                                    <label for="grade_name">Name</label>
+                                </div>
+                                <div class="input-field col s3">
+                                    <input name="grade_weight" id="weight" type="number" class="validate"/>
+                                    <label for="weight">Weight</label>
+                                </div>
                                 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
+                            </form>
+
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div id="test3" class="col s12">
+                <div class="s12">
+                    <div style="margin-top: 0px;
+" class="card white">
+                        <div class="card-content">
+                            <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; position: absolute;
+                    top: 1%; left: 1%; opacity: .15;"/>
+                            <div class="card-title center">
+                                <h3 class="">Courses</h3>
+                                <select id="status">
+                                    <option value="" th:disabled="disabled" selected="true">Search By Status</option>
+                                    <option value="1">All</option>
+                                    <option value="201">Active</option>
+                                    <option value="202">Assigned</option>
+                                    <option value="203">Closed</option>
+                                    <option value="204">Open For Enrollment</option>
+                                </select>
                             </div>
-                        </form>
+                            <div class="row">
+                                <div class="col s3">
+                                </div>
+                            </div>
+
+                            <table id="classlist"></table>
+                        </div>
                     </div>
                 </div>
-            </li>
-            <li>
-                <div class="collapsible-header">Create A Gradable</div>
-                <div class="collapsible-body">
 
-                    <form th:method="POST" th:action="@{/add_gradable}" th:type="post">
-                        <div class="input-field input-field">
-                            <select name="curriculum">
-                                <option value="" disabled="disabled" selected="selected">Add Materials</option>
-                                <option th:each="curriculum : ${curricula}" th:text="${curriculum.name}"
-                                        th:value="${curriculum.getId()}" th:selected="${curriculum.id}"></option>
-                            </select>
-                        </div>
-                        <div class="input-field col s9">
-                            <input name="grade_name" id="grade_name" type="text" class="validate"/>
-                            <label for="grade_name">Name</label>
-                        </div>
-                        <div class="input-field col s3">
-                            <input name="grade_weight" id="weight" type="number" class="validate"/>
-                            <label for="weight">Weight</label>
-                        </div>
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </form>
-
-                </div>
-
-            </li>
-        </ul>
-    </div>
-    <div id="test3" class="col s12">
+                        <ul class="collapsible">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons prefix">expand_more</i>  Assign a Course</div>
+                                <div class="collapsible-body">
+                                    <form method="POST" th:action="@{/coordinator}" th:object="${course}">
 
 
-        <div id="classlist"></div>
-        <ul class="collapsible">
-            <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Assign a Course</div>
-                <div class="collapsible-body">
-                    <form method="POST" th:action="@{/coordinator}" th:object="${course}">
+                                        <div class="row">
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <div class="input-field col s12">
+                                                        <select th:field="*{curriculum}">
+                                                            <div th:each="curriculum : ${curricula}">
+                                                                <option th:value="${curriculum.id}"
+                                                                        th:text="${curriculum.name}">
 
-
-                        <div class="row">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <div class="input-field col s12">
-                                        <select th:field="*{curriculum}">
-                                            <div th:each="curriculum : ${curricula}">
-                                                <option th:value="${curriculum.id}"
-                                                        th:text="${curriculum.name}">
-
-                                                </option>
-                                            </div>
-                                        </select>
-                                        <label>Curriculum</label>
-                                    </div>
-                                </div>
-                                <div class="input-field col s6">
-                                    <div class="input-field col s12">
-                                        <select id="instructors" th:field="*{instructors}">
-                                            <div th:each="user : ${provider.users}">
-                                                <div th:if="${user.role == 'instructor'}">
-                                                    <option th:value="${user.id}"
-                                                            th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
+                                                                </option>
+                                                            </div>
+                                                        </select>
+                                                        <label>Curriculum</label>
+                                                    </div>
                                                 </div>
+                                                <div class="input-field col s6">
+                                                    <div class="input-field col s12">
+                                                        <select id="instructors" th:field="*{instructors}">
+                                                            <div th:each="user : ${provider.users}">
+                                                                <div th:if="${user.role == 'instructor'}">
+                                                                    <option th:value="${user.id}"
+                                                                            th:text="${user.first_name} + ' ' + ${user.last_name}"></option>
+                                                                </div>
+                                                            </div>
+
+                                                        </select>
+                                                        <label>Instructor</label>
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn waves-effect waves-light" type="submit"
+                                                        name="action">Submit
+                                                    <i class="material-icons right">send</i>
+                                                </button>
                                             </div>
+                                        </div>
 
-                                        </select>
-                                        <label>Instructor</label>
-                                    </div>
+                                    </form>
                                 </div>
-
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                    <i class="material-icons right">send</i>
-                                </button>
-                            </div>
-                        </div>
-
-                    </form>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -169,12 +206,17 @@
 
 </th:block>
 
-<th:block th:replace="partials/master :: materializejs"></th:block>
 
-<th:block th:replace="partials/master :: jquery"></th:block>
+                <!--</div>-->
+            </div>
+        </div>
+
+        <th:block th:replace="partials/master :: materializejs"></th:block>
+
+        <th:block th:replace="partials/master :: jquery"></th:block>
 
 
-<script src="/js/coord-profile.js"></script>
+        <script src="/js/coord-profile.js"></script>
 
 
 </body>
