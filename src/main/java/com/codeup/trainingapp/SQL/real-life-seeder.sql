@@ -285,15 +285,3 @@ INSERT INTO gradable_student (grade, posted_at, course_id, gradable_id, user_id)
        (null, '2019-07-11', 2, 5, 13),
        (null, '2019-07-11', 2, 5, 14);
 
-
-
-
-#       (101, 'enrolled'),
-#        (102, 'pending'),
-#        (103, 'rejected'),
-#        (104, 'credited'),
-#        (201, 'active'),
-#        (202, 'assigned'),
-#        (203, 'closed'),
-#        (204, 'open for enrollment');
-#         duty sidearm body armor gloves cpr doll protective eyeware
