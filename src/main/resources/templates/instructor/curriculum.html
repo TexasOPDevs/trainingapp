@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Curriculum</title>
+    <title th:text="'Curriculum ' + ${curriculum.id}" ></title>
     <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
+
     <div class="row">
         <div class=" s12">
             <ul class="tabs">
