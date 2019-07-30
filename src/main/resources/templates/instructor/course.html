@@ -49,9 +49,9 @@
                                th:text="'TBD'"></p>
 
                             <p th:if="${course.startTime != null}" class="col s12" th:text="'Class Starts at: ' + ${#dates.format(course.startTime, 'hh:mm a')}"></p>
-
-                            <p th:if="${course.startTime == null}" class="col s12" th:text="'Class Starts at: 09:00 am'"></p>
-
+                            <th:block th:if="${course.status.id == 204}">
+                                <p th:if="${course.startTime == null}" class="col s12" th:text="'Class Starts at: 09:00 am'"></p>
+                            </th:block>
                         </div>
 
                         <h5 th:if="${course.instructors.size() == 1}">Instructor</h5>
