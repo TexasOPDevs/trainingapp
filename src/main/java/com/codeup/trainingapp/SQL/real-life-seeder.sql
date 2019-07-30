@@ -55,8 +55,7 @@ of
 the chest and then breathing for the victim hoping to keep them alive until the arrival of the paramedics', 'Demonstrate CPR techniques', 'CPR Class',
               '2019-07-12',
               2),
-             (2,  '2019-07-26', 'Course for a individual seeking their basic jailer''s license', '1. To feel secure in
-your job
+             (2,  '2019-07-26', 'Course for a individual seeking their basic jailer''s license', '1. To feel secure in your job
 2. To be able to respond in a professional manner to as many known situations as
 can reasonably be expected to occur
 3. To prevent the escape of persons placed in your custody
@@ -93,18 +92,18 @@ INSERT INTO training_db.course (id, capacity, end_date, evaluation_file, locatio
                                 curriculum_id, status_id)
 VALUES (1, 28, '2020-09-07', null, 'Ap #512-4625 Cras Av.', '2019-02-22', '12:00:00', 3, 201),
        (2, 26, '2020-08-02', null, '217-1172 Ad Rd.', '2018-07-27', '16:00:00', 2, 201),
-       (3, 27, '2020-04-02', null, 'P.O. Box 680, 1294 Leo, Rd.', '2019-03-30', '08:00:00', 3, 204),
-       (4, 33, '2020-04-04', null, 'P.O. Box 393, 8316 Sed St.', '2019-01-23', '08:00:00', 4, 203),
-       (5, 12, '2019-12-15', null, 'P.O. Box 634, 6632 Ac Street', '2019-06-04', '18:00:00', 5, 202),
+       (3, 27, '2020-04-02', null, '680, 1294 Leo, Rd.', '2019-09-30', '08:00:00', 3, 204),
+       (4, 33, '2020-04-04', null, '393, 8316 Sed St.', '2019-01-23', '08:00:00', 4, 203),
+       (5, 12, '2019-12-15', null, '634, 6632 Ac Street', '2019-06-04', '18:00:00', 5, 202),
        (6, 31, '2020-07-27', null, '6997 Dictum St.', '2020-01-20', '18:00:00', 6, 203),
-       (7, 10, '2020-04-26', null, 'P.O. Box 641, 7303 Sem St.', '2019-09-26', '20:00:00', 6, 202),
+       (7, 10, '2020-04-26', null, '641, 7303 Sem St.', '2019-09-26', '20:00:00', 6, 202),
        (8, 40, '2020-01-23', null, '180-3073 Eu Ave', '2019-09-04', '08:00:00', 3, 201),
-       (9, 11, '2020-08-17', null, '7428 Lobortis Avenue', '2019-03-02', '08:00:00', 3, 204),
+       (9, 11, '2020-08-17', null, '7428 Lobortis Avenue', '2019-08-02', '08:00:00', 3, 204),
        (10, 21, '2020-02-21', null, '9632 Nec Rd.', '2019-08-13', '09:00:00', 6, 204),
        (11, 27, '2020-01-05', null, '4338 Senectus Rd.', '2019-10-24', '14:00:00', 5, 201),
        (12, 20, '2020-11-06', null, 'Ap #776-6206 Neque Av.', '2019-05-09', '18:00:00', 4, 203),
        (14, 39, '2020-08-17', null, 'Ap #411-631 Accumsan Road', '2019-12-10', '18:00:00', 5, 202),
-       (13, 33, '2020-10-06', null, 'P.O. Box 878, 6037 Consequat Avenue', '2018-11-02', '10:00:00', 2, 201),
+       (13, 33, '2020-10-06', null, '878, 6037 Consequat Avenue', '2018-11-02', '10:00:00', 2, 201),
        (15, 25, '2020-07-16', null, '844-2922 Sed Rd.', '2019-04-22', '12:00:00', 2, 202);
 
 
