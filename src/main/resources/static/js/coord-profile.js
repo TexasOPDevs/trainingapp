@@ -13,7 +13,7 @@ function curricula($) {
                 <div class="card-content">
                     <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; position: absolute;
                     top: 1%; left: 1%; opacity: .15;"/>
-                    <h3 class="card-title center">Courses</h3>
+                    <h3 class="card-title center">Curricula</h3>
                     <div class="row">
                         <div class="col s3">
                         </div>
@@ -90,7 +90,7 @@ function provider($) {
                 <div class="card-content">
                     <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: 100px; opacity:.15; position: absolute;
                     top: 1%; left: 1%;"/>
-                    <h3 class="card-title center">Courses</h3>
+                    <h3 class="card-title center">Members</h3>
                     <div class="row">
                         <div class="col s3">
                         </div>
