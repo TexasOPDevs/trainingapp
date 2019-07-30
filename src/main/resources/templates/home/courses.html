@@ -47,9 +47,8 @@
                                         <a class="modal-trigger" th:href="'#' + ${course.id}"
                                            th:text="${course.curriculum.name}"></a>
                                     </td>
-                                    <td>
-                                        <a th:href="'/provider/' + ${course.curriculum.provider.name}"
-                                           th:text="${course.curriculum.provider.name}"></a>
+                                    <td th:text="${course.curriculum.provider.name}">
+                                    
                                     </td>
 
                                     <td th:text="${#dates.format(course.startDate, 'MM-dd-yy')}">
