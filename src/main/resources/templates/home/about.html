@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>TOP TEAM</title>
     <th:block th:replace="partials/master :: materialize"></th:block>
     <style>
-        .title_name{
+        .title_name {
             background-color: #5e6065d9;
             padding: 5px !important;
             border-top-right-radius: 5px;
@@ -17,58 +18,61 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
-<div class="row">
-    <h4 class="center" style="color: #62626d">Our Team</h4>
+    <div class="row">
+        <h4 class="center" style="color: #62626d">Our Team</h4>
 
-<div class="col s12 m4">
-        <div  class="card col">
-            <div class="card-image" >
-                <img th:src="@{/jason_lindsey.jpeg}" style="margin-top: 10px" />
-                <span class="card-title title_name" >Jason Lindsey</span>
-                <a th:href="'tel:(713) 962-9143'" class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">phone</i></a>
-            </div>
-            <div class="card-content">
-                <a href="https://alumni.codeup.com/students/640" class="btn-flat"><img height="30px" th:src="@{/codeup_logo.png}"/></a>
-                <a href="https://github.com/nnosajasonn" class="btn-flat"><img height="30px" th:src="@{/github_icon.png}"/></a>
-                <a href="https://www.linkedin.com/in/jasonalindsey" class="btn-flat"><img height="30px" th:src="@{/linkedin_icon.png}"/></a>
+        <div class="col s12 m4">
+            <div class="card col">
+                <div class="card-image">
+                    <img th:src="@{/jason_lindsey.jpeg}" style="margin-top: 10px"/>
+                    <span class="card-title title_name">Jason Lindsey</span>
+                    <a th:href="'tel:(713) 962-9143'" class="btn-floating halfway-fab waves-effect waves-light blue"><i
+                            class="material-icons">phone</i></a>
+                </div>
+                <div class="card-content center">
+                    <a href="https://github.com/nnosajasonn" class="btn-flat"><img height="30px" th:src="@{/github_icon.png}"/></a>
+                    <a href="https://alumni.codeup.com/students/640" class="btn-flat"><img height="30px" th:src="@{/codeup_logo.png}"/></a>
+                    <a href="https://www.linkedin.com/in/jasonalindsey" class="btn-flat"><img height="30px" th:src="@{/linkedin_icon.png}"/></a>
+                </div>
             </div>
         </div>
-</div>
 
-    <div class="col s12 m4">
+        <div class="col s12 m4">
 
-        <div  class="card col">
-            <div class="card-image">
-                <img th:src="@{/johnny_ruiz.jpeg}" style="margin-top: 10px" />
-                <span class="card-title title_name">Johnny Ruiz</span>
-                <a th:href="'tel:(210) 727-2420'" class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">phone</i></a>
-            </div>
-            <div class="card-content">
-                <a href="https://alumni.codeup.com/students/643" class="btn-flat"><img height="30px" th:src="@{/codeup_logo.png}"/></a>
-                <a href="https://github.com/johnnyruiz" class="btn-flat"><img height="30px" th:src="@{/github_icon.png}"/></a>
-                <a href="https://www.linkedin.com/in/johnny-p-ruiz" class="btn-flat"><img height="30px" th:src="@{/linkedin_icon.png}"/></a>
+            <div class="card col">
+                <div class="card-image">
+                    <img th:src="@{/johnny_ruiz.jpeg}" style="margin-top: 10px"/>
+                    <span class="card-title title_name">Johnny Ruiz</span>
+                    <a th:href="'tel:(210) 727-2420'" class="btn-floating halfway-fab waves-effect waves-light blue"><i
+                            class="material-icons">phone</i></a>
+                </div>
+                <div class="card-content center">
+                    <a href="https://github.com/johnnyruiz" class="btn-flat"><img height="30px" th:src="@{/github_icon.png}"/></a>
+                    <a href="https://alumni.codeup.com/students/643" class="btn-flat"><img height="30px" th:src="@{/codeup_logo.png}"/></a>
+                    <a href="https://www.linkedin.com/in/johnny-p-ruiz" class="btn-flat"><img height="30px" th:src="@{/linkedin_icon.png}"/></a>
+                </div>
             </div>
         </div>
+
+        <div class="col s12 m4">
+
+            <div class="card col">
+                <div class="card-image">
+                    <img th:src="@{/samuel_moore.jpg}" style="margin-top: 10px"/>
+                    <span class=" card-title title_name">Samuel Moore</span>
+                    <a th:href="'tel:(830) 353-3076'" class="btn-floating halfway-fab waves-effect waves-light blue"><i
+                            class="material-icons">phone</i></a>
+                </div>
+                <div class="card-content center">
+                    <a href="https://github.com/samuelmoorec" class="btn-flat"><img height="30px" th:src="@{/github_icon.png}"/></a>
+                    <a href="https://alumni.codeup.com/students/652" class="btn-flat"><img height="30px" th:src="@{/codeup_logo.png}"/></a>
+                    <a href="https://www.linkedin.com/in/samuelcmoore" class="btn-flat"><img height="30px" th:src="@{/linkedin_icon.png}"/></a>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-
-    <div class="col s12 m4">
-
-    <div  class="card col">
-            <div class="card-image" >
-                <img th:src="@{/samuel_moore.jpg}" style="margin-top: 10px" />
-                <span class=" card-title title_name">Samuel Moore</span>
-                <a th:href="'tel:(830) 353-3076'" class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">phone</i></a>
-            </div>
-            <div class="card-content">
-                <a href="https://alumni.codeup.com/students/652" class="btn-flat"><img height="30px" th:src="@{/codeup_logo.png}"/></a>
-                <a href="https://github.com/samuelmoorec" class="btn-flat"><img height="30px" th:src="@{/github_icon.png}"/></a>
-                <a href="https://www.linkedin.com/in/samuelcmoore" class="btn-flat"><img height="30px" th:src="@{/linkedin_icon.png}"/></a>
-            </div>
-        </div>
-    </div>
-
-
-</div>
 </main>
 <th:block th:replace="partials/master :: footer">
 

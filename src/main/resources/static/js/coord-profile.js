@@ -98,8 +98,11 @@ function provider($) {
 
         html += `<table class="highlight "><thead><tr><th>Name</th><div><th class="hide-on-med-and-down">Email</th></div><th>Phone</th><th>Role</th><th>Make Instructor</th></tr></thead><tbody>`;
         provider.users.forEach(function (element) {
-
-            html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor btn waves-effect waves-light" name="employee" value="${element.id}"  type="submit">Submit<i class="material-icons right">send</i></button></form></td></tr>`
+            if (element.role == 'student') {
+                html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/><button class="makeinstructor btn waves-effect waves-light" name="employee" value="${element.id}"  type="submit">Change<i class="material-icons right">person_add</i></button></form></td></tr>`
+            } else {
+                html += `<tr><td>${element.first_name} ${element.last_name}</td><td class="hide-on-med-and-down">${element.email}</td><td>${element.phone}</td><td>${element.role}</td><td><form><input class="emp_id" name="emp_id" value="${element.id}" type="hidden"/></form></td></tr>`
+            }
 
         });
         html += '</tbody></table>';
@@ -170,7 +173,7 @@ function classList($) {
 
         console.log(curricula);
 
-       var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
             cur.courses.forEach(function (course) {
 
@@ -201,34 +204,32 @@ function classList($) {
         M.AutoInit();
     });
 }
+
 classList($);
 
-$("#status").on('change', function(){
+$("#status").on('change', function () {
     let status = $("#status").val();
     console.log(status);
-   switch (status) {
-       case 1:
-           classList($);
+    switch (status) {
+        case 1:
+            classList($);
             break;
-       case '201':
-           statusFilter(status);
-           break;
-       case '202':
-           statusFilter(status);
-           break;
-       case '203':
-           statusFilter(status);
-           break;
-       case '204':
-           statusFilter(status);
-           break;
-       default:
-           classList($);
-   }
+        case '201':
+            statusFilter(status);
+            break;
+        case '202':
+            statusFilter(status);
+            break;
+        case '203':
+            statusFilter(status);
+            break;
+        case '204':
+            statusFilter(status);
+            break;
+        default:
+            classList($);
+    }
 });
-
-
-
 
 
 function statusFilter(status) {

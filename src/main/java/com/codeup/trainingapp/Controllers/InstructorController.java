@@ -13,7 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 public class InstructorController {
@@ -30,14 +36,16 @@ public class InstructorController {
     private final AttendanceRepository attendanceDao;
 
     private final Gradable_StudentRepository gradable_studentDao;
+    private final StatusRepository statusDao;
 
-    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, AttendanceRepository attendanceDao, Gradable_StudentRepository gradable_studentDao) {
+    public InstructorController(CourseRepository courseDao, CurriculumRepository curriculumDao, ProviderRepository providerDao, GradableRepository gradableDao, AttendanceRepository attendanceDao, Gradable_StudentRepository gradable_studentDao, StatusRepository statusDao) {
         this.courseDao = courseDao;
         this.curriculumDao = curriculumDao;
         this.providerDao = providerDao;
         this.gradableDao = gradableDao;
         this.attendanceDao = attendanceDao;
         this.gradable_studentDao = gradable_studentDao;
+        this.statusDao = statusDao;
     }
 
     @GetMapping("/instructor/courses")
@@ -202,15 +210,14 @@ public class InstructorController {
             @RequestParam(name = "capacity") Long capacity,
             @RequestParam(name = "location") String location,
             @RequestParam(name = "startDate") Date start_date,
-            @RequestParam(name = "endDate") Date end_date,
-            @RequestParam(name = "startTime")Time start_time
-            ){
+            @RequestParam(name = "endDate") Date end_date) {
+
         Course newcourse = courseDao.findOne(course_id);
         newcourse.setCapacity(capacity);
         newcourse.setLocation(location);
         newcourse.setStartDate(start_date);
+        newcourse.setStatus(statusDao.findOne(204L));
         newcourse.setEndDate(end_date);
-        newcourse.setStartTime(start_time);
         courseDao.save(newcourse);
         return "redirect:/instructor/course/" + newcourse.getId();
     }

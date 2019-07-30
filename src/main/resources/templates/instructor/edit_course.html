@@ -10,51 +10,50 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
-<div class="container">
+    <div class="container">
 
-    <div class="card white">
-        <div class="card-content z-depth-4">
-            <span class="card-title center">Courses</span>
+        <div class="card white">
+            <div class="card-content z-depth-4">
+                <span class="card-title center">Courses</span>
 
-    <div class="row">
-        <form th:action="@{/course/edit}" th:method="post" th:object="${course}" class="col s12">
+                <div class="row">
+                    <form th:action="@{/course/edit}" th:method="post" th:object="${course}" class="col s12">
 
 
-            <div class="row">
-                <div class="input-field col s12">
-                    <input th:field="*{location}" id="location" type="text" class="validate"/>
-                    <label for="location">Location</label>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input th:field="*{location}" id="location" type="text" class="validate"/>
+                                <label for="location">Location</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input th:field="*{capacity}" id="cap" type="number" class="validate"/>
+                                <label for="cap">Class Size</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input th:field="*{startDate}" id="start_date" type="date" class=" validate"/>
+                                <label for="start_date">Start Date</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input th:field="*{endDate}" id="end_date" type="date" class=" validate"/>
+                                <label for="end_date">End Date</label>
+                            </div>
+                            <!--<div class="input-field col s12">-->
+                            <!--<input th:field="*{startTime}" id="start_time" type="time" class="validate"/>-->
+                            <!--<label for="start_time">Start Time</label>-->
+                            <!--</div>-->
+                            <input th:field="*{id}" type="hidden"/>
+
+
+                        </div>
+                        <button class="btn waves-effect waves-light" type="submit">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
                 </div>
-                <div class="input-field col s12">
-                    <input th:field="*{capacity}" id="cap" type="text" class="validate"/>
-                    <label for="cap">Class Size</label>
-                </div>
-                <div class="input-field col s12">
-                    <input th:field="*{startDate}" id="start_date" type="date" class=" validate"/>
-                    <label for="start_date">Start Date</label>
-                </div>
-                <div class="input-field col s12">
-                    <input th:field="*{endDate}" id="end_date" type="date" class=" validate"/>
-                    <label for="end_date">End Date</label>
-                </div>
-                <div class="input-field col s12">
-                    <input th:field="*{startTime}" id="start_time" type="time" class="validate"/>
-                    <label for="start_time">Start Time</label>
-                </div>
-                <input th:field="*{id}" type="hidden" />
-
-
-
             </div>
-            <button class="btn waves-effect waves-light" type="submit">Submit
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
-    </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </main>
 <th:block th:replace="partials/master :: footer">
 

@@ -4,7 +4,6 @@
 <th:block th:fragment="nav">
 
 
-
     <div sec:authorize="isAuthenticated()">
 
 
@@ -18,16 +17,17 @@
                             <img src="/longlogo_white_short.png" width="90px"
                                  alt="landing_page_img"/>
                         </a>
-                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i
+                                class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             <li>
-                                    <a href="/courses">Courses</a>
+                                <a href="/courses">Courses</a>
                             </li>
                             <li>
-                                    <a href="/student">Dashboard</a>
+                                <a href="/student">Dashboard</a>
                             </li>
                             <li>
-                                    <a href="/user/update">Profile</a>
+                                <a href="/user/update">Profile</a>
                             </li>
                             <li>
                                 <form th:action="@{/logout}" th:method="post" type="submit"
@@ -85,18 +85,19 @@
                         <a href="/" class="brand-logo center" style="margin-top: 10px;">
                             <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
                         </a>
-                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i
+                                class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             <li>
                                 <a href="/instructor/curricula">Curricula</a>
                             </li>
                             <li>
 
-                                    <a href="/instructor/courses">Courses</a>
+                                <a href="/instructor/courses">Courses</a>
                             </li>
                             <li>
 
-                                    <a href="/user/update">Profile</a>
+                                <a href="/user/update">Profile</a>
                             </li>
                             <li>
                                 <form th:action="@{/logout}" th:method="post" type="submit"
@@ -134,7 +135,8 @@
                     </li>
                     <li>
                         <form th:action="@{/logout}" th:method="post" type="submit">
-                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action" style="-webkit-appearance: none;">Logout
+                            <button class="btn-flat waves-effect waves-light pl-1" type="submit" name="action"
+                                    style="-webkit-appearance: none;">Logout
                                 <i class="material-icons left">directions_run</i>
                             </button>
                         </form>
@@ -153,22 +155,25 @@
                         <a href="/" class="brand-logo center" style="margin-top: 10px;">
                             <img src="/longlogo_white_short.png" class="center" width="90px" alt="landing_page_img"/>
                         </a>
-                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i
+                                class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             <li>
-                                <a href="/courses" >Courses</a>
+                                <a href="/courses">Courses</a>
                             </li>
                             <li>
 
-                                <a href="/coordinator" >Dashboard</a>
+                                <a href="/coordinator">Dashboard</a>
                             </li>
                             <li>
 
                                 <a href="/user/update">Profile</a>
                             </li>
-                            <li><form th:action="@{/logout}" th:method="post" type="submit" style="-webkit-appearance: none;">
-                                <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
-                            </form>
+                            <li>
+                                <form th:action="@{/logout}" th:method="post" type="submit"
+                                      style="-webkit-appearance: none;">
+                                    <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -207,9 +212,6 @@
         </th:block>
 
 
-
-
-
     </div>
 
 
@@ -235,7 +237,8 @@
             <li>
                 <div class="user-view scheme-grey">
                     <a href="#user">
-                        <img class="circle" src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/>
+                        <img class="circle"
+                             src="https://images.squarespace-cdn.com/content/554037b3e4b0da169013a32f/1454814698312-GFEEISP9MVFVJ2V4CR08/?content-type=image%2Fpng"/>
                     </a>
                 </div>
             </li>
@@ -266,10 +269,11 @@
           media="screen,projection"/>
     <link rel="stylesheet" th:href="@{/padding.css}"/>
     <style>
-        body{
+        body {
             background: lightgrey;
         }
-        .collapsible-body{
+
+        .collapsible-body {
             background: white;
         }
     </style>
