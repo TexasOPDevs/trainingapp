@@ -173,7 +173,7 @@ function classList($) {
 
         console.log(curricula);
 
-       var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
+        var html = '<table class="highlight"><thead><tr><th>Course Name</th><th class="hide-on-med-and-down">Location</th><th class="hide-on-med-and-down">Start Date</th><th class="hide-on-med-and-down">End Date</th><th class="hide-on-med-and-down">Status</th><th>Instructors</th></tr></thead><tbody>';
         curricula.forEach(function (cur) {
             cur.courses.forEach(function (course) {
 
@@ -204,34 +204,32 @@ function classList($) {
         M.AutoInit();
     });
 }
+
 classList($);
 
-$("#status").on('change', function(){
+$("#status").on('change', function () {
     let status = $("#status").val();
     console.log(status);
-   switch (status) {
-       case 1:
-           classList($);
+    switch (status) {
+        case 1:
+            classList($);
             break;
-       case '201':
-           statusFilter(status);
-           break;
-       case '202':
-           statusFilter(status);
-           break;
-       case '203':
-           statusFilter(status);
-           break;
-       case '204':
-           statusFilter(status);
-           break;
-       default:
-           classList($);
-   }
+        case '201':
+            statusFilter(status);
+            break;
+        case '202':
+            statusFilter(status);
+            break;
+        case '203':
+            statusFilter(status);
+            break;
+        case '204':
+            statusFilter(status);
+            break;
+        default:
+            classList($);
+    }
 });
-
-
-
 
 
 function statusFilter(status) {

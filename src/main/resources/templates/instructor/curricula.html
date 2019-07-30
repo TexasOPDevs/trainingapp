@@ -29,14 +29,16 @@
                             <td th:text="${curriculum.name}"></td>
 
                             <td>
-                                <a th:href="'/instructor/curriculum/' + ${curriculum.id}" class="waves-effect waves-light btn-small">Details</a>
+                                <a th:href="'/instructor/curriculum/' + ${curriculum.id}"
+                                   class="waves-effect waves-light btn-small">Details</a>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div style="position: absolute; bottom: 2% ; right: 1%"><a href="/instructor/curriculum/create" class="btn-floating btn-large red">
+                <div style="position: absolute; bottom: 2% ; right: 1%"><a href="/instructor/curriculum/create"
+                                                                           class="btn-floating btn-large red">
                     <i class="large material-icons">add</i>
                 </a>
                 </div>
