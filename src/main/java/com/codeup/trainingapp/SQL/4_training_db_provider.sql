@@ -1,4 +1,0 @@
-INSERT INTO training_db.provider (id, image, name, coordinator_id) VALUES (1, 'https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_1', 1);
-INSERT INTO training_db.provider (id, image, name, coordinator_id) VALUES (2, 'https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_2', 3);
-INSERT INTO training_db.provider (id, image, name, coordinator_id) VALUES (3, 'https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_1', 1);
-INSERT INTO training_db.provider (id, image, name, coordinator_id) VALUES (4, 'https://www.ripleys.com/wp-content/uploads/2015/08/shrunken-heads_s06.jpg', 'org_2', 3);
