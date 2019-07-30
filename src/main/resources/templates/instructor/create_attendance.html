@@ -17,7 +17,7 @@
     <div class="container">
         <div class="card col s12 m12 l6">
             <div class="card-content">
-                <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
+                <img src="/toplogoblue.png" alt="logo" style="height: 100px; width: auto; position: absolute;
                     top: 1%; left: 1%; opacity: .05;"/>
                 <span class="card-title center" th:text="${#dates.format(#dates.createNow(), 'MM-dd-yy')}"></span>
                 <form th:action="@{/submit_attendance}" th:object="${attendanceForm}" method="post">
