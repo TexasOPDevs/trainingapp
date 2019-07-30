@@ -10,42 +10,43 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
-<div class="container">
+    <div class="container">
 
-    <div class="card white">
-    <div class="card-content z-depth-4">
-        <span class="card-title center">Courses</span>
-    <th:block>
+        <div class="card white">
+            <div class="card-content z-depth-4">
+                <span class="card-title center">Courses</span>
+                <th:block>
 
-        <div class="col s12">
-            <table class="centered">
-                <thead>
+                    <div class="col s12">
+                        <table class="centered">
+                            <thead>
 
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th></th>
-                </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th></th>
+                            </tr>
 
-                </thead>
+                            </thead>
 
-                <tbody>
+                            <tbody>
 
-                <tr th:each="course: ${courses}">
-                    <td th:text="${course.id}"></td>
-                    <td th:text="${course.curriculum.name}"></td>
-                    <td>
-                        <a th:href="'/instructor/course/' + ${course.id}" class="waves-effect waves-light btn-small">Details</a>
-                    </td>
-                </tr>
+                            <tr th:each="course: ${courses}">
+                                <td th:text="${course.id}"></td>
+                                <td th:text="${course.curriculum.name}"></td>
+                                <td>
+                                    <a th:href="'/instructor/course/' + ${course.id}"
+                                       class="waves-effect waves-light btn-small">Details</a>
+                                </td>
+                            </tr>
 
-                </tbody>
-            </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </th:block>
+            </div>
         </div>
-    </th:block>
     </div>
-</div>
-</div>
 </main>
 <th:block th:replace="partials/master :: footer">
 

@@ -11,40 +11,42 @@
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
 
-<div class="container">
-<a th:href="'/instructor/course/' + ${gradable_students.get(0).course.id} +'#grades'"><i class="material-icons medium">arrow_back</i></a>
-    <div class="card col s12 m12 l6">
-        <div class="card-content">
-            <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
+    <div class="container">
+        <a th:href="'/instructor/course/' + ${gradable_students.get(0).course.id} +'#grades'"><i
+                class="material-icons medium">arrow_back</i></a>
+        <div class="card col s12 m12 l6">
+            <div class="card-content">
+                <img src="/toplogoblue.png" alt="logo" style="height: 150px; width: 150px; position: absolute;
                     top: 1%; left: 1%; opacity: .15;"/>
-            <span class="card-title center"
-                  th:text="${gradable_students.get(0).course.curriculum.name} + '-' + ${gradable_students.get(0).gradable.name}"></span>
-            <form th:method="POST" th:action="@{'/instructor/add-grades/' + ${gradable_students.get(0).getCourse().id}}"
-                  th:object="${gradable_students}">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tr th:each="student, itemStat: ${gradable_students}">
-                        <td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>
+                <span class="card-title center"
+                      th:text="${gradable_students.get(0).course.curriculum.name} + '-' + ${gradable_students.get(0).gradable.name}"></span>
+                <form th:method="POST"
+                      th:action="@{'/instructor/add-grades/' + ${gradable_students.get(0).getCourse().id}}"
+                      th:object="${gradable_students}">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tr th:each="student, itemStat: ${gradable_students}">
+                            <td th:text="${student.getUser().first_name} + ' ' + ${student.getUser().last_name}"></td>
 
-                        <td>
-                            <input name="grades" th:id="${student.id}" type="number"/>
-                            <label th:for="${student.id}">Enter Grade</label>
-                        </td>
-                    </tr>
-                </table>
+                            <td>
+                                <input name="grades" th:id="${student.id}" type="number"/>
+                                <label th:for="${student.id}">Enter Grade</label>
+                            </td>
+                        </tr>
+                    </table>
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 </main>
 <th:block th:replace="partials/master :: footer">

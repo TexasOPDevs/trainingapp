@@ -10,159 +10,161 @@
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
 <main>
-<div class="row">
-    <div class=" s12">
-        <ul class="tabs">
-            <li class="tab col s3"><a class="active" href="#overview">Overview</a></li>
-            <li class="tab col s3"><a href="#allcourses">Courses</a></li>
-            <li class="tab col s3"><a href="#grades">Grades</a></li>
-        </ul>
-    </div>
-    <div id="overview" class="s12">
+    <div class="row">
+        <div class=" s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#overview">Overview</a></li>
+                <li class="tab col s3"><a href="#allcourses">Courses</a></li>
+                <li class="tab col s3"><a href="#grades">Grades</a></li>
+            </ul>
+        </div>
+        <div id="overview" class="s12">
 
-        <div class="divider"></div>
-        <div class="section">
-            <h5 th:text="${curriculum.name}"></h5>
-            <div class="row">
-                <p class="col s12" th:text="'Curriculum ID (' + ${curriculum.id} + ')'"></p>
-                <p class="col s12" th:text="'Number of Courses (' + ${curriculum.courses.size()} + ')'"></p>
-                <p class="col s12" th:text="'Creation Date (' + ${#dates.format(curriculum.creationDate, 'MM-dd-yy')} + ')'"></p>
-                <p class="col s12" th:text="'Revision Date (' + ${#dates.format(curriculum.updateDate, 'MM-dd-yy')} + ')'"></p>
-                <h6>Description</h6>
-                <p class="col s12" th:text="${curriculum.description}"></p>
-                <h6>Learning Objectives</h6>
-                <p class="col s12" th:text="${curriculum.learning_objectives}"></p>
+            <div class="divider"></div>
+            <div class="section">
+                <h5 th:text="${curriculum.name}"></h5>
+                <div class="row">
+                    <p class="col s12" th:text="'Curriculum ID (' + ${curriculum.id} + ')'"></p>
+                    <p class="col s12" th:text="'Number of Courses (' + ${curriculum.courses.size()} + ')'"></p>
+                    <p class="col s12"
+                       th:text="'Creation Date (' + ${#dates.format(curriculum.creationDate, 'MM-dd-yy')} + ')'"></p>
+                    <p class="col s12"
+                       th:text="'Revision Date (' + ${#dates.format(curriculum.updateDate, 'MM-dd-yy')} + ')'"></p>
+                    <h6>Description</h6>
+                    <p class="col s12" th:text="${curriculum.description}"></p>
+                    <h6>Learning Objectives</h6>
+                    <p class="col s12" th:text="${curriculum.learning_objectives}"></p>
 
+                </div>
+
+            </div>
+
+            <div class="fixed-action-btn">
+                <a th:href="'/instructor/curriculum/' + ${curriculum.id} + '/edit'" class="btn-floating btn-large red">
+                    <i class="large material-icons">edit</i>
+                </a>
             </div>
 
         </div>
 
-        <div class="fixed-action-btn">
-            <a th:href="'/instructor/curriculum/' + ${curriculum.id} + '/edit'" class="btn-floating btn-large red">
-                <i class="large material-icons">edit</i>
-            </a>
+        <div th:switch="${curriculum.courses.size()}" id="allcourses" class="col s12">
+
+            <p th:case="0">There are no courses in this Curriculum</p>
+
+
+            <ul th:case="*" class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons"></i>
+                        Open
+                        <span class="badge"></span></div>
+                    <div th:switch="${curriculum.courses.size()}" class="collapsible-body">
+
+                        <p th:case="0">There are currently no courses in this curriculum</p>
+
+                        <table th:case="*" class="col centered">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Students</th>
+                                <th></th>
+                            </tr>
+
+                            </thead>
+
+                            <tbody th:each="course: ${curriculum.courses}">
+
+                            <tr>
+                                <td th:text="${course.id}"></td>
+                                <td th:text="${course.students.size()}"></td>
+                                <td>
+                                    <a th:href="'/instructor/course/' + ${course.id}"
+                                       class="waves-effect waves-light btn-small">Details</a>
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons"></i>
+                        Closed
+                        <span class="badge"></span></div>
+                    <div th:switch="${curriculum.courses}" class="collapsible-body">
+
+                        <p th:case="null">There are currently no courses in this curriculum</p>
+
+                        <table th:case="*" class="col centered">
+                            <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Student</th>
+                                <th></th>
+                            </tr>
+
+                            </thead>
+
+                            <tbody th:each="course: ${curriculum.courses}" th:switch="${course.status.name}">
+
+                            <tr th:case="'closed'">
+                                <td th:text="${course.id}"></td>
+                                <td th:text="${course.students.size()}"></td>
+                                <td>
+                                    <a th:href="'/instructor/course/' + ${course.id}"
+                                       class="waves-effect waves-light btn-small">Details</a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </li>
+            </ul>
+
         </div>
 
-    </div>
+        <div id="grades" class=" s12">
 
-    <div th:switch="${curriculum.courses.size()}" id="allcourses" class="col s12">
+            <table class="col centered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Weight</th>
+                </tr>
 
-        <p th:case="0">There are no courses in this Curriculum</p>
+                </thead>
 
+                <tbody th:each="grade: ${curriculum.gradables}">
 
-        <ul th:case="*" class="collapsible">
-            <li>
-                <div class="collapsible-header">
-                    <i class="material-icons"></i>
-                    Open
-                    <span class="badge"></span></div>
-                <div th:switch="${curriculum.courses.size()}" class="collapsible-body">
-
-                    <p th:case="0">There are currently no courses in this curriculum</p>
-
-                    <table th:case="*" class="col centered">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Students</th>
-                            <th></th>
-                        </tr>
-
-                        </thead>
-
-                        <tbody th:each="course: ${curriculum.courses}">
-
-                        <tr>
-                            <td th:text="${course.id}"></td>
-                            <td th:text="${course.students.size()}"></td>
-                            <td>
-                                <a th:href="'/instructor/course/' + ${course.id}"
-                                   class="waves-effect waves-light btn-small">Details</a>
-                            </td>
-                        </tr>
+                <tr>
+                    <td th:text="${grade.name}"></td>
+                    <td th:text="${grade.id}"></td>
+                    <td th:text="${grade.weight}"></td>
+                </tr>
 
 
-                        </tbody>
-                    </table>
+                </tbody>
+            </table>
 
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header">
-                    <i class="material-icons"></i>
-                    Closed
-                    <span class="badge"></span></div>
-                <div th:switch="${curriculum.courses}" class="collapsible-body">
+            <div class="fixed-action-btn">
+                <a th:href="'/instructor/curriculum/' + ${curriculum.id} + '/create_grade'"
+                   class="btn-floating btn-large red">
+                    <i class="large material-icons">add</i>
+                </a>
+            </div>
 
-                    <p th:case="null">There are currently no courses in this curriculum</p>
-
-                    <table th:case="*" class="col centered">
-                        <thead>
-
-                        <tr>
-                            <th>ID</th>
-                            <th>Student</th>
-                            <th></th>
-                        </tr>
-
-                        </thead>
-
-                        <tbody th:each="course: ${curriculum.courses}" th:switch="${course.status.name}">
-
-                        <tr th:case="'closed'">
-                            <td th:text="${course.id}"></td>
-                            <td th:text="${course.students.size()}"></td>
-                            <td>
-                                <a th:href="'/instructor/course/' + ${course.id}"
-                                   class="waves-effect waves-light btn-small">Details</a>
-                            </td>
-                        </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-            </li>
-        </ul>
-
-    </div>
-
-    <div id="grades" class=" s12">
-
-        <table class="col centered">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>ID</th>
-                <th>Weight</th>
-            </tr>
-
-            </thead>
-
-            <tbody th:each="grade: ${curriculum.gradables}">
-
-            <tr>
-                <td th:text="${grade.name}"></td>
-                <td th:text="${grade.id}"></td>
-                <td th:text="${grade.weight}"></td>
-            </tr>
-
-
-            </tbody>
-        </table>
-
-        <div class="fixed-action-btn">
-            <a th:href="'/instructor/curriculum/' + ${curriculum.id} + '/create_grade'"
-               class="btn-floating btn-large red">
-                <i class="large material-icons">add</i>
-            </a>
         </div>
 
+
     </div>
-
-
-</div>
 </main>
 <th:block th:replace="partials/master :: footer">
 
