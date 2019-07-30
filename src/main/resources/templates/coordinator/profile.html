@@ -11,7 +11,8 @@
         #name {
             z-index: 99;
         }
-        .collapsible li.active i {
+
+        .collapsible li.active .flippydoo {
             -ms-transform: rotate(180deg); /* IE 9 */
             -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
             transform: rotate(180deg);
@@ -45,7 +46,9 @@
                 <div id="courselist"></div>
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons prefix">expand_more</i> Create A Course</div>
+                        <div class="collapsible-header"><i class="material-icons prefix flippydoo">expand_more</i>
+                            Create A Course
+                        </div>
                         <div class="collapsible-body">
                             <div class="row">
                                 <form class="col s12" method="post" th:action="@{/newCourse}" th:object="${curriculum}">
@@ -86,7 +89,9 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons prefix">expand_more</i>  Create A Gradable</div>
+                        <div class="collapsible-header"><i class="material-icons prefix flippydoo">expand_more</i>
+                            Create A Gradable
+                        </div>
                         <div class="collapsible-body">
 
                             <form th:method="POST" th:action="@{/add_gradable}" th:type="post">
@@ -106,6 +111,7 @@
                                     <input name="grade_weight" id="weight" type="number" class="validate"/>
                                     <label for="weight">Weight</label>
                                 </div>
+
                                 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
@@ -146,7 +152,9 @@
 
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons prefix">expand_more</i>  Assign a Course</div>
+                        <div class="collapsible-header"><i class="material-icons prefix flippydoo">expand_more</i>
+                            Assign a Course
+                        </div>
                         <div class="collapsible-body">
                             <form method="POST" th:action="@{/coordinator}" th:object="${course}">
 
@@ -180,11 +188,13 @@
                                                 <label>Instructor</label>
                                             </div>
                                         </div>
+                                        <div class="input-field col s12">
 
-                                        <button class="btn waves-effect waves-light" type="submit"
-                                                name="action">Submit
-                                            <i class="material-icons right">send</i>
-                                        </button>
+                                            <button class="btn waves-effect waves-light" type="submit"
+                                                    name="action">Submit
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
 

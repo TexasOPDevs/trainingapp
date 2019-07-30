@@ -148,7 +148,8 @@ public class CoordinatorController {
         if (!curuser.getRole().equals("coordinator")) {
             return "redirect:/profile";
         }
-
+        course.setCapacity(1L);
+        course.setLocation("tbd");
         course.setStatus(StatusDao.findOne(202L));
         courseDao.save(course);
 

@@ -9,52 +9,52 @@
 </head>
 <body>
 <th:block th:include="partials/master :: nav"></th:block>
- <main>
-<div class="container">
+<main>
+    <div class="container">
 
-    <div class="row">
-        <form th:action="@{/curriculum/edit}" th:method="post" th:object="${curriculum}" class="col s12">
-            <div class="row">
-                <div class="input-field col s9">
-                    <input th:field="*{name}" id="name" type="text" class="validate"/>
-                    <label for="name">Name</label>
-                </div>
-                <div class="input-field col s3">
-                    <input th:field="*{id}" type="hidden" class="validate"/>
-                    <p class="grey-text" id="curriculum_id" th:text="'ID: ' + ${curriculum.id}"></p>
+        <div class="row">
+            <form th:action="@{/curriculum/edit}" th:method="post" th:object="${curriculum}" class="col s12">
+                <div class="row">
+                    <div class="input-field col s9">
+                        <input th:field="*{name}" id="name" type="text" class="validate"/>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input th:field="*{id}" type="hidden" class="validate"/>
+                        <p class="grey-text" id="curriculum_id" th:text="'ID: ' + ${curriculum.id}"></p>
 
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s3">
-                    <input th:field="*{provider.id}" id="provider" type="number" class="validate"/>
-                    <label for="provider">Provider ID</label>
+                <div class="row">
+                    <div class="input-field col s3">
+                        <input th:field="*{provider.id}" id="provider" type="number" class="validate"/>
+                        <label for="provider">Provider ID</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
+                <div class="row">
+                    <div class="input-field col s12">
                     <textarea th:field="*{description}" id="description"
                               class="materialize-textarea disabled"></textarea>
-                    <label for="description">Description</label>
+                        <label for="description">Description</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
                     <textarea th:field="*{learning_objectives}" id="learning_objectives"
                               class="materialize-textarea"></textarea>
-                    <label for="learning_objectives">Learning Objectives</label>
+                        <label for="learning_objectives">Learning Objectives</label>
+                    </div>
                 </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit">Submit
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
-    </div>
+                <button class="btn waves-effect waves-light" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
 
-</div>
- </main>
+    </div>
+</main>
 <th:block th:replace="partials/master :: footer">
 
 </th:block>

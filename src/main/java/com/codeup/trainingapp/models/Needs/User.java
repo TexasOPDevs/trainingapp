@@ -233,6 +233,6 @@ public class User {
     }
 
     public String getFullName() {
-        return first_name + ", " + last_name;
+        return first_name + " " + last_name;
     }
 }
