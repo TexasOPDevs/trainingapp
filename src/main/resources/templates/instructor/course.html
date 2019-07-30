@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Course</title>
+    <title th:text="'Course ' + ${course.id}"></title>
     <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>

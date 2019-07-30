@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Curriculum</title>
+    <title th:text="'Curriculum ' + ${curriculum.id}" ></title>
     <th:block th:replace="partials/master :: materialize"></th:block>
 </head>
 <body>
@@ -19,30 +19,34 @@
         </ul>
     </div>
     <div id="overview" class="s12">
+        <div class="container">
+        <div class="card white">
+            <div class="card-content z-depth-4">
+                <span class="card-title center">Overview</span>
+                <div class="divider"></div>
+                <div class="section">
+                    <h5 th:text="${curriculum.name}"></h5>
+                    <div class="row">
+                        <p class="col s12" th:text="'Curriculum ID (' + ${curriculum.id} + ')'"></p>
+                        <p class="col s12" th:text="'Number of Courses (' + ${curriculum.courses.size()} + ')'"></p>
+                        <p class="col s12" th:text="'Creation Date (' + ${#dates.format(curriculum.creationDate, 'MM-dd-yy')} + ')'"></p>
+                        <p class="col s12" th:text="'Revision Date (' + ${#dates.format(curriculum.updateDate, 'MM-dd-yy')} + ')'"></p>
+                        <h6>Description</h6>
+                        <p class="col s12" th:text="${curriculum.description}"></p>
+                        <h6>Learning Objectives</h6>
+                        <p class="col s12" th:text="${curriculum.learning_objectives}"></p>
+                    </div>
+                </div>
 
-        <div class="divider"></div>
-        <div class="section">
-            <h5 th:text="${curriculum.name}"></h5>
-            <div class="row">
-                <p class="col s12" th:text="'Curriculum ID (' + ${curriculum.id} + ')'"></p>
-                <p class="col s12" th:text="'Number of Courses (' + ${curriculum.courses.size()} + ')'"></p>
-                <p class="col s12" th:text="'Creation Date (' + ${#dates.format(curriculum.creationDate, 'MM-dd-yy')} + ')'"></p>
-                <p class="col s12" th:text="'Revision Date (' + ${#dates.format(curriculum.updateDate, 'MM-dd-yy')} + ')'"></p>
-                <h6>Description</h6>
-                <p class="col s12" th:text="${curriculum.description}"></p>
-                <h6>Learning Objectives</h6>
-                <p class="col s12" th:text="${curriculum.learning_objectives}"></p>
+                <div style="position: absolute; bottom: 2% ; right: 1%">
+                    <a th:href="'/instructor/curriculum/' + ${curriculum.id} + '/edit'" class="btn-floating btn-large red">
+                        <i class="large material-icons">edit</i>
+                    </a>
+                </div>
 
             </div>
-
         </div>
-
-        <div class="fixed-action-btn">
-            <a th:href="'/instructor/curriculum/' + ${curriculum.id} + '/edit'" class="btn-floating btn-large red">
-                <i class="large material-icons">edit</i>
-            </a>
         </div>
-
     </div>
 
     <div th:switch="${curriculum.courses.size()}" id="allcourses" class="col s12">
